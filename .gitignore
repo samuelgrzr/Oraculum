@@ -1,2 +1,4 @@
-\Oraculum\wenv
-\Oraculum\lenv
+wenv/
+lenv/
+__pycache__/
+*.pyc
