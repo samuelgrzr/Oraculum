@@ -2,16 +2,14 @@
 
 ## Configurar las dependencias del proyecto:
 
-### En Windows:
-python -m venv wenv
-.\wenv\Scripts\activate
-cd fastapi
-pip install -r requirements.txt
-uvicorn main:app
+For <b>Windows</b> is `python -m venv .venv && .\venv\Scripts\activate`
+<br>
+For <b>Linux</b> is `python3 -m venv .venv && source .venv/bin/activate`
 
-### En Linux:
-python3 -m venv lenv
-source lenv/bin/activate
-cd fastapi
-pip install -r requirements.txt
+```bash
+cd fastapi && pip install -r requirements.txt
+```
+
+```bash
 uvicorn main:app
+```
