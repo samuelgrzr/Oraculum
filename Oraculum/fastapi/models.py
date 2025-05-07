@@ -9,12 +9,14 @@ pregunta_respuesta = Table('pregunta_respuesta', Base.metadata,
 
 class Pregunta(Base):
     __tablename__ = "pregunta"
+
     id = Column(Integer, primary_key=True, index=True)
     texto = Column(String)
     respuestas = relationship("Respuesta", secondary=pregunta_respuesta, back_populates="preguntas")
 
 class Respuesta(Base):
     __tablename__ = "respuesta"
+
     id = Column(Integer, primary_key=True, index=True)
     texto = Column(String)
     correcta = Column(Integer)

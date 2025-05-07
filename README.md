@@ -1,14 +1,17 @@
 # Oraculum
 
-## Configurar las dependencias del proyecto:
+## Descripción
 
-For <b>Windows</b> is `python -m venv .venv && .\venv\Scripts\activate`
-<br>
-For <b>Linux</b> is `python3 -m venv .venv && source .venv/bin/activate`
+## Tecnologías
+
+## Configurar las dependencias del proyecto (desarrollador):
 
 ```bash
-cd fastapi && pip install -r requirements.txt
+python -m venv .venv && .\venv\Scripts\activate && cd fastapi && pip install -r requirements.txt
 ```
+
+Si hay algún problema de compatibilidad entre las dependencias, usa <br>
+`pip config unset global.index-url`
 
 ```bash
 uvicorn main:app
