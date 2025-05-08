@@ -39,7 +39,11 @@ CREATE TABLE partida (
     id_usuario INT,
     fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
     puntuacion INT,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    modo_juego VARCHAR(50) NOT NULL,  -- 'estandar', 'examen', 'contrarreloj', 'infinito'
+    id_categoria INT,
+    dificultad VARCHAR(50) NOT NULL,  -- 'facil', 'medio', 'dificil'
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_categoria) REFERENCES categoria(id)
 );
 
 CREATE TABLE datos_partida (
@@ -48,6 +52,9 @@ CREATE TABLE datos_partida (
     id_pregunta INT,
     id_respuesta_elegida INT,
     id_respuesta_correcta INT,
+    tiempo_respuesta INT,
+    uso_pista BOOLEAN DEFAULT FALSE,
+    puntuacion_pregunta INT,
     FOREIGN KEY (id_partida) REFERENCES partida(id),
     FOREIGN KEY (id_pregunta) REFERENCES pregunta(id),
     FOREIGN KEY (id_respuesta_elegida) REFERENCES respuesta(id),

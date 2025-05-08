@@ -39,8 +39,8 @@ def authenticate_user(username: str, password: str, db):
         return False
     return usuario
 
-def create_access_token(nombre: str, id: str, expires_delta: timedelta):
-    encode = {"nombre": nombre, "id": id}
+def create_access_token(nombre: str, id: str, rol: str, expires_delta: timedelta):
+    encode = {"nombre": nombre, "id": id, "rol": rol}
     expires = datetime.now(timezone.utc) + expires_delta
     encode.update({"exp": expires})
     return jwt.encode(encode, SECRET_KEY, algorithm=ALGORITHM)
@@ -62,6 +62,6 @@ async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm,
     usuario = authenticate_user(form_data.username, form_data.password, db)
     if not usuario:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Credenciales incorrectas")
-    token = create_access_token(usuario.nombre, usuario.id, timedelta(minutes=20))
+    token = create_access_token(usuario.nombre, usuario.id, usuario.rol, timedelta(minutes=1))
 
     return {"access_token": token, "token_type": "bearer"}

@@ -29,14 +29,49 @@ def get_all_categorias(db: db_dependency):
 
 @router.post("/", status_code=201)
 def create_categoria(db: db_dependency, categoria: CrearCategoria, user: user_dependency):
+    if user.get("rol") != "admin":
+        raise HTTPException(
+            status_code=403,
+            detail="Solo los administradores pueden crear categorías"
+        )
     db_categoria = Categoria(**categoria.model_dump())
     db.add(db_categoria)
     db.commit()
     db.refresh(db_categoria)
     return db_categoria
 
+@router.put("/{id_categoria}", status_code=200)
+def edit_categoria(db: db_dependency, id_categoria: int, categoria: CrearCategoria, user: user_dependency):
+    if user.get("rol") != "admin":
+        raise HTTPException(
+            status_code=403,
+            detail="Solo los administradores pueden editar categorías"
+        )
+    try:
+        db_categoria = db.query(Categoria).filter(Categoria.id == id_categoria).first()
+        if not db_categoria:
+            raise HTTPException(status_code=404, detail="Categoría no encontrada")
+        
+        for key, value in categoria.model_dump().items():
+            setattr(db_categoria, key, value)
+            
+        db.commit()
+        db.refresh(db_categoria)
+        return db_categoria
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=400,
+            detail=f"Error al actualizar la categoría: {str(e)}"
+        )
+
 @router.delete("/")
 def delete_categoria(db: db_dependency, id_categoria: int, user: user_dependency):
+    if user.get("rol") != "admin":
+        raise HTTPException(
+            status_code=403,
+            detail="Solo los administradores pueden eliminar categorías"
+        )
     db_categoria = db.query(Categoria).filter(Categoria.id == id_categoria).first()
     if db_categoria:
         db.delete(db_categoria)

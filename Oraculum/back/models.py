@@ -13,7 +13,7 @@ class Usuario(Base):
     rol = Column(String(50), default='user')
     puntuacion = Column(Integer, default=0)
     
-    partidas = relationship("Partida", back_populates="usuario")
+    historial = relationship("Partida", back_populates="usuario")
 
 class Categoria(Base):
     __tablename__ = "categoria"
@@ -46,7 +46,6 @@ class Respuesta(Base):
     
     pregunta = relationship("Pregunta", back_populates="respuestas")
 
-
 class Partida(Base):
     __tablename__ = "partida"
 
@@ -54,9 +53,13 @@ class Partida(Base):
     id_usuario = Column(Integer, ForeignKey("usuario.id"))
     fecha = Column(DateTime, default=datetime.datetime.utcnow)
     puntuacion = Column(Integer)
+    modo_juego = Column(String(50), nullable=False)  # 'estandar', 'examen', 'contrarreloj', 'infinito'
+    id_categoria = Column(Integer, ForeignKey("categoria.id"))
+    dificultad = Column(String(50), nullable=False)  # 'facil', 'medio', 'dificil'
     
-    usuario = relationship("Usuario", back_populates="partidas")
+    usuario = relationship("Usuario", back_populates="historial")
     datos_partida = relationship("DatosPartida", back_populates="partida")
+    categoria = relationship("Categoria")
 
 class DatosPartida(Base):
     __tablename__ = "datos_partida"
@@ -66,6 +69,9 @@ class DatosPartida(Base):
     id_pregunta = Column(Integer, ForeignKey("pregunta.id"))
     id_respuesta_elegida = Column(Integer, ForeignKey("respuesta.id"))
     id_respuesta_correcta = Column(Integer, ForeignKey("respuesta.id"))
+    tiempo_respuesta = Column(Integer)
+    uso_pista = Column(Boolean, default=False)
+    puntuacion_pregunta = Column(Integer)
     
     partida = relationship("Partida", back_populates="datos_partida")
     pregunta = relationship("Pregunta")
