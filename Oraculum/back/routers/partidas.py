@@ -15,42 +15,42 @@ class DatosPartidaBase(BaseModel):
     id_pregunta: int
     id_respuesta_elegida: int
     id_respuesta_correcta: int
+    tiempo_respuesta: int
+    uso_pista: bool = False
+    puntuacion_pregunta: int
 
 class CrearPartida(BaseModel):
     datos_partida: List[DatosPartidaBase]
     puntuacion: int
+    modo_juego: str  # 'estandar', 'examen', 'contrarreloj', 'infinito'
+    id_categoria: int
+    dificultad: str  # 'facil', 'medio', 'dificil'
+    id_usuario: Optional[int] = None
 
 @router.get("/")
-def get_partida(db: db_dependency, id_partida: int, user: user_dependency):
+def get_partida(db: db_dependency, id_partida: int):
     partida = db.query(Partida).filter(Partida.id == id_partida).first()
     if not partida:
         raise HTTPException(status_code=404, detail="Partida no encontrada")
-    
-    # Solo el usuario que jugó la partida puede verla
-    if partida.id_usuario != user.get("id"):
-        raise HTTPException(
-            status_code=403,
-            detail="No tienes permiso para ver esta partida"
-        )
     return partida
 
-@router.get("/historial")
-def get_historial_usuario(db: db_dependency, user: user_dependency):
-    # Obtener el historial del usuario autenticado
-    return db.query(Partida).filter(Partida.id_usuario == user.get("id")).all()
+@router.get("/historial/{id_usuario}")
+def get_historial_usuario(db: db_dependency, id_usuario: int):
+    return db.query(Partida).filter(Partida.id_usuario == id_usuario).all()
 
 @router.post("/", status_code=201)
-def create_partida(db: db_dependency, partida: CrearPartida, user: user_dependency):
+def create_partida(db: db_dependency, partida: CrearPartida):
     try:
         # Crear la partida
         db_partida = Partida(
-            id_usuario=user.get("id"),
-            fecha=datetime.utcnow(),
-            puntuacion=partida.puntuacion
+            id_usuario = partida.id_usuario,
+            fecha = datetime.utcnow(),
+            puntuacion = partida.puntuacion,
+            modo_juego = partida.modo_juego,
+            id_categoria = partida.id_categoria,
+            dificultad = partida.dificultad
         )
         db.add(db_partida)
-        db.commit()
-        db.refresh(db_partida)
         
         # Crear los datos de la partida
         for dato in partida.datos_partida:
@@ -68,19 +68,26 @@ def create_partida(db: db_dependency, partida: CrearPartida, user: user_dependen
                 raise HTTPException(status_code=404, detail=f"Respuesta correcta con id {dato.id_respuesta_correcta} no encontrada")
             
             db_datos_partida = DatosPartida(
-                id_partida=db_partida.id,
-                id_pregunta=dato.id_pregunta,
-                id_respuesta_elegida=dato.id_respuesta_elegida,
-                id_respuesta_correcta=dato.id_respuesta_correcta
+                id_partida = db_partida.id,
+                id_pregunta = dato.id_pregunta,
+                id_respuesta_elegida = dato.id_respuesta_elegida,
+                id_respuesta_correcta = dato.id_respuesta_correcta,
+                tiempo_respuesta = dato.tiempo_respuesta,
+                uso_pista = dato.uso_pista,
+                puntuacion_pregunta = dato.puntuacion_pregunta
             )
             db.add(db_datos_partida)
         
-        # Actualizar la puntuación del usuario
-        usuario = db.query(Usuario).filter(Usuario.id == user.get("id")).first()
-        usuario.puntuacion += partida.puntuacion
+        # Actualizar la puntuación del usuario solo si ha iniciado sesión y es modo infinito
+        if partida.modo_juego == "infinito" and partida.id_usuario:
+            usuario = db.query(Usuario).filter(Usuario.id == partida.id_usuario).first()
+            if usuario:
+                usuario.puntuacion = max(usuario.puntuacion, partida.puntuacion)
         
         db.commit()
+        db.refresh(db_partida)
         return db_partida
+
     except Exception as e:
         db.rollback()
         raise HTTPException(

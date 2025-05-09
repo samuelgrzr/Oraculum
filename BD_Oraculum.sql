@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS Oraculum;
-CREATE DATABASE Oraculum;
-USE Oraculum;
+DROP DATABASE IF EXISTS oraculum;
+CREATE DATABASE oraculum;
+USE oraculum;
 
 CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
