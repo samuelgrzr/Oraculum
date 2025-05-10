@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+:root {
+  --marble-white: #f4f4f4;
+  --santorini-blue: #1a5f7a;
+  --light-blue: #b2d9e7;
+  --greek-gold: #d4af37;
+}
+
+.greek-button {
+  background-color: var(--santorini-blue);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.greek-button:hover {
+  background-color: var(--light-blue);
+  color: var(--santorini-blue);
+}
+
+.greek-title {
+  font-family: "Times New Roman", serif;
+  color: var(--santorini-blue);
+}
