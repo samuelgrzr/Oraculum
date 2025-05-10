@@ -62,6 +62,6 @@ async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm,
     usuario = authenticate_user(form_data.username, form_data.password, db)
     if not usuario:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Credenciales incorrectas")
-    token = create_access_token(usuario.nombre, usuario.id, usuario.rol, timedelta(minutes=1))
+    token = create_access_token(usuario.nombre, usuario.id, usuario.rol, timedelta(hours=1))
 
     return {"access_token": token, "token_type": "bearer"}
