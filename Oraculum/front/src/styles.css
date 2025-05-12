@@ -1,14 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
 @import "tailwindcss";
 
 :root {
   --marble-white: #f4f4f4;
-  --santorini-blue: #1a5f7a;
+  --greek-blue: #177ea7;
   --light-blue: #b2d9e7;
-  --greek-gold: #d4af37;
+  --greek-gold: #ffd755;
 }
 
 .greek-button {
-  background-color: var(--santorini-blue);
+  background-color: var(--greek-blue);
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -20,10 +21,37 @@
 
 .greek-button:hover {
   background-color: var(--light-blue);
-  color: var(--santorini-blue);
+  color: var(--greek-blue);
 }
 
 .greek-title {
-  font-family: "Times New Roman", serif;
-  color: var(--santorini-blue);
+  font-family: "Marcellus", serif;
+  font-weight: bold;
+  color: var(--greek-blue);
+  letter-spacing: 0.05em;
+}
+
+.nav-link {
+  font-family: "Marcellus", serif;
+  color: var(--greek-blue);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--greek-blue);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
