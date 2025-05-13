@@ -1,6 +1,6 @@
 export interface Pregunta {
     id: number;
-    pregunta: string;
+    enunciado: string;
     pista: string;
     explicacion: string;
     dificultad: string;

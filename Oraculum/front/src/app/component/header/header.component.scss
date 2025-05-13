@@ -4,8 +4,14 @@ h1 {
     color: #044a71 /* Color del mochuelo */
 }
 
-span {
+#apolo {
     color: var(--greek-gold);
     font-weight: bold;
-    font-family: "Marcellus", serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#atenea {
+    color: silver;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }

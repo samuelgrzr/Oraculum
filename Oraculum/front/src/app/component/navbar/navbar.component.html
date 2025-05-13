@@ -1,4 +1,4 @@
-<nav class="bg-white shadow-md">
+<nav class="bg-white shadow-md text-lg">
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between py-3">
             <!-- MENÚ DESPLEGABLE -->
@@ -18,19 +18,42 @@
             </div>
             <!-- FIN MENÚ DESPLEGABLE -->
 
-            <!-- Enlaces (solo escritorio) -->
             <div class="hidden md:flex space-x-8">
                 <a href="#" class="nav-link">Inicio</a>
                 <a href="#" class="nav-link">Jugar</a>
                 <a href="#" class="nav-link">Ranking</a>
             </div>
 
-            <!-- Botón de Iniciar Sesión (siempre a la derecha) -->
-            <div class="flex">
-                <a href="#" class="nav-link flex items-center">
+            <div class="relative">
+                <input type="checkbox" id="login-toggle" class="hidden">
+                <label for="login-toggle" class="nav-link flex items-center cursor-pointer">
                     <i class="fas fa-sign-in-alt mr-2"></i>
                     Iniciar Sesión
-                </a>
+                </label>
+                
+                <!-- MENÚ DESPLEGABLE PARA INICIAR SESIÓN -->
+                <div class="menu-content absolute right-0 top-full bg-white shadow-md transition-all duration-300 w-72 mt-2 rounded-b-xl">
+                    <div class="flex flex-col space-y-4 p-4">
+                        <form class="space-y-4">
+                            <div>
+                                <input type="email" placeholder="Correo" class="w-full p-2 border-2 rounded-lg focus:outline-none" style="border-color: var(--greek-gold); color: var(--greek-blue);">
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Nombre de usuario" class="w-full p-2 border-2 rounded-lg focus:outline-none" style="border-color: var(--greek-gold); color: var(--greek-blue);">
+                            </div>
+                            <div>
+                                <input type="password" placeholder="Contraseña" class="w-full p-2 border-2 rounded-lg focus:outline-none" style="border-color: var(--greek-gold); color: var(--greek-blue);">
+                            </div>
+                            <button class="w-full greek-button">
+                                Iniciar Sesión
+                            </button>
+                            <div class="text-center text-sm">
+                                <a href="#" class="text-blue-600 hover:underline">¿Es tu primera vez? Regístrate</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- FIN MENÚ DESPLEGABLE PARA INICIAR SESIÓN -->
             </div>
         </div>
     </div>
