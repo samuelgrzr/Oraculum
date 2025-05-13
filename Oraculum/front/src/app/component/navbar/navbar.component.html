@@ -1,50 +1,36 @@
 <nav class="bg-white shadow-md">
     <div class="container mx-auto px-4">
-        <div class="flex items-center py-3">
-
+        <div class="flex items-center justify-between py-3">
             <!-- MENÚ DESPLEGABLE -->
-            <div class="relative">
+            <div class="relative md:hidden">
                 <input type="checkbox" id="menu-toggle" class="hidden">
-                <label for="menu-toggle" class="nav-link md:hidden cursor-pointer">
+                <label for="menu-toggle" class="nav-link cursor-pointer">
                     <i class="fas fa-landmark text-2xl"></i>
                 </label>
 
-                <div class="menu-content md:hidden absolute top-full left-0 bg-white shadow-md transition-all duration-300 w-48 mt-2 rounded-b-xl">
+                <div class="menu-content absolute top-full left-0 bg-white shadow-md transition-all duration-300 w-48 mt-2 rounded-b-xl">
                     <div class="flex flex-col space-y-4 p-4">
                         <a href="#" class="nav-link">Inicio</a>
                         <a href="#" class="nav-link">Jugar</a>
                         <a href="#" class="nav-link">Ranking</a>
-                        <hr class="border-gray-200">
-                        <a href="#" class="nav-link flex items-center">
-                            <i class="fas fa-sign-in-alt mr-2"></i>
-                            Iniciar Sesión
-                        </a>
-                        <a href="#" class="nav-link flex items-center">
-                            <i class="fas fa-user-plus mr-2"></i>
-                            Registrarse
-                        </a>
                     </div>
                 </div>
             </div>
             <!-- FIN MENÚ DESPLEGABLE -->
 
-            <div class="hidden md:flex flex-grow justify-between items-center ml-8">
-                <div class="flex space-x-8">
-                    <a href="#" class="nav-link">Inicio</a>
-                    <a href="#" class="nav-link">Jugar</a>
-                    <a href="#" class="nav-link">Ranking</a>
-                </div>
+            <!-- Enlaces (solo escritorio) -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link">Inicio</a>
+                <a href="#" class="nav-link">Jugar</a>
+                <a href="#" class="nav-link">Ranking</a>
+            </div>
 
-                <div class="flex space-x-8">
-                    <a href="#" class="nav-link flex items-center">
-                        <i class="fas fa-sign-in-alt mr-2"></i>
-                        Iniciar Sesión
-                    </a>
-                    <!-- <a href="#" class="nav-link flex items-center">
-                        <i class="fas fa-user-plus mr-2"></i>
-                        Registrarse
-                    </a> -->
-                </div>
+            <!-- Botón de Iniciar Sesión (siempre a la derecha) -->
+            <div class="flex">
+                <a href="#" class="nav-link flex items-center">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Iniciar Sesión
+                </a>
             </div>
         </div>
     </div>
