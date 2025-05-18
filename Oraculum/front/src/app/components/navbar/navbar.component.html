@@ -25,32 +25,31 @@
             </div>
 
             <div class="relative">
-                <input type="checkbox" id="login-toggle" class="hidden">
-                <label for="login-toggle" class="nav-link flex items-center cursor-pointer">
-                    <i class="fas fa-sign-in-alt mr-2"></i>
-                    Iniciar Sesión
-                </label>
-                
-                <!-- MENÚ DESPLEGABLE PARA INICIAR SESIÓN -->
-                <div class="menu-content absolute right-0 top-full bg-white shadow-md transition-all duration-300 w-72 mt-2 rounded-b-xl">
-                    <div class="flex flex-col space-y-4 p-4">
-                        <form class="space-y-4">
-                            <div>
-                                <input type="email" placeholder="Correo o usuario" class="w-full p-2 border-2 rounded-lg focus:outline-none" style="border-color: var(--greek-gold); color: var(--greek-blue);">
-                            </div>
-                            <div>
-                                <input type="password" placeholder="Contraseña" class="w-full p-2 border-2 rounded-lg focus:outline-none" style="border-color: var(--greek-gold); color: var(--greek-blue);">
-                            </div>
-                            <button class="w-full greek-button">
-                                Iniciar Sesión
-                            </button>
-                            <div class="text-center text-sm">
-                                <a href="#" class="text-blue-600 hover:underline">¿Es tu primera vez? Regístrate</a>
-                            </div>
-                        </form>
+                <!-- LOGIN -->
+                <ng-container *ngIf="!isLoggedIn()">
+                    <input type="checkbox" id="login-toggle" class="hidden">
+                    <label for="login-toggle" class="nav-link flex items-center cursor-pointer">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        Iniciar Sesión
+                    </label>
+                    
+                    <!-- MENÚ DESPLEGABLE PARA INICIAR SESIÓN -->
+                    <div class="menu-content absolute right-0 top-full bg-white shadow-md transition-all duration-300 w-72 mt-2 rounded-b-xl">
+                        <div class="flex flex-col space-y-4 p-4">
+                            <app-login (loginSuccess)="onLoginSuccess()"></app-login>
+                        </div>
                     </div>
+                </ng-container>
+
+                <!-- USUARIO LOGUEADO -->
+                <div *ngIf="isLoggedIn()" class="flex items-center space-x-4">
+                    <!-- <a [routerLink]="['/perfil']" class="nav-link cursor-pointer">{{ getCurrentUser()?.nombre }}</a> -->
+                    <a class="nav-link cursor-pointer">{{ getCurrentUser()?.nombre }}</a>
+                    <button (click)="onLogout()" class="nav-link flex items-center cursor-pointer">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        Cerrar Sesión
+                    </button>
                 </div>
-                <!-- FIN MENÚ DESPLEGABLE PARA INICIAR SESIÓN -->
             </div>
         </div>
     </div>

@@ -1,20 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Usuario } from '../models/Usuario';
+import { UsuarioService } from './usuario.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = 'http://localhost:8000/api';  // CAMBIAR
+    private apiUrl = 'http://localhost:8000';
     private currentUserSubject: BehaviorSubject<Usuario | null>;
     public currentUser: Observable<Usuario | null>;
+    private http = inject(HttpClient);
+    private usuarioService = inject(UsuarioService);
 
-    constructor(private http: HttpClient) {
+    constructor() {
         this.currentUserSubject = new BehaviorSubject<Usuario | null>(
-            JSON.parse(localStorage.getItem('currentUser') || 'null')
+            typeof localStorage !== 'undefined' 
+                ? JSON.parse(localStorage.getItem('currentUser') || 'null')
+                : null
         );
         this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -24,19 +29,45 @@ export class AuthService {
     }
 
     login(correo: string, contrasena: string) {
-        return this.http.post<any>(`${this.apiUrl}/login`, { correo, contrasena })
-            .pipe(map(response => {
-                localStorage.setItem('currentUser', JSON.stringify(response.usuario));
-                localStorage.setItem('token', response.token);
-                this.currentUserSubject.next(response.usuario);
-                return response;
-            }));
+        const formData = new URLSearchParams();
+        formData.append('username', correo);
+        formData.append('password', contrasena);
+        
+        console.log('Iniciando sesión con:', correo);
+        
+        return this.http.post<any>(`${this.apiUrl}/auth/token`, formData.toString(), {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).pipe(
+            switchMap(response => {
+                if (response && response.access_token) {
+                    return this.usuarioService.getUsuarioPorCorreo(correo).pipe(
+                        map(usuario => {
+                            const userData = {
+                                token: response.access_token,
+                                usuario: usuario
+                            };
+                            
+                            if (typeof localStorage !== 'undefined') {
+                                localStorage.setItem('currentUser', JSON.stringify(userData.usuario));
+                                localStorage.setItem('token', userData.token);
+                            }
+                            
+                            this.currentUserSubject.next(userData.usuario);
+                            return userData;
+                        })
+                    );
+                }
+                throw new Error('Respuesta inválida del servidor');
+            })
+        );
     }
 
-    register(usuario: Usuario) {
-        return this.http.post<any>(`${this.apiUrl}/register`, usuario)
+    registro(usuario: Usuario) {
+        return this.http.post<any>(`${this.apiUrl}/auth`, usuario)
             .pipe(map(response => {
-                if (response.token) {
+                if (response.token && typeof localStorage !== 'undefined') {
                     localStorage.setItem('currentUser', JSON.stringify(response.usuario));
                     localStorage.setItem('token', response.token);
                     this.currentUserSubject.next(response.usuario);
@@ -46,8 +77,10 @@ export class AuthService {
     }
 
     logout() {
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('token');
+        if (typeof localStorage !== 'undefined') {
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('token');
+        }
         this.currentUserSubject.next(null);
     }
 
@@ -56,6 +89,6 @@ export class AuthService {
     }
 
     getToken(): string | null {
-        return localStorage.getItem('token');
+        return typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null;
     }
 }

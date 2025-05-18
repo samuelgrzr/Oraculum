@@ -1,0 +1,40 @@
+<form class="space-y-4" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div>
+        <input type="email" 
+               formControlName="correo"
+               placeholder="Correo"
+               class="w-full p-2 border-2 rounded-lg focus:outline-none"
+               [ngClass]="{'border-red-500': correoControl?.invalid && correoControl?.touched}"
+               style="border-color: var(--greek-gold); color: var(--greek-blue);">
+        <div *ngIf="correoControl?.invalid && correoControl?.touched" class="text-red-500 text-sm mt-1">
+            <span *ngIf="correoControl?.errors?.['required']">El correo es requerido</span>
+            <span *ngIf="correoControl?.errors?.['email']">Ingrese un correo válido</span>
+        </div>
+    </div>
+    <div>
+        <input type="password" 
+               formControlName="contrasena"
+               placeholder="Contraseña"
+               class="w-full p-2 border-2 rounded-lg focus:outline-none"
+               [ngClass]="{'border-red-500': contrasenaControl?.invalid && contrasenaControl?.touched}"
+               style="border-color: var(--greek-gold); color: var(--greek-blue);">
+        <div *ngIf="contrasenaControl?.invalid && contrasenaControl?.touched" class="text-red-500 text-sm mt-1">
+            <span *ngIf="contrasenaControl?.errors?.['required']">La contraseña es requerida</span>
+            <span *ngIf="contrasenaControl?.errors?.['minlength']">La contraseña debe tener al menos 4 caracteres</span>
+        </div>
+    </div>
+    
+    <div *ngIf="errorMessage" class="text-red-500 text-sm text-center mt-2">
+        {{ errorMessage }}
+    </div>
+
+    <button type="submit" 
+            class="w-full greek-button" 
+            [disabled]="loginForm.invalid"
+            [ngClass]="{'opacity-50 cursor-not-allowed': loginForm.invalid}">
+        Iniciar Sesión
+    </button>
+    <div class="text-center text-sm">
+        <a href="#" class="text-blue-600 hover:underline">¿Es tu primera vez? Regístrate</a>
+    </div>
+</form>
