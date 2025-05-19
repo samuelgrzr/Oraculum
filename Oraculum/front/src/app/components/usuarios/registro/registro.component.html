@@ -1,0 +1,65 @@
+<div class="flex flex-col md:flex-row justify-center items-center gap-8 p-8">
+    <form class="space-y-4 bg-white p-4 rounded-lg w-96 shadow-lg" [formGroup]="registroForm" (ngSubmit)="onRegistro()">
+        <div>
+            <input type="text" formControlName="nombre" placeholder="Nombre"
+                class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                [ngClass]="{'border-red-500': nombreControl?.invalid && nombreControl?.touched}"
+                style="border-color: var(--greek-gold); color: var(--greek-blue);">
+            <div *ngIf="nombreControl?.invalid && nombreControl?.touched" class="text-red-500 text-sm mt-1">
+                <p *ngIf="nombreControl?.errors?.['required']">El nombre de usuario es obligatorio</p>
+                <p *ngIf="nombreControl?.errors?.['minlength']">El nombre de usuario debe tener al menos 4 caracteres</p>
+                <p *ngIf="nombreControl?.errors?.['maxlength']">El nombre de usuario no puede tener más de 15 caracteres</p>
+                <p *ngIf="nombreControl?.errors?.['pattern']">El nombre de usuario solo puede contener letras y números, y debe comenzar con una letra</p>
+            </div>
+        </div>
+
+        <div>
+            <input type="email" formControlName="correo" placeholder="Correo"
+                class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                [ngClass]="{'border-red-500': correoControl?.invalid && correoControl?.touched}"
+                style="border-color: var(--greek-gold); color: var(--greek-blue);">
+            <div *ngIf="correoControl?.invalid && correoControl?.touched" class="text-red-500 text-sm mt-1">
+                <p *ngIf="correoControl?.errors?.['required']">El correo es obligatorio</p>
+                <p *ngIf="correoControl?.errors?.['email']">Introduce un correo válido</p>
+            </div>
+        </div>
+
+        <div>
+            <div class="relative">
+                <input [type]="mostrarContrasena ? 'text' : 'password'" 
+                       formControlName="contrasena"
+                       placeholder="Contraseña" 
+                       class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                       [ngClass]="{'border-red-500': contrasenaControl?.invalid && contrasenaControl?.touched}"
+                       style="border-color: var(--greek-gold); color: var(--greek-blue);">
+                <button type="button" 
+                        (click)="toggleMostrarContrasena()"
+                        class="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                        style="color: var(--greek-blue)">
+                    <i class="fas" [class.fa-eye]="!mostrarContrasena" [class.fa-eye-slash]="mostrarContrasena"></i>
+                </button>
+            </div>
+            <div *ngIf="contrasenaControl?.invalid && contrasenaControl?.touched" class="text-red-500 text-sm mt-1">
+                <p *ngIf="contrasenaControl?.errors?.['required']">La contraseña es obligatoria</p>
+                <p *ngIf="contrasenaControl?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</p>
+                <p *ngIf="contrasenaControl?.errors?.['maxlength']">La contraseña no puede tener más de 12 caracteres</p>
+                <p *ngIf="contrasenaControl?.errors?.['pattern']">La contraseña debe contener al menos una letra, un número y un carácter especial (* ! $ & #)</p>
+            </div>
+        </div>
+
+        <div *ngIf="errorMessage" class="text-red-500 text-sm text-center mt-2">
+            {{ errorMessage }}
+        </div>
+
+        <button type="submit" class="w-full greek-button" [disabled]="registroForm.invalid"
+            [ngClass]="{'opacity-50 cursor-not-allowed': registroForm.invalid}">
+            Registrarse
+        </button>
+    </form>
+
+    <div class="max-w-md text-center md:text-left">
+        <p class="text-[var(--greek-blue)] text-xl font-semibold leading-relaxed">
+            Hazte un nombre entre aquellos que se atreven a enfrentarse al Oráculo y consigue alzarte entre los simples mortales para conseguir un puesto en el mismísimo Olimpo
+        </p>
+    </div>
+</div>

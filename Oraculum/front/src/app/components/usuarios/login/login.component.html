@@ -1,40 +1,45 @@
 <form class="space-y-4" [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <div>
-        <input type="email" 
-               formControlName="correo"
-               placeholder="Correo"
-               class="w-full p-2 border-2 rounded-lg focus:outline-none"
-               [ngClass]="{'border-red-500': correoControl?.invalid && correoControl?.touched}"
-               style="border-color: var(--greek-gold); color: var(--greek-blue);">
+        <input type="email" formControlName="correo" placeholder="Correo"
+            class="w-full p-2 border-2 rounded-lg focus:outline-none"
+            [ngClass]="{'border-red-500': correoControl?.invalid && correoControl?.touched}"
+            style="border-color: var(--greek-gold); color: var(--greek-blue);">
         <div *ngIf="correoControl?.invalid && correoControl?.touched" class="text-red-500 text-sm mt-1">
-            <span *ngIf="correoControl?.errors?.['required']">El correo es requerido</span>
-            <span *ngIf="correoControl?.errors?.['email']">Ingrese un correo válido</span>
+            <p *ngIf="correoControl?.errors?.['required']">El correo es obligatorio</p>
+            <p *ngIf="correoControl?.errors?.['email']">Ingrese un correo válido</p>
         </div>
     </div>
     <div>
-        <input type="password" 
-               formControlName="contrasena"
-               placeholder="Contraseña"
-               class="w-full p-2 border-2 rounded-lg focus:outline-none"
-               [ngClass]="{'border-red-500': contrasenaControl?.invalid && contrasenaControl?.touched}"
-               style="border-color: var(--greek-gold); color: var(--greek-blue);">
+        <div class="relative">
+            <input [type]="mostrarContrasena ? 'text' : 'password'" formControlName="contrasena"
+                placeholder="Contraseña" class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                [ngClass]="{'border-red-500': contrasenaControl?.invalid && contrasenaControl?.touched}"
+                style="border-color: var(--greek-gold); color: var(--greek-blue);">
+            <button type="button" (click)="toggleMostrarContrasena()"
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                style="color: var(--greek-blue)">
+                <i class="fas" [class.fa-eye]="!mostrarContrasena" [class.fa-eye-slash]="mostrarContrasena"></i>
+            </button>
+        </div>
         <div *ngIf="contrasenaControl?.invalid && contrasenaControl?.touched" class="text-red-500 text-sm mt-1">
-            <span *ngIf="contrasenaControl?.errors?.['required']">La contraseña es requerida</span>
-            <span *ngIf="contrasenaControl?.errors?.['minlength']">La contraseña debe tener al menos 4 caracteres</span>
+            <p *ngIf="contrasenaControl?.errors?.['required']">La contraseña es obligatoria</p>
+            <p *ngIf="contrasenaControl?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</p>
+            <p *ngIf="contrasenaControl?.errors?.['maxlength']">La contraseña no puede tener más de 12 caracteres</p>
+            <p *ngIf="contrasenaControl?.errors?.['pattern']">La contraseña debe contener al menos una letra, un número
+                y un carácter especial (* ! $ & #)</p>
         </div>
     </div>
-    
+
     <div *ngIf="errorMessage" class="text-red-500 text-sm text-center mt-2">
         {{ errorMessage }}
     </div>
 
-    <button type="submit" 
-            class="w-full greek-button" 
-            [disabled]="loginForm.invalid"
-            [ngClass]="{'opacity-50 cursor-not-allowed': loginForm.invalid}">
+    <button type="submit" class="w-full greek-button" [disabled]="loginForm.invalid"
+        [ngClass]="{'opacity-50 cursor-not-allowed': loginForm.invalid}">
         Iniciar Sesión
     </button>
     <div class="text-center text-sm">
-        <a href="#" class="text-blue-600 hover:underline">¿Es tu primera vez? Regístrate</a>
+        <a [routerLink]="['/registro']" (click)="loginSuccess.emit()" class="text-blue-600 hover:underline">¿Es tu
+            primera vez? Regístrate</a>
     </div>
 </form>

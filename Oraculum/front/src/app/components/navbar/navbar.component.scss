@@ -2,6 +2,7 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
+  z-index: 100;
 }
 
 #menu-toggle:checked ~ .menu-content,
@@ -11,6 +12,7 @@
   visibility: visible;
   transform: translateY(0);
 }
+
 #user-menu-toggle:checked ~ .menu-content {
   min-width: 13rem; // Para que Cerrar sesión quepa en una línea
 }
