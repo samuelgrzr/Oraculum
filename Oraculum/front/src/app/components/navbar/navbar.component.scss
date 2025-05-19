@@ -5,15 +5,20 @@
 }
 
 #menu-toggle:checked ~ .menu-content,
-#login-toggle:checked ~ .menu-content {
+#login-toggle:checked ~ .menu-content,
+#user-menu-toggle:checked ~ .menu-content {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+#user-menu-toggle:checked ~ .menu-content {
+  min-width: 13rem; // Para que Cerrar sesión quepa en una línea
 }
 
 a {
   font-weight: bold;
 }
+
 .username {
   color: var(--greek-blue);
   font-weight: 500;

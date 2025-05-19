@@ -15,7 +15,7 @@ export class UsuarioService {
     }
 
     getUsuarioPorCorreo(correo: string): Observable<Usuario> {
-        return this.http.get<Usuario>(`${this.apiUrl}/${correo}`);
+        return this.http.get<Usuario>(`${this.apiUrl}/getByCorreo/${correo}`);
     }
 
     getAllUsuarios(): Observable<Usuario[]> {

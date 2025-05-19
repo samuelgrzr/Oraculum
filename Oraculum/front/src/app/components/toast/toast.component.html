@@ -1,0 +1,5 @@
+<div *ngIf="toastService.message$ | async as message"
+    class="fixed top-4 right-4 bg-[var(--light-blue)] shadow-lg rounded-lg
+        p-4 z-50 animate-fade-in-out border-2 border-[var(--greek-gold)]">
+    <p class="text-[var(--greek-blue)] font-bold">{{ message }}</p>
+</div>

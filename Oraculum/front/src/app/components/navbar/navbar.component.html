@@ -4,7 +4,7 @@
             <!-- MENÚ DESPLEGABLE -->
             <div class="relative md:hidden">
                 <input type="checkbox" id="menu-toggle" class="hidden">
-                <label for="menu-toggle" class="nav-link cursor-pointer">
+                <label for="menu-toggle" class="nav-link">
                     <i class="fas fa-landmark text-2xl"></i>
                 </label>
 
@@ -28,7 +28,7 @@
                 <!-- LOGIN -->
                 <ng-container *ngIf="!isLoggedIn()">
                     <input type="checkbox" id="login-toggle" class="hidden">
-                    <label for="login-toggle" class="nav-link flex items-center cursor-pointer">
+                    <label for="login-toggle" class="nav-link flex items-center">
                         <i class="fas fa-sign-in-alt mr-2"></i>
                         Iniciar Sesión
                     </label>
@@ -42,13 +42,29 @@
                 </ng-container>
 
                 <!-- USUARIO LOGUEADO -->
-                <div *ngIf="isLoggedIn()" class="flex items-center space-x-4">
-                    <!-- <a [routerLink]="['/perfil']" class="nav-link cursor-pointer">{{ getCurrentUser()?.nombre }}</a> -->
-                    <a class="nav-link cursor-pointer">{{ getCurrentUser()?.nombre }}</a>
-                    <button (click)="onLogout()" class="nav-link flex items-center cursor-pointer">
-                        <i class="fas fa-sign-out-alt mr-2"></i>
-                        Cerrar Sesión
-                    </button>
+                <div *ngIf="isLoggedIn()" class="relative">
+                    <div class="flex items-center">
+                        <span class="username">{{ getCurrentUser()?.nombre }}</span>
+                        <div class="relative">
+                            <input type="checkbox" id="user-menu-toggle" class="hidden">
+                            <label for="user-menu-toggle" class="nav-link">
+                                <i class="fas fa-scroll"></i>
+                            </label>
+
+                            <div class="menu-content absolute right-0 top-full bg-white shadow-md transition-all duration-300 w-48 mt-2 rounded-b-xl">
+                                <div class="flex flex-col space-y-4 p-4">
+                                    <a href="#" class="nav-link flex items-center">
+                                        <i class="fas fa-user mr-2"></i>
+                                        Perfil
+                                    </a>
+                                    <a (click)="onLogout()" class="nav-link flex items-center">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
