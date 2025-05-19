@@ -46,29 +46,29 @@ export class RegistroComponent {
             this.authService.login(userData.correo, userData.contrasena)
               .subscribe({
                 next: () => {
-                  this.toastService.showMessage('¡Bienvenido a Oraculum!');
+                  this.toastService.showMessage('¡Las puertas del Oráculo se abren ante ti! Tu destino te aguarda.');
                   this.registroForm.reset();
                   this.errorMessage = '';
                   this.router.navigate(['/']);
                 },
                 error: () => {
-                  this.toastService.showMessage('Registro exitoso. Por favor, inicia sesión.');
+                  this.toastService.showMessage('¡Tu destino ha sido escrito! Por favor, inicia tu viaje iniciando sesión.');
                   this.router.navigate(['/']);
                 }
               });
           },
           error: (error) => {
-            let mensajeError = 'Error al intentar registrarse';
-            
-            if (error?.error?.message) {
-              mensajeError = error.error.message;
-            } else if (error?.message) {
-              mensajeError = error.message;
-            } else if (typeof error === 'string') {
-              mensajeError = error;
+            let mensajeError = '';
+
+            if (error?.status === 400) {
+              mensajeError = 'El correo o nombre de usuario ya existe en los registros del Oráculo.';
+            } else if (error?.status === 500) {
+              mensajeError = 'Los astros no están alineados. Por favor, intenta de nuevo más tarde.';
+            } else {
+              mensajeError = 'No se ha podido completar tu registro. Verifica tus datos y vuelve a intentarlo.';
             }
 
-            this.toastService.showMessage('Error en el registro: ' + mensajeError);
+            this.toastService.showMessage(mensajeError);
             this.errorMessage = mensajeError;
           }
         });
