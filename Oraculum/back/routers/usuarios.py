@@ -26,7 +26,7 @@ def get_usuario(db: db_dependency, id_usuario: int):
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
     return usuario
 
-@router.get("/{correo}")
+@router.get("/getByCorreo/{correo}")
 def get_usuario_por_correo(db: db_dependency, correo: str):
     usuario = db.query(Usuario).filter(Usuario.correo == correo).first()
     if not usuario:
@@ -48,7 +48,7 @@ def edit_usuario(db: db_dependency, id_usuario: int, usuario: ActualizarUsuario,
         if not db_usuario:
             raise HTTPException(status_code=404, detail="Usuario no encontrado")
         
-        if user.get("id") != id_usuario and user.get("rol") != "admin":
+        if str(user.get("id")) != str(id_usuario) and user.get("rol") != "admin":
             raise HTTPException(
                 status_code=403,
                 detail="No tienes permiso para editar este usuario"

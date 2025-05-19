@@ -47,6 +47,13 @@ def create_access_token(nombre: str, id: str, rol: str, expires_delta: timedelta
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_user(db: db_dependency, create_user_request: UserCreateRequest):
+    existing_user = db.query(Usuario).filter(Usuario.correo == create_user_request.correo).first()
+    if existing_user:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="El usuario ya existe"
+        )
+    
     create_user_model = Usuario(
         nombre = create_user_request.nombre,
         correo = create_user_request.correo,
