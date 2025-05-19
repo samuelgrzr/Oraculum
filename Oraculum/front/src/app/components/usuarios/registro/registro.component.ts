@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { ToastService } from '../../../services/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -14,6 +15,7 @@ export class RegistroComponent {
   private authService = inject(AuthService);
   private toastService = inject(ToastService);
   private fb = inject(FormBuilder);
+  private router = inject(Router);
 
   mostrarContrasena = false;
 
@@ -37,16 +39,37 @@ export class RegistroComponent {
 
   onRegistro() {
     if (this.registroForm.valid) {
-      this.authService.registro(this.registroForm.value)
+      const userData = this.registroForm.value;
+      this.authService.registro(userData)
         .subscribe({
-          next: () => {
-            this.toastService.showMessage('¡Registro exitoso! Ya puedes iniciar sesión');
-            this.registroForm.reset();
-            this.errorMessage = '';
+          next: (response) => {
+            this.authService.login(userData.correo, userData.contrasena)
+              .subscribe({
+                next: () => {
+                  this.toastService.showMessage('¡Bienvenido a Oraculum!');
+                  this.registroForm.reset();
+                  this.errorMessage = '';
+                  this.router.navigate(['/']);
+                },
+                error: () => {
+                  this.toastService.showMessage('Registro exitoso. Por favor, inicia sesión.');
+                  this.router.navigate(['/']);
+                }
+              });
           },
           error: (error) => {
-            this.toastService.showMessage('Error en el registro: ' + error.error.detail);
-            this.errorMessage = error.error.detail || 'Error al intentar registrarse';
+            let mensajeError = 'Error al intentar registrarse';
+            
+            if (error?.error?.message) {
+              mensajeError = error.error.message;
+            } else if (error?.message) {
+              mensajeError = error.message;
+            } else if (typeof error === 'string') {
+              mensajeError = error;
+            }
+
+            this.toastService.showMessage('Error en el registro: ' + mensajeError);
+            this.errorMessage = mensajeError;
           }
         });
     }

@@ -67,11 +67,6 @@ export class AuthService {
     registro(usuario: Usuario) {
         return this.http.post<any>(`${this.apiUrl}/auth`, usuario)
             .pipe(map(response => {
-                if (response.token && typeof localStorage !== 'undefined') {
-                    localStorage.setItem('currentUser', JSON.stringify(response.usuario));
-                    localStorage.setItem('token', response.token);
-                    this.currentUserSubject.next(response.usuario);
-                }
                 return response;
             }));
     }

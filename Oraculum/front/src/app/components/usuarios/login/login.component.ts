@@ -16,7 +16,7 @@ export class LoginComponent {
   private toastService = inject(ToastService);
   private fb = inject(FormBuilder);
   private router = inject(Router);
-  
+
   @Output() loginSuccess = new EventEmitter<void>();
   @Output() closeDropdowns = new EventEmitter<void>();
 
@@ -64,11 +64,6 @@ export class LoginComponent {
     }
   }
 
-  onNavigateToRegister() {
-    this.loginForm.reset();
-    this.closeDropdowns.emit();
-    this.loginSuccess.emit();
-  }
   // Para validar de forma más cómoda en el HTML
   get correoControl() {
     return this.loginForm.get('correo');
@@ -76,7 +71,7 @@ export class LoginComponent {
   get contrasenaControl() {
     return this.loginForm.get('contrasena');
   }
-  
+
   toggleMostrarContrasena() {
     this.mostrarContrasena = !this.mostrarContrasena;
   }
