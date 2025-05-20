@@ -61,11 +61,11 @@ export class RegistroComponent {
             let mensajeError = '';
 
             if (error?.status === 400) {
-              mensajeError = 'El correo o nombre de usuario ya existe en los registros del Oráculo.';
+                mensajeError = error.error.detail;
             } else if (error?.status === 500) {
-              mensajeError = 'Los astros no están alineados. Por favor, intenta de nuevo más tarde.';
+                mensajeError = 'Los astros no están alineados. Por favor, intenta de nuevo más tarde.';
             } else {
-              mensajeError = 'No se ha podido completar tu registro. Verifica tus datos y vuelve a intentarlo.';
+                mensajeError = 'No se ha podido completar tu registro. Verifica tus datos y vuelve a intentarlo.';
             }
 
             this.toastService.showMessage(mensajeError);

@@ -46,11 +46,22 @@ def create_access_token(nombre: str, id: str, rol: str, expires_delta: timedelta
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_user(db: db_dependency, create_user_request: UserCreateRequest):
-    existing_user = db.query(Usuario).filter(Usuario.correo == create_user_request.correo).first()
-    if existing_user:
+    existing_username = db.query(Usuario).filter(Usuario.nombre == create_user_request.nombre).first()
+    existing_email = db.query(Usuario).filter(Usuario.correo == create_user_request.correo).first()
+    if existing_username and existing_email:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="El usuario ya existe"
+            detail="Este usuario ya existe en los registros del Oráculo"
+        )
+    if existing_email:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="El correo ya existe en los registros del Oráculo."
+        )
+    if existing_username:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="El nombre de usuario ya existe en los registros del Oráculo"
         )
     
     create_user_model = Usuario(
