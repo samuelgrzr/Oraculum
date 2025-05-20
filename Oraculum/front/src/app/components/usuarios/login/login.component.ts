@@ -23,21 +23,26 @@ export class LoginComponent {
   mostrarContrasena = false;
 
   loginForm: FormGroup = this.fb.group({
-    correo: ['', [Validators.required, Validators.email]],
+    nombre: ['', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(15),
+      Validators.pattern(/^[a-zA-Z][a-zA-Z0-9]*$/),
+    ]],
     contrasena: ['', [
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(12),
       Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[*!$&#])(?!.*\s).{6,12}$/)
     ]]
-  });
+});
 
   errorMessage: string = '';
 
   onLogin() {
     if (this.loginForm.valid) {
-      const { correo, contrasena } = this.loginForm.value;
-      this.authService.login(correo, contrasena)
+      const { nombre, contrasena } = this.loginForm.value;
+      this.authService.login(nombre, contrasena)
         .subscribe({
           next: (response) => {
             this.toastService.showMessage('¡Bienvenido!');
@@ -65,8 +70,8 @@ export class LoginComponent {
   }
 
   // Para validar de forma más cómoda en el HTML
-  get correoControl() {
-    return this.loginForm.get('correo');
+  get nombreControl() {
+    return this.loginForm.get('nombre');
   }
   get contrasenaControl() {
     return this.loginForm.get('contrasena');

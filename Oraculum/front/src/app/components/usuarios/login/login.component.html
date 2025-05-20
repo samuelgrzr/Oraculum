@@ -1,13 +1,15 @@
 <form class="space-y-4" [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <div>
-        <input type="email" formControlName="correo" placeholder="Correo"
+        <input type="text" formControlName="nombre" placeholder="Nombre de usuario"
             class="w-full p-2 border-2 rounded-lg focus:outline-none"
-            [ngClass]="{'border-red-500': correoControl?.invalid && correoControl?.touched}"
+            [ngClass]="{'border-red-500': nombreControl?.invalid && nombreControl?.touched}"
             style="border-color: var(--greek-gold); color: var(--greek-blue);">
-        <div *ngIf="correoControl?.invalid && correoControl?.touched" class="text-red-500 text-sm mt-1">
-            <p *ngIf="correoControl?.errors?.['required']">El correo es obligatorio</p>
-            <p *ngIf="correoControl?.errors?.['email']">Ingrese un correo válido</p>
-        </div>
+            <div *ngIf="nombreControl?.invalid && nombreControl?.touched" class="text-red-500 text-sm mt-1">
+                <p *ngIf="nombreControl?.errors?.['required']">El nombre de usuario es obligatorio</p>
+                <p *ngIf="nombreControl?.errors?.['minlength']">El nombre de usuario debe tener al menos 4 caracteres</p>
+                <p *ngIf="nombreControl?.errors?.['maxlength']">El nombre de usuario no puede tener más de 15 caracteres</p>
+                <p *ngIf="nombreControl?.errors?.['pattern']">El nombre de usuario solo puede contener letras y números, y debe comenzar con una letra</p>
+            </div>
     </div>
     <div>
         <div class="relative">

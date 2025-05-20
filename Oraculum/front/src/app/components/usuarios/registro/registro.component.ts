@@ -43,7 +43,7 @@ export class RegistroComponent {
       this.authService.registro(userData)
         .subscribe({
           next: (response) => {
-            this.authService.login(userData.correo, userData.contrasena)
+            this.authService.login(userData.nombre, userData.contrasena)
               .subscribe({
                 next: () => {
                   this.toastService.showMessage('¡Las puertas del Oráculo se abren ante ti! Tu destino te aguarda.');

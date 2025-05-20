@@ -28,12 +28,12 @@ export class AuthService {
         return this.currentUserSubject.value;
     }
 
-    login(correo: string, contrasena: string) {
+    login(nombre: string, contrasena: string) {
         const formData = new URLSearchParams();
-        formData.append('username', correo);
+        formData.append('username', nombre);
         formData.append('password', contrasena);
         
-        console.log('Iniciando sesión con:', correo);
+        console.log('Iniciando sesión con:', nombre);
         
         return this.http.post<any>(`${this.apiUrl}/auth/token`, formData.toString(), {
             headers: {
@@ -42,7 +42,7 @@ export class AuthService {
         }).pipe(
             switchMap(response => {
                 if (response && response.access_token) {
-                    return this.usuarioService.getUsuarioPorCorreo(correo).pipe(
+                    return this.usuarioService.getUsuarioPorNombre(nombre).pipe(  // Necesitarás crear este método
                         map(usuario => {
                             const userData = {
                                 token: response.access_token,

@@ -26,9 +26,9 @@ def get_usuario(db: db_dependency, id_usuario: int):
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
     return usuario
 
-@router.get("/getByCorreo/{correo}")
-def get_usuario_por_correo(db: db_dependency, correo: str):
-    usuario = db.query(Usuario).filter(Usuario.correo == correo).first()
+@router.get("/nombre/{nombre}")
+def get_usuario_por_nombre(db: db_dependency, nombre: str):
+    usuario = db.query(Usuario).filter(Usuario.nombre == nombre).first()
     if not usuario:
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
     return usuario

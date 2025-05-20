@@ -30,9 +30,8 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
-# Tengo que llamarlo username y password porque así lo pide el OAuth2PasswordRequestForm, pero usa el correo
 def authenticate_user(username: str, password: str, db):
-    usuario = db.query(Usuario).filter(Usuario.correo == username).first()
+    usuario = db.query(Usuario).filter(Usuario.nombre == username).first()
     if not usuario:
         return False
     if not bcrypt_context.verify(password, usuario.contrasena):

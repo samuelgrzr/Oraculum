@@ -7,7 +7,7 @@ class Usuario(Base):
     __tablename__ = "usuario"
 
     id = Column(Integer, primary_key=True, index=True)
-    nombre = Column(String(50), nullable=False)
+    nombre = Column(String(50), unique=True, nullable=False)
     correo = Column(String(100), unique=True, nullable=False)
     contrasena = Column(String(255), nullable=False)  # Longitud de 255 para hashearla
     rol = Column(String(50), default='user')
