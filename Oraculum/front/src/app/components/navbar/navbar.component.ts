@@ -34,4 +34,8 @@ export class NavbarComponent {
   getCurrentUser() {
     return this.authService.currentUserValue;
   }
+
+  isAdmin(): boolean {
+    return this.getCurrentUser()?.rol === 'admin';
+  }
 }

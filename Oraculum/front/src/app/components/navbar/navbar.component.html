@@ -14,6 +14,7 @@
                         <a href="#" class="nav-link">Inicio</a>
                         <a href="#" class="nav-link">Jugar</a>
                         <a href="#" class="nav-link">Ranking</a>
+                        <a *ngIf="isLoggedIn() && isAdmin()" href="#" class="nav-link">Gestionar</a>
                     </div>
                 </div>
             </div>
@@ -23,6 +24,7 @@
                 <a href="#" class="nav-link">Inicio</a>
                 <a href="#" class="nav-link">Jugar</a>
                 <a href="#" class="nav-link">Ranking</a>
+                <a *ngIf="isLoggedIn() && isAdmin()" href="#" class="nav-link">Gestionar</a>
             </div>
 
             <div class="relative">
