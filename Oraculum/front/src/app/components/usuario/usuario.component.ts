@@ -5,7 +5,6 @@ import { UsuarioService } from '../../services/usuario.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-usuario',
@@ -106,13 +105,20 @@ export class UsuarioComponent implements OnInit {
           return;
         }
 
-        try {
-          await firstValueFrom(this.usuarioService.deleteUsuario(id));
-          this.authService.logout();
-
-        } catch (error) {
-          console.error('Error al eliminar usuario:', error);
-        }
+        this.usuarioService.deleteUsuario(id).subscribe({
+          next: () => {
+            this.authService.logout();
+            this.router.navigate(['/']);
+          },
+          error: (error) => {
+            if (error.status === 401) {
+              this.authService.logout();
+              this.router.navigate(['/']);
+            } else {
+              console.error('Error al eliminar usuario:', error);
+            }
+          }
+        });
       } else {
         this.usuarioService.deleteUsuario(id).subscribe({
           next: () => this.cargarUsuarios(),
