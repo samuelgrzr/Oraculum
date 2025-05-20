@@ -1,0 +1,123 @@
+<div class="usuarios-container p-5">
+  <h2 class="text-2xl font-semibold text-[var(--greek-blue)] mb-6">Lista de Usuarios</h2>
+
+  <div class="overflow-x-auto">
+    <table class="w-full border-collapse bg-white rounded-lg shadow-lg text-[var(--greek-blue)]">
+      <thead class="bg-[var(--greek-blue)] text-white">
+        <tr>
+          <th class="p-4 text-center">ID</th>
+          <th class="p-4 text-center">Nombre</th>
+          <th class="p-4 text-center">Correo</th>
+          <th class="p-4 text-center">Rol</th>
+          <th class="p-4 text-center">Puntuación</th>
+          <th class="p-4 text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios" class="border-b border-gray-200 hover:bg-gray-50">
+          <td class="p-4 text-center text-[var(--greek-blue)]">{{usuario.id}}</td>
+          <td class="p-4 text-center text-[var(--greek-blue)]">
+            <ng-container *ngIf="!isEditing(usuario.id); else editNombre">
+              {{usuario.nombre}}
+            </ng-container>
+            <ng-template #editNombre>
+              <div class="flex flex-col">
+                <input 
+                  type="text" 
+                  [formControl]="nombreControl" 
+                  class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                  [ngClass]="{'border-red-500': nombreControl.invalid && nombreControl.touched}"
+                  style="border-color: var(--greek-gold); color: var(--greek-blue);">
+                <div *ngIf="nombreControl?.invalid && nombreControl?.touched" class="text-red-500 text-xs mt-1">
+                  <p *ngIf="nombreControl?.errors?.['required']">El nombre de usuario es obligatorio</p>
+                  <p *ngIf="nombreControl?.errors?.['minlength']">El nombre debe tener al menos 4 caracteres</p>
+                  <p *ngIf="nombreControl?.errors?.['maxlength']">El nombre no puede tener más de 15 caracteres</p>
+                  <p *ngIf="nombreControl?.errors?.['pattern']">El nombre solo puede contener letras y números</p>
+                </div>
+              </div>
+            </ng-template>
+          </td>
+          <td class="p-4 text-center text-[var(--greek-blue)]">
+            <ng-container *ngIf="!isEditing(usuario.id); else editCorreo">
+              {{usuario.correo}}
+            </ng-container>
+            <ng-template #editCorreo>
+              <div class="flex flex-col">
+                <input 
+                  type="email" 
+                  [formControl]="correoControl" 
+                  class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                  [ngClass]="{'border-red-500': correoControl.invalid && correoControl.touched}"
+                  style="border-color: var(--greek-gold); color: var(--greek-blue);">
+                <div *ngIf="correoControl?.invalid && correoControl?.touched" class="text-red-500 text-xs mt-1">
+                  <p *ngIf="correoControl?.errors?.['required']">El correo es obligatorio</p>
+                  <p *ngIf="correoControl?.errors?.['email']">Introduce un correo válido</p>
+                </div>
+              </div>
+            </ng-template>
+          </td>
+          <td class="p-4 text-center text-[var(--greek-blue)]">
+            <ng-container *ngIf="!isEditing(usuario.id); else editRol">
+              {{usuario.rol}}
+            </ng-container>
+            <ng-template #editRol>
+              <select 
+                [formControl]="rolControl" 
+                class="w-full p-2 border-2 rounded-lg focus:outline-none appearance-none bg-white"
+                [ngClass]="{'border-red-500': rolControl.invalid && rolControl.touched}"
+                style="border-color: var(--greek-gold); color: var(--greek-blue);">
+                <option value="admin">Administrador</option>
+                <option value="user">Usuario</option>
+              </select>
+            </ng-template>
+          </td>
+          <td class="p-4 text-center text-[var(--greek-blue)]">
+            <ng-container *ngIf="!isEditing(usuario.id); else editPuntuacion">
+              {{usuario.puntuacion}}
+            </ng-container>
+            <ng-template #editPuntuacion>
+              <input 
+                type="number" 
+                [formControl]="puntuacionControl" 
+                class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                [ngClass]="{'border-red-500': puntuacionControl.invalid && puntuacionControl.touched}"
+                style="border-color: var(--greek-gold); color: var(--greek-blue);">
+            </ng-template>
+          </td>
+          <td class="p-4 text-center">
+            <div class="flex justify-center gap-2">
+              <ng-container *ngIf="!isEditing(usuario.id); else editButtons">
+                <button 
+                  (click)="editarUsuario(usuario)"
+                  class="greek-button px-4 py-2">
+                  Editar
+                </button>
+
+                <button 
+                  (click)="eliminarUsuario(usuario.id)"
+                  class="delete-button px-4 py-2">
+                  Eliminar
+                </button>
+              </ng-container>
+              <ng-template #editButtons>
+                <button 
+                  (click)="guardarCambios()"
+                  [disabled]="!usuarioForm.valid"
+                  class="greek-button px-4 py-2"
+                  [ngClass]="{'opacity-50 cursor-not-allowed': !usuarioForm.valid}">
+                  Guardar
+                </button>
+                
+                <button 
+                  (click)="cancelarEdicion()"
+                  class="cancel-button px-4 py-2">
+                  Cancelar
+                </button>
+              </ng-template>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

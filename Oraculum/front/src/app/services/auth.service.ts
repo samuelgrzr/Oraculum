@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Usuario } from '../models/Usuario';
 import { UsuarioService } from './usuario.service';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService {
     private http = inject(HttpClient);
     private usuarioService = inject(UsuarioService);
 
-    constructor() {
+    constructor(private router: Router) {
         this.currentUserSubject = new BehaviorSubject<Usuario | null>(
             typeof localStorage !== 'undefined' 
                 ? JSON.parse(localStorage.getItem('currentUser') || 'null')
@@ -71,12 +72,13 @@ export class AuthService {
             }));
     }
 
-    logout() {
-        if (typeof localStorage !== 'undefined') {
-            localStorage.removeItem('currentUser');
-            localStorage.removeItem('token');
-        }
+    logout(): void {
+        localStorage.clear();
+        sessionStorage.clear();
+        
         this.currentUserSubject.next(null);
+        
+        this.router.navigate(['/login']);
     }
 
     isLoggedIn(): boolean {

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
-import { LoginComponent } from '../usuarios/login/login.component';
+import { LoginComponent } from '../auth/login/login.component';
 import { ToastService } from '../../services/toast.service';
 import { Router } from '@angular/router';
 
