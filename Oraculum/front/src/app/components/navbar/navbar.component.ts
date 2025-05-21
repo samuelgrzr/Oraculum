@@ -2,11 +2,11 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { LoginComponent } from '../auth/login/login.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, LoginComponent],
+  imports: [CommonModule, LoginComponent, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })

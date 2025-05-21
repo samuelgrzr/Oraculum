@@ -1,0 +1,91 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex flex-col md:flex-row gap-8 justify-center">
+    <div class="w-full md:w-1/3 bg-white rounded-lg shadow-md p-6 border-2 border-[var(--greek-gold)]">
+      <h2 class="text-2xl font-bold mb-6 greek-title">Tu Destino en el Oráculo</h2>
+      
+      <div class="space-y-4">
+        <div class="border-b border-[var(--greek-gold)] pb-4">
+          <p class="text-sm text-[var(--greek-blue)]">Nombre de usuario</p>
+          <p class="text-lg font-medium text-[var(--greek-blue)]">{{ usuario?.nombre }}</p>
+        </div>
+        
+        <div class="border-b border-[var(--greek-gold)] pb-4">
+          <p class="text-sm text-[var(--greek-blue)]">Correo electrónico</p>
+          <p class="text-lg font-medium text-[var(--greek-blue)]">{{ usuario?.correo }}</p>
+        </div>
+        
+        <div>
+          <p class="text-sm text-[var(--greek-blue)]">Puntuación total</p>
+          <p class="text-lg font-medium text-[var(--greek-blue)]">{{ usuario?.puntuacion }} puntos</p>
+        </div>
+
+        <!-- CAMBIAR CONTRASEÑA -->
+        <div class="border-t border-[var(--greek-gold)] pt-4 flex flex-col items-center">
+          <button 
+            (click)="toggleEditarContrasena()"
+            class="greek-button">
+            <i class="fas fa-key mr-2"></i>
+            {{ editandoContrasena ? 'Cancelar cambio' : 'Cambiar contraseña' }}
+          </button>
+
+          <form *ngIf="editandoContrasena" [formGroup]="contrasenaForm" (ngSubmit)="guardarContrasena()" class="mt-4 w-full">
+            <div class="relative">
+              <input 
+                [type]="mostrarContrasena ? 'text' : 'password'" 
+                formControlName="contrasena"
+                placeholder="Nueva contraseña" 
+                class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                [ngClass]="{'border-red-500': contrasenaForm.get('contrasena')?.invalid && contrasenaForm.get('contrasena')?.touched}"
+                style="border-color: var(--greek-gold); color: var(--greek-blue);">
+              <button 
+                type="button" 
+                (click)="toggleMostrarContrasena()"
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                style="color: var(--greek-blue)">
+                <i class="fas" [class.fa-eye]="!mostrarContrasena" [class.fa-eye-slash]="mostrarContrasena"></i>
+              </button>
+            </div>
+
+            <div *ngIf="contrasenaForm.get('contrasena')?.invalid && contrasenaForm.get('contrasena')?.touched" 
+                 class="text-red-500 text-sm mt-1">
+              <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['required']">La contraseña es obligatoria</p>
+              <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</p>
+              <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['maxlength']">La contraseña no puede tener más de 12 caracteres</p>
+              <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['pattern']">La contraseña debe contener al menos una letra, un número y un carácter especial (* ! $ & #)</p>
+            </div>
+
+            <div class="flex justify-center mt-4">
+              <button 
+                type="submit"
+                class="greek-button"
+                [disabled]="!contrasenaForm.valid">
+                <i class="fas fa-save mr-2"></i>
+                Guardar nueva contraseña
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="flex justify-center">
+          <button 
+            (click)="eliminarCuenta()"
+            class="delete-button">
+            <i class="fas fa-user-slash mr-2"></i>
+            Abandonar el Oráculo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTORIAL -->
+    <div class="w-full md:w-1/3 bg-white rounded-lg shadow-md p-6 border-2 border-[var(--greek-gold)]">
+      <h2 class="text-2xl font-bold mb-6 greek-title">Tus Hazañas</h2>
+      
+      <div class="text-center text-[var(--greek-blue)] py-8">
+        <i class="fas fa-scroll text-6xl mb-4"></i>
+        <p class="text-lg">Los pergaminos de tus hazañas están siendo escritos por las Musas</p>
+        <p class="text-sm mt-2">Pronto podrás consultar tu historial de partidas</p>
+      </div>
+    </div>
+  </div>
+</div>
