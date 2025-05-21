@@ -45,7 +45,6 @@ export class LoginComponent {
       this.authService.login(nombre, contrasena)
         .subscribe({
           next: (response) => {
-            this.toastService.showMessage('¡Bienvenido!');
             this.loginSuccess.emit();
             this.closeDropdowns.emit();
             this.loginForm.reset();

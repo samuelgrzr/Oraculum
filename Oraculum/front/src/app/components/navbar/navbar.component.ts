@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { LoginComponent } from '../auth/login/login.component';
-import { ToastService } from '../../services/toast.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
   private authService = inject(AuthService);
-  private toastService = inject(ToastService);
   private router = inject(Router);
 
   onLoginSuccess() {
@@ -23,8 +21,6 @@ export class NavbarComponent {
 
   onLogout() {
     this.authService.logout();
-    this.toastService.showMessage('Sesión cerrada correctamente');
-    this.router.navigate(['/']);
   }
 
   isLoggedIn(): boolean {

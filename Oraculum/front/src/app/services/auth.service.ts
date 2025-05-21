@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Usuario } from '../models/Usuario';
 import { UsuarioService } from './usuario.service';
 import { Router } from '@angular/router';
+import { ToastService } from './toast.service';
 
 @Injectable({
     providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthService {
     public currentUser: Observable<Usuario | null>;
     private http = inject(HttpClient);
     private usuarioService = inject(UsuarioService);
+    private toastService = inject(ToastService);
 
     constructor(private router: Router) {
         this.currentUserSubject = new BehaviorSubject<Usuario | null>(
@@ -43,7 +45,7 @@ export class AuthService {
         }).pipe(
             switchMap(response => {
                 if (response && response.access_token) {
-                    return this.usuarioService.getUsuarioPorNombre(nombre).pipe(  // Necesitarás crear este método
+                    return this.usuarioService.getUsuarioPorNombre(nombre).pipe(
                         map(usuario => {
                             const userData = {
                                 token: response.access_token,
@@ -55,6 +57,7 @@ export class AuthService {
                                 localStorage.setItem('token', userData.token);
                             }
                             
+                            this.toastService.showMessage('¡Bienvenido!');
                             this.currentUserSubject.next(userData.usuario);
                             return userData;
                         })
@@ -78,7 +81,8 @@ export class AuthService {
         
         this.currentUserSubject.next(null);
         
-        this.router.navigate(['/login']);
+        this.toastService.showMessage('Sesión cerrada correctamente');
+        this.router.navigate(['/']);
     }
 
     isLoggedIn(): boolean {
