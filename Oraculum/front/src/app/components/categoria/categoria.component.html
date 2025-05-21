@@ -1,1 +1,108 @@
-<p>categoria works!</p>
+<div class="categorias-container p-5">
+  <h2 class="text-2xl font-semibold text-[var(--greek-blue)] mb-6">Lista de Categorías</h2>
+
+  <!-- Botón para crear nueva categoría -->
+  <button 
+    *ngIf="!categoriaEditandoId"
+    (click)="crearCategoria()"
+    class="create-button">
+    Nueva Categoría
+  </button>
+
+  <!-- Formulario de creación/edición -->
+  <div *ngIf="categoriaEditandoId === null && categoriaForm.dirty" class="mb-6 bg-white p-4 rounded-lg shadow-lg">
+    <h3 class="text-xl font-semibold text-[var(--greek-blue)] mb-4">Nueva Categoría</h3>
+    <div class="flex flex-col gap-4">
+      <div>
+        <input 
+          type="text" 
+          [formControl]="nombreControl" 
+          placeholder="Nombre de la categoría"
+          class="w-full p-2 border-2 rounded-lg focus:outline-none"
+          [ngClass]="{'border-red-500': nombreControl.invalid && nombreControl.touched}"
+          style="border-color: var(--greek-gold); color: var(--greek-blue);">
+        <div *ngIf="nombreControl?.invalid && nombreControl?.touched" class="text-red-500 text-xs mt-1">
+          <p *ngIf="nombreControl?.errors?.['required']">El nombre es obligatorio</p>
+          <p *ngIf="nombreControl?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</p>
+          <p *ngIf="nombreControl?.errors?.['maxlength']">El nombre no puede tener más de 50 caracteres</p>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button 
+          (click)="guardarCambios()"
+          [disabled]="!categoriaForm.valid"
+          class="greek-button"
+          [ngClass]="{'opacity-50 cursor-not-allowed': !categoriaForm.valid}">
+          Crear
+        </button>
+        <button 
+          (click)="cancelarEdicion()"
+          class="cancel-button">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="w-full border-collapse bg-white rounded-lg shadow-lg text-[var(--greek-blue)]">
+      <thead class="bg-[var(--greek-blue)] text-white">
+        <tr>
+          <th class="p-4 text-center">ID</th>
+          <th class="p-4 text-center">Nombre</th>
+          <th class="p-4 text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let categoria of categorias" class="border-b border-gray-200 hover:bg-gray-50">
+          <td class="p-4 text-center">{{categoria.id}}</td>
+          <td class="p-4 text-center">
+            <ng-container *ngIf="!isEditing(categoria.id); else editNombre">
+              {{categoria.nombre}}
+            </ng-container>
+            <ng-template #editNombre>
+              <input 
+                type="text" 
+                [formControl]="nombreControl" 
+                class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                [ngClass]="{'border-red-500': nombreControl.invalid && nombreControl.touched}"
+                style="border-color: var(--greek-gold); color: var(--greek-blue);">
+            </ng-template>
+          </td>
+          <td class="p-4 text-center">
+            <div class="flex justify-center gap-2">
+              <ng-container *ngIf="!isEditing(categoria.id); else editButtons">
+                <button 
+                  (click)="editarCategoria(categoria)"
+                  class="greek-button">
+                  Editar
+                </button>
+                <button 
+                  (click)="eliminarCategoria(categoria.id)"
+                  class="delete-button">
+                  Eliminar
+                </button>
+              </ng-container>
+              <ng-template #editButtons>
+                <button 
+                  *ngIf="isEditing(categoria.id)"
+                  (click)="guardarCambios()"
+                  [disabled]="!categoriaForm.valid"
+                  class="greek-button"
+                  [ngClass]="{'opacity-50 cursor-not-allowed': !categoriaForm.valid}">
+                  Guardar
+                </button>
+                <button 
+                  *ngIf="isEditing(categoria.id)"
+                  (click)="cancelarEdicion()"
+                  class="cancel-button">
+                  Cancelar
+                </button>
+              </ng-template>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

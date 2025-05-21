@@ -1,11 +1,91 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Categoria } from '../../models/Categoria';
+import { CategoriaService } from '../../services/categoria.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-categoria',
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './categoria.component.html',
-  styleUrl: './categoria.component.css'
+  styleUrls: ['./categoria.component.css']
 })
-export class CategoriaComponent {
+export class CategoriaComponent implements OnInit {
+  categorias: Categoria[] = [];
+  categoriaEditandoId: number | null = null;
+  categoriaForm: FormGroup;
+  
+  get nombreControl(): FormControl {
+    return this.categoriaForm.get('nombre') as FormControl;
+  }
 
+  constructor(
+    private categoriaService: CategoriaService,
+    private fb: FormBuilder
+  ) {
+    this.categoriaForm = this.fb.group({
+      id: [null],
+      nombre: ['', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(50)
+      ]]
+    });
+  }
+
+  ngOnInit(): void {
+    this.cargarCategorias();
+  }
+
+  cargarCategorias(): void {
+    this.categoriaService.getAllCategorias().subscribe(
+      categorias => this.categorias = categorias
+    );
+  }
+
+  crearCategoria(): void {
+    this.categoriaEditandoId = null;
+    this.categoriaForm.reset();
+  }
+
+  editarCategoria(categoria: Categoria): void {
+    this.categoriaEditandoId = categoria.id;
+    this.categoriaForm.patchValue(categoria);
+  }
+
+  guardarCambios(): void {
+    if (this.categoriaForm.valid) {
+      if (this.categoriaEditandoId) {
+        this.categoriaService.updateCategoria(this.categoriaEditandoId, this.categoriaForm.value)
+          .subscribe(() => {
+            this.cargarCategorias();
+            this.cancelarEdicion();
+          });
+      } else {
+        this.categoriaService.createCategoria(this.categoriaForm.value)
+          .subscribe(() => {
+            this.cargarCategorias();
+            this.cancelarEdicion();
+          });
+      }
+    }
+  }
+
+  eliminarCategoria(id: number): void {
+    if (confirm('¿Estás seguro de que quieres eliminar esta categoría?')) {
+      this.categoriaService.deleteCategoria(id).subscribe({
+        next: () => this.cargarCategorias(),
+        error: (error) => console.error('Error al eliminar categoría:', error)
+      });
+    }
+  }
+
+  cancelarEdicion(): void {
+    this.categoriaEditandoId = null;
+    this.categoriaForm.reset();
+  }
+
+  isEditing(id: number): boolean {
+    return this.categoriaEditandoId === id;
+  }
 }
