@@ -65,7 +65,7 @@ def edit_categoria(db: db_dependency, id_categoria: int, categoria: CrearCategor
             detail=f"Error al actualizar la categoría: {str(e)}"
         )
 
-@router.delete("/")
+@router.delete("/{id_categoria}")
 def delete_categoria(db: db_dependency, id_categoria: int, user: user_dependency):
     if user.get("rol") != "admin":
         raise HTTPException(

@@ -19,7 +19,7 @@ export class RespuestaService {
     }
 
     getAllRespuestas(): Observable<Respuesta[]> {
-        return this.http.get<Respuesta[]>(`${this.apiUrl}`);
+        return this.http.get<Respuesta[]>(`${this.apiUrl}/respuestas`);
     }
 
     createRespuesta(respuesta: Respuesta): Observable<Respuesta> {

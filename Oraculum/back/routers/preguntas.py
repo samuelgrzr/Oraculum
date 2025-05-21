@@ -85,7 +85,7 @@ def edit_pregunta(db: db_dependency, id_pregunta: int, pregunta: CrearPregunta, 
             detail=f"Error al actualizar la pregunta: {str(e)}"
         )
 
-@router.delete("/")
+@router.delete("/{id_pregunta}")
 def delete_pregunta(db: db_dependency, id_pregunta: int, user: user_dependency):
     if user.get("rol") != "admin":
         raise HTTPException(

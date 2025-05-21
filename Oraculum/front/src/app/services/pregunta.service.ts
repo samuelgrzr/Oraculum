@@ -19,7 +19,7 @@ export class PreguntaService {
     }
 
     getAllPreguntas(): Observable<Pregunta[]> {
-        return this.http.get<Pregunta[]>(`${this.apiUrl}`);
+        return this.http.get<Pregunta[]>(`${this.apiUrl}/preguntas`);
     }
 
     createPregunta(pregunta: Pregunta): Observable<Pregunta> {
