@@ -32,9 +32,10 @@ async def get_current_user(token: oauth2_bearer_dependency):
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         nombre: str = payload.get("nombre")
         id: int = payload.get("id")
-        if nombre is None or id is None:
+        rol: str = payload.get("rol")
+        if nombre is None or id is None or rol is None:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="El usuario no es válido")
-        return { "nombre": nombre, "id": id }
+        return { "nombre": nombre, "id": id, "rol": rol }
     except JWTError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="El usuario no es válido")
 
