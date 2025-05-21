@@ -1,49 +1,51 @@
 <div class="categorias-container p-5">
   <h2 class="text-2xl font-semibold text-[var(--greek-blue)] mb-6">Lista de Categorías</h2>
 
-  <!-- Botón para crear nueva categoría -->
-  <button 
-    *ngIf="!categoriaEditandoId"
-    (click)="crearCategoria()"
-    class="create-button">
-    Nueva Categoría
-  </button>
+  <!-- Botón y formulario desplegable para crear nueva categoría -->
+  <div class="mb-4">
+    <button 
+      *ngIf="!categoriaEditandoId"
+      (click)="toggleFormulario()"
+      class="create-button">
+      Nueva Categoría
+    </button>
 
-  <!-- Formulario de creación/edición -->
-  <div *ngIf="categoriaEditandoId === null && categoriaForm.dirty" class="mb-6 bg-white p-4 rounded-lg shadow-lg">
-    <h3 class="text-xl font-semibold text-[var(--greek-blue)] mb-4">Nueva Categoría</h3>
-    <div class="flex flex-col gap-4">
-      <div>
-        <input 
-          type="text" 
-          [formControl]="nombreControl" 
-          placeholder="Nombre de la categoría"
-          class="w-full p-2 border-2 rounded-lg focus:outline-none"
-          [ngClass]="{'border-red-500': nombreControl.invalid && nombreControl.touched}"
-          style="border-color: var(--greek-gold); color: var(--greek-blue);">
-        <div *ngIf="nombreControl?.invalid && nombreControl?.touched" class="text-red-500 text-xs mt-1">
-          <p *ngIf="nombreControl?.errors?.['required']">El nombre es obligatorio</p>
-          <p *ngIf="nombreControl?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</p>
-          <p *ngIf="nombreControl?.errors?.['maxlength']">El nombre no puede tener más de 50 caracteres</p>
+    <div *ngIf="mostrarFormulario" class="mt-4 bg-white p-4 rounded-lg shadow-lg transition-all duration-300">
+      <h3 class="text-xl font-semibold text-[var(--greek-blue)] mb-4">Nueva Categoría</h3>
+      <div class="flex flex-col gap-4">
+        <div>
+          <input 
+            type="text" 
+            [formControl]="nombreControl" 
+            placeholder="Nombre de la categoría"
+            class="w-full p-2 border-2 rounded-lg focus:outline-none"
+            [ngClass]="{'border-red-500': nombreControl.invalid && nombreControl.touched}"
+            style="border-color: var(--greek-gold); color: var(--greek-blue);">
+          <div *ngIf="nombreControl?.invalid && nombreControl?.touched" class="text-red-500 text-xs mt-1">
+            <p *ngIf="nombreControl?.errors?.['required']">El nombre es obligatorio</p>
+            <p *ngIf="nombreControl?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</p>
+            <p *ngIf="nombreControl?.errors?.['maxlength']">El nombre no puede tener más de 50 caracteres</p>
+          </div>
         </div>
-      </div>
-      <div class="flex gap-2">
-        <button 
-          (click)="guardarCambios()"
-          [disabled]="!categoriaForm.valid"
-          class="greek-button"
-          [ngClass]="{'opacity-50 cursor-not-allowed': !categoriaForm.valid}">
-          Crear
-        </button>
-        <button 
-          (click)="cancelarEdicion()"
-          class="cancel-button">
-          Cancelar
-        </button>
+        <div class="flex gap-2">
+          <button 
+            (click)="guardarCambios()"
+            [disabled]="!categoriaForm.valid"
+            class="greek-button"
+            [ngClass]="{'opacity-50 cursor-not-allowed': !categoriaForm.valid}">
+            Crear
+          </button>
+          <button 
+            (click)="cancelarEdicion()"
+            class="cancel-button">
+            Cancelar
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- Tabla de categorías -->
   <div class="overflow-x-auto">
     <table class="w-full border-collapse bg-white rounded-lg shadow-lg text-[var(--greek-blue)]">
       <thead class="bg-[var(--greek-blue)] text-white">
@@ -61,12 +63,19 @@
               {{categoria.nombre}}
             </ng-container>
             <ng-template #editNombre>
-              <input 
-                type="text" 
-                [formControl]="nombreControl" 
-                class="w-full p-2 border-2 rounded-lg focus:outline-none"
-                [ngClass]="{'border-red-500': nombreControl.invalid && nombreControl.touched}"
-                style="border-color: var(--greek-gold); color: var(--greek-blue);">
+              <div>
+                <input 
+                  type="text" 
+                  [formControl]="nombreControl" 
+                  class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                  [ngClass]="{'border-red-500': nombreControl.invalid && nombreControl.touched}"
+                  style="border-color: var(--greek-gold); color: var(--greek-blue);">
+                <div *ngIf="nombreControl?.invalid && nombreControl?.touched" class="text-red-500 text-xs mt-1">
+                  <p *ngIf="nombreControl?.errors?.['required']">El nombre es obligatorio</p>
+                  <p *ngIf="nombreControl?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</p>
+                  <p *ngIf="nombreControl?.errors?.['maxlength']">El nombre no puede tener más de 50 caracteres</p>
+                </div>
+              </div>
             </ng-template>
           </td>
           <td class="p-4 text-center">

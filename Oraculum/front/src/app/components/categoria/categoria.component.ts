@@ -14,6 +14,7 @@ export class CategoriaComponent implements OnInit {
   categorias: Categoria[] = [];
   categoriaEditandoId: number | null = null;
   categoriaForm: FormGroup;
+  mostrarFormulario: boolean = false;
   
   get nombreControl(): FormControl {
     return this.categoriaForm.get('nombre') as FormControl;
@@ -43,14 +44,30 @@ export class CategoriaComponent implements OnInit {
     );
   }
 
+  toggleFormulario(): void {
+    this.mostrarFormulario = !this.mostrarFormulario;
+    if (!this.mostrarFormulario) {
+      this.cancelarEdicion();
+    }
+  }
+
   crearCategoria(): void {
     this.categoriaEditandoId = null;
     this.categoriaForm.reset();
+    this.mostrarFormulario = true;
+  }
+
+  cancelarEdicion(): void {
+    this.categoriaEditandoId = null;
+    this.categoriaForm.reset();
+    this.mostrarFormulario = false;
   }
 
   editarCategoria(categoria: Categoria): void {
     this.categoriaEditandoId = categoria.id;
-    this.categoriaForm.patchValue(categoria);
+    this.categoriaForm.patchValue({
+      nombre: categoria.nombre
+    });
   }
 
   guardarCambios(): void {
@@ -78,11 +95,6 @@ export class CategoriaComponent implements OnInit {
         error: (error) => console.error('Error al eliminar categoría:', error)
       });
     }
-  }
-
-  cancelarEdicion(): void {
-    this.categoriaEditandoId = null;
-    this.categoriaForm.reset();
   }
 
   isEditing(id: number): boolean {
