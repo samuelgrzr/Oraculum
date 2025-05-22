@@ -38,6 +38,18 @@ def create_pregunta(db: db_dependency, pregunta: CrearPregunta, user: user_depen
             status_code=403,
             detail="Solo los administradores pueden crear preguntas"
         )
+    
+    # Verificar si ya existe una pregunta con ese enunciado
+    existing_pregunta = db.query(Pregunta).filter(
+        Pregunta.enunciado == pregunta.enunciado
+    ).first()
+    
+    if existing_pregunta:
+        raise HTTPException(
+            status_code=400,
+            detail="Ya existe una pregunta con este enunciado"
+        )
+    
     categoria = db.query(Categoria).filter(Categoria.id == pregunta.id_categoria).first()
     if not categoria:
         raise HTTPException(status_code=404, detail=f"Categoría con id {pregunta.id_categoria} no encontrada")
@@ -63,6 +75,18 @@ def edit_pregunta(db: db_dependency, id_pregunta: int, pregunta: CrearPregunta, 
             detail="Solo los administradores pueden editar preguntas"
         )
     try:
+        # Verificar si ya existe otra pregunta con ese enunciado
+        existing_pregunta = db.query(Pregunta).filter(
+            Pregunta.enunciado == pregunta.enunciado,
+            Pregunta.id != id_pregunta
+        ).first()
+        
+        if existing_pregunta:
+            raise HTTPException(
+                status_code=400,
+                detail="Ya existe una pregunta con este enunciado"
+            )
+        
         db_pregunta = db.query(Pregunta).filter(Pregunta.id == id_pregunta).first()
         if not db_pregunta:
             raise HTTPException(status_code=404, detail="Pregunta no encontrada")

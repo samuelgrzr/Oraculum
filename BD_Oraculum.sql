@@ -13,12 +13,12 @@ CREATE TABLE usuario (
 
 CREATE TABLE categoria (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL
+    nombre VARCHAR(100) NOT NULL UNIQUE
 );
 
 CREATE TABLE pregunta (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    enunciado TEXT NOT NULL,
+    enunciado TEXT NOT NULL UNIQUE,
     dificultad VARCHAR(50) NOT NULL,
     pista TEXT,
     explicacion TEXT,
