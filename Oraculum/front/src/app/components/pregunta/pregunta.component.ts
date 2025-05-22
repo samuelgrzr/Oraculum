@@ -5,6 +5,7 @@ import { PreguntaService } from '../../services/pregunta.service';
 import { CategoriaService } from '../../services/categoria.service';
 import { CommonModule } from '@angular/common';
 import { ToastService } from '../../services/toast.service';
+import { Categoria } from '../../models/Categoria';
 
 @Component({
   selector: 'app-pregunta',
@@ -14,26 +15,29 @@ import { ToastService } from '../../services/toast.service';
 })
 export class PreguntaComponent implements OnInit {
   preguntas: Pregunta[] = [];
-  categorias: any[] = [];
+  categorias: Categoria[] = [];
   preguntaEditandoId: number | null = null;
   preguntaForm: FormGroup;
   mostrarFormulario: boolean = false;
   
-  // Form controls
   get enunciadoControl(): FormControl {
     return this.preguntaForm.get('enunciado') as FormControl;
   }
+
   get pistaControl(): FormControl {
     return this.preguntaForm.get('pista') as FormControl;
   }
+
   get explicacionControl(): FormControl {
     return this.preguntaForm.get('explicacion') as FormControl;
   }
+
   get dificultadControl(): FormControl {
     return this.preguntaForm.get('dificultad') as FormControl;
   }
-  get idCategoriaControl(): FormControl {
-    return this.preguntaForm.get('idCategoria') as FormControl;
+
+  get id_categoriaControl(): FormControl {
+    return this.preguntaForm.get('id_categoria') as FormControl;
   }
 
   constructor(
@@ -51,7 +55,7 @@ export class PreguntaComponent implements OnInit {
       pista: [''],
       explicacion: [''],
       dificultad: ['', Validators.required],
-      idCategoria: ['', Validators.required]
+      id_categoria: ['', Validators.required]
     });
   }
 
@@ -92,14 +96,16 @@ export class PreguntaComponent implements OnInit {
   }
 
   editarPregunta(pregunta: Pregunta): void {
+    console.log('Editar pregunta:', pregunta);
     this.preguntaEditandoId = pregunta.id;
     this.preguntaForm.patchValue({
       enunciado: pregunta.enunciado,
       pista: pregunta.pista,
       explicacion: pregunta.explicacion,
       dificultad: pregunta.dificultad,
-      idCategoria: pregunta.idCategoria
+      id_categoria: pregunta.id_categoria
     });
+    this.mostrarFormulario = true;
   }
 
   guardarCambios(): void {
@@ -153,8 +159,8 @@ export class PreguntaComponent implements OnInit {
     return this.preguntaEditandoId === id;
   }
 
-  getNombreCategoria(idCategoria: number): string {
-    const categoria = this.categorias.find(c => c.id === idCategoria);
+  getNombreCategoria(id_categoria: number): string {
+    const categoria = this.categorias.find(c => c.id === id_categoria);
     return categoria ? categoria.nombre : '';
   }
 }
