@@ -18,7 +18,7 @@ CREATE TABLE categoria (
 
 CREATE TABLE pregunta (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    enunciado TEXT NOT NULL UNIQUE,
+    enunciado VARCHAR(300) NOT NULL UNIQUE,
     dificultad VARCHAR(50) NOT NULL,
     pista TEXT,
     explicacion TEXT,
