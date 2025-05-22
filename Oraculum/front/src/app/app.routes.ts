@@ -5,6 +5,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { PreguntaComponent } from './components/pregunta/pregunta.component';
+import { RespuestaComponent } from './components/respuesta/respuesta.component';
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -13,4 +14,5 @@ export const routes: Routes = [
     { path: "usuarios", component: UsuarioComponent },
     { path: "categorias", component: CategoriaComponent },
     { path: "preguntas", component: PreguntaComponent },
+    { path: "respuestas", component: RespuestaComponent },
 ];

@@ -1,1 +1,98 @@
-<p>respuesta works!</p>
+<div class="respuestas-container p-5">
+    <h2 class="text-2xl font-semibold text-[var(--greek-blue)] mb-6">Lista de Respuestas</h2>
+
+    <!-- Botón y formulario desplegable para crear nueva respuesta -->
+    <div class="mb-4">
+        <button *ngIf="!respuestaEditandoId" (click)="toggleFormulario()" class="create-button">
+            Nueva Respuesta
+        </button>
+
+        <div *ngIf="mostrarFormulario" class="mt-4 bg-white p-4 rounded-lg shadow-lg transition-all duration-300">
+            <h3 class="text-xl font-semibold text-[var(--greek-blue)] mb-4">
+                {{respuestaEditandoId ? 'Editar Respuesta' : 'Nueva Respuesta'}}
+            </h3>
+            <form [formGroup]="respuestaForm" class="flex flex-col gap-4">
+                <div>
+                    <input type="text" formControlName="texto" placeholder="Texto de la respuesta"
+                        class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                        [ngClass]="{'border-red-500': textoControl.invalid && textoControl.touched}"
+                        style="border-color: var(--greek-gold); color: var(--greek-blue);">
+                    <div *ngIf="textoControl?.invalid && textoControl?.touched" class="text-red-500 text-xs mt-1">
+                        <p *ngIf="textoControl?.errors?.['required']">El texto es obligatorio</p>
+                        <p *ngIf="textoControl?.errors?.['minlength']">El texto debe tener al menos 2 caracter</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" formControlName="es_correcta"
+                        class="w-4 h-4 text-[var(--greek-blue)] border-2 rounded focus:ring-[var(--greek-blue)]"
+                        style="border-color: var(--greek-gold);">
+                    <label class="text-[var(--greek-blue)]">Es respuesta correcta</label>
+                </div>
+
+                <div>
+                    <select formControlName="id_pregunta" class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                        [ngClass]="{'border-red-500': id_preguntaControl.invalid && id_preguntaControl.touched}"
+                        style="border-color: var(--greek-gold); color: var(--greek-blue);">
+                        <option value="">Selecciona la pregunta</option>
+                        <option *ngFor="let pregunta of preguntas" [value]="pregunta.id">
+                            {{pregunta.enunciado}}
+                        </option>
+                    </select>
+                    <div *ngIf="id_preguntaControl?.invalid && id_preguntaControl?.touched"
+                        class="text-red-500 text-xs mt-1">
+                        <p *ngIf="id_preguntaControl?.errors?.['required']">La pregunta es obligatoria</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-2">
+                    <button (click)="guardarCambios()" [disabled]="!respuestaForm.valid" class="greek-button"
+                        [ngClass]="{'opacity-50 cursor-not-allowed': !respuestaForm.valid}">
+                        {{respuestaEditandoId ? 'Guardar cambios' : 'Crear respuesta'}}
+                    </button>
+                    <button (click)="cancelarEdicion()" class="cancel-button">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla de respuestas -->
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse bg-white rounded-lg shadow-lg text-[var(--greek-blue)]">
+            <thead class="bg-[var(--greek-blue)] text-white">
+                <tr>
+                    <th class="p-4 text-center">ID</th>
+                    <th class="p-4 text-center">Texto</th>
+                    <th class="p-4 text-center">Es Correcta</th>
+                    <th class="p-4 text-center">Pregunta</th>
+                    <th class="p-4 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let respuesta of respuestas" class="border-b border-gray-200 hover:bg-gray-50">
+                    <td class="p-4 text-center">{{respuesta.id}}</td>
+                    <td class="p-4 text-center">{{respuesta.texto}}</td>
+                    <td class="p-4 text-center">
+                        <i class="fas" [class.fa-check]="respuesta.es_correcta"
+                            [class.fa-times]="!respuesta.es_correcta"></i>
+                    </td>
+                    <td class="p-4 text-center">
+                        {{getEnunciadoPregunta(respuesta.id_pregunta)}}
+                    </td>
+                    <td class="p-4 text-center">
+                        <div class="flex justify-center gap-2">
+                            <button (click)="editarRespuesta(respuesta)" class="greek-button">
+                                Editar
+                            </button>
+                            <button (click)="eliminarRespuesta(respuesta.id)" class="delete-button">
+                                Eliminar
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
