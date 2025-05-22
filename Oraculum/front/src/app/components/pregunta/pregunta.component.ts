@@ -1,11 +1,160 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Pregunta } from '../../models/Pregunta';
+import { PreguntaService } from '../../services/pregunta.service';
+import { CategoriaService } from '../../services/categoria.service';
+import { CommonModule } from '@angular/common';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-pregunta',
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './pregunta.component.html',
-  styleUrl: './pregunta.component.css'
+  styleUrls: ['./pregunta.component.css']
 })
-export class PreguntaComponent {
+export class PreguntaComponent implements OnInit {
+  preguntas: Pregunta[] = [];
+  categorias: any[] = [];
+  preguntaEditandoId: number | null = null;
+  preguntaForm: FormGroup;
+  mostrarFormulario: boolean = false;
+  
+  // Form controls
+  get enunciadoControl(): FormControl {
+    return this.preguntaForm.get('enunciado') as FormControl;
+  }
+  get pistaControl(): FormControl {
+    return this.preguntaForm.get('pista') as FormControl;
+  }
+  get explicacionControl(): FormControl {
+    return this.preguntaForm.get('explicacion') as FormControl;
+  }
+  get dificultadControl(): FormControl {
+    return this.preguntaForm.get('dificultad') as FormControl;
+  }
+  get idCategoriaControl(): FormControl {
+    return this.preguntaForm.get('idCategoria') as FormControl;
+  }
 
+  constructor(
+    private preguntaService: PreguntaService,
+    private categoriaService: CategoriaService,
+    private fb: FormBuilder,
+    private toastService: ToastService
+  ) {
+    this.preguntaForm = this.fb.group({
+      id: [null],
+      enunciado: ['', [
+        Validators.required,
+        Validators.minLength(10)
+      ]],
+      pista: [''],
+      explicacion: [''],
+      dificultad: ['', Validators.required],
+      idCategoria: ['', Validators.required]
+    });
+  }
+
+  ngOnInit(): void {
+    this.cargarPreguntas();
+    this.cargarCategorias();
+  }
+
+  cargarPreguntas(): void {
+    this.preguntaService.getAllPreguntas().subscribe(
+      preguntas => this.preguntas = preguntas
+    );
+  }
+
+  cargarCategorias(): void {
+    this.categoriaService.getAllCategorias().subscribe(
+      categorias => this.categorias = categorias
+    );
+  }
+
+  toggleFormulario(): void {
+    this.mostrarFormulario = !this.mostrarFormulario;
+    if (!this.mostrarFormulario) {
+      this.cancelarEdicion();
+    }
+  }
+
+  crearPregunta(): void {
+    this.preguntaEditandoId = null;
+    this.preguntaForm.reset();
+    this.mostrarFormulario = true;
+  }
+
+  cancelarEdicion(): void {
+    this.preguntaEditandoId = null;
+    this.preguntaForm.reset();
+    this.mostrarFormulario = false;
+  }
+
+  editarPregunta(pregunta: Pregunta): void {
+    this.preguntaEditandoId = pregunta.id;
+    this.preguntaForm.patchValue({
+      enunciado: pregunta.enunciado,
+      pista: pregunta.pista,
+      explicacion: pregunta.explicacion,
+      dificultad: pregunta.dificultad,
+      idCategoria: pregunta.idCategoria
+    });
+  }
+
+  guardarCambios(): void {
+    if (this.preguntaForm.valid) {
+      if (this.preguntaEditandoId) {
+        this.preguntaService.updatePregunta(this.preguntaEditandoId, this.preguntaForm.value)
+          .subscribe({
+            next: () => {
+              this.toastService.showMessage('Pregunta actualizada correctamente');
+              this.cargarPreguntas();
+              this.cancelarEdicion();
+            },
+            error: (error) => {
+              this.toastService.showMessage('Error al actualizar la pregunta');
+              console.error('Error:', error);
+            }
+          });
+      } else {
+        this.preguntaService.createPregunta(this.preguntaForm.value)
+          .subscribe({
+            next: () => {
+              this.toastService.showMessage('Pregunta creada correctamente');
+              this.cargarPreguntas();
+              this.cancelarEdicion();
+            },
+            error: (error) => {
+              this.toastService.showMessage('Error al crear la pregunta');
+              console.error('Error:', error);
+            }
+          });
+      }
+    }
+  }
+
+  eliminarPregunta(id: number): void {
+    if (confirm('¿Estás seguro de que quieres eliminar esta pregunta?')) {
+      this.preguntaService.deletePregunta(id).subscribe({
+        next: () => {
+          this.toastService.showMessage('Pregunta eliminada correctamente');
+          this.cargarPreguntas();
+        },
+        error: (error) => {
+          this.toastService.showMessage('Error al eliminar la pregunta');
+          console.error('Error:', error);
+        }
+      });
+    }
+  }
+
+  isEditing(id: number): boolean {
+    return this.preguntaEditandoId === id;
+  }
+
+  getNombreCategoria(idCategoria: number): string {
+    const categoria = this.categorias.find(c => c.id === idCategoria);
+    return categoria ? categoria.nombre : '';
+  }
 }
