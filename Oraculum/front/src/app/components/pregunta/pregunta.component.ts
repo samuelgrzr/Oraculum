@@ -106,6 +106,7 @@ export class PreguntaComponent implements OnInit {
       id_categoria: pregunta.id_categoria
     });
     this.mostrarFormulario = true;
+    this.toastService.showMessage('Formulario de edición abierto en la parte superior');
   }
 
   guardarCambios(): void {
