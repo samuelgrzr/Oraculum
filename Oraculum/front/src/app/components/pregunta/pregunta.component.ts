@@ -142,10 +142,10 @@ export class PreguntaComponent implements OnInit {
   }
 
   eliminarPregunta(id: number): void {
-    if (confirm('¿Estás seguro de que quieres eliminar esta pregunta?')) {
+    if (confirm('¿Estás seguro de que quieres eliminar esta pregunta? También se eliminarán todas sus respuestas asociadas.')) {
       this.preguntaService.deletePregunta(id).subscribe({
         next: () => {
-          this.toastService.showMessage('Pregunta eliminada correctamente');
+          this.toastService.showMessage('Pregunta y sus respuestas eliminadas correctamente');
           this.cargarPreguntas();
         },
         error: (error) => {

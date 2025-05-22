@@ -98,8 +98,24 @@ export class RespuestaComponent implements OnInit {
 
   guardarCambios(): void {
     if (this.respuestaForm.valid) {
+      const nuevaRespuesta = this.respuestaForm.value;
+      
+      // Verificar si ya existe una respuesta correcta para esta pregunta
+      if (nuevaRespuesta.es_correcta) {
+        const respuestasExistentes = this.respuestas.filter(r => 
+          r.id_pregunta === nuevaRespuesta.id_pregunta && 
+          r.es_correcta && 
+          r.id !== this.respuestaEditandoId
+        );
+
+        if (respuestasExistentes.length > 0) {
+          this.toastService.showMessage('Ya existe una respuesta correcta para esta pregunta');
+          return;
+        }
+      }
+
       if (this.respuestaEditandoId) {
-        this.respuestaService.updateRespuesta(this.respuestaEditandoId, this.respuestaForm.value)
+        this.respuestaService.updateRespuesta(this.respuestaEditandoId, nuevaRespuesta)
           .subscribe({
             next: () => {
               this.toastService.showMessage('Respuesta actualizada correctamente');

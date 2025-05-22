@@ -31,7 +31,7 @@ CREATE TABLE respuesta (
     texto TEXT NOT NULL,
     es_correcta BOOLEAN DEFAULT false,
     id_pregunta INT,
-    FOREIGN KEY (id_pregunta) REFERENCES pregunta(id)
+    FOREIGN KEY (id_pregunta) REFERENCES pregunta(id) ON DELETE CASCADE
 );
 
 CREATE TABLE partida (

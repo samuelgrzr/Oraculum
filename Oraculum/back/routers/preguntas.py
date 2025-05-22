@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 from fastapi import APIRouter, HTTPException
 
-from models import Pregunta, Categoria
+from models import Pregunta, Categoria, Respuesta
 from deps import db_dependency, user_dependency
 
 router = APIRouter(
@@ -116,10 +116,21 @@ def delete_pregunta(db: db_dependency, id_pregunta: int, user: user_dependency):
             status_code=403,
             detail="Solo los administradores pueden eliminar preguntas"
         )
-    db_pregunta = db.query(Pregunta).filter(Pregunta.id == id_pregunta).first()
-    if db_pregunta:
+    try:
+        # Primero eliminamos todas las respuestas asociadas a la pregunta
+        db.query(Respuesta).filter(Respuesta.id_pregunta == id_pregunta).delete()
+        
+        # Luego eliminamos la pregunta
+        db_pregunta = db.query(Pregunta).filter(Pregunta.id == id_pregunta).first()
+        if not db_pregunta:
+            raise HTTPException(status_code=404, detail="Pregunta no encontrada")
+            
         db.delete(db_pregunta)
         db.commit()
         return db_pregunta
-    else:
-        raise HTTPException(status_code=404, detail="Pregunta no encontrada")
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=400,
+            detail=f"Error al eliminar la pregunta: {str(e)}"
+        )
