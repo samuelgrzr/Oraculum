@@ -6,6 +6,7 @@ import { CategoriaService } from '../../services/categoria.service';
 import { CommonModule } from '@angular/common';
 import { ToastService } from '../../services/toast.service';
 import { Categoria } from '../../models/Categoria';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-pregunta',
@@ -44,7 +45,8 @@ export class PreguntaComponent implements OnInit {
     private preguntaService: PreguntaService,
     private categoriaService: CategoriaService,
     private fb: FormBuilder,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private alertService: AlertService
   ) {
     this.preguntaForm = this.fb.group({
       id: [null],
@@ -141,15 +143,16 @@ export class PreguntaComponent implements OnInit {
     }
   }
 
-  eliminarPregunta(id: number): void {
-    if (confirm('¿Estás seguro de que quieres eliminar esta pregunta? También se eliminarán todas sus respuestas asociadas.')) {
+  async eliminarPregunta(id: number): Promise<void> {
+    const result = await this.alertService.confirm('¿Estás seguro de que quieres eliminar esta pregunta? También se eliminarán todas sus respuestas asociadas.');
+    if (result.isConfirmed) {
       this.preguntaService.deletePregunta(id).subscribe({
         next: () => {
-          this.toastService.showMessage('Pregunta y sus respuestas eliminadas correctamente');
+          this.alertService.success('Pregunta y sus respuestas eliminadas correctamente');
           this.cargarPreguntas();
         },
         error: (error) => {
-          this.toastService.showMessage('Error al eliminar la pregunta');
+          this.alertService.error('Error al eliminar la pregunta');
           console.error('Error:', error);
         }
       });

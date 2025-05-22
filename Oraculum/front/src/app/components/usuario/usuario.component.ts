@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ToastService } from '../../services/toast.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-usuario',
@@ -37,7 +38,8 @@ export class UsuarioComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private fb: FormBuilder,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private alertService: AlertService
   ) {
     this.usuarioForm = this.fb.group({
       id: [null],
@@ -104,20 +106,27 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
+  private confirmarCierreSesion(): Promise<boolean> {
+    return this.alertService.confirm(
+      'Estás editando tu propio usuario. Si guardas los cambios, se cerrará tu sesión. ¿Deseas continuar?'
+    ).then(result => result.isConfirmed);
+  }
+
   async eliminarUsuario(id: number): Promise<void> {
     const currentUser = this.authService.currentUserValue;
     const esUsuarioActual = currentUser && currentUser.id === id;
 
-    if (confirm('¿Estás seguro de que quieres eliminar este usuario?')) {
+    const result = await this.alertService.confirm('¿Estás seguro de que quieres eliminar este usuario?');
+    if (result.isConfirmed) {
       if (esUsuarioActual) {
-        const confirmarCierreSesion = confirm('Estás eliminando tu propia cuenta. Se cerrará tu sesión. ¿Deseas continuar?');
-        if (!confirmarCierreSesion) {
+        const confirmarCierreSesion = await this.alertService.confirm('Estás eliminando tu propia cuenta. Se cerrará tu sesión. ¿Deseas continuar?');
+        if (!confirmarCierreSesion.isConfirmed) {
           return;
         }
 
         this.usuarioService.deleteUsuario(id).subscribe({
           next: () => {
-            this.toastService.showMessage('Tu cuenta ha sido eliminada. Cerrando sesión...');
+            this.alertService.success('Tu cuenta ha sido eliminada. Cerrando sesión...');
             this.authService.logout();
             this.router.navigate(['/']);
           },
@@ -126,7 +135,7 @@ export class UsuarioComponent implements OnInit {
               this.authService.logout();
               this.router.navigate(['/']);
             } else {
-              this.toastService.showMessage('Error al eliminar el usuario');
+              this.alertService.error('Error al eliminar el usuario');
               console.error('Error:', error);
             }
           }
@@ -134,11 +143,11 @@ export class UsuarioComponent implements OnInit {
       } else {
         this.usuarioService.deleteUsuario(id).subscribe({
           next: () => {
-            this.toastService.showMessage('Usuario eliminado correctamente');
+            this.alertService.success('Usuario eliminado correctamente');
             this.cargarUsuarios();
           },
           error: (error) => {
-            this.toastService.showMessage('Error al eliminar el usuario');
+            this.alertService.error('Error al eliminar el usuario');
             console.error('Error:', error);
           }
         });
@@ -153,14 +162,5 @@ export class UsuarioComponent implements OnInit {
 
   isEditing(id: number): boolean {
     return this.usuarioEditandoId === id;
-  }
-
-  private confirmarCierreSesion(): Promise<boolean> {
-    return new Promise((resolve) => {
-      const resultado = confirm(
-        'Estás editando tu propio usuario. Si guardas los cambios, se cerrará tu sesión. ¿Deseas continuar?'
-      );
-      resolve(resultado);
-    });
   }
 }

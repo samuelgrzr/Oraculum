@@ -6,6 +6,7 @@ import { PreguntaService } from '../../services/pregunta.service';
 import { CommonModule } from '@angular/common';
 import { ToastService } from '../../services/toast.service';
 import { Pregunta } from '../../models/Pregunta';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-respuesta',
@@ -36,7 +37,8 @@ export class RespuestaComponent implements OnInit {
     private respuestaService: RespuestaService,
     private preguntaService: PreguntaService,
     private fb: FormBuilder,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private alertService: AlertService
   ) {
     this.respuestaForm = this.fb.group({
       id: [null],
@@ -145,19 +147,22 @@ export class RespuestaComponent implements OnInit {
   }
 
   eliminarRespuesta(id: number): void {
-    if (confirm('¿Estás seguro de que quieres eliminar esta respuesta?')) {
-      this.respuestaService.deleteRespuesta(id).subscribe({
-        next: () => {
-          this.toastService.showMessage('Respuesta eliminada correctamente');
-          this.cargarRespuestas();
-        },
-        error: (error) => {
-          this.toastService.showMessage('Error al eliminar la respuesta');
-          console.error('Error:', error);
+    this.alertService.confirm('¿Estás seguro de que quieres eliminar esta respuesta?')
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.respuestaService.deleteRespuesta(id).subscribe({
+            next: () => {
+              this.alertService.success('Respuesta eliminada correctamente');
+              this.cargarRespuestas();
+            },
+            error: (error) => {
+              this.alertService.error('Error al eliminar la respuesta');
+              console.error('Error:', error);
+            }
+          });
         }
       });
-    }
-  }
+}
 
   isEditing(id: number): boolean {
     return this.respuestaEditandoId === id;
