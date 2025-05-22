@@ -1,6 +1,6 @@
 export interface Respuesta {
     id: number;
     texto: string;
-    esCorrecta: boolean;
-    idPregunta: number;
+    es_correcta: boolean;
+    id_pregunta: number;
 }

@@ -1,9 +1,9 @@
 export interface Partida {
     id: number;
-    idUsuario: number;
+    id_usuario: number;
     fecha: Date;
     puntuacion: number;
-    modoJuego: string;  // 'estandar', 'examen', 'contrarreloj', 'infinito'
-    idCategoria: number;
+    modo_juego: string;  // 'estandar', 'examen', 'contrarreloj', 'infinito'
+    id_categoria: number;
     dificultad: string;  // 'facil', 'medio', 'dificil'
 }
