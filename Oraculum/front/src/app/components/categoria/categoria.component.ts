@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } 
 import { Categoria } from '../../models/Categoria';
 import { CategoriaService } from '../../services/categoria.service';
 import { CommonModule } from '@angular/common';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-categoria',
@@ -22,7 +23,8 @@ export class CategoriaComponent implements OnInit {
 
   constructor(
     private categoriaService: CategoriaService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastService: ToastService
   ) {
     this.categoriaForm = this.fb.group({
       id: [null],
@@ -74,15 +76,29 @@ export class CategoriaComponent implements OnInit {
     if (this.categoriaForm.valid) {
       if (this.categoriaEditandoId) {
         this.categoriaService.updateCategoria(this.categoriaEditandoId, this.categoriaForm.value)
-          .subscribe(() => {
-            this.cargarCategorias();
-            this.cancelarEdicion();
+          .subscribe({
+            next: () => {
+              this.toastService.showMessage('Categoría actualizada correctamente');
+              this.cargarCategorias();
+              this.cancelarEdicion();
+            },
+            error: (error) => {
+              this.toastService.showMessage('Error al actualizar la categoría');
+              console.error('Error:', error);
+            }
           });
       } else {
         this.categoriaService.createCategoria(this.categoriaForm.value)
-          .subscribe(() => {
-            this.cargarCategorias();
-            this.cancelarEdicion();
+          .subscribe({
+            next: () => {
+              this.toastService.showMessage('Categoría creada correctamente');
+              this.cargarCategorias();
+              this.cancelarEdicion();
+            },
+            error: (error) => {
+              this.toastService.showMessage('Error al crear la categoría');
+              console.error('Error:', error);
+            }
           });
       }
     }
@@ -91,8 +107,14 @@ export class CategoriaComponent implements OnInit {
   eliminarCategoria(id: number): void {
     if (confirm('¿Estás seguro de que quieres eliminar esta categoría?')) {
       this.categoriaService.deleteCategoria(id).subscribe({
-        next: () => this.cargarCategorias(),
-        error: (error) => console.error('Error al eliminar categoría:', error)
+        next: () => {
+          this.toastService.showMessage('Categoría eliminada correctamente');
+          this.cargarCategorias();
+        },
+        error: (error) => {
+          this.toastService.showMessage('Error al eliminar la categoría');
+          console.error('Error:', error);
+        }
       });
     }
   }

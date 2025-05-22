@@ -5,6 +5,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-usuario',
@@ -35,7 +36,8 @@ export class UsuarioComponent implements OnInit {
     private usuarioService: UsuarioService,
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastService: ToastService
   ) {
     this.usuarioForm = this.fb.group({
       id: [null],
@@ -82,13 +84,21 @@ export class UsuarioComponent implements OnInit {
       const esUsuarioActual = currentUser && currentUser.id === this.usuarioEditandoId;
 
       this.usuarioService.updateUsuario(this.usuarioEditandoId, this.usuarioForm.value)
-        .subscribe(() => {
-          if (esUsuarioActual) {
-            this.authService.logout();
-            this.router.navigate(['/']);
-          } else {
-            this.cargarUsuarios();
-            this.cancelarEdicion();
+        .subscribe({
+          next: () => {
+            if (esUsuarioActual) {
+              this.toastService.showMessage('Tu cuenta ha sido actualizada. Cerrando sesión...');
+              this.authService.logout();
+              this.router.navigate(['/']);
+            } else {
+              this.toastService.showMessage('Usuario actualizado correctamente');
+              this.cargarUsuarios();
+              this.cancelarEdicion();
+            }
+          },
+          error: (error) => {
+            this.toastService.showMessage('Error al actualizar el usuario');
+            console.error('Error:', error);
           }
         });
     }
@@ -107,6 +117,7 @@ export class UsuarioComponent implements OnInit {
 
         this.usuarioService.deleteUsuario(id).subscribe({
           next: () => {
+            this.toastService.showMessage('Tu cuenta ha sido eliminada. Cerrando sesión...');
             this.authService.logout();
             this.router.navigate(['/']);
           },
@@ -115,14 +126,21 @@ export class UsuarioComponent implements OnInit {
               this.authService.logout();
               this.router.navigate(['/']);
             } else {
-              console.error('Error al eliminar usuario:', error);
+              this.toastService.showMessage('Error al eliminar el usuario');
+              console.error('Error:', error);
             }
           }
         });
       } else {
         this.usuarioService.deleteUsuario(id).subscribe({
-          next: () => this.cargarUsuarios(),
-          error: (error) => console.error('Error al eliminar usuario:', error)
+          next: () => {
+            this.toastService.showMessage('Usuario eliminado correctamente');
+            this.cargarUsuarios();
+          },
+          error: (error) => {
+            this.toastService.showMessage('Error al eliminar el usuario');
+            console.error('Error:', error);
+          }
         });
       }
     }
