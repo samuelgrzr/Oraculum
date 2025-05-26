@@ -1,0 +1,37 @@
+<div class="container mx-auto px-4 py-8">
+    <div class="flex justify-center">
+        <div class="scroll-wrapper w-full md:w-2/3 lg:w-1/2">
+            <div class="scroll-top"></div>
+            <div class="scroll-content bg-[#f4e4bc] rounded-lg p-6 relative">
+                <div class="scroll-shadow-top"></div>
+                <div class="scroll-shadow-bottom"></div>
+
+                <h2 class="text-2xl font-bold my-8 greek-title text-center">LOS ELEGIDOS DE LOS OLÍMPICOS</h2>
+
+                <div class="max-h-[600px] overflow-y-auto scroll-container py-2">
+                    <div *ngFor="let usuario of usuarios; let i = index"
+                        class="flex items-center justify-between p-4 border-b border-[#d4b98c]"
+                        [class.border-b-0]="i === usuarios.length - 1">
+
+                        <div class="flex items-center gap-4">
+                            <span class="position-number text-2xl font-bold">{{i + 1}}º</span>
+                            <div class="flex flex-col">
+                                <span class="text-lg font-medium text-[#2c1810]">{{usuario.nombre}}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-star star-icon"></i>
+                            <span class="text-lg font-bold text-[#2c1810]">{{usuario.puntuacion}}</span>
+                        </div>
+                    </div>
+
+                    <div *ngIf="usuarios.length === 0" class="text-center text-[var(--greek-blue)] py-8">
+                        <p class="text-lg">Las Musas aún no han registrado hazañas dignas de mención</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-bottom"></div>
+        </div>
+    </div>
+</div>

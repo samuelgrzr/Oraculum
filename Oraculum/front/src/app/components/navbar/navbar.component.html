@@ -13,8 +13,8 @@
                     <div class="flex flex-col space-y-4 p-4">
                         <a href="#" class="nav-link">Inicio</a>
                         <a href="#" class="nav-link">Jugar</a>
-                        <a href="#" class="nav-link">Ranking</a>
-                        <a [routerLink]="['gestion']" *ngIf="isLoggedIn() && isAdmin()" href="#" class="nav-link">Gestionar</a>
+                        <a [routerLink]="['ranking']" class="nav-link">Ranking</a>
+                        <a [routerLink]="['gestion']" *ngIf="isLoggedIn() && isAdmin()" class="nav-link">Gestionar</a>
                     </div>
                 </div>
             </div>
@@ -23,8 +23,8 @@
             <div class="hidden md:flex space-x-8">
                 <a href="#" class="nav-link">Inicio</a>
                 <a href="#" class="nav-link">Jugar</a>
-                <a href="#" class="nav-link">Ranking</a>
-                <a [routerLink]="['gestion']" *ngIf="isLoggedIn() && isAdmin()" href="#" class="nav-link">Gestionar</a>
+                <a [routerLink]="['ranking']" class="nav-link">Ranking</a>
+                <a [routerLink]="['gestion']" *ngIf="isLoggedIn() && isAdmin()" class="nav-link">Gestionar</a>
             </div>
 
             <div class="relative">
