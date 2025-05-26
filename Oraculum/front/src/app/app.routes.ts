@@ -6,13 +6,15 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { PreguntaComponent } from './components/pregunta/pregunta.component';
 import { RespuestaComponent } from './components/respuesta/respuesta.component';
+import { GestionComponent } from './components/gestion/gestion.component';
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
     { path: "registro", component: RegistroComponent },
     { path: "perfil", component: PerfilComponent },
-    { path: "usuarios", component: UsuarioComponent },
-    { path: "categorias", component: CategoriaComponent },
-    { path: "preguntas", component: PreguntaComponent },
-    { path: "respuestas", component: RespuestaComponent },
+    { path: "gestion", component: GestionComponent },
+    { path: "gestion/usuarios", component: UsuarioComponent },
+    { path: "gestion/categorias", component: CategoriaComponent },
+    { path: "gestion/preguntas", component: PreguntaComponent },
+    { path: "gestion/respuestas", component: RespuestaComponent },
 ];

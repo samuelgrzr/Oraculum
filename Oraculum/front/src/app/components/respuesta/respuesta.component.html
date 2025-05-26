@@ -12,7 +12,7 @@
             style="border-color: var(--greek-gold); color: var(--greek-blue);">
             <option value="">Todas las preguntas</option>
             <option *ngFor="let pregunta of preguntas" [value]="pregunta.id">
-                {{pregunta.enunciado}}
+                {{pregunta.id}}
             </option>
         </select>
     </div>
