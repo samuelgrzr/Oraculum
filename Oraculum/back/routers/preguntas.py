@@ -31,6 +31,15 @@ def get_pregunta(db: db_dependency, id_pregunta: int):
 def get_all_preguntas(db: db_dependency):
     return db.query(Pregunta).all()
 
+@router.get("/categoria/{id_categoria}")
+def get_preguntas_por_categoria(db: db_dependency, id_categoria: int):
+    categoria = db.query(Categoria).filter(Categoria.id == id_categoria).first()
+    if not categoria:
+        raise HTTPException(status_code=404, detail=f"Categoría con id {id_categoria} no encontrada")
+    
+    preguntas = db.query(Pregunta).filter(Pregunta.id_categoria == id_categoria).all()
+    return preguntas
+
 @router.post("/", status_code=201)
 def create_pregunta(db: db_dependency, pregunta: CrearPregunta, user: user_dependency):
     if user.get("rol") != "admin":

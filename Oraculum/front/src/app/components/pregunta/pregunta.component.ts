@@ -7,19 +7,22 @@ import { CommonModule } from '@angular/common';
 import { ToastService } from '../../services/toast.service';
 import { Categoria } from '../../models/Categoria';
 import { AlertService } from '../../services/alert.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pregunta',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './pregunta.component.html',
   styleUrls: ['./pregunta.component.css']
 })
 export class PreguntaComponent implements OnInit {
   preguntas: Pregunta[] = [];
+  preguntasFiltradas: Pregunta[] = [];
   categorias: Categoria[] = [];
   preguntaEditandoId: number | null = null;
   preguntaForm: FormGroup;
   mostrarFormulario: boolean = false;
+  categoriaFiltro: string = '';
   
   get enunciadoControl(): FormControl {
     return this.preguntaForm.get('enunciado') as FormControl;
@@ -68,7 +71,14 @@ export class PreguntaComponent implements OnInit {
 
   cargarPreguntas(): void {
     this.preguntaService.getAllPreguntas().subscribe(
-      preguntas => this.preguntas = preguntas
+      preguntas => {
+        this.preguntas = preguntas;
+        if (this.categoriaFiltro) {
+          this.filtrarPorCategoria();
+        } else {
+          this.preguntasFiltradas = preguntas;
+        }
+      }
     );
   }
 
@@ -166,5 +176,21 @@ export class PreguntaComponent implements OnInit {
   getNombreCategoria(id_categoria: number): string {
     const categoria = this.categorias.find(c => c.id === id_categoria);
     return categoria ? categoria.nombre : '';
+  }
+
+  filtrarPorCategoria(): void {
+    if (!this.categoriaFiltro) {
+      this.preguntasFiltradas = this.preguntas;
+    } else {
+      this.preguntaService.getPreguntasPorCategoria(Number(this.categoriaFiltro)).subscribe(
+        preguntas => {
+          this.preguntasFiltradas = preguntas;
+        }
+      );
+    }
+  }
+
+  aplicarFiltro(): void {
+    this.filtrarPorCategoria();
   }
 }

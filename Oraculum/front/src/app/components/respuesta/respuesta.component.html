@@ -1,6 +1,22 @@
 <div class="respuestas-container p-5">
     <h2 class="text-2xl font-semibold text-[var(--greek-blue)] mb-6">Lista de Respuestas</h2>
 
+    <!-- Filtro por pregunta -->
+    <div class="mb-3 flex items-center gap-2">
+        <label for="preguntaFiltro" class="text-[var(--greek-blue)] font-semibold">Filtrar por Pregunta:</label>
+        <select 
+            id="preguntaFiltro" 
+            [(ngModel)]="preguntaFiltro" 
+            (change)="aplicarFiltro()"
+            class="p-2 border-2 rounded-lg focus:outline-none"
+            style="border-color: var(--greek-gold); color: var(--greek-blue);">
+            <option value="">Todas las preguntas</option>
+            <option *ngFor="let pregunta of preguntas" [value]="pregunta.id">
+                {{pregunta.enunciado}}
+            </option>
+        </select>
+    </div>
+
     <!-- Botón y formulario desplegable para crear nueva respuesta -->
     <div class="mb-4">
         <button *ngIf="!respuestaEditandoId" (click)="toggleFormulario()" class="create-button">
@@ -71,7 +87,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let respuesta of respuestas" class="border-b border-gray-200 hover:bg-gray-50">
+                <tr *ngFor="let respuesta of respuestasFiltradas" class="border-b border-gray-200 hover:bg-gray-50">
                     <td class="p-4 text-center">{{respuesta.id}}</td>
                     <td class="p-4 text-center">{{respuesta.texto}}</td>
                     <td class="p-4 text-center">

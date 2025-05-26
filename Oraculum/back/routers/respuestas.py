@@ -29,6 +29,15 @@ def get_respuesta(db: db_dependency, id_respuesta: int):
 def get_all_respuestas(db: db_dependency):
     return db.query(Respuesta).all()
 
+@router.get("/pregunta/{id_pregunta}")
+def get_respuestas_por_pregunta(db: db_dependency, id_pregunta: int):
+    pregunta = db.query(Pregunta).filter(Pregunta.id == id_pregunta).first()
+    if not pregunta:
+        raise HTTPException(status_code=404, detail=f"Pregunta con id {id_pregunta} no encontrada")
+    
+    respuestas = db.query(Respuesta).filter(Respuesta.id_pregunta == id_pregunta).all()
+    return respuestas
+
 @router.post("/", status_code=201)
 def create_respuesta(db: db_dependency, respuesta: CrearRespuesta, user: user_dependency):
     if user.get("rol") != "admin":

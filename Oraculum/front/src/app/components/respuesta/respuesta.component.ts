@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators, FormsModule } from '@angular/forms';
 import { Respuesta } from '../../models/Respuesta';
 import { RespuestaService } from '../../services/respuesta.service';
 import { PreguntaService } from '../../services/pregunta.service';
@@ -10,17 +10,19 @@ import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-respuesta',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './respuesta.component.html',
   styleUrls: ['./respuesta.component.css']
 })
 export class RespuestaComponent implements OnInit {
   respuestas: Respuesta[] = [];
+  respuestasFiltradas: Respuesta[] = [];
   preguntas: Pregunta[] = [];
   respuestaEditandoId: number | null = null;
   respuestaForm: FormGroup;
   mostrarFormulario: boolean = false;
-  
+  preguntaFiltro: string = '';
+
   get textoControl(): FormControl {
     return this.respuestaForm.get('texto') as FormControl;
   }
@@ -58,8 +60,31 @@ export class RespuestaComponent implements OnInit {
 
   cargarRespuestas(): void {
     this.respuestaService.getAllRespuestas().subscribe(
-      respuestas => this.respuestas = respuestas
+      respuestas => {
+        this.respuestas = respuestas;
+        if (this.preguntaFiltro) {
+          this.filtrarPorPregunta();
+        } else {
+          this.respuestasFiltradas = respuestas;
+        }
+      }
     );
+  }
+
+  filtrarPorPregunta(): void {
+    if (!this.preguntaFiltro) {
+      this.respuestasFiltradas = this.respuestas;
+    } else {
+      this.respuestaService.getRespuestasPorPregunta(Number(this.preguntaFiltro)).subscribe(
+        respuestas => {
+          this.respuestasFiltradas = respuestas;
+        }
+      );
+    }
+  }
+
+  aplicarFiltro(): void {
+    this.filtrarPorPregunta();
   }
 
   cargarPreguntas(): void {
@@ -104,45 +129,59 @@ export class RespuestaComponent implements OnInit {
       
       // Verificar si ya existe una respuesta correcta para esta pregunta
       if (nuevaRespuesta.es_correcta) {
-        const respuestasExistentes = this.respuestas.filter(r => 
-          r.id_pregunta === nuevaRespuesta.id_pregunta && 
-          r.es_correcta && 
-          r.id !== this.respuestaEditandoId
-        );
+        this.respuestaService.getRespuestasPorPregunta(nuevaRespuesta.id_pregunta).subscribe({
+          next: (respuestas) => {
+            const respuestaCorrecta = respuestas.find(r => 
+              r.es_correcta && 
+              (!this.respuestaEditandoId || r.id !== this.respuestaEditandoId)
+            );
 
-        if (respuestasExistentes.length > 0) {
-          this.toastService.showMessage('Ya existe una respuesta correcta para esta pregunta');
-          return;
-        }
-      }
-
-      if (this.respuestaEditandoId) {
-        this.respuestaService.updateRespuesta(this.respuestaEditandoId, nuevaRespuesta)
-          .subscribe({
-            next: () => {
-              this.toastService.showMessage('Respuesta actualizada correctamente');
-              this.cargarRespuestas();
-              this.cancelarEdicion();
-            },
-            error: (error) => {
-              this.toastService.showMessage('Error al actualizar la respuesta');
-              console.error('Error:', error);
+            if (respuestaCorrecta) {
+              this.toastService.showMessage('Ya existe una respuesta correcta para esta pregunta');
+              return;
             }
-          });
+
+            this.guardarRespuesta(nuevaRespuesta);
+          },
+          error: (error) => {
+            this.toastService.showMessage('Error al verificar las respuestas existentes');
+            console.error('Error:', error);
+          }
+        });
       } else {
-        this.respuestaService.createRespuesta(this.respuestaForm.value)
-          .subscribe({
-            next: () => {
-              this.toastService.showMessage('Respuesta creada correctamente');
-              this.cargarRespuestas();
-              this.cancelarEdicion();
-            },
-            error: (error) => {
-              this.toastService.showMessage('Error al crear la respuesta');
-              console.error('Error:', error);
-            }
-          });
+        this.guardarRespuesta(nuevaRespuesta);
       }
+    }
+  }
+
+  // He tenido que separar la lógica en dos métodos para poder controlar que no haya dos correctas
+  guardarRespuesta(respuesta: any): void {
+    if (this.respuestaEditandoId) {
+      this.respuestaService.updateRespuesta(this.respuestaEditandoId, respuesta)
+        .subscribe({
+          next: () => {
+            this.toastService.showMessage('Respuesta actualizada correctamente');
+            this.cargarRespuestas();
+            this.cancelarEdicion();
+          },
+          error: (error) => {
+            this.toastService.showMessage('Error al actualizar la respuesta');
+            console.error('Error:', error);
+          }
+        });
+    } else {
+      this.respuestaService.createRespuesta(respuesta)
+        .subscribe({
+          next: () => {
+            this.toastService.showMessage('Respuesta creada correctamente');
+            this.cargarRespuestas();
+            this.cancelarEdicion();
+          },
+          error: (error) => {
+            this.toastService.showMessage('Error al crear la respuesta');
+            console.error('Error:', error);
+          }
+        });
     }
   }
 
@@ -162,7 +201,7 @@ export class RespuestaComponent implements OnInit {
           });
         }
       });
-}
+  }
 
   isEditing(id: number): boolean {
     return this.respuestaEditandoId === id;
