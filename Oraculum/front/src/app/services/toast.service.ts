@@ -10,7 +10,7 @@ export class ToastService {
 
     showMessage(message: string) {
         this.messageSubject.next(message);
-        setTimeout(() => this.clearMessage(), 3000);
+        setTimeout(() => this.clearMessage(), 5000);
     }
 
     clearMessage() {
