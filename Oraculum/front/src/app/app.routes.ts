@@ -8,6 +8,7 @@ import { PreguntaComponent } from './components/pregunta/pregunta.component';
 import { RespuestaComponent } from './components/respuesta/respuesta.component';
 import { GestionComponent } from './components/gestion/gestion.component';
 import { RankingComponent } from './components/ranking/ranking.component';
+import { InicioPartidaComponent } from './components/inicio-partida/inicio-partida.component';
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -19,4 +20,5 @@ export const routes: Routes = [
     { path: "gestion/preguntas", component: PreguntaComponent },
     { path: "gestion/respuestas", component: RespuestaComponent },
     { path: "ranking", component: RankingComponent },
+    { path: "jugar", component: InicioPartidaComponent },
 ];

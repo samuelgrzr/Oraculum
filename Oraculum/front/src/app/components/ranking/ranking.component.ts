@@ -9,7 +9,6 @@ interface RankingUsuario {
 
 @Component({
   selector: 'app-ranking',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './ranking.component.html',
   styleUrls: ['./ranking.component.css']
