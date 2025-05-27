@@ -15,12 +15,41 @@ export class NavbarComponent {
   private router = inject(Router);
 
   onLoginSuccess() {
-    const loginToggle = document.getElementById('login-toggle') as HTMLInputElement;
-    if (loginToggle) loginToggle.checked = false;
+    this.closeLoginMenu();
   }
 
   onLogout() {
     this.authService.logout();
+    this.closeUserMenu();
+  }
+
+  // Métodos para cerrar los menús desplegables
+  closeMainMenu() {
+    const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement;
+    if (menuToggle) menuToggle.checked = false;
+  }
+
+  closeLoginMenu() {
+    const loginToggle = document.getElementById('login-toggle') as HTMLInputElement;
+    if (loginToggle) loginToggle.checked = false;
+  }
+
+  closeUserMenu() {
+    const userMenuToggle = document.getElementById('user-menu-toggle') as HTMLInputElement;
+    if (userMenuToggle) userMenuToggle.checked = false;
+  }
+
+  // Método para usar en los enlaces
+  navigateTo(route: string[]) {
+    // Cierra todos los menús
+    this.closeMainMenu();
+    this.closeLoginMenu();
+    this.closeUserMenu();
+    
+    // Navega a la ruta
+    this.router.navigate(route);
+    
+    return false; // Evita la navegación predeterminada
   }
 
   isLoggedIn(): boolean {

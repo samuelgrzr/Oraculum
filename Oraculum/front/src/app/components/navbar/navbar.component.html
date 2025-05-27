@@ -11,20 +11,22 @@
                 <div
                     class="menu-content absolute top-full left-0 bg-white shadow-md transition-all duration-300 w-48 mt-2 rounded-b-xl">
                     <div class="flex flex-col space-y-4 p-4">
-                        <a href="#" class="nav-link">Inicio</a>
-                        <a href="#" class="nav-link">Jugar</a>
-                        <a [routerLink]="['ranking']" class="nav-link">Ranking</a>
-                        <a [routerLink]="['gestion']" *ngIf="isLoggedIn() && isAdmin()" class="nav-link">Gestionar</a>
+                        <!-- Uso este método en vez del routerLink
+                        para poder cerrar los menús desplegables -->
+                        <a (click)="navigateTo(['/'])" class="nav-link">Inicio</a>
+                        <a (click)="navigateTo(['/jugar'])" class="nav-link">Jugar</a>
+                        <a (click)="navigateTo(['/ranking'])" class="nav-link">Ranking</a>
+                        <a (click)="navigateTo(['/gestion'])" *ngIf="isLoggedIn() && isAdmin()" class="nav-link">Gestionar</a>
                     </div>
                 </div>
             </div>
             <!-- FIN MENÚ DESPLEGABLE -->
 
             <div class="hidden md:flex space-x-8">
-                <a href="#" class="nav-link">Inicio</a>
-                <a href="#" class="nav-link">Jugar</a>
-                <a [routerLink]="['ranking']" class="nav-link">Ranking</a>
-                <a [routerLink]="['gestion']" *ngIf="isLoggedIn() && isAdmin()" class="nav-link">Gestionar</a>
+                <a [routerLink]="['/']" class="nav-link">Inicio</a>
+                <a [routerLink]="['/jugar']" class="nav-link">Jugar</a>
+                <a [routerLink]="['/ranking']" class="nav-link">Ranking</a>
+                <a [routerLink]="['/gestion']" *ngIf="isLoggedIn() && isAdmin()" class="nav-link">Gestionar</a>
             </div>
 
             <div class="relative">
@@ -58,7 +60,7 @@
                             <div
                                 class="menu-content absolute right-0 top-full bg-white shadow-md transition-all duration-300 w-48 mt-2 rounded-b-xl">
                                 <div class="flex flex-col space-y-4 p-4">
-                                    <a [routerLink]="['perfil']" href="#" class="nav-link flex items-center">
+                                    <a (click)="navigateTo(['/perfil'])" class="nav-link flex items-center">
                                         <i class="fas fa-user mr-2"></i>
                                         Perfil
                                     </a>
