@@ -1,32 +1,82 @@
 .home-container {
-  min-height: 100vh;
-  padding: 2rem;
+  min-height: calc(100vh - 300px);
+  padding: 2rem 0;
 }
 
-.hero-section {
-  text-align: center;
-  padding: 4rem 0;
-  background: linear-gradient(rgba(26, 95, 122, 0.1), rgba(178, 217, 231, 0.2));
+.intro-section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+// Estilo de pergamino para la introducción
+.scroll-wrapper {
+  position: relative;
+  padding: 20px;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.scroll-content {
+  background-color: #f4e4bc;
+  background-image: 
+    linear-gradient(90deg, rgba(200, 175, 140, 0.2) 0%, transparent 20%, transparent 80%, rgba(200, 175, 140, 0.2) 100%),
+    linear-gradient(#f4e4bc 0.1em, transparent 0.1em);
+  background-size: 100% 1.2em;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid #d4b98c;
+  position: relative;
+  z-index: 1;
   border-radius: 8px;
-  margin-bottom: 3rem;
+  color: #2c1810;
+  
+  // Efecto de papel antiguo
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      repeating-radial-gradient(
+        circle at 30% 30%,
+        rgba(200, 175, 140, 0.1),
+        rgba(200, 175, 140, 0.1) 1px,
+        transparent 1px,
+        transparent 100%
+      );
+    background-size: 10px 10px;
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 8px;
+  }
 }
 
-.modes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 1rem;
+.scroll-top, .scroll-bottom {
+  height: 30px;
+  background-color: #f4e4bc;
+  border: 2px solid #d4b98c;
+  border-radius: 15px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.mode-card {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease;
+.scroll-top {
+  margin-bottom: -15px;
+}
 
-  &:hover {
-    transform: translateY(-5px);
+.scroll-bottom {
+  margin-top: -15px;
+}
+
+// Animación de entrada
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
