@@ -1,7 +1,9 @@
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-lg mx-auto bg-[var(--marble-white)] p-6 rounded-lg shadow-lg border-2 border-[var(--greek-gold)]">
+
+        <!-- Mensaje cuando no hay sesión iniciada -->
         <div *ngIf="!isLoggedIn()" class="text-center">
-            <h2 class="text-2xl font-bold mb-6 text-[var(--greek-blue)]">Las Moiras no te reconocen</h2>
+            <h2 class="text-2xl font-bold mb-6 text-[var(--greek-blue)]">Sesión requerida</h2>
             <div class="mb-6">
                 <svg class="mx-auto h-16 w-16 text-[var(--greek-gold)] mb-4" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -12,9 +14,13 @@
                 <p class="text-lg text-[var(--greek-blue)] mb-4">
                     Es necesario iniciar sesión para poder jugar
                 </p>
+                <p class="text-sm text-gray-600">
+                    Utiliza el botón de iniciar sesión en la parte superior para acceder a tu cuenta
+                </p>
             </div>
         </div>
 
+        <!-- Formulario cuando hay sesión iniciada -->
         <div *ngIf="isLoggedIn()">
             <h2 class="text-2xl font-bold text-center mb-6 text-[var(--greek-blue)]">Configura tu partida</h2>
 
@@ -31,9 +37,22 @@
                     'border-[var(--greek-gold)] bg-white': partidaForm.get('modo_juego')?.value === modo,
                     'border-gray-300 bg-gray-100': partidaForm.get('modo_juego')?.value !== modo
                   }">
-                                <span class="block font-medium capitalize text-[var(--greek-blue)]">Modo {{ modo
-                                    }}</span>
-                                <p class="text-sm text-gray-600 mt-1">{{ descripcionesModos[modo] }}</p>
+                                <div class="flex justify-between items-start">
+                                    <div class="flex-1">
+                                        <span class="block font-medium capitalize text-[var(--greek-blue)]">Modo {{ modo
+                                            }}</span>
+                                        <p class="text-sm text-gray-600 mt-1">{{ descripcionesModos[modo] }}</p>
+                                    </div>
+                                    <button type="button" (click)="mostrarInfoModo(modo, $event)"
+                                        class="ml-2 p-1 rounded-full hover:bg-[var(--light-blue)] hover:text-white transition-colors"
+                                        title="Más información">
+                                        <svg class="w-5 h-5 cursor-pointer text-[var(--greek-blue)]" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </label>
                         </div>
                     </div>
@@ -89,6 +108,31 @@
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Modal de información del modo -->
+    <div *ngIf="mostrandoInfoModo"
+        class="fixed inset-0 bg-opacity-20 backdrop-blur-sm flex items-center justify-center z-50"
+        (click)="cerrarInfoModo()">
+        <div class="bg-[var(--marble-white)] p-6 rounded-lg shadow-xl border-2 border-[var(--greek-gold)] max-w-md mx-4"
+            (click)="$event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-[var(--greek-blue)] capitalize">Modo {{ modoSeleccionado }}</h3>
+                <button (click)="cerrarInfoModo()" class="text-gray-500 hover:text-gray-700 cursor-pointer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="text-[var(--greek-blue)]">
+                <p class="mb-3">{{ descripcionesModos[modoSeleccionado] }}</p>
+                <div class="text-sm text-gray-600">
+                    <p><strong>Detalles:</strong></p>
+                    <p>{{ informacionDetallada[modoSeleccionado] }}</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

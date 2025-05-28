@@ -19,11 +19,22 @@ export class InicioPartidaComponent implements OnInit {
   modoJuego: string[] = ['aventura', 'prueba', 'contrarreloj', 'infinito'];
   dificultades: string[] = ['mortal', 'heroica', 'divina'];
   
+  // Variables para el modal de información
+  mostrandoInfoModo: boolean = false;
+  modoSeleccionado: string = '';
+  
   descripcionesModos: { [key: string]: string } = {
     'aventura': 'Demuestra tu sabiduría en 10 preguntas',
     'prueba': 'La propia Atenea pondrá a prueba tus conocimientos',
     'contrarreloj': 'Supera los obstáculos de Cronos para avanzar',
     'infinito': 'Apolo juzgará si eres digno de convertirte en el Oráculo'
+  };
+
+  informacionDetallada: { [key: string]: string } = {
+    'aventura': 'Responderás 10 preguntas. En cada pregunta podrás solicitar una pista que te penalizará. Tras cada pregunta sabrás si has acertado, además de una breve explicación.',
+    'prueba': 'Atenea pondrá a prueba tu progreso con 10 preguntas. No conocerás tus resultados hasta finalizar y no podrás pedir pistas.',
+    'contrarreloj': 'Responderás 10 preguntas con un límite de tiempo en cada una, si se acaba contará como fallida. Dispondrás de pistas que reducirán el tiempo y una breve explicación. El tiempo solo contará mientras respondes.',
+    'infinito': 'Responde tantas preguntas como puedas. El juego continúa hasta que falles, la velocidad y precisión son clave para obtener la máxima puntuación posible y entrar en el Ranking.'
   };
   
   constructor(
@@ -58,6 +69,18 @@ export class InicioPartidaComponent implements OnInit {
         console.error('Error:', error);
       }
     });
+  }
+
+  mostrarInfoModo(modo: string, event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
+    this.modoSeleccionado = modo;
+    this.mostrandoInfoModo = true;
+  }
+
+  cerrarInfoModo(): void {
+    this.mostrandoInfoModo = false;
+    this.modoSeleccionado = '';
   }
 
   iniciarPartida(): void {
