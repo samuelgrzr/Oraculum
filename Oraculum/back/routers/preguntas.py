@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 
 from models import Pregunta, Categoria, Respuesta
 from deps import db_dependency, user_dependency
@@ -31,13 +31,29 @@ def get_pregunta(db: db_dependency, id_pregunta: int):
 def get_all_preguntas(db: db_dependency):
     return db.query(Pregunta).all()
 
-@router.get("/categoria/{id_categoria}")
-def get_preguntas_por_categoria(db: db_dependency, id_categoria: int):
-    categoria = db.query(Categoria).filter(Categoria.id == id_categoria).first()
-    if not categoria:
-        raise HTTPException(status_code=404, detail=f"Categoría con id {id_categoria} no encontrada")
+# Nuevo endpoint para filtrar por categoría y/o dificultad
+@router.get("/filtrar")
+def get_preguntas_filtradas(
+    db: db_dependency,
+    id_categoria: Optional[int] = Query(None, description="ID de la categoría para filtrar"),
+    dificultad: Optional[str] = Query(None, description="Dificultad para filtrar (mortal, heroica, divina)")
+):
+    query = db.query(Pregunta)
     
-    preguntas = db.query(Pregunta).filter(Pregunta.id_categoria == id_categoria).all()
+    # Aplicar filtro por categoría si se proporciona
+    if id_categoria is not None:
+        categoria = db.query(Categoria).filter(Categoria.id == id_categoria).first()
+        if not categoria:
+            raise HTTPException(status_code=404, detail=f"Categoría con id {id_categoria} no encontrada")
+        query = query.filter(Pregunta.id_categoria == id_categoria)
+    
+    # Aplicar filtro por dificultad si se proporciona
+    if dificultad is not None:
+        if dificultad not in ["mortal", "heroica", "divina"]:
+            raise HTTPException(status_code=400, detail="Dificultad debe ser: mortal, heroica o divina")
+        query = query.filter(Pregunta.dificultad == dificultad)
+    
+    preguntas = query.all()
     return preguntas
 
 @router.post("/", status_code=201)

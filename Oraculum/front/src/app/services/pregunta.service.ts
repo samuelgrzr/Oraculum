@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pregunta } from '../models/Pregunta';
 
@@ -13,15 +13,19 @@ export class PreguntaService {
     getPregunta(id: number): Observable<Pregunta> {
         return this.http.get<Pregunta>(`${this.apiUrl}/${id}`);
     }
-
-    getPreguntasPorCategoria(categoriaId: number): Observable<Pregunta[]> {
-        return this.http.get<Pregunta[]>(`${this.apiUrl}/categoria/${categoriaId}`);
-    }
-
+    
     getAllPreguntas(): Observable<Pregunta[]> {
         return this.http.get<Pregunta[]>(`${this.apiUrl}/preguntas`);
     }
-
+    
+    getPreguntasfiltradas(idCategoria?: number, dificultad?: string): Observable<Pregunta[]> {
+        let params = new HttpParams();
+        
+        if (idCategoria) { params = params.set('id_categoria', idCategoria.toString()); }
+        if (dificultad) { params = params.set('dificultad', dificultad); }
+        return this.http.get<Pregunta[]>(`${this.apiUrl}/filtrar`, { params });
+    }
+    
     createPregunta(pregunta: Pregunta): Observable<Pregunta> {
         return this.http.post<Pregunta>(`${this.apiUrl}`, pregunta);
     }

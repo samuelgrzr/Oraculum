@@ -22,7 +22,11 @@ export class PreguntaComponent implements OnInit {
   preguntaEditandoId: number | null = null;
   preguntaForm: FormGroup;
   mostrarFormulario: boolean = false;
+  
+  // Filtros
   categoriaFiltro: string = '';
+  dificultadFiltro: string = '';
+  dificultades: string[] = ['mortal', 'heroica', 'divina'];
   
   get enunciadoControl(): FormControl {
     return this.preguntaForm.get('enunciado') as FormControl;
@@ -73,11 +77,7 @@ export class PreguntaComponent implements OnInit {
     this.preguntaService.getAllPreguntas().subscribe(
       preguntas => {
         this.preguntas = preguntas;
-        if (this.categoriaFiltro) {
-          this.filtrarPorCategoria();
-        } else {
-          this.preguntasFiltradas = preguntas;
-        }
+        this.aplicarFiltros();
       }
     );
   }
@@ -178,19 +178,22 @@ export class PreguntaComponent implements OnInit {
     return categoria ? categoria.nombre : '';
   }
 
-  filtrarPorCategoria(): void {
-    if (!this.categoriaFiltro) {
+  aplicarFiltros(): void {
+    const idCategoria = this.categoriaFiltro ? Number(this.categoriaFiltro) : undefined;
+    const dificultad = this.dificultadFiltro || undefined;
+    
+    if (!idCategoria && !dificultad) {
       this.preguntasFiltradas = this.preguntas;
     } else {
-      this.preguntaService.getPreguntasPorCategoria(Number(this.categoriaFiltro)).subscribe(
+      this.preguntaService.getPreguntasfiltradas(idCategoria, dificultad).subscribe(
         preguntas => {
           this.preguntasFiltradas = preguntas;
+        },
+        error => {
+          this.toastService.showMessage('Error al filtrar preguntas');
+          console.error('Error:', error);
         }
       );
     }
-  }
-
-  aplicarFiltro(): void {
-    this.filtrarPorCategoria();
   }
 }

@@ -72,11 +72,13 @@
                             <label [for]="'dificultad-' + dificultad"
                                 class="block p-4 text-center border-2 rounded-lg cursor-pointer transition-all"
                                 [ngClass]="{
-                    'border-[var(--greek-gold)] bg-white': partidaForm.get('dificultad')?.value === dificultad,
-                    'border-gray-300 bg-gray-100': partidaForm.get('dificultad')?.value !== dificultad
-                  }">
-                                <span class="block font-medium capitalize text-[var(--greek-blue)]">{{ dificultad
-                                    }}</span>
+                                    'border-[var(--greek-blue)]': partidaForm.get('dificultad')?.value === dificultad,
+                                    'border-gray-300': partidaForm.get('dificultad')?.value !== dificultad,
+                                    'bg-red-100 text-red-800': dificultad === 'mortal',
+                                    'bg-yellow-100 text-yellow-800': dificultad === 'heroica',
+                                    'bg-purple-100 text-purple-800': dificultad === 'divina'
+                                }">
+                                <span class="block font-medium capitalize">{{ dificultad }}</span>
                             </label>
                         </div>
                     </div>

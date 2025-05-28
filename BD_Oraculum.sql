@@ -140,11 +140,11 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 
 -- Preguntas nivel medio
 INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
-('¿Quién fue el primer vengador en el universo cinematográfico?', '', 'Su historia comienza en la Segunda Guerra Mundial.', 'Capitán América fue el primer Vengador cronológicamente.', 2),
-('¿Qué superhéroe obtiene sus poderes tras exponerse a rayos gamma?', '', 'Su alter ego es Bruce Banner.', 'Hulk adquirió sus poderes tras un experimento fallido con rayos gamma.', 2),
-('¿Cuál es la debilidad de Superman?', '', 'Es un mineral de su planeta natal.', 'La kryptonita debilita a Superman.', 2),
-('¿Qué superhéroe de Marvel usa un martillo mágico?', '', 'Es el dios del trueno.', 'Thor utiliza el martillo Mjolnir como su arma principal.', 2),
-('¿Qué personaje es conocido por su agilidad, sentidos arácnidos y lanzar telarañas?', '', 'Vive en Nueva York.', 'Spider-Man es conocido por sus habilidades arácnidas.', 2);
+('¿Quién fue el primer vengador en el universo cinematográfico?', 'heroica', 'Su historia comienza en la Segunda Guerra Mundial.', 'Capitán América fue el primer Vengador cronológicamente.', 2),
+('¿Qué superhéroe obtiene sus poderes tras exponerse a rayos gamma?', 'heroica', 'Su alter ego es Bruce Banner.', 'Hulk adquirió sus poderes tras un experimento fallido con rayos gamma.', 2),
+('¿Cuál es la debilidad de Superman?', 'heroica', 'Es un mineral de su planeta natal.', 'La kryptonita debilita a Superman.', 2),
+('¿Qué superhéroe de Marvel usa un martillo mágico?', 'heroica', 'Es el dios del trueno.', 'Thor utiliza el martillo Mjolnir como su arma principal.', 2),
+('¿Qué personaje es conocido por su agilidad, sentidos arácnidos y lanzar telarañas?', 'heroica', 'Vive en Nueva York.', 'Spider-Man es conocido por sus habilidades arácnidas.', 2);
 
 -- Respuestas nivel medio
 INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
