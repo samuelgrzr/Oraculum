@@ -55,9 +55,9 @@
             [ngClass]="{'border-red-500': dificultadControl.invalid && dificultadControl.touched}"
             style="border-color: var(--greek-gold); color: var(--greek-blue);">
             <option value="">Selecciona la dificultad</option>
-            <option value="facil">Fácil</option>
-            <option value="medio">Medio</option>
-            <option value="dificil">Difícil</option>
+            <option value="mortal">Mortal</option>
+            <option value="heroica">Heroica</option>
+            <option value="divina">Divina</option>
           </select>
           <div *ngIf="dificultadControl?.invalid && dificultadControl?.touched" class="text-red-500 text-xs mt-1">
             <p *ngIf="dificultadControl?.errors?.['required']">La dificultad es obligatoria</p>

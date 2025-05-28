@@ -17,7 +17,7 @@ export class InicioPartidaComponent implements OnInit {
   partidaForm: FormGroup;
   categorias: Categoria[] = [];
   modoJuego: string[] = ['estandar', 'examen', 'contrarreloj', 'infinito'];
-  dificultades: string[] = ['facil', 'medio', 'dificil'];
+  dificultades: string[] = ['mortal', 'heroica', 'divina'];
   
   descripcionesModos: { [key: string]: string } = {
     'estandar': 'Demuestra tu sabiduría en 10 preguntas',

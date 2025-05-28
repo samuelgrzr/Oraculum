@@ -24,7 +24,7 @@ class CrearPartida(BaseModel):
     puntuacion: int
     modo_juego: str  # 'estandar', 'examen', 'contrarreloj', 'infinito'
     id_categoria: int
-    dificultad: str  # 'facil', 'medio', 'dificil'
+    dificultad: str  # 'mortal', 'heroica', 'divina'
     id_usuario: Optional[int] = None
 
 @router.get("/")

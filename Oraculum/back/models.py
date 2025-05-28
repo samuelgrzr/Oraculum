@@ -55,7 +55,7 @@ class Partida(Base):
     puntuacion = Column(Integer)
     modo_juego = Column(String(50), nullable=False)  # 'estandar', 'examen', 'contrarreloj', 'infinito'
     id_categoria = Column(Integer, ForeignKey("categoria.id"))
-    dificultad = Column(String(50), nullable=False)  # 'facil', 'medio', 'dificil'
+    dificultad = Column(String(50), nullable=False)  # 'mortal', 'heroica', 'divina'
     
     usuario = relationship("Usuario", back_populates="historial")
     datos_partida = relationship("DatosPartida", back_populates="partida")
