@@ -73,7 +73,7 @@
         </div>
 
         <div>
-          <select formControlName="dificultad" class="w-full p-2 border-2 rounded-lg focus:outline-none"
+          <select formControlName="dificultad" class="w-full p-2 border-2 rounded-lg focus:outline-none cursor-pointer"
             [ngClass]="{'border-red-500': dificultadControl.invalid && dificultadControl.touched}"
             style="border-color: var(--greek-gold); color: var(--greek-blue);">
             <option value="">Selecciona la dificultad</option>
@@ -87,7 +87,7 @@
         </div>
 
         <div>
-          <select formControlName="id_categoria" class="w-full p-2 border-2 rounded-lg focus:outline-none"
+          <select formControlName="id_categoria" class="w-full p-2 border-2 rounded-lg focus:outline-none cursor-pointer"
             [ngClass]="{'border-red-500': id_categoriaControl.invalid && id_categoriaControl.touched}"
             style="border-color: var(--greek-gold); color: var(--greek-blue);">
             <option value="">Selecciona la categoría</option>

@@ -92,7 +92,7 @@
                 <div class="space-y-2">
                     <label class="block text-lg font-medium text-[var(--greek-blue)]">Categoría</label>
                     <select formControlName="id_categoria"
-                        class="w-full p-3 border-2 border-[var(--greek-gold)] rounded-lg focus:outline-none bg-white text-[var(--greek-blue)]">
+                        class="w-full p-3 border-2 border-[var(--greek-gold)] rounded-lg focus:outline-none bg-white text-[var(--greek-blue)] cursor-pointer">
                         <option value="" class="text-[var(--greek-blue)]">Selecciona una categoría</option>
                         <option *ngFor="let categoria of categorias" [value]="categoria.id"
                             class="text-[var(--greek-blue)]">{{ categoria.nombre }}</option>
