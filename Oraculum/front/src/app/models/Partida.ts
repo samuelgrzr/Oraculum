@@ -3,7 +3,7 @@ export interface Partida {
     id_usuario: number;
     fecha: Date;
     puntuacion: number;
-    modo_juego: string;  // 'estandar', 'examen', 'contrarreloj', 'infinito'
+    modo_juego: string;  // 'aventura', 'prueba', 'contrarreloj', 'infinito'
     id_categoria: number;
     dificultad: string;  // 'mortal', 'heroica', 'divina'
 }

@@ -22,7 +22,7 @@ class DatosPartidaBase(BaseModel):
 class CrearPartida(BaseModel):
     datos_partida: List[DatosPartidaBase]
     puntuacion: int
-    modo_juego: str  # 'estandar', 'examen', 'contrarreloj', 'infinito'
+    modo_juego: str  # 'aventura', 'prueba', 'contrarreloj', 'infinito'
     id_categoria: int
     dificultad: str  # 'mortal', 'heroica', 'divina'
     id_usuario: Optional[int] = None

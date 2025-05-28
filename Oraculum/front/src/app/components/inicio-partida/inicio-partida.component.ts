@@ -16,12 +16,12 @@ import { Categoria } from '../../models/Categoria';
 export class InicioPartidaComponent implements OnInit {
   partidaForm: FormGroup;
   categorias: Categoria[] = [];
-  modoJuego: string[] = ['estandar', 'examen', 'contrarreloj', 'infinito'];
+  modoJuego: string[] = ['aventura', 'prueba', 'contrarreloj', 'infinito'];
   dificultades: string[] = ['mortal', 'heroica', 'divina'];
   
   descripcionesModos: { [key: string]: string } = {
-    'estandar': 'Demuestra tu sabiduría en 10 preguntas',
-    'examen': 'La propia Atenea pondrá a prueba tus conocimientos',
+    'aventura': 'Demuestra tu sabiduría en 10 preguntas',
+    'prueba': 'La propia Atenea pondrá a prueba tus conocimientos',
     'contrarreloj': 'Supera los obstáculos de Cronos para avanzar',
     'infinito': 'Apolo juzgará si eres digno de convertirte en el Oráculo'
   };

@@ -39,7 +39,7 @@ CREATE TABLE partida (
     id_usuario INT,
     fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
     puntuacion INT,
-    modo_juego VARCHAR(50) NOT NULL,  -- 'estandar', 'examen', 'contrarreloj', 'infinito'
+    modo_juego VARCHAR(50) NOT NULL,  -- 'aventura', 'prueba', 'contrarreloj', 'infinito'
     id_categoria INT,
     dificultad VARCHAR(50) NOT NULL,  -- 'mortal', 'heroica', 'divina'
     FOREIGN KEY (id_usuario) REFERENCES usuario(id),

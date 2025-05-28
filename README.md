@@ -8,12 +8,12 @@ Oraculum es una aplicación web de preguntas y respuestas que combina el entrete
 
 ### 🎮 Modos de Juego
 
-#### Modo Estándar
+#### Modo Aventura
 - 10 preguntas
 - Pistas con penalización de puntuación
 - Explicación tras cada respuesta
 
-#### Modo Examen
+#### Modo Prueba
 - 10 preguntas tipo test
 - Sin pistas
 - Revisión final de respuestas

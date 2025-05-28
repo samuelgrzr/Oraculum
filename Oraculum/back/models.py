@@ -53,7 +53,7 @@ class Partida(Base):
     id_usuario = Column(Integer, ForeignKey("usuario.id"))
     fecha = Column(DateTime, default=datetime.datetime.utcnow)
     puntuacion = Column(Integer)
-    modo_juego = Column(String(50), nullable=False)  # 'estandar', 'examen', 'contrarreloj', 'infinito'
+    modo_juego = Column(String(50), nullable=False)  # 'aventura', 'prueba', 'contrarreloj', 'infinito'
     id_categoria = Column(Integer, ForeignKey("categoria.id"))
     dificultad = Column(String(50), nullable=False)  # 'mortal', 'heroica', 'divina'
     
