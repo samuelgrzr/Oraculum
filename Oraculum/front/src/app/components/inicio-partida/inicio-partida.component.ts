@@ -34,7 +34,7 @@ export class InicioPartidaComponent implements OnInit {
     'aventura': 'Responderás 10 preguntas. En cada pregunta podrás solicitar una pista que te penalizará. Tras cada pregunta sabrás si has acertado, además de una breve explicación.',
     'prueba': 'Atenea pondrá a prueba tu progreso con 10 preguntas. No conocerás tus resultados hasta finalizar y no podrás pedir pistas.',
     'contrarreloj': 'Responderás 10 preguntas con un límite de tiempo en cada una, si se acaba contará como fallida. Dispondrás de pistas que reducirán el tiempo y una breve explicación. El tiempo solo contará mientras respondes.',
-    'infinito': 'Responde tantas preguntas como puedas. El juego continúa hasta que falles, la velocidad y precisión son clave para obtener la máxima puntuación posible y entrar en el Ranking.'
+    'infinito': 'Responde tantas preguntas con límite de tiempo como puedas, el juego continúa hasta que falles. La velocidad y precisión son clave para obtener la máxima puntuación posible y entrar en el Ranking. La puntuación de cada pregunta se basará en su dificultad y el tiempo que tardes en responder.'
   };
   
   constructor(
