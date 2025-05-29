@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CategoriaService } from '../../services/categoria.service';
-import { AuthService } from '../../services/auth.service';
-import { ToastService } from '../../services/toast.service';
-import { Categoria } from '../../models/Categoria';
+import { CategoriaService } from '../../../services/categoria.service';
+import { AuthService } from '../../../services/auth.service';
+import { ToastService } from '../../../services/toast.service';
+import { Categoria } from '../../../models/Categoria';
 
 @Component({
   selector: 'app-inicio-partida',
