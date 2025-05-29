@@ -5,5 +5,5 @@ export interface Partida {
     puntuacion: number;
     modo_juego: string;  // 'aventura', 'prueba', 'contrarreloj', 'infinito'
     id_categoria: number;
-    dificultad: string;  // 'mortal', 'heroica', 'divina'
+    dificultad: string;  // 'heroica', 'divina'
 }

@@ -36,7 +36,7 @@ def get_all_preguntas(db: db_dependency):
 def get_preguntas_filtradas(
     db: db_dependency,
     id_categoria: Optional[int] = Query(None, description="ID de la categoría para filtrar"),
-    dificultad: Optional[str] = Query(None, description="Dificultad para filtrar (mortal, heroica, divina)")
+    dificultad: Optional[str] = Query(None, description="Dificultad para filtrar (heroica o divina)")
 ):
     query = db.query(Pregunta)
     
@@ -49,8 +49,8 @@ def get_preguntas_filtradas(
     
     # Aplicar filtro por dificultad si se proporciona
     if dificultad is not None:
-        if dificultad not in ["mortal", "heroica", "divina"]:
-            raise HTTPException(status_code=400, detail="Dificultad debe ser: mortal, heroica o divina")
+        if dificultad not in ["heroica", "divina"]:
+            raise HTTPException(status_code=400, detail="Dificultad debe ser heroica o divina")
         query = query.filter(Pregunta.dificultad == dificultad)
     
     preguntas = query.all()

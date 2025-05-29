@@ -26,7 +26,7 @@ export class PreguntaComponent implements OnInit {
   // Filtros
   categoriaFiltro: string = '';
   dificultadFiltro: string = '';
-  dificultades: string[] = ['mortal', 'heroica', 'divina'];
+  dificultades: string[] = ['heroica', 'divina'];
   
   get enunciadoControl(): FormControl {
     return this.preguntaForm.get('enunciado') as FormControl;

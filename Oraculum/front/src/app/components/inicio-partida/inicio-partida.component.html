@@ -1,5 +1,6 @@
 <div class="container mx-auto px-4 py-8">
-    <div class="max-w-5xl mx-auto bg-[var(--marble-white)] p-6 rounded-lg shadow-lg border-2 border-[var(--greek-gold)]">
+    <div
+        class="max-w-5xl mx-auto bg-[var(--marble-white)] p-6 rounded-lg shadow-lg border-2 border-[var(--greek-gold)]">
 
         <!-- Mensaje cuando no hay sesión iniciada -->
         <div *ngIf="!isLoggedIn()" class="text-center">
@@ -27,11 +28,11 @@
             <form [formGroup]="partidaForm" (ngSubmit)="iniciarPartida()" class="space-y-6">
                 <!-- Layout responsive: vertical en móvil, horizontal en pantallas grandes -->
                 <div class="flex flex-col lg:flex-row lg:gap-8 space-y-6 lg:space-y-0">
-                    
+
                     <!-- Columna 1: Modo de juego -->
                     <div class="flex-1 space-y-2">
                         <label class="block text-lg font-medium text-[var(--greek-blue)]">Modo de juego</label>
-                        <div class="grid grid-cols-1 gap-4">
+                        <div class="grid grid-cols-2 lg:grid-cols-1 gap-4">
                             <div *ngFor="let modo of modoJuego" class="relative">
                                 <input type="radio" [id]="'modo-' + modo" [value]="modo" formControlName="modo_juego"
                                     class="hidden peer">
@@ -52,7 +53,8 @@
                                             <svg class="w-5 h-5 cursor-pointer text-[var(--greek-blue)]" fill="none"
                                                 stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                                </path>
                                             </svg>
                                         </button>
                                     </div>
@@ -70,16 +72,15 @@
                         <!-- Dificultad -->
                         <div class="space-y-2">
                             <label class="block text-lg font-medium text-[var(--greek-blue)]">Dificultad</label>
-                            <div class="grid grid-cols-3 lg:grid-cols-1 gap-4">
-                                <div *ngFor="let dificultad of dificultades" class="relative">
+                            <div class="flex gap-4 justify-center">
+                                <div *ngFor="let dificultad of dificultades" class="flex-1 max-w-xs">
                                     <input type="radio" [id]="'dificultad-' + dificultad" [value]="dificultad"
                                         formControlName="dificultad" class="hidden peer">
                                     <label [for]="'dificultad-' + dificultad"
-                                        class="block p-4 text-center border-2 rounded-lg cursor-pointer transition-all"
+                                        class="block p-4 text-center border-2 rounded-lg cursor-pointer transition-all w-full"
                                         [ngClass]="{
                                             'border-[var(--greek-blue)]': partidaForm.get('dificultad')?.value === dificultad,
                                             'border-gray-300': partidaForm.get('dificultad')?.value !== dificultad,
-                                            'bg-red-100 text-red-800': dificultad === 'mortal',
                                             'bg-yellow-100 text-yellow-800': dificultad === 'heroica',
                                             'bg-purple-100 text-purple-800': dificultad === 'divina'
                                         }">

@@ -41,7 +41,7 @@ CREATE TABLE partida (
     puntuacion INT,
     modo_juego VARCHAR(50) NOT NULL,  -- 'aventura', 'prueba', 'contrarreloj', 'infinito'
     id_categoria INT,
-    dificultad VARCHAR(50) NOT NULL,  -- 'mortal', 'heroica', 'divina'
+    dificultad VARCHAR(50) NOT NULL,  -- 'heroica', 'divina'
     FOREIGN KEY (id_usuario) REFERENCES usuario(id),
     FOREIGN KEY (id_categoria) REFERENCES categoria(id)
 );
@@ -71,22 +71,6 @@ INSERT INTO categoria (nombre) VALUES
 -- Insertar preguntas y respuestas
 
 -- 🔵 Mitología griega
-
--- Preguntas nivel fácil
-INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
-('¿Quién es el dios del trueno en la mitología griega?', 'mortal', 'Su arma es un rayo.', 'Zeus es el dios del trueno y el cielo.', 1),
-('¿Qué criatura mitológica tenía una mirada que convertía en piedra?', 'mortal', 'Tenía serpientes por cabello.', 'Medusa era una gorgona con mirada petrificante.', 1),
-('¿Quién es el héroe conocido por su talón vulnerable?', 'mortal', 'Su madre lo sumergió en el río Estigia.', 'Aquiles fue invulnerable salvo en su talón.', 1),
-('¿Qué dios griego gobernaba el inframundo?', 'mortal', 'Posee toda la riqueza del mundo.', 'Hades es el dios del inframundo.', 1),
-('¿Qué gran héroe era conocido como Nadie?', 'mortal', 'Se presentó así ante un cíclope.', 'Odiseo utilizó este ardid para poder escapar de la guarida de Polifemo.', 1);
-
--- Respuestas nivel fácil
-INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
-('Zeus', TRUE, 1), ('Poseidón', FALSE, 1), ('Hades', FALSE, 1), ('Ares', FALSE, 1),
-('Medusa', TRUE, 2), ('Hidra', FALSE, 2), ('Minotauro', FALSE, 2), ('Quimera', FALSE, 2),
-('Aquiles', TRUE, 3), ('Hércules', FALSE, 3), ('Odiseo', FALSE, 3), ('Teseo', FALSE, 3),
-('Hades', TRUE, 4), ('Zeus', FALSE, 4), ('Hermes', FALSE, 4), ('Apolo', FALSE, 4),
-('Odiseo', TRUE, 5), ('Aquiles', FALSE, 5), ('Perseo', FALSE, 5), ('Diomedes', FALSE, 5);
 
 -- Preguntas nivel medio
 INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
@@ -121,22 +105,6 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Hidra', TRUE, 15), ('Quimera', FALSE, 15), ('Cerbero', FALSE, 15), ('Esfinge', FALSE, 15);
 
 -- 🟣 Superhéroes
-
--- Preguntas nivel fácil
-INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
-('¿Quién es el alter ego de Spider-Man?', 'mortal', 'Trabaja como fotógrafo.', 'Peter Parker es la identidad secreta de Spider-Man.', 2),
-('¿Qué superhéroe es conocido como el Hombre de Acero?', 'mortal', 'Viene del planeta Krypton.', 'Superman es apodado el Hombre de Acero.', 2),
-('¿Quién lidera los Vengadores en muchas de sus versiones?', 'mortal', 'Lleva un escudo con una estrella.', 'Capitán América suele ser el líder de los Vengadores.', 2),
-('¿Qué superhéroe tiene una armadura de alta tecnología y es multimillonario?', 'mortal', 'Su mayordomo no se llama Alfred.', 'Iron Man es el alter ego de Tony Stark.', 2),
-('¿Qué heroína pertenece a las Amazonas y usa un lazo de la verdad?', 'mortal', 'Es una princesa guerrera.', 'Wonder Woman es una amazona con poderes divinos.', 2);
-
--- Respuestas nivel fácil
-INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
-('Peter Parker', TRUE, 16), ('Clark Kent', FALSE, 16), ('Bruce Wayne', FALSE, 16), ('Tony Stark', FALSE, 16),
-('Superman', TRUE, 17), ('Batman', FALSE, 17), ('Iron Man', FALSE, 17), ('Hulk', FALSE, 17),
-('Capitán América', TRUE, 18), ('Thor', FALSE, 18), ('Iron Man', FALSE, 18), ('Ojo de Halcón', FALSE, 18),
-('Iron Man', TRUE, 19), ('Spider-Man', FALSE, 19), ('Batman', FALSE, 19), ('Capitán América', FALSE, 19),
-('Wonder Woman', TRUE, 20), ('Capitana Marvel', FALSE, 20), ('Viuda Negra', FALSE, 20), ('Jean Grey', FALSE, 20);
 
 -- Preguntas nivel medio
 INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES

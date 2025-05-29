@@ -77,7 +77,6 @@
             [ngClass]="{'border-red-500': dificultadControl.invalid && dificultadControl.touched}"
             style="border-color: var(--greek-gold); color: var(--greek-blue);">
             <option value="">Selecciona la dificultad</option>
-            <option value="mortal">Mortal</option>
             <option value="heroica">Heroica</option>
             <option value="divina">Divina</option>
           </select>
@@ -135,7 +134,6 @@
           <td class="p-4 text-center">{{pregunta.explicacion}}</td>
           <td class="p-4 text-center">
             <span class="px-2 py-1 rounded-full text-xs font-semibold" [ngClass]="{
-                    'bg-red-100 text-red-800': pregunta.dificultad === 'mortal',
                     'bg-yellow-100 text-yellow-800': pregunta.dificultad === 'heroica',
                     'bg-purple-100 text-purple-800': pregunta.dificultad === 'divina'
                   }">
