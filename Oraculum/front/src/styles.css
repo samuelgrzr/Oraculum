@@ -13,6 +13,10 @@ body {
   font-family: "Marcellus", serif;
 }
 
+main {
+  background: radial-gradient(ellipse at top, var(--light-blue) 0%, var(--marble-white) 100%);
+}
+
 .greek-button {
   background-color: var(--greek-blue);
   color: white;

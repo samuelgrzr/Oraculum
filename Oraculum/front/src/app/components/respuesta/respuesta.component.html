@@ -8,7 +8,7 @@
             id="preguntaFiltro" 
             [(ngModel)]="preguntaFiltro" 
             (change)="aplicarFiltro()"
-            class="p-2 border-2 rounded-lg focus:outline-none cursor-pointer"
+            class="p-2 border-2 rounded-lg bg-white focus:outline-none cursor-pointer"
             style="border-color: var(--greek-gold); color: var(--greek-blue);">
             <option value="">Todas las preguntas</option>
             <option *ngFor="let pregunta of preguntas" [value]="pregunta.id">
