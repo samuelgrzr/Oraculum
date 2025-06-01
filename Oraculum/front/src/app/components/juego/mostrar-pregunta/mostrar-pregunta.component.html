@@ -53,27 +53,20 @@
       (click)="seleccionarRespuesta(respuesta.id)"
       class="text-left p-4 rounded-lg border-2 transition-all duration-200 hover:shadow-md min-h-[80px] flex items-center justify-center cursor-pointer"
       [ngClass]="{
-        'border-gray-300 hover:border-blue-400 hover:bg-blue-50': respuestaSeleccionadaId === null,
-        'border-blue-500 bg-blue-100': respuestaSeleccionadaId === respuesta.id,
-        'border-gray-200 bg-gray-50 cursor-not-allowed': respuestaSeleccionadaId !== null && respuestaSeleccionadaId !== respuesta.id
+        'border-[var(--greek-gold)] hover:border-yellow-400 hover:bg-yellow-50': respuestaSeleccionadaId === null,
+        'border-[var(--greek-gold)] bg-gradient-to-br from-yellow-50 to-[var(--greek-gold)] bg-opacity-20': respuestaSeleccionadaId === respuesta.id,
+        'border-gray-300 bg-gray-50 cursor-not-allowed': respuestaSeleccionadaId !== null && respuestaSeleccionadaId !== respuesta.id
       }"
       [disabled]="respuestaSeleccionadaId !== null">
       
       <div class="w-full text-center">
         <!-- Texto de la respuesta -->
-        <p class="text-gray-800 font-medium" 
+        <p class="font-medium text-[var(--greek-blue)]" 
            [ngClass]="{
              'text-gray-500': respuestaSeleccionadaId !== null && respuestaSeleccionadaId !== respuesta.id
            }">
           {{ respuesta.texto }}
         </p>
-        
-        <!-- Indicador de selección -->
-        <div *ngIf="respuestaSeleccionadaId === respuesta.id" class="mt-2 flex justify-center">
-          <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-        </div>
       </div>
     </button>
   </div>
