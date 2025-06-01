@@ -81,14 +81,4 @@ export class MostrarPreguntaComponent implements OnInit {
     this.mostrandoPista = true;
     this.usoPista = true;
   }
-
-  get numeroRespuestas(): string {
-    const letras = ['A', 'B', 'C', 'D', 'E', 'F'];
-    return letras[this.respuestas.length - 1] || 'D';
-  }
-
-  getLetraRespuesta(index: number): string {
-    const letras = ['A', 'B', 'C', 'D', 'E', 'F'];
-    return letras[index] || '';
-  }
 }

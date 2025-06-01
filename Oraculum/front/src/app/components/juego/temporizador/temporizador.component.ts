@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -49,6 +49,27 @@ export class TemporizadorComponent implements OnInit, OnDestroy {
       clearInterval(this.intervalId);
       this.intervalId = null;
     }
+  }
+
+  reiniciarTemporizador(): void {
+    this.detenerTemporizador();
+    this.tiempoInicio = Date.now();
+    this.tiempoRestante = this.tiempoLimite;
+    this.porcentajeRestante = 100;
+    this.tiempoPausado = 0;
+    
+    this.intervalId = setInterval(() => {
+      if (!this.pausado) {
+        const tiempoTranscurrido = Date.now() - this.tiempoInicio - this.tiempoPausado;
+        this.tiempoRestante = Math.max(0, this.tiempoLimite - tiempoTranscurrido);
+        this.porcentajeRestante = (this.tiempoRestante / this.tiempoLimite) * 100;
+        
+        if (this.tiempoRestante <= 0) {
+          this.tiempoAgotado.emit();
+          this.detenerTemporizador();
+        }
+      }
+    }, 100);
   }
 
   get segundosRestantes(): number {

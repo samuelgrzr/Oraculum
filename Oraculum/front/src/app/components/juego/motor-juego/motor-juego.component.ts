@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -15,11 +15,11 @@ import { ConfiguracionJuego } from '../../../models/ConfiguracionJuego';
 // Importar componentes del juego
 import { CabeceraComponent } from '../cabecera/cabecera.component';
 import { MostrarPreguntaComponent } from '../mostrar-pregunta/mostrar-pregunta.component';
-import { TemporizadorComponent } from '../temporizador/temporizador.component';
 import { RetroalimentacionComponent } from '../retroalimentacion/retroalimentacion.component';
 import { ResultadoPartidaComponent } from '../resultado-partida/resultado-partida.component';
 import { DatosPartida } from '../../../models/DatosPartida';
 import { AlertService } from '../../../services/alert.service';
+import { TemporizadorComponent } from '../temporizador/temporizador.component';
 
 @Component({
   selector: 'app-motor-juego',
@@ -27,14 +27,16 @@ import { AlertService } from '../../../services/alert.service';
     CommonModule,
     CabeceraComponent,
     MostrarPreguntaComponent,
-    TemporizadorComponent,
     RetroalimentacionComponent,
-    ResultadoPartidaComponent
+    ResultadoPartidaComponent,
+    TemporizadorComponent
   ],
   templateUrl: './motor-juego.component.html',
   styleUrl: './motor-juego.component.css'
 })
-export class MotorJuegoComponent implements OnInit, OnDestroy {
+export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild(TemporizadorComponent) temporizador!: TemporizadorComponent;
+  
   estado: EstadoJuego | null = null;
   configuracion: ConfiguracionJuego | null = null;
   mostrandoRetroalimentacion = false;
@@ -49,7 +51,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy {
     private preguntaService: PreguntaService,
     private toastService: ToastService,
     private alertService: AlertService, // Añadir esta línea
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +62,8 @@ export class MotorJuegoComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.suscripciones.forEach(sub => sub.unsubscribe());
   }
+
+  ngAfterViewInit(): void { }
 
   private inicializarJuego(): void {
     const configuracionGuardada = typeof localStorage !== 'undefined' ? localStorage.getItem('configuracionPartida') : null;
@@ -122,6 +126,12 @@ export class MotorJuegoComponent implements OnInit, OnDestroy {
         
         if (pregunta) {
           this.estadoJuegoService.actualizarPreguntaActual(pregunta);
+          // Reiniciar temporizador para la nueva pregunta
+          setTimeout(() => {
+            if (this.temporizador) {
+              this.temporizador.reiniciarTemporizador();
+            }
+          }, 100);
         } else {
           // No hay más preguntas disponibles
           this.toastService.showMessage('No hay más preguntas disponibles');
