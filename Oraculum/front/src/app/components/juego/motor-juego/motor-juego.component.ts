@@ -119,7 +119,8 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
     const suscripcion = this.logicaJuegoService.obtenerSiguientePregunta(
       this.estado.idCategoria,
       this.estado.dificultad,
-      this.estado.preguntasUsadas
+      this.estado.preguntasUsadas,
+      this.estado.modoJuego
     ).subscribe({
       next: (pregunta) => {
         this.cargandoPregunta = false;

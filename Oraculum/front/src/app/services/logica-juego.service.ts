@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, forkJoin } from 'rxjs';
 import { PreguntaService } from './pregunta.service';
 import { Pregunta } from '../models/Pregunta';
 import { CONFIGURACIONES_MODO, ConfiguracionJuego } from '../models/ConfiguracionJuego';
@@ -44,13 +44,36 @@ export class LogicaJuegoService {
   }
 
   obtenerSiguientePregunta(categoria: number, dificultad: string,
-    preguntasUsadas: number[]): Observable<Pregunta | null> {
+    preguntasUsadas: number[], modoJuego?: string): Observable<Pregunta | null> {
+    
+    // Caso especial: modo infinito con dificultad divina
+    if (modoJuego === 'infinito' && dificultad === 'divina') {
+      // Obtener preguntas de ambas dificultades
+      const preguntasHeroicas$ = this.preguntaService.getPreguntasfiltradas(categoria, 'heroica');
+      const preguntasDivinas$ = this.preguntaService.getPreguntasfiltradas(categoria, 'divina');
+      
+      return forkJoin([preguntasHeroicas$, preguntasDivinas$]).pipe(
+        map(([heroicas, divinas]) => {
+          // Combinar ambas listas
+          const todasLasPreguntas = [...heroicas, ...divinas];
+          // Filtrar preguntas ya usadas
+          const preguntasDisponibles = todasLasPreguntas.filter(p => !preguntasUsadas.includes(p.id));
+          
+          if (preguntasDisponibles.length === 0) return null;
+          
+          const indiceAleatorio = Math.floor(Math.random() * preguntasDisponibles.length);
+          return preguntasDisponibles[indiceAleatorio];
+        })
+      );
+    }
+    
+    // Comportamiento normal para todos los demás casos
     return this.preguntaService.getPreguntasfiltradas(categoria, dificultad)
       .pipe(
         map(preguntas => {
           const preguntasDisponibles = preguntas.filter(p => !preguntasUsadas.includes(p.id));
           if (preguntasDisponibles.length === 0) return null;
-
+  
           const indiceAleatorio = Math.floor(Math.random() * preguntasDisponibles.length);
           return preguntasDisponibles[indiceAleatorio];
         })
