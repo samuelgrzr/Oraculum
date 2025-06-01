@@ -1,0 +1,65 @@
+<div class="bg-white rounded-lg shadow-md p-6 mb-6">
+  <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+    
+    <!-- Información del juego -->
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-sm font-medium text-gray-600">Modo:</span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+          {{ modoJuegoTexto }}
+        </span>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <span class="text-sm font-medium text-gray-600">Dificultad:</span>
+        <span class="px-3 py-1 rounded-full text-sm font-medium" 
+              [ngClass]="{
+                'bg-yellow-100 text-yellow-800': estado.dificultad === 'heroica',
+                'bg-purple-100 text-purple-800': estado.dificultad === 'divina'
+              }">
+          {{ dificultadTexto }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+      <div class="flex items-center gap-4">
+        <!-- Puntuación (solo en modo infinito) -->
+        <div class="text-center" *ngIf="estado.modoJuego === 'infinito'">
+          <div class="text-2xl font-bold text-blue-600">{{ estado.puntuacion }}</div>
+          <div class="text-xs text-gray-500">Puntos</div>
+        </div>
+        
+        <div class="text-center" *ngIf="configuracion.totalPreguntas > 0">
+          <div class="text-lg font-semibold text-gray-700">
+            {{ estado.indicePregunta }}/{{ configuracion.totalPreguntas }}
+          </div>
+          <div class="text-xs text-gray-500">Preguntas</div>
+        </div>
+        
+        <div class="text-center" *ngIf="estado.modoJuego === 'infinito'">
+          <div class="text-lg font-semibold text-green-600">{{ estado.respuestasCorrectas }}</div>
+          <div class="text-xs text-gray-500">Correctas</div>
+        </div>
+      </div>
+
+      <!-- Controles -->
+      <div class="flex gap-2">
+        <button 
+          (click)="onAbandonar()"
+          class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors text-sm font-medium cursor-pointer">
+          Abandonar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de progreso (solo para modos con límite de preguntas) -->
+  <div *ngIf="configuracion.totalPreguntas > 0" class="mt-4">
+    <div class="w-full bg-gray-200 rounded-full h-2">
+      <div class="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+           [style.width.%]="progresoPreguntas"></div>
+    </div>
+  </div>
+</div>

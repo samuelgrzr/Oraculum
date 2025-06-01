@@ -1,0 +1,88 @@
+<div class="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-2">¡Partida Finalizada!</h2>
+        <p class="text-lg" [ngClass]="colorResultado">{{ mensajeResultado }}</p>
+    </div>
+
+    <!-- Estadísticas principales -->
+    <div class="grid gap-4 mb-8" [ngClass]="estado.modoJuego === 'infinito' ? 'grid-cols-2 md:grid-cols-4' : 'grid-cols-1 md:grid-cols-3'">
+        <div *ngIf="estado.modoJuego === 'infinito'" class="text-center p-4 bg-blue-50 rounded-lg">
+            <div class="text-2xl font-bold text-blue-600">{{ estado.puntuacion }}</div>
+            <div class="text-sm text-gray-600">Puntos</div>
+        </div>
+
+        <div class="text-center p-4 bg-green-50 rounded-lg">
+            <div class="text-2xl font-bold text-green-600">{{ estado.respuestasCorrectas }}</div>
+            <div class="text-sm text-gray-600">Correctas</div>
+        </div>
+
+        <div class="text-center p-4 bg-red-50 rounded-lg">
+            <div class="text-2xl font-bold text-red-600">{{ estado.respuestasIncorrectas }}</div>
+            <div class="text-sm text-gray-600">Incorrectas</div>
+        </div>
+
+        <div class="text-center p-4 bg-purple-50 rounded-lg">
+            <div class="text-2xl font-bold text-purple-600">{{ porcentajeAciertos }}%</div>
+            <div class="text-sm text-gray-600">Aciertos</div>
+        </div>
+    </div>
+
+    <!-- Detalles adicionales -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Detalles de la partida</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div class="flex justify-between">
+                <span class="text-gray-600">Modo de juego:</span>
+                <span class="font-medium">{{ modoJuegoTexto }}</span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="text-gray-600">Dificultad:</span>
+                <span class="font-medium capitalize">{{ estado.dificultad }}</span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="text-gray-600">Tiempo total:</span>
+                <span class="font-medium">{{ tiempoTotal }}</span>
+            </div>
+
+            <div class="flex justify-between" *ngIf="estado.pistasUsadas > 0">
+                <span class="text-gray-600">Pistas usadas:</span>
+                <span class="font-medium">{{ estado.pistasUsadas }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de progreso de aciertos -->
+    <div class="mb-8">
+        <div class="flex justify-between text-sm text-gray-600 mb-2">
+            <span>Porcentaje de aciertos</span>
+            <span>{{ porcentajeAciertos }}%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+            <div class="h-3 rounded-full transition-all duration-500" [ngClass]="{
+          'bg-yellow-500': porcentajeAciertos >= 90,
+          'bg-green-500': porcentajeAciertos >= 70 && porcentajeAciertos < 90,
+          'bg-blue-500': porcentajeAciertos >= 50 && porcentajeAciertos < 70,
+          'bg-gray-500': porcentajeAciertos < 50
+        }" [style.width.%]="porcentajeAciertos">
+            </div>
+        </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button (click)="onVolverMenu()"
+            class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium cursor-pointer">
+            Volver al inicio
+        </button>
+
+        <button onclick="window.location.href='/jugar'"
+            class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors font-medium cursor-pointer">
+            Jugar de nuevo
+        </button>
+    </div>
+</div>

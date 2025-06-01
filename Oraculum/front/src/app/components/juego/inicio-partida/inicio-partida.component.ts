@@ -98,7 +98,7 @@ export class InicioPartidaComponent implements OnInit {
 
       localStorage.setItem('configuracionPartida', JSON.stringify(datosPartida));
       
-      this.router.navigate(['/']);
+      this.router.navigate(['/juego']);
     }
   }
 }

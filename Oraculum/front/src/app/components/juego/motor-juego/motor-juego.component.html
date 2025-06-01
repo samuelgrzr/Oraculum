@@ -1,0 +1,45 @@
+<div class="min-h-screen bg-gray-50 py-6">
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Cabecera del juego -->
+        <app-cabecera *ngIf="estado && configuracion && !estado?.juegoTerminado" [estado]="estado" [configuracion]="configuracion"
+            (abandonar)="abandonarJuego()">
+        </app-cabecera>
+
+        <!-- Contenido principal -->
+        <div class="mt-6">
+
+            <!-- Cargando pregunta -->
+            <div *ngIf="cargandoPregunta" class="text-center py-12">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                <p class="mt-4 text-gray-600">Cargando pregunta...</p>
+            </div>
+
+            <!-- Temporizador (solo si el modo tiene tiempo límite) -->
+            <app-temporizador *ngIf="configuracion?.tiempoLimite && estado?.juegoActivo && !estado?.juegoTerminado"
+                [tiempoLimite]="tiempoLimiteSeguro" [pausado]="false" (tiempoAgotado)="onTiempoAgotado()">
+            </app-temporizador>
+
+            <!-- Componente de pregunta -->
+            <app-mostrar-pregunta
+                *ngIf="estado?.preguntaActual && !cargandoPregunta && !mostrandoRetroalimentacion && !estado?.juegoTerminado"
+                [pregunta]="estado?.preguntaActual!" [permitePistas]="permitePistasSafe"
+                [indicePregunta]="estado?.indicePregunta!" [totalPreguntas]="totalPreguntasSafe"
+                (respuestaSeleccionada)="onRespuestaSeleccionada($event)">
+            </app-mostrar-pregunta>
+
+            <!-- Retroalimentación -->
+            <app-retroalimentacion *ngIf="mostrandoRetroalimentacion && estado?.preguntaActual && respuestaUsuarioSafe"
+                [pregunta]="estado?.preguntaActual!"
+                [respuestaUsuario]="respuestaUsuarioSafe"
+                (continuar)="onContinuarRetroalimentacion()">
+            </app-retroalimentacion>
+
+            <!-- Resultado de la partida -->
+            <app-resultado-partida *ngIf="estado?.juegoTerminado && estado && configuracion" [estado]="estado"
+                [configuracion]="configuracion" (volverMenu)="volverAlMenu()">
+            </app-resultado-partida>
+
+        </div>
+    </div>
+</div>
