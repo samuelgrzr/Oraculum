@@ -76,16 +76,32 @@ export class TemporizadorComponent implements OnInit, OnDestroy {
     }, 100);
   }
 
+  restarTiempo(milisegundos: number): void {
+    if (milisegundos <= 0) return;
+    
+    // Ajustar el tiempo de inicio para simular que ha pasado más tiempo
+    this.tiempoInicio -= milisegundos;
+    
+    // Recalcular inmediatamente el tiempo restante
+    const tiempoTranscurrido = Date.now() - this.tiempoInicio - this.tiempoPausado;
+    this.tiempoRestante = Math.max(0, this.tiempoLimite - tiempoTranscurrido);
+    this.porcentajeRestante = (this.tiempoRestante / this.tiempoLimite) * 100;
+    
+    // Si el tiempo se agotó, emitir evento
+    if (this.tiempoRestante <= 0) {
+      this.tiempoAgotado.emit();
+      this.detenerTemporizador();
+    }
+  }
+
   get segundosRestantes(): number {
     return Math.ceil(this.tiempoRestante / 1000);
   }
-
   get colorTemporizador(): string {
     if (this.porcentajeRestante > 50) return 'text-green-600';
     if (this.porcentajeRestante > 25) return 'text-yellow-600';
     return 'text-red-600';
   }
-
   get colorBarra(): string {
     if (this.porcentajeRestante > 50) return 'bg-green-500';
     if (this.porcentajeRestante > 25) return 'bg-yellow-500';

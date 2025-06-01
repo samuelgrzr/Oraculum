@@ -16,7 +16,8 @@ export class MostrarPreguntaComponent implements OnInit {
   @Input() indicePregunta = 0;
   @Input() totalPreguntas = 0;
   @Output() respuestaSeleccionada = new EventEmitter<any>();
-  @Output() respuestaElegida = new EventEmitter<void>(); // Nuevo evento
+  @Output() respuestaElegida = new EventEmitter<void>();
+  @Output() pistaUsada = new EventEmitter<void>(); // Nuevo evento
 
   respuestas: Respuesta[] = [];
   respuestaSeleccionadaId: number | null = null;
@@ -80,5 +81,8 @@ export class MostrarPreguntaComponent implements OnInit {
     
     this.mostrandoPista = true;
     this.usoPista = true;
+    
+    // Emitir evento cuando se usa una pista
+    this.pistaUsada.emit();
   }
 }

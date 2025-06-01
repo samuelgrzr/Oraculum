@@ -25,11 +25,13 @@
                 *ngIf="estado?.preguntaActual && !cargandoPregunta && !mostrandoRetroalimentacion && !estado?.juegoTerminado"
                 [pregunta]="estado?.preguntaActual!" [permitePistas]="permitePistasSeguro"
                 [indicePregunta]="estado?.indicePregunta!" [totalPreguntas]="totalPreguntasSeguro"
-                (respuestaSeleccionada)="onRespuestaSeleccionada($event)" (respuestaElegida)="detenerTemporizador()">
+                (respuestaSeleccionada)="onRespuestaSeleccionada($event)" (respuestaElegida)="detenerTemporizador()"
+                (pistaUsada)="onPistaUsada()">
             </app-mostrar-pregunta>
 
             <!-- Retroalimentación -->
-            <app-retroalimentacion *ngIf="mostrandoRetroalimentacion && estado?.preguntaActual && respuestaUsuarioSeguro"
+            <app-retroalimentacion
+                *ngIf="mostrandoRetroalimentacion && estado?.preguntaActual && respuestaUsuarioSeguro"
                 [pregunta]="estado?.preguntaActual!" [respuestaUsuario]="respuestaUsuarioSeguro"
                 (continuar)="onContinuarRetroalimentacion()">
             </app-retroalimentacion>

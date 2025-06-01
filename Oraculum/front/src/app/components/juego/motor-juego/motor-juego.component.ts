@@ -239,6 +239,16 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
+  onPistaUsada(): void {
+    // Solo restar tiempo si hay configuración y penalización definida
+    if (this.configuracion?.penalizacionPista && this.configuracion.penalizacionPista > 0) {
+      // Verificar que el temporizador existe y está activo
+      if (this.temporizador && this.configuracion.tiempoLimite) {
+        this.temporizador.restarTiempo(this.configuracion.penalizacionPista);
+      }
+    }
+  }
+
   abandonarJuego(): void {
     this.alertService.confirm('¿Estás seguro de que quieres abandonar la partida? Se perderá todo el progreso.')
       .then((result) => {
