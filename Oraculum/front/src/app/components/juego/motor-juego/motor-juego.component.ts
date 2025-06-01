@@ -50,7 +50,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
     private partidaService: PartidaService,
     private preguntaService: PreguntaService,
     private toastService: ToastService,
-    private alertService: AlertService, // Añadir esta línea
+    private alertService: AlertService,
     private router: Router,
   ) {}
 
@@ -287,6 +287,12 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  detenerTemporizador(): void {
+    if (this.temporizador) {
+      this.temporizador.detenerTemporizador();
+    }
+  }
+
   volverAlMenu(): void {
     this.estadoJuegoService.reiniciarEstado();
     localStorage.removeItem('configuracionPartida');
@@ -297,13 +303,13 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
   get tiempoLimiteSeguro(): number {
     return this.configuracion?.tiempoLimite || 0;
   }
-  get permitePistasSafe(): boolean {
+  get permitePistasSeguro(): boolean {
     return this.configuracion?.permitePistas || false;
   }
-  get totalPreguntasSafe(): number {
+  get totalPreguntasSeguro(): number {
     return this.configuracion?.totalPreguntas || 0;
   }
-  get respuestaUsuarioSafe(): Omit<DatosPartida, 'id' | 'id_partida'> | null {
+  get respuestaUsuarioSeguro(): Omit<DatosPartida, 'id' | 'id_partida'> | null {
     if (!this.estado?.datosPartida || this.estado.datosPartida.length === 0) {
       return null;
     }

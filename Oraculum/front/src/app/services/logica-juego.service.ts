@@ -20,17 +20,12 @@ export class LogicaJuegoService {
     if (!esCorrecta) return 0;
 
     const configuracion = this.obtenerConfiguracion(modo);
-    let puntos = dificultad === 'divina' ? 20 : 10;
+    let puntos = dificultad === 'divina' ? 10 : 5;
 
     // Bonus por velocidad en modos con tiempo
     if (configuracion.bonusVelocidad && configuracion.tiempoLimite) {
       const tiempoBonus = Math.max(0, (configuracion.tiempoLimite - tiempoRespuesta) / 1000);
       puntos += Math.floor(tiempoBonus * 0.5); // 0.5 puntos por segundo restante
-    }
-
-    // Penalización por pista
-    if (usoPista) {
-      puntos = Math.max(1, puntos - configuracion.penalizacionPista);
     }
 
     return puntos;

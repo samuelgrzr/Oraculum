@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './temporizador.component.css'
 })
 export class TemporizadorComponent implements OnInit, OnDestroy {
-  @Input() tiempoLimite = 30000; // en milisegundos
+  @Input() tiempoLimite!: number;
   @Input() pausado = false;
   @Output() tiempoAgotado = new EventEmitter<void>();
 
@@ -19,6 +19,10 @@ export class TemporizadorComponent implements OnInit, OnDestroy {
   private tiempoPausado = 0;
 
   ngOnInit(): void {
+    if (!this.tiempoLimite || this.tiempoLimite <= 0) {
+      console.warn('TemporizadorComponent: tiempoLimite no está definido o es inválido');
+      return;
+    }
     this.iniciarTemporizador();
   }
 
@@ -26,7 +30,7 @@ export class TemporizadorComponent implements OnInit, OnDestroy {
     this.detenerTemporizador();
   }
 
-  private iniciarTemporizador(): void {
+  iniciarTemporizador(): void {
     this.tiempoInicio = Date.now();
     this.tiempoRestante = this.tiempoLimite;
     
@@ -44,7 +48,7 @@ export class TemporizadorComponent implements OnInit, OnDestroy {
     }, 100);
   }
 
-  private detenerTemporizador(): void {
+  detenerTemporizador(): void {
     if (this.intervalId) {
       clearInterval(this.intervalId);
       this.intervalId = null;

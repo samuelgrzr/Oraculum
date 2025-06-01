@@ -27,16 +27,16 @@ export interface ConfiguracionJuego {
     },
     'contrarreloj': {
       totalPreguntas: 10,
-      tiempoLimite: 30000, // 30 segundos
+      tiempoLimite: 10000, // 10 segundos
       permitePistas: true,
       mostrarResultadosInmediatos: true,
       continuaHastaFallar: false,
-      penalizacionPista: 10000, // 10 segundos menos
+      penalizacionPista: 2000, // 2 segundos menos
       bonusVelocidad: true
     },
     'infinito': {
-      totalPreguntas: -1, // Infinito
-      tiempoLimite: 20000, // 20 segundos
+      totalPreguntas: -1,
+      tiempoLimite: 5000,
       permitePistas: false,
       mostrarResultadosInmediatos: true,
       continuaHastaFallar: true,

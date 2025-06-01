@@ -23,14 +23,14 @@
             <!-- Componente de pregunta -->
             <app-mostrar-pregunta
                 *ngIf="estado?.preguntaActual && !cargandoPregunta && !mostrandoRetroalimentacion && !estado?.juegoTerminado"
-                [pregunta]="estado?.preguntaActual!" [permitePistas]="permitePistasSafe"
-                [indicePregunta]="estado?.indicePregunta!" [totalPreguntas]="totalPreguntasSafe"
-                (respuestaSeleccionada)="onRespuestaSeleccionada($event)">
+                [pregunta]="estado?.preguntaActual!" [permitePistas]="permitePistasSeguro"
+                [indicePregunta]="estado?.indicePregunta!" [totalPreguntas]="totalPreguntasSeguro"
+                (respuestaSeleccionada)="onRespuestaSeleccionada($event)" (respuestaElegida)="detenerTemporizador()">
             </app-mostrar-pregunta>
 
             <!-- Retroalimentación -->
-            <app-retroalimentacion *ngIf="mostrandoRetroalimentacion && estado?.preguntaActual && respuestaUsuarioSafe"
-                [pregunta]="estado?.preguntaActual!" [respuestaUsuario]="respuestaUsuarioSafe"
+            <app-retroalimentacion *ngIf="mostrandoRetroalimentacion && estado?.preguntaActual && respuestaUsuarioSeguro"
+                [pregunta]="estado?.preguntaActual!" [respuestaUsuario]="respuestaUsuarioSeguro"
                 (continuar)="onContinuarRetroalimentacion()">
             </app-retroalimentacion>
 
