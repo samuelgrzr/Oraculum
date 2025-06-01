@@ -7,6 +7,9 @@ import { Pregunta } from '../models/Pregunta';
   providedIn: 'root'
 })
 export class EstadoJuegoService {
+  private readonly HISTORIAL_KEY = 'historialPreguntasUsadas';
+  private readonly MAX_HISTORIAL = 100; // Máximo de preguntas a recordar
+
   private estadoInicial: EstadoJuego = {
     modoJuego: '',
     dificultad: '',
@@ -107,5 +110,24 @@ export class EstadoJuegoService {
 
   reiniciarEstado(): void {
     this.estadoSubject.next(this.estadoInicial);
+  }
+
+  // Nuevos métodos para gestión de historial
+  obtenerHistorialPreguntas(modo: string, dificultad: string, categoria: number): number[] {
+    const key = `${this.HISTORIAL_KEY}_${modo}_${dificultad}_${categoria}`;
+    const historial = localStorage.getItem(key);
+    return historial ? JSON.parse(historial) : [];
+  }
+
+  guardarHistorialPreguntas(modo: string, dificultad: string, categoria: number, preguntasUsadas: number[]): void {
+    const key = `${this.HISTORIAL_KEY}_${modo}_${dificultad}_${categoria}`;
+    // Mantener solo las últimas MAX_HISTORIAL preguntas
+    const historialLimitado = preguntasUsadas.slice(-this.MAX_HISTORIAL);
+    localStorage.setItem(key, JSON.stringify(historialLimitado));
+  }
+
+  limpiarHistorialPreguntas(modo: string, dificultad: string, categoria: number): void {
+    const key = `${this.HISTORIAL_KEY}_${modo}_${dificultad}_${categoria}`;
+    localStorage.removeItem(key);
   }
 }

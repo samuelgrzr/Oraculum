@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, map, forkJoin } from 'rxjs';
 import { PreguntaService } from './pregunta.service';
+import { EstadoJuegoService } from './estado-juego.service';
 import { Pregunta } from '../models/Pregunta';
 import { CONFIGURACIONES_MODO, ConfiguracionJuego } from '../models/ConfiguracionJuego';
 
@@ -9,10 +10,57 @@ import { CONFIGURACIONES_MODO, ConfiguracionJuego } from '../models/Configuracio
 })
 export class LogicaJuegoService {
 
-  constructor(private preguntaService: PreguntaService) { }
+  constructor(
+    private preguntaService: PreguntaService,
+    private estadoJuegoService: EstadoJuegoService
+  ) { }
 
   obtenerConfiguracion(modo: string): ConfiguracionJuego {
     return CONFIGURACIONES_MODO[modo] || CONFIGURACIONES_MODO['aventura'];
+  }
+
+  obtenerSiguientePregunta(idCategoria: number, dificultad: string, preguntasUsadas: number[], modoJuego: string): Observable<Pregunta | null> {
+    // Obtener historial de preguntas usadas en partidas anteriores
+    const historialAnterior = this.estadoJuegoService.obtenerHistorialPreguntas(modoJuego, dificultad, idCategoria);
+    
+    // Combinar preguntas usadas en esta partida + historial anterior
+    const todasLasPreguntasUsadas = [...new Set([...preguntasUsadas, ...historialAnterior])];
+    
+    // Caso especial: modo infinito con dificultad divina
+    if (modoJuego === 'infinito' && dificultad === 'divina') {
+      const preguntasHeroicas$ = this.preguntaService.getPreguntasfiltradas(idCategoria, 'heroica');
+      const preguntasDivinas$ = this.preguntaService.getPreguntasfiltradas(idCategoria, 'divina');
+      
+      return forkJoin([preguntasHeroicas$, preguntasDivinas$]).pipe(
+        map(([heroicas, divinas]) => {
+          const todasLasPreguntas = [...heroicas, ...divinas];
+          const preguntasDisponibles = todasLasPreguntas.filter(p => !todasLasPreguntasUsadas.includes(p.id));
+          
+          if (preguntasDisponibles.length === 0) {
+            // Si no hay preguntas disponibles, reiniciar historial y usar todas
+            this.estadoJuegoService.limpiarHistorialPreguntas(modoJuego, dificultad, idCategoria);
+            return todasLasPreguntas[Math.floor(Math.random() * todasLasPreguntas.length)];
+          }
+          
+          return preguntasDisponibles[Math.floor(Math.random() * preguntasDisponibles.length)];
+        })
+      );
+    }
+    
+    // Comportamiento normal para otros casos
+    return this.preguntaService.getPreguntasfiltradas(idCategoria, dificultad).pipe(
+      map(preguntas => {
+        const preguntasDisponibles = preguntas.filter(p => !todasLasPreguntasUsadas.includes(p.id));
+        
+        if (preguntasDisponibles.length === 0) {
+          // Si no hay preguntas disponibles, reiniciar historial
+          this.estadoJuegoService.limpiarHistorialPreguntas(modoJuego, dificultad, idCategoria);
+          return preguntas[Math.floor(Math.random() * preguntas.length)];
+        }
+        
+        return preguntasDisponibles[Math.floor(Math.random() * preguntasDisponibles.length)];
+      })
+    );
   }
 
   calcularPuntuacion(modo: string, esCorrecta: boolean, tiempoRespuesta: number,
@@ -41,43 +89,6 @@ export class LogicaJuegoService {
 
     // Otros modos terminan al alcanzar el límite de preguntas
     return configuracion.totalPreguntas > 0 && indicePregunta >= configuracion.totalPreguntas;
-  }
-
-  obtenerSiguientePregunta(categoria: number, dificultad: string,
-    preguntasUsadas: number[], modoJuego?: string): Observable<Pregunta | null> {
-    
-    // Caso especial: modo infinito con dificultad divina
-    if (modoJuego === 'infinito' && dificultad === 'divina') {
-      // Obtener preguntas de ambas dificultades
-      const preguntasHeroicas$ = this.preguntaService.getPreguntasfiltradas(categoria, 'heroica');
-      const preguntasDivinas$ = this.preguntaService.getPreguntasfiltradas(categoria, 'divina');
-      
-      return forkJoin([preguntasHeroicas$, preguntasDivinas$]).pipe(
-        map(([heroicas, divinas]) => {
-          // Combinar ambas listas
-          const todasLasPreguntas = [...heroicas, ...divinas];
-          // Filtrar preguntas ya usadas
-          const preguntasDisponibles = todasLasPreguntas.filter(p => !preguntasUsadas.includes(p.id));
-          
-          if (preguntasDisponibles.length === 0) return null;
-          
-          const indiceAleatorio = Math.floor(Math.random() * preguntasDisponibles.length);
-          return preguntasDisponibles[indiceAleatorio];
-        })
-      );
-    }
-    
-    // Comportamiento normal para todos los demás casos
-    return this.preguntaService.getPreguntasfiltradas(categoria, dificultad)
-      .pipe(
-        map(preguntas => {
-          const preguntasDisponibles = preguntas.filter(p => !preguntasUsadas.includes(p.id));
-          if (preguntasDisponibles.length === 0) return null;
-  
-          const indiceAleatorio = Math.floor(Math.random() * preguntasDisponibles.length);
-          return preguntasDisponibles[indiceAleatorio];
-        })
-      );
   }
 
   validarTiempoAgotado(tiempoInicio: number, tiempoLimite: number): boolean {

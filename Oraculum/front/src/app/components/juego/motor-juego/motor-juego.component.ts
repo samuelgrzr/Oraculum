@@ -270,6 +270,21 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!this.estado) return;
 
     try {
+      // Guardar historial de preguntas usadas para futuras partidas
+      const historialAnterior = this.estadoJuegoService.obtenerHistorialPreguntas(
+        this.estado.modoJuego, 
+        this.estado.dificultad, 
+        this.estado.idCategoria
+      );
+      
+      const nuevoHistorial = [...new Set([...historialAnterior, ...this.estado.preguntasUsadas])];
+      this.estadoJuegoService.guardarHistorialPreguntas(
+        this.estado.modoJuego,
+        this.estado.dificultad,
+        this.estado.idCategoria,
+        nuevoHistorial
+      );
+  
       // Crear la partida en el backend
       const partidaRequest = {
         datos_partida: this.estado.datosPartida,
@@ -279,7 +294,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
         dificultad: this.estado.dificultad,
         id_usuario: this.estado.idUsuario
       };
-
+  
       const suscripcion = this.partidaService.crearPartida(partidaRequest).subscribe({
         next: (partida) => {
           console.log('Partida guardada:', partida);
