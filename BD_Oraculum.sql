@@ -162,6 +162,7 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Estigia', TRUE, 33), ('Leteo', FALSE, 33), ('Aqueronte', FALSE, 33), ('Cocito', FALSE, 33),
 ('Caronte', TRUE, 34), ('Hades', FALSE, 34), ('Tánato', FALSE, 34), ('Minos', FALSE, 34),
 ('Hidra', TRUE, 35), ('Cerbero', FALSE, 35), ('Quimera', FALSE, 35), ('Esfinge', FALSE, 35),
+('Príamo', TRUE, 36), ('Héctor', FALSE, 36), ('Paris', FALSE, 36), ('Agamenón', FALSE, 36),
 ('Héctor', TRUE, 37), ('Paris', FALSE, 37), ('Eneas', FALSE, 37), ('Príamo', FALSE, 37),
 ('Paris', TRUE, 38), ('Héctor', FALSE, 38), ('Eneas', FALSE, 38), ('Príamo', FALSE, 38),
 ('Caballo de Troya', TRUE, 39), ('Asedio', FALSE, 39), ('Traición', FALSE, 39), ('Soborno', FALSE, 39),
