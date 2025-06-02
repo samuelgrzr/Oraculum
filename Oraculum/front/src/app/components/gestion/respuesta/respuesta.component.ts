@@ -127,30 +127,68 @@ export class RespuestaComponent implements OnInit {
     if (this.respuestaForm.valid) {
       const nuevaRespuesta = this.respuestaForm.value;
       
-      if (nuevaRespuesta.es_correcta) {
-        this.respuestaService.getRespuestasPorPregunta(nuevaRespuesta.id_pregunta).subscribe({
-          next: (respuestas) => {
-            const respuestaCorrecta = respuestas.find(r => 
-              r.es_correcta && 
-              (!this.respuestaEditandoId || r.id !== this.respuestaEditandoId)
-            );
-
-            if (respuestaCorrecta) {
-              this.toastService.showMessage('Ya existe una respuesta correcta para esta pregunta');
+      this.respuestaService.getRespuestasPorPregunta(nuevaRespuesta.id_pregunta).subscribe({
+        next: (respuestas) => {
+          const respuestaActual = respuestas.find(r => r.id === this.respuestaEditandoId);
+          const respuestaCorrecta = respuestas.find(r => r.es_correcta && r.id !== this.respuestaEditandoId);
+          
+          if (this.respuestaEditandoId) {
+            if (nuevaRespuesta.es_correcta && respuestaCorrecta) {
+              this.intercambiarRespuestasCorrectas(respuestaCorrecta.id, this.respuestaEditandoId, nuevaRespuesta);
               return;
             }
-
-            this.guardarRespuesta(nuevaRespuesta);
-          },
-          error: (error) => {
-            this.toastService.showMessage('Error al verificar las respuestas existentes');
-            console.error('Error:', error);
+            
+            if (!nuevaRespuesta.es_correcta && respuestaActual?.es_correcta && !respuestaCorrecta) {
+              this.toastService.showMessage('No se puede hacer incorrecta esta respuesta porque es la única correcta de la pregunta. Selecciona otra respuesta como correcta primero.');
+              return;
+            }
           }
-        });
-      } else {
-        this.guardarRespuesta(nuevaRespuesta);
-      }
+          
+          if (!this.respuestaEditandoId && nuevaRespuesta.es_correcta && respuestaCorrecta) {
+            this.toastService.showMessage('Ya existe una respuesta correcta para esta pregunta. Si quieres cambiarla, edita la respuesta que quieres que sea correcta.');
+            return;
+          }
+          
+          this.guardarRespuesta(nuevaRespuesta);
+        },
+        error: (error) => {
+          this.toastService.showMessage('Error al verificar las respuestas existentes');
+          console.error('Error:', error);
+        }
+      });
     }
+  }
+
+  intercambiarRespuestasCorrectas(idRespuestaActualCorrecta: number, idNuevaRespuestaCorrecta: number, datosNuevaRespuesta: any): void {
+    this.respuestaService.getRespuestasPorPregunta(datosNuevaRespuesta.id_pregunta).subscribe({
+      next: (respuestas) => {
+        const respuestaActualCorrecta = respuestas.find(r => r.id === idRespuestaActualCorrecta);
+        
+        if (respuestaActualCorrecta) {
+          const respuestaIncorrecta = { ...respuestaActualCorrecta, es_correcta: false };
+          
+          this.respuestaService.updateRespuesta(idRespuestaActualCorrecta, respuestaIncorrecta).subscribe({
+            next: () => {
+              this.respuestaService.updateRespuesta(idNuevaRespuestaCorrecta, datosNuevaRespuesta).subscribe({
+                next: () => {
+                  this.toastService.showMessage('Respuesta correcta cambiada exitosamente');
+                  this.cargarRespuestas();
+                  this.cancelarEdicion();
+                },
+                error: (error) => {
+                  this.toastService.showMessage('Error al actualizar la nueva respuesta correcta');
+                  console.error('Error:', error);
+                }
+              });
+            },
+            error: (error) => {
+              this.toastService.showMessage('Error al actualizar la respuesta anterior');
+              console.error('Error:', error);
+            }
+          });
+        }
+      }
+    });
   }
 
   // He tenido que separar la lógica en dos métodos para poder controlar que no haya dos correctas
