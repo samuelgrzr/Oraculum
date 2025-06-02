@@ -1,18 +1,19 @@
-<div class="bg-white border-2 border-[var(--greek-gold)] rounded-lg shadow-lg p-6">
+<div class="p-4 sm:p-6 rounded-lg shadow-lg" style="background-color: var(--marble-white); border: 2px solid var(--greek-gold);">
   
   <!-- Encabezado de la pregunta -->
   <div class="mb-6">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-bold text-gray-800">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-4">
+      <h2 class="text-xl font-bold" style="color: var(--greek-blue);">
         Pregunta {{ indicePregunta + 1 }}
-        <span *ngIf="totalPreguntas > 0" class="text-gray-500">de {{ totalPreguntas }}</span>
+        <span *ngIf="totalPreguntas > 0" style="color: var(--greek-blue); opacity: 0.7;">de {{ totalPreguntas }}</span>
       </h2>
       
       <!-- Botón de pista -->
       <button 
         *ngIf="permitePistas && pregunta.pista && !mostrandoPista"
         (click)="mostrarPista()"
-        class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition-colors text-sm font-medium flex items-center gap-2 cursor-pointer"
+        class="px-4 py-2 rounded-lg transition-colors text-sm font-medium flex items-center gap-2 cursor-pointer self-start sm:self-auto"
+        style="background-color: var(--greek-gold); color: var(--greek-blue);"
         [disabled]="respuestaSeleccionadaId !== null">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -22,19 +23,19 @@
     </div>
     
     <!-- Enunciado de la pregunta -->
-    <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
-      <p class="text-lg text-gray-800 leading-relaxed">{{ pregunta.enunciado }}</p>
+    <div class="p-4 rounded-lg" style="background-color: var(--light-blue); border-left: 4px solid var(--greek-blue);">
+      <p class="text-lg leading-relaxed" style="color: var(--greek-blue);">{{ pregunta.enunciado }}</p>
     </div>
     
     <!-- Pista (si está activada) -->
-    <div *ngIf="mostrandoPista && pregunta.pista" class="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+    <div *ngIf="mostrandoPista && pregunta.pista" class="mt-4 p-4 rounded-lg" style="background-color: #fef3c7; border-left: 4px solid var(--greek-gold);">
       <div class="flex items-start gap-2">
-        <svg class="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--greek-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
         </svg>
         <div>
-          <p class="font-medium text-yellow-800 mb-1">Pista:</p>
-          <p class="text-yellow-700">{{ pregunta.pista }}</p>
+          <p class="mb-1 font-bold" style="color: var(--greek-blue);">Pista:</p>
+          <p style="color: var(--greek-blue);">{{ pregunta.pista }}</p>
         </div>
       </div>
     </div>
@@ -42,29 +43,28 @@
 
   <!-- Cargando respuestas -->
   <div *ngIf="cargandoRespuestas" class="text-center py-8">
-    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
-    <p class="mt-2 text-gray-600">Cargando opciones...</p>
+    <div class="animate-spin rounded-full h-8 w-8 border-b-2 mx-auto" style="border-color: var(--greek-blue);"></div>
+    <p class="mt-2" style="color: var(--greek-blue);">Cargando opciones...</p>
   </div>
 
   <!-- Opciones de respuesta -->
-  <div *ngIf="!cargandoRespuestas" class="grid grid-cols-2 gap-4">
+  <div *ngIf="!cargandoRespuestas" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <button 
       *ngFor="let respuesta of respuestas; let i = index"
       (click)="seleccionarRespuesta(respuesta.id)"
       class="text-left p-4 rounded-lg border-2 transition-all duration-200 hover:shadow-md min-h-[80px] flex items-center justify-center cursor-pointer"
       [ngClass]="{
-        'border-[var(--greek-gold)] hover:border-yellow-400 hover:bg-yellow-50': respuestaSeleccionadaId === null,
-        'border-[var(--greek-gold)] bg-gradient-to-br from-yellow-50 to-[var(--greek-gold)] bg-opacity-20': respuestaSeleccionadaId === respuesta.id,
-        'border-gray-300 bg-gray-50 cursor-not-allowed': respuestaSeleccionadaId !== null && respuestaSeleccionadaId !== respuesta.id
+        'hover:shadow-lg': respuestaSeleccionadaId === null,
+        'cursor-not-allowed opacity-50': respuestaSeleccionadaId !== null && respuestaSeleccionadaId !== respuesta.id
       }"
+      [style.border-color]="respuestaSeleccionadaId === respuesta.id ? 'var(--greek-gold)' : 'var(--greek-blue)'"
+      [style.background-color]="respuestaSeleccionadaId === respuesta.id ? 'var(--greek-gold)' : 'white'"
       [disabled]="respuestaSeleccionadaId !== null">
       
       <div class="w-full text-center">
         <!-- Texto de la respuesta -->
-        <p class="font-medium text-[var(--greek-blue)]" 
-           [ngClass]="{
-             'text-gray-500': respuestaSeleccionadaId !== null && respuestaSeleccionadaId !== respuesta.id
-           }">
+        <p class="font-medium" 
+           [style.color]="respuestaSeleccionadaId === respuesta.id ? 'var(--greek-blue)' : 'var(--greek-blue)'">
           {{ respuesta.texto }}
         </p>
       </div>
@@ -73,6 +73,6 @@
 
   <!-- Mensaje de selección -->
   <div *ngIf="respuestaSeleccionadaId !== null" class="mt-6 text-center">
-    <p class="text-blue-600 font-medium">Las Moiras comprueban tu destino...</p>
+    <p class="font-medium" style="color: var(--greek-blue);">Las Moiras comprueban tu destino...</p>
   </div>
 </div>
