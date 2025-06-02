@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { EstadoJuego } from '../../../models/EstadoJuego';
 import { ConfiguracionJuego } from '../../../models/ConfiguracionJuego';
 
@@ -13,6 +14,8 @@ export class ResultadoPartidaComponent {
   @Input() estado!: EstadoJuego;
   @Input() configuracion!: ConfiguracionJuego | null;
   @Output() volverMenu = new EventEmitter<void>();
+
+  constructor(private router: Router) {}
 
   get porcentajeAciertos(): number {
     const totalRespuestas = this.estado.respuestasCorrectas + this.estado.respuestasIncorrectas;
@@ -51,6 +54,10 @@ export class ResultadoPartidaComponent {
     return modos[this.estado.modoJuego] || this.estado.modoJuego;
   }
 
+  jugarDeNuevo(): void {
+    this.router.navigate(['/jugar']);
+  }
+  
   onVolverMenu(): void {
     this.volverMenu.emit();
   }
