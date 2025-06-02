@@ -48,11 +48,11 @@
   </div>
 
   <!-- Opciones de respuesta -->
-  <div *ngIf="!cargandoRespuestas" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div *ngIf="!cargandoRespuestas" class="grid grid-cols-2 gap-3 sm:gap-4">
     <button 
       *ngFor="let respuesta of respuestas; let i = index"
       (click)="seleccionarRespuesta(respuesta.id)"
-      class="text-left p-4 rounded-lg border-2 transition-all duration-200 hover:shadow-md min-h-[80px] flex items-center justify-center cursor-pointer"
+      class="text-left p-3 sm:p-4 rounded-lg border-2 transition-all duration-200 hover:shadow-md min-h-[100px] sm:min-h-[80px] flex items-center justify-center cursor-pointer"
       [ngClass]="{
         'hover:shadow-lg': respuestaSeleccionadaId === null,
         'cursor-not-allowed opacity-50': respuestaSeleccionadaId !== null && respuestaSeleccionadaId !== respuesta.id
@@ -63,7 +63,7 @@
       
       <div class="w-full text-center">
         <!-- Texto de la respuesta -->
-        <p class="font-medium" 
+        <p class="font-medium text-sm sm:text-base" 
            [style.color]="respuestaSeleccionadaId === respuesta.id ? 'var(--greek-blue)' : 'var(--greek-blue)'">
           {{ respuesta.texto }}
         </p>
