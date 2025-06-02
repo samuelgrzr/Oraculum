@@ -26,7 +26,10 @@ export class RegistroComponent {
       Validators.maxLength(15),
       Validators.pattern(/^[a-zA-Z][a-zA-Z0-9]*$/),
     ]],
-    correo: ['', [Validators.required, Validators.email]],
+    correo: ['', [
+      Validators.required, 
+      Validators.pattern(/^[a-zA-Z][a-zA-Z0-9]{2,}@[a-zA-Z]{3,}\.[a-zA-Z]{2,}$/)
+    ]],
     contrasena: ['', [
       Validators.required,
       Validators.minLength(6),

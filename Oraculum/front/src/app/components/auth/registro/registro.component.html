@@ -20,7 +20,7 @@
                 style="border-color: var(--greek-gold); color: var(--greek-blue);">
             <div *ngIf="correoControl?.invalid && correoControl?.touched" class="text-red-500 text-sm mt-1">
                 <p *ngIf="correoControl?.errors?.['required']">El correo es obligatorio</p>
-                <p *ngIf="correoControl?.errors?.['email']">Introduce un correo válido</p>
+                <p *ngIf="correoControl?.errors?.['pattern']">El correo debe tener el formato: nombre&#64;dominio.extension</p>
             </div>
         </div>
 
