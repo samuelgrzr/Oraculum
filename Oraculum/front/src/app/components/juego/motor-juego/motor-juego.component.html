@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-gray-50 py-6">
+<div class="min-h-screen py-4 px-4 sm:px-6 lg:px-8" style="background: radial-gradient(ellipse at top, var(--light-blue) 0%, var(--marble-white) 100%);">
     <div class="max-w-4xl mx-auto">
 
         <!-- Cabecera del juego -->
@@ -11,8 +11,8 @@
 
             <!-- Cargando pregunta -->
             <div *ngIf="cargandoPregunta" class="text-center py-12">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                <p class="mt-4 text-gray-600">Cargando pregunta...</p>
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto" style="border-color: var(--greek-blue);"></div>
+                <p class="mt-4" style="color: var(--greek-blue);">Cargando pregunta...</p>
             </div>
 
             <!-- Temporizador (solo si el modo tiene tiempo límite) -->
