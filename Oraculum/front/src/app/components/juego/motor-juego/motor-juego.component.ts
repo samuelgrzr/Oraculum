@@ -194,6 +194,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
       },
       error: (error) => {
         console.error('Error al obtener respuestas:', error);
+        this.toastService.showMessage('Error al procesar la respuesta');
       }
     });
   }
@@ -295,6 +296,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
       })
       .catch((error) => {
         console.error('Error al abandonar partida:', error);
+        this.toastService.showMessage('Error al abandonar la partida');
       });
   }
 
@@ -342,6 +344,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
       
     } catch (error) {
       console.error('Error al finalizar partida:', error);
+      this.toastService.showMessage('Error al finalizar la partida');
     }
   }
 

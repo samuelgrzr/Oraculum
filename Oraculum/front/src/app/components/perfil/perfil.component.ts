@@ -58,6 +58,7 @@ export class PerfilComponent {
         },
         error: (error) => {
           console.error('Error al actualizar la contraseña:', error);
+          this.alertService.error('Error al actualizar la contraseña');
         }
       });
     }
@@ -83,8 +84,8 @@ export class PerfilComponent {
             this.authService.logout();
             this.router.navigate(['/']);
           } else {
-            this.alertService.error('Error al eliminar usuario');
             console.error('Error al eliminar usuario:', error);
+            this.alertService.error('Error al eliminar usuario');
           }
         }
       });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../services/usuario.service';
+import { ToastService } from '../../services/toast.service';
 
 interface RankingUsuario {
   nombre: string;
@@ -16,7 +17,7 @@ interface RankingUsuario {
 export class RankingComponent implements OnInit {
   usuarios: RankingUsuario[] = [];
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService, private toastService: ToastService) {}
 
   ngOnInit() {
     this.cargarRanking();
@@ -29,6 +30,7 @@ export class RankingComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error al cargar el ranking:', error);
+        this.toastService.showMessage('Error al cargar el ranking');
       }
     });
   }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Pregunta } from '../../../models/Pregunta';
 import { Respuesta } from '../../../models/Respuesta';
 import { PreguntaService } from '../../../services/pregunta.service';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-mostrar-pregunta',
@@ -26,7 +27,7 @@ export class MostrarPreguntaComponent implements OnInit {
   tiempoInicio = Date.now();
   cargandoRespuestas = false;
 
-  constructor(private preguntaService: PreguntaService) {}
+  constructor(private preguntaService: PreguntaService, private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.cargarRespuestas();
@@ -35,13 +36,14 @@ export class MostrarPreguntaComponent implements OnInit {
 
   private cargarRespuestas(): void {
     this.cargandoRespuestas = true;
-    
+
     this.preguntaService.getRespuestasPregunta(this.pregunta.id).subscribe({
       next: (respuestas) => {
         this.respuestas = this.mezclarRespuestas(respuestas);
         this.cargandoRespuestas = false;
       },
       error: (error) => {
+        this.toastService.showMessage('Error al cargar las categorías');
         console.error('Error al cargar respuestas:', error);
         this.cargandoRespuestas = false;
       }
@@ -59,13 +61,13 @@ export class MostrarPreguntaComponent implements OnInit {
 
   seleccionarRespuesta(idRespuesta: number): void {
     if (this.respuestaSeleccionadaId !== null) return;
-    
+
     this.respuestaSeleccionadaId = idRespuesta;
     const tiempoRespuesta = Date.now() - this.tiempoInicio;
-    
+
     // Emitir inmediatamente que se eligió una respuesta
     this.respuestaElegida.emit();
-    
+
     // Emitir la respuesta después de un breve delay para mostrar la selección
     setTimeout(() => {
       this.respuestaSeleccionada.emit({
@@ -78,10 +80,10 @@ export class MostrarPreguntaComponent implements OnInit {
 
   mostrarPista(): void {
     if (!this.permitePistas || !this.pregunta.pista) return;
-    
+
     this.mostrandoPista = true;
     this.usoPista = true;
-    
+
     // Emitir evento cuando se usa una pista
     this.pistaUsada.emit();
   }
