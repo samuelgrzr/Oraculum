@@ -39,7 +39,7 @@ def get_all_usuarios(db: db_dependency):
 
 @router.get("/ranking")
 def get_ranking(db: db_dependency):
-    return db.query(Usuario).filter(Usuario.puntuacion > 0).order_by(Usuario.puntuacion.desc()).limit(12).all()
+    return db.query(Usuario).filter(Usuario.puntuacion > 0).order_by(Usuario.puntuacion.desc()).limit(6).all()
 
 @router.put("/{id_usuario}", status_code=200)
 def edit_usuario(db: db_dependency, id_usuario: int, usuario: ActualizarUsuario, user: user_dependency):
