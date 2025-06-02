@@ -72,8 +72,10 @@ export class LogicaJuegoService {
 
     // Bonus por velocidad en modos con tiempo
     if (configuracion.bonusVelocidad && configuracion.tiempoLimite) {
-      const tiempoBonus = Math.max(0, (configuracion.tiempoLimite - tiempoRespuesta) / 1000);
-      puntos += Math.floor(tiempoBonus * 0.5); // 0.5 puntos por segundo restante
+      // Usar Math.ceil para el cálculo de puntos por segundos restantes
+      // así coincidirá con lo que se muestra en la interfaz
+      const segundosRestantes = Math.ceil((configuracion.tiempoLimite - tiempoRespuesta) / 1000);
+      puntos += Math.max(0, segundosRestantes);
     }
 
     return puntos;

@@ -99,7 +99,6 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private suscribirseAEstado(): void {
     const suscripcion = this.estadoJuegoService.estado$.subscribe(estado => {
-      console.log('Estado actualizado:', estado); // Debug
       this.estado = estado;
       
       // Verificar si el juego debe terminar

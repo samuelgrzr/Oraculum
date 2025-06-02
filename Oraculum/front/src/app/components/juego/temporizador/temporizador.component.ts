@@ -32,6 +32,7 @@ export class TemporizadorComponent implements OnInit, OnDestroy {
 
   iniciarTemporizador(): void {
     this.tiempoInicio = Date.now();
+    // Establecemos el tiempo límite exacto en milisegundos
     this.tiempoRestante = this.tiempoLimite;
     
     this.intervalId = setInterval(() => {
@@ -94,7 +95,11 @@ export class TemporizadorComponent implements OnInit, OnDestroy {
     }
   }
 
+  // El truco está en esta función, queremos transformar:
+  // 10000ms → 10s, 9999-9000ms → 9s, etc.
   get segundosRestantes(): number {
+    // Añadimos 999 para que muestre el segundo completo
+    // Ej: 9001ms → 10s, 9000ms → 9s, etc.
     return Math.ceil(this.tiempoRestante / 1000);
   }
   get colorTemporizador(): string {
