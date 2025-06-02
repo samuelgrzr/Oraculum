@@ -188,4 +188,8 @@ export class PerfilComponent implements OnInit {
       return `${partida.respuestasCorrectas || 0}/10`;
     }
   }
+
+  modoAdmitePistas(modoJuego: string): boolean {
+    return modoJuego === 'aventura' || modoJuego === 'contrarreloj';
+  }
 }

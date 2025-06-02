@@ -148,7 +148,7 @@
             </div>
           </div>
 
-          <!-- Detalles expandibles -->
+          <!-- Detalles -->
           <div *ngIf="partidaExpandida === partida.id" class="px-3 pb-3 border-t border-gray-200 bg-gray-50">
             <div class="flex flex-col gap-2 text-sm mt-2">
               <div>
@@ -161,8 +161,13 @@
                   {{partida.dificultad}}
                 </span>
               </div>
+              <div *ngIf="modoAdmitePistas(partida.modo_juego)">
+                <span class="text-gray-600">Pistas usadas:</span>
+                <span class="ml-1 font-medium text-[var(--greek-blue)]">{{partida.pistas_usadas || 0}}</span>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>

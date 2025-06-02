@@ -45,6 +45,7 @@ def get_historial_usuario(db: db_dependency, id_usuario: int):
     for partida, nombre_categoria in partidas_con_categoria:
         datos_partida = db.query(DatosPartida).filter(DatosPartida.id_partida == partida.id).all()
         respuestas_correctas = sum(1 for dato in datos_partida if dato.id_respuesta_elegida == dato.id_respuesta_correcta)
+        pistas_usadas = sum(1 for dato in datos_partida if dato.uso_pista)
         
         partida_dict = {
             "id": partida.id,
@@ -55,7 +56,8 @@ def get_historial_usuario(db: db_dependency, id_usuario: int):
             "id_categoria": partida.id_categoria,
             "nombre_categoria": nombre_categoria,
             "dificultad": partida.dificultad,
-            "respuestasCorrectas": respuestas_correctas
+            "respuestasCorrectas": respuestas_correctas,
+            "pistas_usadas": pistas_usadas
         }
         resultado.append(partida_dict)
     
