@@ -124,7 +124,7 @@
       </div>
 
       <!-- Historial de partidas -->
-      <div *ngIf="!cargandoHistorial && partidas.length > 0" class="space-y-3 max-h-96 overflow-y-auto">
+      <div *ngIf="!cargandoHistorial && partidas.length > 0" class="space-y-3 max-h-96 overflow-y-auto pr-4">
         <div *ngFor="let partida of partidas" class="border border-[var(--greek-gold)] rounded-lg overflow-hidden">
           <!-- Header de la partida (siempre visible) -->
           <!-- Header de la partida (siempre visible) -->
@@ -150,16 +150,16 @@
 
           <!-- Detalles expandibles -->
           <div *ngIf="partidaExpandida === partida.id" class="px-3 pb-3 border-t border-gray-200 bg-gray-50">
-            <div class="grid grid-cols-2 gap-2 text-sm mt-2">
+            <div class="flex flex-col gap-2 text-sm mt-2">
+              <div>
+                <span class="text-gray-600">Categoría:</span>
+                <span class="ml-1 font-medium text-[var(--greek-blue)]">{{partida.nombre_categoria}}</span>
+              </div>
               <div>
                 <span class="text-gray-600">Dificultad:</span>
                 <span class="ml-1 font-medium capitalize" [class]="obtenerColorDificultad(partida.dificultad)">
                   {{partida.dificultad}}
                 </span>
-              </div>
-              <div>
-                <span class="text-gray-600">Categoría:</span>
-                <span class="ml-1 font-medium text-[var(--greek-blue)]">{{partida.nombre_categoria}}</span>
               </div>
             </div>
           </div>
