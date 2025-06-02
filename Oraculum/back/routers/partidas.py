@@ -51,6 +51,7 @@ def create_partida(db: db_dependency, partida: CrearPartida):
             dificultad = partida.dificultad
         )
         db.add(db_partida)
+        db.flush() # Para generar el ID de la partida
         
         # Crear los datos de la partida
         for dato in partida.datos_partida:
