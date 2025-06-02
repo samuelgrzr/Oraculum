@@ -1,3 +1,4 @@
+from zoneinfo import ZoneInfo
 from sqlalchemy import Column, Integer, String, ForeignKey, Text, Boolean, DateTime
 from sqlalchemy.orm import relationship
 from database import Base
@@ -51,7 +52,7 @@ class Partida(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     id_usuario = Column(Integer, ForeignKey("usuario.id"))
-    fecha = Column(DateTime, default=datetime.datetime.utcnow)
+    fecha = Column(DateTime, default=datetime.datetime.now)
     puntuacion = Column(Integer)
     modo_juego = Column(String(50), nullable=False)  # 'aventura', 'prueba', 'contrarreloj', 'infinito'
     id_categoria = Column(Integer, ForeignKey("categoria.id"))

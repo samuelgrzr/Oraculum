@@ -6,4 +6,5 @@ export interface Partida {
     modo_juego: string;  // 'aventura', 'prueba', 'contrarreloj', 'infinito'
     id_categoria: number;
     dificultad: string;  // 'heroica', 'divina'
+    nombre_categoria?: string;
 }

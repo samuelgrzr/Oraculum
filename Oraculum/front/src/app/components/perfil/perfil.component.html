@@ -2,18 +2,18 @@
   <div class="flex flex-col md:flex-row gap-8 justify-center">
     <div class="w-full md:w-1/3 bg-white rounded-lg shadow-md p-6 border-2 border-[var(--greek-gold)]">
       <h2 class="text-2xl font-bold mb-6 greek-title">Tu Destino en el Oráculo</h2>
-      
+
       <div class="space-y-4">
         <div class="border-b border-[var(--greek-gold)] pb-4">
           <p class="text-sm text-[var(--greek-blue)]">Nombre de usuario</p>
           <p class="text-lg font-medium text-[var(--greek-blue)]">{{ usuario?.nombre }}</p>
         </div>
-        
+
         <div class="border-b border-[var(--greek-gold)] pb-4">
           <p class="text-sm text-[var(--greek-blue)]">Correo electrónico</p>
           <p class="text-lg font-medium text-[var(--greek-blue)]">{{ usuario?.correo }}</p>
         </div>
-        
+
         <div>
           <p class="text-sm text-[var(--greek-blue)]">Puntuación total</p>
           <p class="text-lg font-medium text-[var(--greek-blue)]">{{ usuario?.puntuacion }} puntos</p>
@@ -21,47 +21,38 @@
 
         <!-- CAMBIAR CONTRASEÑA -->
         <div class="border-t border-[var(--greek-gold)] pt-4 flex flex-col items-center">
-          <button 
-            (click)="toggleEditarContrasena()"
-            class="greek-button mt-2">
+          <button (click)="toggleEditarContrasena()" class="greek-button mt-2">
             <i class="fas fa-key mr-2"></i>
             {{ editandoContrasena ? 'Cancelar cambio' : 'Cambiar contraseña' }}
           </button>
 
           <!-- Verificar contraseña actual -->
-          <form *ngIf="editandoContrasena && !contrasenaActualVerificada" 
-                [formGroup]="verificarContrasenaForm" 
-                (ngSubmit)="verificarContrasenaActual()" 
-                class="mt-4 w-full">
+          <form *ngIf="editandoContrasena && !contrasenaActualVerificada" [formGroup]="verificarContrasenaForm"
+            (ngSubmit)="verificarContrasenaActual()" class="mt-4 w-full">
             <h4 class="text-sm font-medium text-[var(--greek-blue)] mb-2">Primero, confirma tu contraseña actual:</h4>
-            
+
             <div class="relative">
-              <input 
-                [type]="mostrarContrasenaActual ? 'text' : 'password'" 
-                formControlName="contrasenaActual"
-                placeholder="Contraseña actual" 
-                class="w-full p-2 border-2 rounded-lg focus:outline-none"
+              <input [type]="mostrarContrasenaActual ? 'text' : 'password'" formControlName="contrasenaActual"
+                placeholder="Contraseña actual" class="w-full p-2 border-2 rounded-lg focus:outline-none"
                 [ngClass]="{'border-red-500': verificarContrasenaForm.get('contrasenaActual')?.invalid && verificarContrasenaForm.get('contrasenaActual')?.touched}"
                 style="border-color: var(--greek-gold); color: var(--greek-blue);">
-              <button 
-                type="button" 
-                (click)="toggleMostrarContrasenaActual()"
+              <button type="button" (click)="toggleMostrarContrasenaActual()"
                 class="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
                 style="color: var(--greek-blue)">
-                <i class="fas" [class.fa-eye]="!mostrarContrasenaActual" [class.fa-eye-slash]="mostrarContrasenaActual"></i>
+                <i class="fas" [class.fa-eye]="!mostrarContrasenaActual"
+                  [class.fa-eye-slash]="mostrarContrasenaActual"></i>
               </button>
             </div>
 
-            <div *ngIf="verificarContrasenaForm.get('contrasenaActual')?.invalid && verificarContrasenaForm.get('contrasenaActual')?.touched" 
-                 class="text-red-500 text-sm mt-1">
-              <p *ngIf="verificarContrasenaForm.get('contrasenaActual')?.errors?.['required']">La contraseña actual es obligatoria</p>
+            <div
+              *ngIf="verificarContrasenaForm.get('contrasenaActual')?.invalid && verificarContrasenaForm.get('contrasenaActual')?.touched"
+              class="text-red-500 text-sm mt-1">
+              <p *ngIf="verificarContrasenaForm.get('contrasenaActual')?.errors?.['required']">La contraseña actual es
+                obligatoria</p>
             </div>
 
             <div class="flex justify-center mt-4">
-              <button 
-                type="submit"
-                class="greek-button"
-                [disabled]="!verificarContrasenaForm.valid">
+              <button type="submit" class="greek-button" [disabled]="!verificarContrasenaForm.valid">
                 <i class="fas fa-check mr-2"></i>
                 Verificar contraseña
               </button>
@@ -69,42 +60,36 @@
           </form>
 
           <!-- Cambiar contraseña -->
-          <form *ngIf="editandoContrasena && contrasenaActualVerificada" 
-                [formGroup]="contrasenaForm" 
-                (ngSubmit)="guardarContrasena()" 
-                class="mt-4 w-full">
+          <form *ngIf="editandoContrasena && contrasenaActualVerificada" [formGroup]="contrasenaForm"
+            (ngSubmit)="guardarContrasena()" class="mt-4 w-full">
             <h4 class="text-sm font-medium text-[var(--greek-blue)] mb-2">Ahora ingresa tu nueva contraseña:</h4>
-            
+
             <div class="relative">
-              <input 
-                [type]="mostrarContrasenaNueva ? 'text' : 'password'" 
-                formControlName="contrasena"
-                placeholder="Nueva contraseña" 
-                class="w-full p-2 border-2 rounded-lg focus:outline-none"
+              <input [type]="mostrarContrasenaNueva ? 'text' : 'password'" formControlName="contrasena"
+                placeholder="Nueva contraseña" class="w-full p-2 border-2 rounded-lg focus:outline-none"
                 [ngClass]="{'border-red-500': contrasenaForm.get('contrasena')?.invalid && contrasenaForm.get('contrasena')?.touched}"
                 style="border-color: var(--greek-gold); color: var(--greek-blue);">
-              <button 
-                type="button" 
-                (click)="toggleMostrarContrasenaNueva()"
+              <button type="button" (click)="toggleMostrarContrasenaNueva()"
                 class="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
                 style="color: var(--greek-blue)">
-                <i class="fas" [class.fa-eye]="!mostrarContrasenaNueva" [class.fa-eye-slash]="mostrarContrasenaNueva"></i>
+                <i class="fas" [class.fa-eye]="!mostrarContrasenaNueva"
+                  [class.fa-eye-slash]="mostrarContrasenaNueva"></i>
               </button>
             </div>
 
-            <div *ngIf="contrasenaForm.get('contrasena')?.invalid && contrasenaForm.get('contrasena')?.touched" 
-                 class="text-red-500 text-sm mt-1">
+            <div *ngIf="contrasenaForm.get('contrasena')?.invalid && contrasenaForm.get('contrasena')?.touched"
+              class="text-red-500 text-sm mt-1">
               <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['required']">La contraseña es obligatoria</p>
-              <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</p>
-              <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['maxlength']">La contraseña no puede tener más de 12 caracteres</p>
-              <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['pattern']">La contraseña debe contener al menos una letra, un número y un carácter especial (* ! $ & #)</p>
+              <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['minlength']">La contraseña debe tener al menos 6
+                caracteres</p>
+              <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['maxlength']">La contraseña no puede tener más de 12
+                caracteres</p>
+              <p *ngIf="contrasenaForm.get('contrasena')?.errors?.['pattern']">La contraseña debe contener al menos una
+                letra, un número y un carácter especial (* ! $ & #)</p>
             </div>
 
             <div class="flex justify-center mt-4">
-              <button 
-                type="submit"
-                class="greek-button"
-                [disabled]="!contrasenaForm.valid">
+              <button type="submit" class="greek-button" [disabled]="!contrasenaForm.valid">
                 <i class="fas fa-save mr-2"></i>
                 Guardar nueva contraseña
               </button>
@@ -113,9 +98,7 @@
         </div>
 
         <div class="flex justify-center">
-          <button 
-            (click)="eliminarCuenta()"
-            class="delete-button">
+          <button (click)="eliminarCuenta()" class="delete-button">
             <i class="fas fa-user-slash mr-2"></i>
             Abandonar el Oráculo
           </button>
@@ -126,11 +109,61 @@
     <!-- HISTORIAL -->
     <div class="w-full md:w-1/3 bg-white rounded-lg shadow-md p-6 border-2 border-[var(--greek-gold)]">
       <h2 class="text-2xl font-bold mb-6 greek-title">Tus Hazañas</h2>
-      
-      <div class="text-center text-[var(--greek-blue)] py-8">
+
+      <!-- Loading state -->
+      <div *ngIf="cargandoHistorial" class="text-center text-[var(--greek-blue)] py-8">
+        <i class="fas fa-spinner fa-spin text-4xl mb-4"></i>
+        <p>Consultando los pergaminos...</p>
+      </div>
+
+      <!-- Empty state -->
+      <div *ngIf="!cargandoHistorial && partidas.length === 0" class="text-center text-[var(--greek-blue)] py-8">
         <i class="fas fa-scroll text-6xl mb-4"></i>
         <p class="text-lg">Los pergaminos de tus hazañas están siendo escritos por las Musas</p>
-        <p class="text-sm mt-2">Pronto podrás consultar tu historial de partidas</p>
+        <p class="text-sm mt-2">¡Juega tu primera partida para comenzar tu leyenda!</p>
+      </div>
+
+      <!-- Historial de partidas -->
+      <div *ngIf="!cargandoHistorial && partidas.length > 0" class="space-y-3 max-h-96 overflow-y-auto">
+        <div *ngFor="let partida of partidas" class="border border-[var(--greek-gold)] rounded-lg overflow-hidden">
+          <!-- Header de la partida (siempre visible) -->
+          <!-- Header de la partida (siempre visible) -->
+          <div class="p-3 cursor-pointer hover:bg-gray-50 transition-colors" (click)="togglePartida(partida.id)"
+            [class.bg-gray-50]="partidaExpandida === partida.id">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-3">
+                <i class="fas" [class]="obtenerIconoModo(partida.modo_juego)" style="color: var(--greek-blue)"></i>
+                <div>
+                  <p class="font-medium text-[var(--greek-blue)] capitalize">{{partida.modo_juego}}</p>
+                  <p class="text-sm text-gray-600">{{formatearFecha(partida.fecha)}}</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="font-bold text-[var(--greek-blue)]">
+                  {{ obtenerTextoResultado(partida) }}
+                </p>
+                <i class="fas fa-chevron-down transition-transform" [class.rotate-180]="partidaExpandida === partida.id"
+                  style="color: var(--greek-blue)"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detalles expandibles -->
+          <div *ngIf="partidaExpandida === partida.id" class="px-3 pb-3 border-t border-gray-200 bg-gray-50">
+            <div class="grid grid-cols-2 gap-2 text-sm mt-2">
+              <div>
+                <span class="text-gray-600">Dificultad:</span>
+                <span class="ml-1 font-medium capitalize" [class]="obtenerColorDificultad(partida.dificultad)">
+                  {{partida.dificultad}}
+                </span>
+              </div>
+              <div>
+                <span class="text-gray-600">Categoría:</span>
+                <span class="ml-1 font-medium text-[var(--greek-blue)]">{{partida.nombre_categoria}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

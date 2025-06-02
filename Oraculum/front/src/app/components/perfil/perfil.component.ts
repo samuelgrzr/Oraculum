@@ -1,10 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
+import { PartidaService } from '../../services/partida.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertService } from '../../services/alert.service';
+import { Partida } from '../../models/Partida';
 
 @Component({
   selector: 'app-perfil',
@@ -12,9 +14,10 @@ import { AlertService } from '../../services/alert.service';
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css']
 })
-export class PerfilComponent {
+export class PerfilComponent implements OnInit {
   private authService = inject(AuthService);
   private usuarioService = inject(UsuarioService);
+  private partidaService = inject(PartidaService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
   private alertService = inject(AlertService);
@@ -24,6 +27,11 @@ export class PerfilComponent {
   mostrarContrasenaActual = false;
   mostrarContrasenaNueva = false;
   contrasenaActualVerificada = false;
+  
+  // Nuevas propiedades para el historial
+  partidas: Partida[] = [];
+  cargandoHistorial = false;
+  partidaExpandida: number | null = null;
 
   verificarContrasenaForm: FormGroup = this.fb.group({
     contrasenaActual: ['', [Validators.required]]
@@ -122,6 +130,62 @@ export class PerfilComponent {
           }
         }
       });
+    }
+  }
+
+  ngOnInit() {
+    this.cargarHistorialPartidas();
+  }
+
+  cargarHistorialPartidas() {
+    if (!this.usuario) return;
+    
+    this.cargandoHistorial = true;
+    this.partidaService.getHistorialUsuario(this.usuario.id).subscribe({
+      next: (partidas) => {
+        this.partidas = partidas.sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime());
+        this.cargandoHistorial = false;
+      },
+      error: (error) => {
+        console.error('Error al cargar historial:', error);
+        this.cargandoHistorial = false;
+      }
+    });
+  }
+
+  togglePartida(partidaId: number) {
+    this.partidaExpandida = this.partidaExpandida === partidaId ? null : partidaId;
+  }
+
+  formatearFecha(fecha: Date): string {
+    return new Date(fecha).toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  }
+
+  obtenerIconoModo(modo: string): string {
+    const iconos: { [key: string]: string } = {
+      'aventura': 'fa-map',
+      'prueba': 'fa-clipboard-check',
+      'contrarreloj': 'fa-clock',
+      'infinito': 'fa-infinity'
+    };
+    return iconos[modo] || 'fa-gamepad';
+  }
+
+  obtenerColorDificultad(dificultad: string): string {
+    return dificultad === 'heroica' ? 'text-yellow-800' : 'text-purple-800';
+  }
+
+  obtenerTextoResultado(partida: any): string {
+    if (partida.modo_juego === 'infinito') {
+      return `${partida.puntuacion} puntos`;
+    } else {
+      return `${partida.respuestasCorrectas || 0}/10`;
     }
   }
 }

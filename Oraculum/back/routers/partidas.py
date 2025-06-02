@@ -1,9 +1,10 @@
+from zoneinfo import ZoneInfo
 from pydantic import BaseModel
 from typing import Optional, List
 from fastapi import APIRouter, HTTPException
 from datetime import datetime
 
-from models import Partida, Usuario, DatosPartida, Pregunta, Respuesta
+from models import Partida, Usuario, DatosPartida, Pregunta, Respuesta, Categoria
 from deps import db_dependency, user_dependency
 
 router = APIRouter(
@@ -36,14 +37,36 @@ def get_partida(db: db_dependency, id_partida: int):
 
 @router.get("/historial/{id_usuario}")
 def get_historial_usuario(db: db_dependency, id_usuario: int):
-    return db.query(Partida).filter(Partida.id_usuario == id_usuario).all()
+    partidas_con_categoria = db.query(Partida, Categoria.nombre).join(
+        Categoria, Partida.id_categoria == Categoria.id
+    ).filter(Partida.id_usuario == id_usuario).all()
+    
+    resultado = []
+    for partida, nombre_categoria in partidas_con_categoria:
+        datos_partida = db.query(DatosPartida).filter(DatosPartida.id_partida == partida.id).all()
+        respuestas_correctas = sum(1 for dato in datos_partida if dato.id_respuesta_elegida == dato.id_respuesta_correcta)
+        
+        partida_dict = {
+            "id": partida.id,
+            "id_usuario": partida.id_usuario,
+            "fecha": partida.fecha,
+            "puntuacion": partida.puntuacion,
+            "modo_juego": partida.modo_juego,
+            "id_categoria": partida.id_categoria,
+            "nombre_categoria": nombre_categoria,
+            "dificultad": partida.dificultad,
+            "respuestasCorrectas": respuestas_correctas
+        }
+        resultado.append(partida_dict)
+    
+    return resultado
 
 @router.post("/", status_code=201)
 def create_partida(db: db_dependency, partida: CrearPartida):
     try:
         db_partida = Partida(
             id_usuario = partida.id_usuario,
-            fecha = datetime.utcnow(),
+            fecha = datetime.now(),
             puntuacion = partida.puntuacion,
             modo_juego = partida.modo_juego,
             id_categoria = partida.id_categoria,
