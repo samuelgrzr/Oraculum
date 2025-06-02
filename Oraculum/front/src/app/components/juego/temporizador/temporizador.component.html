@@ -1,13 +1,13 @@
-<div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+<div class="p-4 rounded-lg shadow-lg mb-6" style="background-color: var(--marble-white); border: 2px solid var(--greek-gold);">
   <div class="flex items-center justify-between mb-2">
-    <span class="text-sm font-medium text-gray-600">Tiempo restante:</span>
+    <span class="text-sm font-medium" style="color: var(--greek-blue);">Tiempo restante:</span>
     <span class="text-2xl font-bold" [ngClass]="colorTemporizador">
       {{ segundosRestantes }}s
     </span>
   </div>
   
   <!-- Barra de progreso -->
-  <div class="w-full bg-gray-200 rounded-full h-3">
+  <div class="w-full rounded-full h-3" style="background-color: var(--light-blue);">
     <div 
       class="h-3 rounded-full transition-all duration-100" 
       [ngClass]="colorBarra"
@@ -17,6 +17,6 @@
   
   <!-- Indicador de pausa -->
   <div *ngIf="pausado" class="mt-2 text-center">
-    <span class="text-sm text-yellow-600 font-medium">⏸️ Pausado</span>
+    <span class="text-sm font-medium" style="color: var(--greek-gold);">⏸️ Pausado</span>
   </div>
 </div>

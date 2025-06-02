@@ -1,28 +1,30 @@
-<div class="max-w-2xl mx-auto p-6 rounded-lg" [ngClass]="colorFondo">
+<div class="max-w-2xl mx-auto p-4 sm:p-6 rounded-lg shadow-lg" [ngClass]="colorFondo" style="border: 2px solid var(--greek-blue);">
   
   <!-- Resultado -->
   <div class="text-center mb-6">
-    <h3 class="text-3xl font-bold mb-2" [ngClass]="colorResultado">
+    <h3 class="text-2xl sm:text-3xl font-bold mb-2" [ngClass]="colorResultado">
       {{ mensajeResultado }}
     </h3>
     
-    <div class="flex justify-center items-center gap-4 text-sm text-gray-600">
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 text-sm" style="color: var(--greek-blue);">
       <span>Tiempo: {{ tiempoEnSegundos }}s</span>
-      <span *ngIf="respuestaUsuario.uso_pista">• Pista usada</span>
+      <span *ngIf="respuestaUsuario.uso_pista" class="hidden sm:inline">•</span>
+      <span *ngIf="respuestaUsuario.uso_pista">Pista usada</span>
     </div>
   </div>
 
   <!-- Explicación (si existe) -->
-  <div *ngIf="pregunta.explicacion" class="bg-white rounded-lg p-4 border border-gray-200 mb-6">
-    <h4 class="font-semibold text-gray-800 mb-2">💡 Explicación:</h4>
-    <p class="text-gray-700 leading-relaxed">{{ pregunta.explicacion }}</p>
+  <div *ngIf="pregunta.explicacion" class="rounded-lg p-4 mb-6" style="background-color: var(--marble-white); border: 1px solid var(--light-blue);">
+    <h4 class="font-semibold mb-2" style="color: var(--greek-blue);">💡 Explicación:</h4>
+    <p class="leading-relaxed" style="color: var(--greek-blue); opacity: 0.8;">{{ pregunta.explicacion }}</p>
   </div>
 
   <!-- Botón para continuar -->
   <div class="text-center">
     <button 
       (click)="onContinuar()"
-      class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium cursor-pointer">
+      class="px-6 py-3 rounded-lg transition-colors font-medium cursor-pointer"
+      style="background-color: var(--greek-blue); color: var(--greek-gold);">
       Continuar
     </button>
   </div>
