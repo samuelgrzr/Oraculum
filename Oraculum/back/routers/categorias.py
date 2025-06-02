@@ -25,7 +25,7 @@ def get_categoria(db: db_dependency, id_categoria: int):
 
 @router.get("/categorias")
 def get_all_categorias(db: db_dependency):
-    return db.query(Categoria).all()
+    return db.query(Categoria).order_by(Categoria.id).all()
 
 @router.post("/", status_code=201)
 def create_categoria(db: db_dependency, categoria: CrearCategoria, user: user_dependency):
