@@ -42,7 +42,7 @@ CREATE TABLE partida (
     modo_juego VARCHAR(50) NOT NULL,  -- 'aventura', 'prueba', 'contrarreloj', 'infinito'
     id_categoria INT,
     dificultad VARCHAR(50) NOT NULL,  -- 'heroica', 'divina'
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id) ON DELETE CASCADE,
     FOREIGN KEY (id_categoria) REFERENCES categoria(id)
 );
 
@@ -55,7 +55,7 @@ CREATE TABLE datos_partida (
     tiempo_respuesta INT,
     uso_pista BOOLEAN DEFAULT FALSE,
     puntuacion_pregunta INT,
-    FOREIGN KEY (id_partida) REFERENCES partida(id),
+    FOREIGN KEY (id_partida) REFERENCES partida(id) ON DELETE CASCADE,
     FOREIGN KEY (id_pregunta) REFERENCES pregunta(id),
     FOREIGN KEY (id_respuesta_elegida) REFERENCES respuesta(id),
     FOREIGN KEY (id_respuesta_correcta) REFERENCES respuesta(id)

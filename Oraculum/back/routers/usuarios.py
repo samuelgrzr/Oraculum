@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 from fastapi import APIRouter, HTTPException, status
 
-from models import Usuario
+from models import Usuario, Partida, DatosPartida
 from deps import db_dependency, user_dependency, bcrypt_context
 
 router = APIRouter(
@@ -80,8 +80,20 @@ def delete_usuario(db: db_dependency, id_usuario: int, user: user_dependency):
             detail="Solo puedes eliminar tu propia cuenta o ser administrador"
         )
     
-    db_usuario = db.query(Usuario).filter(Usuario.id == id_usuario).first()
-    if db_usuario:
+    try:
+        # Primero eliminamos todos los DatosPartida de las partidas del usuario
+        partidas_usuario = db.query(Partida).filter(Partida.id_usuario == id_usuario).all()
+        for partida in partidas_usuario:
+            db.query(DatosPartida).filter(DatosPartida.id_partida == partida.id).delete()
+        
+        # Luego eliminamos todas las partidas del usuario
+        db.query(Partida).filter(Partida.id_usuario == id_usuario).delete()
+        
+        # Finalmente eliminamos el usuario
+        db_usuario = db.query(Usuario).filter(Usuario.id == id_usuario).first()
+        if not db_usuario:
+            raise HTTPException(status_code=404, detail="Usuario no encontrado")
+            
         db.delete(db_usuario)
         db.commit()
         
@@ -91,5 +103,9 @@ def delete_usuario(db: db_dependency, id_usuario: int, user: user_dependency):
                 detail="Cuenta eliminada correctamente. Cerrando sesión..."
             )
         return db_usuario
-    else:
-        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=400,
+            detail=f"Error al eliminar el usuario: {str(e)}"
+        )

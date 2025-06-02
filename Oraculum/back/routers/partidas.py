@@ -95,3 +95,32 @@ def create_partida(db: db_dependency, partida: CrearPartida):
             status_code=400,
             detail=f"Error al crear la partida: {str(e)}"
         )
+
+
+@router.delete("/{id_partida}")
+def delete_partida(db: db_dependency, id_partida: int, user: user_dependency):
+    try:
+        # Primero eliminamos todos los DatosPartida asociados a la partida
+        db.query(DatosPartida).filter(DatosPartida.id_partida == id_partida).delete()
+        
+        # Luego eliminamos la partida
+        db_partida = db.query(Partida).filter(Partida.id == id_partida).first()
+        if not db_partida:
+            raise HTTPException(status_code=404, detail="Partida no encontrada")
+        
+        # Verificar permisos: solo el dueño o admin pueden eliminar
+        if user.get("id") != db_partida.id_usuario and user.get("rol") != "admin":
+            raise HTTPException(
+                status_code=403,
+                detail="Solo puedes eliminar tus propias partidas o ser administrador"
+            )
+            
+        db.delete(db_partida)
+        db.commit()
+        return db_partida
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=400,
+            detail=f"Error al eliminar la partida: {str(e)}"
+        )

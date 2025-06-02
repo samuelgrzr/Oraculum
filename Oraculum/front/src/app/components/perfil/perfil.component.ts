@@ -78,7 +78,8 @@ export class PerfilComponent {
           this.router.navigate(['/']);
         },
         error: (error) => {
-          if (error.status === 401) {
+          if (error.status === 401 || error.status === 400) {
+            this.alertService.success('Tu cuenta ha sido eliminada correctamente');
             this.authService.logout();
             this.router.navigate(['/']);
           } else {
