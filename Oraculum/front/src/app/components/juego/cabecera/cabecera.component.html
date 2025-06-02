@@ -3,18 +3,18 @@
   <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
 
     <!-- Información del juego -->
-    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-      <div class="flex items-center gap-2">
-        <span class="text-sm font-medium" style="color: var(--greek-blue);">Modo:</span>
-        <span class="px-3 py-1 rounded-full text-sm font-medium"
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center lg:justify-start gap-4 w-full lg:w-auto">
+      <div class="flex items-center justify-center sm:justify-start gap-2">
+        <span class="text-base font-medium" style="color: var(--greek-blue);">Modo:</span>
+        <span class="px-3 py-1 rounded-full text-base font-medium"
           style="background-color: var(--light-blue); color: var(--greek-blue);">
           {{ modoJuegoTexto }}
         </span>
       </div>
 
-      <div class="flex items-center gap-2">
-        <span class="text-sm font-medium" style="color: var(--greek-blue);">Dificultad:</span>
-        <span class="px-3 py-1 rounded-full text-sm font-medium" [ngClass]="{
+      <div class="flex items-center justify-center sm:justify-start gap-2">
+        <span class="text-base font-medium" style="color: var(--greek-blue);">Dificultad:</span>
+        <span class="px-3 py-1 rounded-full text-base font-medium" [ngClass]="{
                 'bg-yellow-100 text-yellow-800': estado.dificultad === 'heroica',
                 'bg-purple-100 text-purple-800': estado.dificultad === 'divina'
               }">
@@ -24,31 +24,31 @@
     </div>
 
     <!-- Estadísticas -->
-    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-      <div class="flex items-center gap-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center lg:justify-end gap-4 w-full lg:w-auto">
+      <div class="flex items-center justify-center gap-4">
         <!-- Puntuación (solo en modo infinito) -->
         <div class="text-center" *ngIf="estado.modoJuego === 'infinito'">
-          <div class="text-2xl font-bold" style="color: var(--greek-blue);">{{ estado.puntuacion }}</div>
-          <div class="text-xs" style="color: var(--greek-blue); opacity: 0.7;">Puntos</div>
+          <div class="text-3xl font-bold" style="color: var(--greek-blue);">{{ estado.puntuacion }}</div>
+          <div class="text-sm" style="color: var(--greek-blue); opacity: 0.7;">Puntos</div>
         </div>
 
         <div class="text-center" *ngIf="configuracion.totalPreguntas > 0">
-          <div class="text-lg font-semibold" style="color: var(--greek-blue);">
+          <div class="text-xl font-semibold" style="color: var(--greek-blue);">
             {{ estado.indicePregunta }}/{{ configuracion.totalPreguntas }}
           </div>
-          <div class="text-xs" style="color: var(--greek-blue); opacity: 0.7;">Preguntas</div>
+          <div class="text-sm" style="color: var(--greek-blue); opacity: 0.7;">Preguntas</div>
         </div>
 
         <div class="text-center" *ngIf="estado.modoJuego === 'infinito'">
-          <div class="text-2xl font-bold text-green-600">{{ estado.respuestasCorrectas }}</div>
-          <div class="text-xs" style="color: var(--greek-blue); opacity: 0.7;">Correctas</div>
+          <div class="text-3xl font-bold text-green-600">{{ estado.respuestasCorrectas }}</div>
+          <div class="text-sm" style="color: var(--greek-blue); opacity: 0.7;">Correctas</div>
         </div>
       </div>
 
       <!-- Controles -->
-      <div class="flex gap-2">
+      <div class="flex justify-center gap-2">
         <button (click)="onAbandonar()"
-          class="px-4 py-2 rounded-lg transition-colors text-sm font-medium cursor-pointer"
+          class="px-4 py-2 rounded-lg transition-colors text-base font-medium cursor-pointer"
           style="background-color: var(--greek-blue); color: var(--greek-gold);">
           Rendirse
         </button>

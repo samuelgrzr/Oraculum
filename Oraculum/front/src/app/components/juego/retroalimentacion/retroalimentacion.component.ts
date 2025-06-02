@@ -24,9 +24,9 @@ export class RetroalimentacionComponent {
 
   get mensajeResultado(): string {
     if (this.respuestaUsuario.id_respuesta_elegida === -1) {
-      return '⏰ ¡Tiempo agotado!';
+      return '¡Tiempo agotado!';
     }
-    return this.esCorrecta ? '🎉 ¡Correcto!' : '❌ Incorrecto';
+    return this.esCorrecta ? '¡Correcto!' : 'Incorrecto';
   }
 
   get colorResultado(): string {
