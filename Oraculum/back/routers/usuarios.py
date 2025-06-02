@@ -81,15 +81,12 @@ def delete_usuario(db: db_dependency, id_usuario: int, user: user_dependency):
         )
     
     try:
-        # Primero eliminamos todos los DatosPartida de las partidas del usuario
         partidas_usuario = db.query(Partida).filter(Partida.id_usuario == id_usuario).all()
         for partida in partidas_usuario:
             db.query(DatosPartida).filter(DatosPartida.id_partida == partida.id).delete()
         
-        # Luego eliminamos todas las partidas del usuario
         db.query(Partida).filter(Partida.id_usuario == id_usuario).delete()
         
-        # Finalmente eliminamos el usuario
         db_usuario = db.query(Usuario).filter(Usuario.id == id_usuario).first()
         if not db_usuario:
             raise HTTPException(status_code=404, detail="Usuario no encontrado")

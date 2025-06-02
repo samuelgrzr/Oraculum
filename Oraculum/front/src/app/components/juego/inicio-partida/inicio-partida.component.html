@@ -26,9 +26,7 @@
             <h2 class="text-2xl font-bold text-center mb-6 text-[var(--greek-blue)]">Elige los términos del desafío</h2>
 
             <form [formGroup]="partidaForm" (ngSubmit)="iniciarPartida()" class="space-y-6">
-                <!-- Layout responsive: vertical en móvil, horizontal en pantallas grandes -->
                 <div class="flex flex-col lg:flex-row lg:gap-8 space-y-6 lg:space-y-0">
-
                     <!-- Columna 1: Modo de juego -->
                     <div class="flex-1 space-y-2">
                         <label class="block text-lg font-medium text-[var(--greek-blue)]">Modo de juego</label>
@@ -109,7 +107,6 @@
                             </div>
                         </div>
 
-                        <!-- Botón -->
                         <div class="pt-4">
                             <button type="submit" class="w-full greek-button" [disabled]="!partidaForm.valid"
                                 [ngClass]="{'opacity-50 cursor-not-allowed': partidaForm.invalid}">
@@ -122,7 +119,7 @@
         </div>
     </div>
 
-    <!-- Modal de información del modo -->
+    <!-- Información del modo -->
     <div *ngIf="mostrandoInfoModo"
         class="fixed inset-0 bg-opacity-20 backdrop-blur-sm flex items-center justify-center z-50"
         (click)="cerrarInfoModo()">

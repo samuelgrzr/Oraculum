@@ -23,7 +23,6 @@ export class PreguntaComponent implements OnInit {
   preguntaForm: FormGroup;
   mostrarFormulario: boolean = false;
   
-  // Filtros
   categoriaFiltro: string = '';
   dificultadFiltro: string = '';
   dificultades: string[] = ['heroica', 'divina'];

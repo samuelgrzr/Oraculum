@@ -127,7 +127,6 @@ export class RespuestaComponent implements OnInit {
     if (this.respuestaForm.valid) {
       const nuevaRespuesta = this.respuestaForm.value;
       
-      // Verificar si ya existe una respuesta correcta para esta pregunta
       if (nuevaRespuesta.es_correcta) {
         this.respuestaService.getRespuestasPorPregunta(nuevaRespuesta.id_pregunta).subscribe({
           next: (respuestas) => {

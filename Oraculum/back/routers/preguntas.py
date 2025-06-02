@@ -31,7 +31,6 @@ def get_pregunta(db: db_dependency, id_pregunta: int):
 def get_all_preguntas(db: db_dependency):
     return db.query(Pregunta).all()
 
-# Nuevo endpoint para filtrar por categoría y/o dificultad
 @router.get("/filtrar")
 def get_preguntas_filtradas(
     db: db_dependency,
@@ -40,14 +39,12 @@ def get_preguntas_filtradas(
 ):
     query = db.query(Pregunta)
     
-    # Aplicar filtro por categoría si se proporciona
     if id_categoria is not None:
         categoria = db.query(Categoria).filter(Categoria.id == id_categoria).first()
         if not categoria:
             raise HTTPException(status_code=404, detail=f"Categoría con id {id_categoria} no encontrada")
         query = query.filter(Pregunta.id_categoria == id_categoria)
     
-    # Aplicar filtro por dificultad si se proporciona
     if dificultad is not None:
         if dificultad not in ["heroica", "divina"]:
             raise HTTPException(status_code=400, detail="Dificultad debe ser heroica o divina")
@@ -64,7 +61,6 @@ def create_pregunta(db: db_dependency, pregunta: CrearPregunta, user: user_depen
             detail="Solo los administradores pueden crear preguntas"
         )
     
-    # Verificar si ya existe una pregunta con ese enunciado
     existing_pregunta = db.query(Pregunta).filter(
         Pregunta.enunciado == pregunta.enunciado
     ).first()
@@ -100,7 +96,6 @@ def edit_pregunta(db: db_dependency, id_pregunta: int, pregunta: CrearPregunta, 
             detail="Solo los administradores pueden editar preguntas"
         )
     try:
-        # Verificar si ya existe otra pregunta con ese enunciado
         existing_pregunta = db.query(Pregunta).filter(
             Pregunta.enunciado == pregunta.enunciado,
             Pregunta.id != id_pregunta
@@ -142,10 +137,8 @@ def delete_pregunta(db: db_dependency, id_pregunta: int, user: user_dependency):
             detail="Solo los administradores pueden eliminar preguntas"
         )
     try:
-        # Primero eliminamos todas las respuestas asociadas a la pregunta
         db.query(Respuesta).filter(Respuesta.id_pregunta == id_pregunta).delete()
         
-        # Luego eliminamos la pregunta
         db_pregunta = db.query(Pregunta).filter(Pregunta.id == id_pregunta).first()
         if not db_pregunta:
             raise HTTPException(status_code=404, detail="Pregunta no encontrada")

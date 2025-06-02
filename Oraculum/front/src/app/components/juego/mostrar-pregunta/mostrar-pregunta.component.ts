@@ -18,7 +18,7 @@ export class MostrarPreguntaComponent implements OnInit {
   @Input() totalPreguntas = 0;
   @Output() respuestaSeleccionada = new EventEmitter<any>();
   @Output() respuestaElegida = new EventEmitter<void>();
-  @Output() pistaUsada = new EventEmitter<void>(); // Nuevo evento
+  @Output() pistaUsada = new EventEmitter<void>();
 
   respuestas: Respuesta[] = [];
   respuestaSeleccionadaId: number | null = null;
@@ -65,17 +65,15 @@ export class MostrarPreguntaComponent implements OnInit {
     this.respuestaSeleccionadaId = idRespuesta;
     const tiempoRespuesta = Date.now() - this.tiempoInicio;
 
-    // Emitir inmediatamente que se eligió una respuesta
     this.respuestaElegida.emit();
 
-    // Emitir la respuesta después de un breve delay para mostrar la selección
     setTimeout(() => {
       this.respuestaSeleccionada.emit({
         idRespuesta,
         tiempoRespuesta,
         usoPista: this.usoPista
       });
-    }, 500);
+    }, 300);
   }
 
   mostrarPista(): void {
@@ -84,7 +82,6 @@ export class MostrarPreguntaComponent implements OnInit {
     this.mostrandoPista = true;
     this.usoPista = true;
 
-    // Emitir evento cuando se usa una pista
     this.pistaUsada.emit();
   }
 }

@@ -23,7 +23,6 @@ export class NavbarComponent {
     this.closeUserMenu();
   }
 
-  // Métodos para cerrar los menús desplegables
   closeMainMenu() {
     const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement;
     if (menuToggle) menuToggle.checked = false;
@@ -39,17 +38,14 @@ export class NavbarComponent {
     if (userMenuToggle) userMenuToggle.checked = false;
   }
 
-  // Método para usar en los enlaces
   navigateTo(route: string[]) {
-    // Cierra todos los menús
     this.closeMainMenu();
     this.closeLoginMenu();
     this.closeUserMenu();
     
-    // Navega a la ruta
     this.router.navigate(route);
     
-    return false; // Evita la navegación predeterminada
+    return false;
   }
 
   isLoggedIn(): boolean {

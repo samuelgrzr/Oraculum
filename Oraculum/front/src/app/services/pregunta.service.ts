@@ -28,7 +28,6 @@ export class PreguntaService {
         return this.http.get<Pregunta[]>(`${this.apiUrl}/filtrar`, { params });
     }
     
-    // Nuevo método para obtener respuestas de una pregunta
     getRespuestasPregunta(idPregunta: number): Observable<Respuesta[]> {
         return this.http.get<Respuesta[]>(`${this.respuestasUrl}/pregunta/${idPregunta}`);
     }

@@ -32,7 +32,6 @@ export class TemporizadorComponent implements OnInit, OnDestroy {
 
   iniciarTemporizador(): void {
     this.tiempoInicio = Date.now();
-    // Establecemos el tiempo límite exacto en milisegundos
     this.tiempoRestante = this.tiempoLimite;
     
     this.intervalId = setInterval(() => {
@@ -80,26 +79,19 @@ export class TemporizadorComponent implements OnInit, OnDestroy {
   restarTiempo(milisegundos: number): void {
     if (milisegundos <= 0) return;
     
-    // Ajustar el tiempo de inicio para simular que ha pasado más tiempo
     this.tiempoInicio -= milisegundos;
     
-    // Recalcular inmediatamente el tiempo restante
     const tiempoTranscurrido = Date.now() - this.tiempoInicio - this.tiempoPausado;
     this.tiempoRestante = Math.max(0, this.tiempoLimite - tiempoTranscurrido);
     this.porcentajeRestante = (this.tiempoRestante / this.tiempoLimite) * 100;
     
-    // Si el tiempo se agotó, emitir evento
     if (this.tiempoRestante <= 0) {
       this.tiempoAgotado.emit();
       this.detenerTemporizador();
     }
   }
 
-  // El truco está en esta función, queremos transformar:
-  // 10000ms → 10s, 9999-9000ms → 9s, etc.
   get segundosRestantes(): number {
-    // Añadimos 999 para que muestre el segundo completo
-    // Ej: 9001ms → 10s, 9000ms → 9s, etc.
     return Math.ceil(this.tiempoRestante / 1000);
   }
   get colorTemporizador(): string {

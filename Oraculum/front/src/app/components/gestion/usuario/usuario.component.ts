@@ -19,7 +19,6 @@ export class UsuarioComponent implements OnInit {
   usuarioEditandoId: number | null = null;
   usuarioForm: FormGroup;
   
-  // Para poder editar dentro de la tabla
   get nombreControl(): FormControl {
     return this.usuarioForm.get('nombre') as FormControl;
   }

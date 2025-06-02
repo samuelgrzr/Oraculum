@@ -1,12 +1,10 @@
 <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg" style="border: 3px solid var(--greek-gold); background: linear-gradient(135deg, var(--marble-white) 0%, #f8f9fa 100%);">
-
-    <!-- Encabezado -->
     <div class="text-center mb-8">
         <h2 class="text-3xl font-bold mb-2" style="color: var(--greek-blue);">¡Partida Finalizada!</h2>
         <p class="text-lg" [ngClass]="colorResultado">{{ mensajeResultado }}</p>
     </div>
 
-    <!-- Estadísticas principales -->
+    <!-- Estadísticas -->
     <div class="grid gap-4 mb-8" [ngClass]="estado.modoJuego === 'infinito' ? 'grid-cols-2 md:grid-cols-4' : 'grid-cols-1 md:grid-cols-3'">
         <div *ngIf="estado.modoJuego === 'infinito'" class="text-center p-6 rounded-lg" style="background: #e0f2fe; border: 2px solid var(--greek-blue);">
             <div class="text-3xl font-bold" style="color: var(--greek-blue);">{{ estado.puntuacion }}</div>
@@ -29,7 +27,7 @@
         </div>
     </div>
 
-    <!-- Detalles adicionales -->
+    <!-- Detalles partida -->
     <div class="rounded-lg p-6 mb-8" style="background: var(--light-blue); border: 2px solid var(--greek-blue);">
         <h3 class="text-lg font-semibold mb-4" style="color: var(--greek-blue);">Detalles de la partida</h3>
 
@@ -66,7 +64,6 @@
         </div>
     </div>
 
-    <!-- Botones de acción -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <button (click)="onVolverMenu()" 
                 class="px-8 py-3 font-medium text-lg rounded-lg transition-colors cursor-pointer" 

@@ -19,7 +19,6 @@ export class InicioPartidaComponent implements OnInit {
   modoJuego: string[] = ['aventura', 'prueba', 'contrarreloj', 'infinito'];
   dificultades: string[] = ['heroica', 'divina'];
   
-  // Variables para el modal de información
   mostrandoInfoModo: boolean = false;
   modoSeleccionado: string = '';
   
@@ -91,7 +90,6 @@ export class InicioPartidaComponent implements OnInit {
         return;
       }
   
-      // Obtener el nombre de la categoría seleccionada
       const categoriaSeleccionada = this.categorias.find(c => c.id == this.partidaForm.value.id_categoria);
       
       const datosPartida = {

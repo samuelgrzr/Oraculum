@@ -35,7 +35,6 @@ def create_categoria(db: db_dependency, categoria: CrearCategoria, user: user_de
             detail="Solo los administradores pueden crear categorías"
         )
     
-    # Verificar si ya existe una categoría con ese nombre
     existing_categoria = db.query(Categoria).filter(
         Categoria.nombre == categoria.nombre
     ).first()
@@ -68,7 +67,6 @@ def edit_categoria(db: db_dependency, id_categoria: int, categoria: CrearCategor
         )
     
     try:
-        # Verificar si ya existe otra categoría con ese nombre
         existing_categoria = db.query(Categoria).filter(
             Categoria.nombre == categoria.nombre,
             Categoria.id != id_categoria

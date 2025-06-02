@@ -9,10 +9,8 @@ import { PartidaService } from '../../../services/partida.service';
 import { PreguntaService } from '../../../services/pregunta.service';
 import { ToastService } from '../../../services/toast.service';
 import { EstadoJuego } from '../../../models/EstadoJuego';
-import { Pregunta } from '../../../models/Pregunta';
 import { ConfiguracionJuego } from '../../../models/ConfiguracionJuego';
 
-// Importar componentes del juego
 import { CabeceraComponent } from '../cabecera/cabecera.component';
 import { MostrarPreguntaComponent } from '../mostrar-pregunta/mostrar-pregunta.component';
 import { RetroalimentacionComponent } from '../retroalimentacion/retroalimentacion.component';
@@ -76,17 +74,15 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
   
     try {
       const configuracionPartida = JSON.parse(configuracionGuardada);
-      console.log('Configuración cargada:', configuracionPartida); // Debug
+      console.log('Configuración cargada:', configuracionPartida);
       
       this.configuracion = this.logicaJuegoService.obtenerConfiguracion(configuracionPartida.modo_juego);
-      console.log('Configuración del modo:', this.configuracion); // Debug
+      console.log('Configuración del modo:', this.configuracion);
       
-      // Inicializar el estado del juego
       this.estadoJuegoService.inicializarJuego(configuracionPartida);
       
-      // Esperar un momento para que el estado se actualice
       setTimeout(() => {
-        console.log('Estado actual:', this.estado); // Debug
+        console.log('Estado actual:', this.estado);
         this.cargarSiguientePregunta();
       }, 100);
       
@@ -101,7 +97,6 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
     const suscripcion = this.estadoJuegoService.estado$.subscribe(estado => {
       this.estado = estado;
       
-      // Verificar si el juego debe terminar
       if (estado.juegoTerminado) {
         this.finalizarPartida();
       }
@@ -126,14 +121,12 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
         
         if (pregunta) {
           this.estadoJuegoService.actualizarPreguntaActual(pregunta);
-          // Reiniciar temporizador para la nueva pregunta
           setTimeout(() => {
             if (this.temporizador) {
               this.temporizador.reiniciarTemporizador();
             }
           }, 100);
         } else {
-          // No hay más preguntas disponibles
           this.toastService.showMessage('No hay más preguntas disponibles');
           this.estadoJuegoService.terminarJuego();
         }
@@ -153,7 +146,6 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
 
     const pregunta = this.estado.preguntaActual;
     
-    // Obtener las respuestas de la pregunta para determinar cuál es correcta
     this.preguntaService.getRespuestasPregunta(pregunta.id).subscribe({
       next: (respuestas) => {
         const respuestaCorrecta = respuestas.find(r => r.es_correcta);
@@ -164,7 +156,6 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
           return;
         }
 
-        // Calcular puntuación
         const puntuacionPregunta = this.logicaJuegoService.calcularPuntuacion(
           this.estado!.modoJuego,
           esCorrecta,
@@ -173,7 +164,6 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
           this.estado!.dificultad
         );
 
-        // Registrar la respuesta
         this.estadoJuegoService.registrarRespuesta(
           event.idRespuesta,
           respuestaCorrecta.id,
@@ -182,10 +172,8 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
           puntuacionPregunta
         );
 
-        // Actualizar puntuación total
         this.estadoJuegoService.actualizarPuntuacion(puntuacionPregunta);
 
-        // Mostrar retroalimentación si está configurado
         if (this.configuracion!.mostrarResultadosInmediatos) {
           this.mostrarRetroalimentacion(esCorrecta, respuestaCorrecta.texto, pregunta.explicacion);
         } else {
@@ -201,7 +189,6 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private mostrarRetroalimentacion(esCorrecta: boolean, respuestaCorrecta: string, explicacion?: string | null): void {
     this.mostrandoRetroalimentacion = true;
-    // Eliminamos el setTimeout automático
   }
 
   onContinuarRetroalimentacion(): void {
@@ -212,7 +199,6 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
   private procesarSiguientePregunta(): void {
     if (!this.estado || !this.configuracion) return;
 
-    // Verificar si el juego debe terminar
     const ultimaRespuesta = this.estado.datosPartida[this.estado.datosPartida.length - 1];
     const esCorrecta = ultimaRespuesta?.id_respuesta_elegida === ultimaRespuesta?.id_respuesta_correcta;
     
@@ -232,26 +218,21 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
   onTiempoAgotado(): void {
     if (!this.estado?.preguntaActual) return;
 
-    // Obtener las respuestas de la pregunta actual
     this.preguntaService.getRespuestasPregunta(this.estado.preguntaActual.id).subscribe({
       next: (respuestas) => {
-        // Filtrar para obtener solo las respuestas incorrectas
         const respuestasIncorrectas = respuestas.filter(r => !r.es_correcta);
         
         if (respuestasIncorrectas.length > 0) {
-          // Seleccionar una respuesta incorrecta aleatoriamente
           const respuestaAleatoria = respuestasIncorrectas[
             Math.floor(Math.random() * respuestasIncorrectas.length)
           ];
           
-          // Usar esta respuesta en lugar de -1
           this.onRespuestaSeleccionada({
             idRespuesta: respuestaAleatoria.id,
             tiempoRespuesta: this.configuracion?.tiempoLimite || 0,
             usoPista: false
           });
         } else {
-          // En el improbable caso de que no haya respuestas incorrectas
           this.handleNoRespuestas();
         }
       },
@@ -262,10 +243,9 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  // Método auxiliar para manejar el caso donde no se pueden obtener respuestas
   private handleNoRespuestas(): void {
     console.warn('No se pudieron obtener respuestas incorrectas para tiempo agotado');
-    // Usar el comportamiento original como fallback
+    this.toastService.showMessage('No se pudieron obtener respuestas incorrectas para tiempo agotado');
     this.onRespuestaSeleccionada({
       idRespuesta: -1,
       tiempoRespuesta: this.configuracion?.tiempoLimite || 0,
@@ -274,9 +254,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onPistaUsada(): void {
-    // Solo restar tiempo si hay configuración y penalización definida
     if (this.configuracion?.penalizacionPista && this.configuracion.penalizacionPista > 0) {
-      // Verificar que el temporizador existe y está activo
       if (this.temporizador && this.configuracion.tiempoLimite) {
         this.temporizador.restarTiempo(this.configuracion.penalizacionPista);
       }
@@ -304,7 +282,6 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!this.estado) return;
 
     try {
-      // Guardar historial de preguntas usadas para futuras partidas
       const historialAnterior = this.estadoJuegoService.obtenerHistorialPreguntas(
         this.estado.modoJuego, 
         this.estado.dificultad, 
@@ -319,7 +296,6 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
         nuevoHistorial
       );
   
-      // Crear la partida en el backend
       const partidaRequest = {
         datos_partida: this.estado.datosPartida,
         puntuacion: this.estado.puntuacion,
@@ -360,7 +336,6 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.router.navigate(['/']);
   }
 
-  // Para controlar los nulos en el html
   get tiempoLimiteSeguro(): number {
     return this.configuracion?.tiempoLimite || 0;
   }

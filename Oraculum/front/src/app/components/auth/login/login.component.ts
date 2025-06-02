@@ -68,7 +68,6 @@ export class LoginComponent {
     }
   }
 
-  // Para validar de forma más cómoda en el HTML
   get nombreControl() {
     return this.loginForm.get('nombre');
   }

@@ -8,7 +8,6 @@
   margin: 0 auto;
 }
 
-// Estilo de pergamino para la introducción
 .scroll-wrapper {
   position: relative;
   padding: 20px;
@@ -28,7 +27,6 @@
   border-radius: 8px;
   color: #2c1810;
   
-  // Efecto de papel antiguo
   &::before {
     content: '';
     position: absolute;
@@ -69,7 +67,6 @@
   margin-top: -15px;
 }
 
-// Animación de entrada
 @keyframes fadeIn {
   from {
     opacity: 0;

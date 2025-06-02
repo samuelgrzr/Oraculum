@@ -15,12 +15,12 @@
                 <p class="mt-4" style="color: var(--greek-blue);">Cargando pregunta...</p>
             </div>
 
-            <!-- Temporizador (solo si el modo tiene tiempo límite) -->
+            <!-- Temporizador (solo Contrarreloj e Infinito) -->
             <app-temporizador *ngIf="configuracion?.tiempoLimite && estado?.juegoActivo && !estado?.juegoTerminado"
                 [tiempoLimite]="tiempoLimiteSeguro" [pausado]="false" (tiempoAgotado)="onTiempoAgotado()">
             </app-temporizador>
 
-            <!-- Componente de pregunta -->
+            <!-- Preguntas -->
             <app-mostrar-pregunta
                 *ngIf="estado?.preguntaActual && !cargandoPregunta && !mostrandoRetroalimentacion && !estado?.juegoTerminado"
                 [pregunta]="estado?.preguntaActual!" [permitePistas]="permitePistasSeguro"

@@ -20,13 +20,10 @@ export class LogicaJuegoService {
   }
 
   obtenerSiguientePregunta(idCategoria: number, dificultad: string, preguntasUsadas: number[], modoJuego: string): Observable<Pregunta | null> {
-    // Obtener historial de preguntas usadas en partidas anteriores
     const historialAnterior = this.estadoJuegoService.obtenerHistorialPreguntas(modoJuego, dificultad, idCategoria);
     
-    // Combinar preguntas usadas en esta partida + historial anterior
     const todasLasPreguntasUsadas = [...new Set([...preguntasUsadas, ...historialAnterior])];
     
-    // Caso especial: modo infinito con dificultad divina
     if (modoJuego === 'infinito' && dificultad === 'divina') {
       const preguntasHeroicas$ = this.preguntaService.getPreguntasfiltradas(idCategoria, 'heroica');
       const preguntasDivinas$ = this.preguntaService.getPreguntasfiltradas(idCategoria, 'divina');
@@ -37,7 +34,6 @@ export class LogicaJuegoService {
           const preguntasDisponibles = todasLasPreguntas.filter(p => !todasLasPreguntasUsadas.includes(p.id));
           
           if (preguntasDisponibles.length === 0) {
-            // Si no hay preguntas disponibles, reiniciar historial y usar todas
             this.estadoJuegoService.limpiarHistorialPreguntas(modoJuego, dificultad, idCategoria);
             return todasLasPreguntas[Math.floor(Math.random() * todasLasPreguntas.length)];
           }
@@ -47,13 +43,11 @@ export class LogicaJuegoService {
       );
     }
     
-    // Comportamiento normal para otros casos
     return this.preguntaService.getPreguntasfiltradas(idCategoria, dificultad).pipe(
       map(preguntas => {
         const preguntasDisponibles = preguntas.filter(p => !todasLasPreguntasUsadas.includes(p.id));
         
         if (preguntasDisponibles.length === 0) {
-          // Si no hay preguntas disponibles, reiniciar historial
           this.estadoJuegoService.limpiarHistorialPreguntas(modoJuego, dificultad, idCategoria);
           return preguntas[Math.floor(Math.random() * preguntas.length)];
         }
@@ -70,10 +64,7 @@ export class LogicaJuegoService {
     const configuracion = this.obtenerConfiguracion(modo);
     let puntos = dificultad === 'divina' ? 10 : 5;
 
-    // Bonus por velocidad en modos con tiempo
     if (configuracion.bonusVelocidad && configuracion.tiempoLimite) {
-      // Usar Math.ceil para el cálculo de puntos por segundos restantes
-      // así coincidirá con lo que se muestra en la interfaz
       const segundosRestantes = Math.ceil((configuracion.tiempoLimite - tiempoRespuesta) / 1000);
       puntos += Math.max(0, segundosRestantes);
     }
@@ -84,12 +75,10 @@ export class LogicaJuegoService {
   debeTerminarJuego(modo: string, indicePregunta: number, esCorrecta: boolean): boolean {
     const configuracion = this.obtenerConfiguracion(modo);
 
-    // Modo infinito termina al fallar
     if (configuracion.continuaHastaFallar && !esCorrecta) {
       return true;
     }
 
-    // Otros modos terminan al alcanzar el límite de preguntas
     return configuracion.totalPreguntas > 0 && indicePregunta >= configuracion.totalPreguntas;
   }
 

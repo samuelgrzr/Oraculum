@@ -16,10 +16,9 @@
   <!-- Explicación (si existe) -->
   <div *ngIf="pregunta.explicacion" class="rounded-lg p-4 mb-6" style="background-color: var(--marble-white); border: 1px solid var(--light-blue);">
     <h4 class="font-semibold mb-2" style="color: var(--greek-blue);">💡 Explicación:</h4>
-    <p class="leading-relaxed" style="color: var(--greek-blue); opacity: 0.8;">{{ pregunta.explicacion }}</p>
+    <p class="leading-relaxed" style="color: var(--greek-blue);">{{ pregunta.explicacion }}</p>
   </div>
 
-  <!-- Botón para continuar -->
   <div class="text-center">
     <button 
       (click)="onContinuar()"

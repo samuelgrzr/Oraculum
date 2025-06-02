@@ -41,7 +41,6 @@ def get_historial_usuario(db: db_dependency, id_usuario: int):
 @router.post("/", status_code=201)
 def create_partida(db: db_dependency, partida: CrearPartida):
     try:
-        # Crear la partida
         db_partida = Partida(
             id_usuario = partida.id_usuario,
             fecha = datetime.utcnow(),
@@ -53,9 +52,7 @@ def create_partida(db: db_dependency, partida: CrearPartida):
         db.add(db_partida)
         db.flush() # Para generar el ID de la partida
         
-        # Crear los datos de la partida
         for dato in partida.datos_partida:
-            # Verificar que existen la pregunta y las respuestas
             pregunta = db.query(Pregunta).filter(Pregunta.id == dato.id_pregunta).first()
             if not pregunta:
                 raise HTTPException(status_code=404, detail=f"Pregunta con id {dato.id_pregunta} no encontrada")
@@ -79,7 +76,6 @@ def create_partida(db: db_dependency, partida: CrearPartida):
             )
             db.add(db_datos_partida)
         
-        # Actualizar la puntuación del usuario solo si ha iniciado sesión y es modo infinito
         if partida.modo_juego == "infinito" and partida.id_usuario:
             usuario = db.query(Usuario).filter(Usuario.id == partida.id_usuario).first()
             if usuario:
@@ -100,15 +96,12 @@ def create_partida(db: db_dependency, partida: CrearPartida):
 @router.delete("/{id_partida}")
 def delete_partida(db: db_dependency, id_partida: int, user: user_dependency):
     try:
-        # Primero eliminamos todos los DatosPartida asociados a la partida
         db.query(DatosPartida).filter(DatosPartida.id_partida == id_partida).delete()
         
-        # Luego eliminamos la partida
         db_partida = db.query(Partida).filter(Partida.id == id_partida).first()
         if not db_partida:
             raise HTTPException(status_code=404, detail="Partida no encontrada")
         
-        # Verificar permisos: solo el dueño o admin pueden eliminar
         if user.get("id") != db_partida.id_usuario and user.get("rol") != "admin":
             raise HTTPException(
                 status_code=403,

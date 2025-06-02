@@ -75,7 +75,6 @@ export class RegistroComponent {
     }
   }
 
-  // Para validar de forma más cómoda en el HTML
   get nombreControl() { return this.registroForm.get('nombre'); }
   get correoControl() { return this.registroForm.get('correo'); }
   get contrasenaControl() { return this.registroForm.get('contrasena'); }
