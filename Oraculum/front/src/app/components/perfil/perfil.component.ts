@@ -21,7 +21,13 @@ export class PerfilComponent {
 
   usuario = this.authService.currentUserValue;
   editandoContrasena = false;
-  mostrarContrasena = false;
+  mostrarContrasenaActual = false;
+  mostrarContrasenaNueva = false;
+  contrasenaActualVerificada = false;
+
+  verificarContrasenaForm: FormGroup = this.fb.group({
+    contrasenaActual: ['', [Validators.required]]
+  });
 
   contrasenaForm: FormGroup = this.fb.group({
     contrasena: ['', [
@@ -35,17 +41,41 @@ export class PerfilComponent {
   toggleEditarContrasena() {
     this.editandoContrasena = !this.editandoContrasena;
     if (!this.editandoContrasena) {
+      this.verificarContrasenaForm.reset();
       this.contrasenaForm.reset();
-      this.mostrarContrasena = false;
+      this.mostrarContrasenaActual = false;
+      this.mostrarContrasenaNueva = false;
+      this.contrasenaActualVerificada = false;
     }
   }
 
-  toggleMostrarContrasena() {
-    this.mostrarContrasena = !this.mostrarContrasena;
+  toggleMostrarContrasenaActual() {
+    this.mostrarContrasenaActual = !this.mostrarContrasenaActual;
+  }
+
+  toggleMostrarContrasenaNueva() {
+    this.mostrarContrasenaNueva = !this.mostrarContrasenaNueva;
+  }
+
+  async verificarContrasenaActual() {
+    if (this.verificarContrasenaForm.valid && this.usuario) {
+      const contrasenaActual = this.verificarContrasenaForm.value.contrasenaActual;
+      
+      this.authService.login(this.usuario.nombre, contrasenaActual).subscribe({
+        next: () => {
+          this.contrasenaActualVerificada = true;
+          this.alertService.success('Contraseña actual verificada correctamente');
+        },
+        error: () => {
+          this.alertService.error('La contraseña actual no es correcta');
+          this.contrasenaActualVerificada = false;
+        }
+      });
+    }
   }
 
   async guardarContrasena() {
-    if (this.contrasenaForm.valid && this.usuario) {
+    if (this.contrasenaForm.valid && this.usuario && this.contrasenaActualVerificada) {
       const userData = {
         ...this.usuario,
         contrasena: this.contrasenaForm.value.contrasena
@@ -53,8 +83,11 @@ export class PerfilComponent {
 
       this.usuarioService.updateUsuario(this.usuario.id, userData).subscribe({
         next: () => {
-          this.authService.logout();
-          this.router.navigate(['/']);
+          this.alertService.success('Contraseña actualizada correctamente. Serás redirigido para iniciar sesión nuevamente.');
+          setTimeout(() => {
+            this.authService.logout();
+            this.router.navigate(['/']);
+          }, 2000);
         },
         error: (error) => {
           console.error('Error al actualizar la contraseña:', error);

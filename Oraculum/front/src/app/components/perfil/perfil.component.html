@@ -28,10 +28,56 @@
             {{ editandoContrasena ? 'Cancelar cambio' : 'Cambiar contraseña' }}
           </button>
 
-          <form *ngIf="editandoContrasena" [formGroup]="contrasenaForm" (ngSubmit)="guardarContrasena()" class="mt-4 w-full">
+          <!-- Verificar contraseña actual -->
+          <form *ngIf="editandoContrasena && !contrasenaActualVerificada" 
+                [formGroup]="verificarContrasenaForm" 
+                (ngSubmit)="verificarContrasenaActual()" 
+                class="mt-4 w-full">
+            <h4 class="text-sm font-medium text-[var(--greek-blue)] mb-2">Primero, confirma tu contraseña actual:</h4>
+            
             <div class="relative">
               <input 
-                [type]="mostrarContrasena ? 'text' : 'password'" 
+                [type]="mostrarContrasenaActual ? 'text' : 'password'" 
+                formControlName="contrasenaActual"
+                placeholder="Contraseña actual" 
+                class="w-full p-2 border-2 rounded-lg focus:outline-none"
+                [ngClass]="{'border-red-500': verificarContrasenaForm.get('contrasenaActual')?.invalid && verificarContrasenaForm.get('contrasenaActual')?.touched}"
+                style="border-color: var(--greek-gold); color: var(--greek-blue);">
+              <button 
+                type="button" 
+                (click)="toggleMostrarContrasenaActual()"
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                style="color: var(--greek-blue)">
+                <i class="fas" [class.fa-eye]="!mostrarContrasenaActual" [class.fa-eye-slash]="mostrarContrasenaActual"></i>
+              </button>
+            </div>
+
+            <div *ngIf="verificarContrasenaForm.get('contrasenaActual')?.invalid && verificarContrasenaForm.get('contrasenaActual')?.touched" 
+                 class="text-red-500 text-sm mt-1">
+              <p *ngIf="verificarContrasenaForm.get('contrasenaActual')?.errors?.['required']">La contraseña actual es obligatoria</p>
+            </div>
+
+            <div class="flex justify-center mt-4">
+              <button 
+                type="submit"
+                class="greek-button"
+                [disabled]="!verificarContrasenaForm.valid">
+                <i class="fas fa-check mr-2"></i>
+                Verificar contraseña
+              </button>
+            </div>
+          </form>
+
+          <!-- Cambiar contraseña -->
+          <form *ngIf="editandoContrasena && contrasenaActualVerificada" 
+                [formGroup]="contrasenaForm" 
+                (ngSubmit)="guardarContrasena()" 
+                class="mt-4 w-full">
+            <h4 class="text-sm font-medium text-[var(--greek-blue)] mb-2">Ahora ingresa tu nueva contraseña:</h4>
+            
+            <div class="relative">
+              <input 
+                [type]="mostrarContrasenaNueva ? 'text' : 'password'" 
                 formControlName="contrasena"
                 placeholder="Nueva contraseña" 
                 class="w-full p-2 border-2 rounded-lg focus:outline-none"
@@ -39,10 +85,10 @@
                 style="border-color: var(--greek-gold); color: var(--greek-blue);">
               <button 
                 type="button" 
-                (click)="toggleMostrarContrasena()"
+                (click)="toggleMostrarContrasenaNueva()"
                 class="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
                 style="color: var(--greek-blue)">
-                <i class="fas" [class.fa-eye]="!mostrarContrasena" [class.fa-eye-slash]="mostrarContrasena"></i>
+                <i class="fas" [class.fa-eye]="!mostrarContrasenaNueva" [class.fa-eye-slash]="mostrarContrasenaNueva"></i>
               </button>
             </div>
 
