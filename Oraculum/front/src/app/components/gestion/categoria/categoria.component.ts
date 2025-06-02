@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Categoria } from '../../models/Categoria';
-import { CategoriaService } from '../../services/categoria.service';
+import { Categoria } from '../../../models/Categoria';
+import { CategoriaService } from '../../../services/categoria.service';
 import { CommonModule } from '@angular/common';
-import { ToastService } from '../../services/toast.service';
-import { AlertService } from '../../services/alert.service';
+import { ToastService } from '../../../services/toast.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-categoria',

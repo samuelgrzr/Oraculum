@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsuarioComponent } from '../usuario/usuario.component';
-import { CategoriaComponent } from '../categoria/categoria.component';
-import { PreguntaComponent } from '../pregunta/pregunta.component';
-import { RespuestaComponent } from '../respuesta/respuesta.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { PreguntaComponent } from './pregunta/pregunta.component';
+import { RespuestaComponent } from './respuesta/respuesta.component';
 
 @Component({
   selector: 'app-gestion',

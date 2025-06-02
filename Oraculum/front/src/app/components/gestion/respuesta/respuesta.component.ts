@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators, FormsModule } from '@angular/forms';
-import { Respuesta } from '../../models/Respuesta';
-import { RespuestaService } from '../../services/respuesta.service';
-import { PreguntaService } from '../../services/pregunta.service';
+import { Respuesta } from '../../../models/Respuesta';
+import { RespuestaService } from '../../../services/respuesta.service';
+import { PreguntaService } from '../../../services/pregunta.service';
 import { CommonModule } from '@angular/common';
-import { ToastService } from '../../services/toast.service';
-import { Pregunta } from '../../models/Pregunta';
-import { AlertService } from '../../services/alert.service';
+import { ToastService } from '../../../services/toast.service';
+import { Pregunta } from '../../../models/Pregunta';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-respuesta',

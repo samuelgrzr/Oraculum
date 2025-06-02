@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Pregunta } from '../../models/Pregunta';
-import { PreguntaService } from '../../services/pregunta.service';
-import { CategoriaService } from '../../services/categoria.service';
+import { Pregunta } from '../../../models/Pregunta';
+import { PreguntaService } from '../../../services/pregunta.service';
+import { CategoriaService } from '../../../services/categoria.service';
 import { CommonModule } from '@angular/common';
-import { ToastService } from '../../services/toast.service';
-import { Categoria } from '../../models/Categoria';
-import { AlertService } from '../../services/alert.service';
+import { ToastService } from '../../../services/toast.service';
+import { Categoria } from '../../../models/Categoria';
+import { AlertService } from '../../../services/alert.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({

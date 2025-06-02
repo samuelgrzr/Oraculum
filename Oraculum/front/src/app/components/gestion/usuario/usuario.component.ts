@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Usuario } from '../../models/Usuario';
-import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../../models/Usuario';
+import { UsuarioService } from '../../../services/usuario.service';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
-import { ToastService } from '../../services/toast.service';
-import { AlertService } from '../../services/alert.service';
+import { ToastService } from '../../../services/toast.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-usuario',
