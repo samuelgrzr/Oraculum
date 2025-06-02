@@ -231,9 +231,42 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
   onTiempoAgotado(): void {
     if (!this.estado?.preguntaActual) return;
 
-    // Respuesta automática por tiempo agotado
+    // Obtener las respuestas de la pregunta actual
+    this.preguntaService.getRespuestasPregunta(this.estado.preguntaActual.id).subscribe({
+      next: (respuestas) => {
+        // Filtrar para obtener solo las respuestas incorrectas
+        const respuestasIncorrectas = respuestas.filter(r => !r.es_correcta);
+        
+        if (respuestasIncorrectas.length > 0) {
+          // Seleccionar una respuesta incorrecta aleatoriamente
+          const respuestaAleatoria = respuestasIncorrectas[
+            Math.floor(Math.random() * respuestasIncorrectas.length)
+          ];
+          
+          // Usar esta respuesta en lugar de -1
+          this.onRespuestaSeleccionada({
+            idRespuesta: respuestaAleatoria.id,
+            tiempoRespuesta: this.configuracion?.tiempoLimite || 0,
+            usoPista: false
+          });
+        } else {
+          // En el improbable caso de que no haya respuestas incorrectas
+          this.handleNoRespuestas();
+        }
+      },
+      error: (error) => {
+        console.error('Error al obtener respuestas para tiempo agotado:', error);
+        this.handleNoRespuestas();
+      }
+    });
+  }
+
+  // Método auxiliar para manejar el caso donde no se pueden obtener respuestas
+  private handleNoRespuestas(): void {
+    console.warn('No se pudieron obtener respuestas incorrectas para tiempo agotado');
+    // Usar el comportamiento original como fallback
     this.onRespuestaSeleccionada({
-      idRespuesta: -1, // Indicador de tiempo agotado
+      idRespuesta: -1,
       tiempoRespuesta: this.configuracion?.tiempoLimite || 0,
       usoPista: false
     });
