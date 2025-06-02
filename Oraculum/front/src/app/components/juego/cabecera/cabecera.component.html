@@ -4,6 +4,14 @@
 
     <!-- Información del juego -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center lg:justify-start gap-4 w-full lg:w-auto">
+      <!-- Categoría -->
+      <div class="flex items-center justify-center sm:justify-start gap-2">
+        <span class="text-base font-medium" style="color: var(--greek-blue);">Categoría:</span>
+        <span class="px-3 py-1 rounded-full text-base font-medium bg-green-100 text-green-800">
+          {{ estado.nombreCategoria }}
+        </span>
+      </div>
+      
       <div class="flex items-center justify-center sm:justify-start gap-2">
         <span class="text-base font-medium" style="color: var(--greek-blue);">Modo:</span>
         <span class="px-3 py-1 rounded-full text-base font-medium"

@@ -14,6 +14,7 @@ export class EstadoJuegoService {
     modoJuego: '',
     dificultad: '',
     idCategoria: 0,
+    nombreCategoria: '',
     idUsuario: 0,
     preguntaActual: null,
     indicePregunta: 0,
@@ -42,6 +43,7 @@ export class EstadoJuegoService {
       modoJuego: configuracion.modo_juego,
       dificultad: configuracion.dificultad,
       idCategoria: configuracion.id_categoria,
+      nombreCategoria: configuracion.nombre_categoria || 'Categoría desconocida',
       idUsuario: configuracion.id_usuario,
       tiempoInicio: Date.now(),
       juegoActivo: true

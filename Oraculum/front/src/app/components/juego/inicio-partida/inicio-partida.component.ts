@@ -90,12 +90,16 @@ export class InicioPartidaComponent implements OnInit {
         this.toastService.showMessage('Debes iniciar sesión para jugar');
         return;
       }
-
+  
+      // Obtener el nombre de la categoría seleccionada
+      const categoriaSeleccionada = this.categorias.find(c => c.id == this.partidaForm.value.id_categoria);
+      
       const datosPartida = {
         ...this.partidaForm.value,
-        id_usuario: usuario.id
+        id_usuario: usuario.id,
+        nombre_categoria: categoriaSeleccionada?.nombre || 'Desconocida'
       };
-
+  
       localStorage.setItem('configuracionPartida', JSON.stringify(datosPartida));
       
       this.router.navigate(['/juego']);

@@ -6,6 +6,7 @@ export interface EstadoJuego {
   modoJuego: string;
   dificultad: string;
   idCategoria: number;
+  nombreCategoria: string;
   idUsuario: number;
   
   // Estado actual
