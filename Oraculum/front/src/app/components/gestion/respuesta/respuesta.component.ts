@@ -223,6 +223,36 @@ export class RespuestaComponent implements OnInit {
   }
 
   eliminarRespuesta(id: number): void {
+    const respuestaAEliminar = this.respuestas.find(r => r.id === id);
+    
+    if (!respuestaAEliminar) {
+      this.toastService.showMessage('No se encontró la respuesta a eliminar');
+      return;
+    }
+
+    if (respuestaAEliminar.es_correcta) {
+      this.respuestaService.getRespuestasPorPregunta(respuestaAEliminar.id_pregunta).subscribe({
+        next: (respuestas) => {
+          const respuestasCorrectas = respuestas.filter(r => r.es_correcta);
+          
+          if (respuestasCorrectas.length === 1) {
+            this.toastService.showMessage('No se puede eliminar esta respuesta porque es la única correcta de la pregunta. Debe haber al menos una respuesta correcta por pregunta.');
+            return;
+          }
+          
+          this.procederConEliminacion(id);
+        },
+        error: (error) => {
+          this.toastService.showMessage('Error al verificar las respuestas de la pregunta');
+          console.error('Error:', error);
+        }
+      });
+    } else {
+      this.procederConEliminacion(id);
+    }
+  }
+
+  private procederConEliminacion(id: number): void {
     this.alertService.confirm('¿Estás seguro de que quieres eliminar esta respuesta?')
       .then((result) => {
         if (result.isConfirmed) {
