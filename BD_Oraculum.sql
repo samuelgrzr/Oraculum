@@ -74,94 +74,144 @@ INSERT INTO categoria (nombre) VALUES
 
 -- Preguntas nivel medio
 INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
-('¿Quién es el rey de los dioses griegos?', 'heroica', 'Controla los rayos y truenos.', 'Zeus es el dios supremo del Olimpo.', 1),
-('¿Cómo se llama el dios del mar?', 'heroica', 'Hermano de Zeus.', 'Poseidón gobierna los océanos y mares.', 1),
+-- 1
+('¿Quién es el rey de los dioses griegos?', 'heroica', 'Su arma es el rayo maestro.', 'Zeus es el dios supremo del Olimpo.', 1),
+-- 2
+('¿Cómo se llama el dios de los mares?', 'heroica', 'Hermano de Zeus.', 'Poseidón gobierna los océanos y mares.', 1),
+-- 3
 ('¿Quién es la diosa de la sabiduría?', 'heroica', 'Nació de la cabeza de Zeus.', 'Atenea es la diosa de la sabiduría y la guerra estratégica.', 1),
+-- 4
 ('¿Qué héroe mató al Minotauro?', 'heroica', 'Usó un hilo para no perderse.', 'Teseo derrotó al Minotauro en el laberinto de Creta.', 1),
-('¿Quién abrió la caja que liberó todos los males?', 'heroica', 'Primera mujer creada por los dioses.', 'Pandora abrió la caja por curiosidad.', 1),
+-- 5
+('¿Quién abrió la caja que liberó todos los males?', 'heroica', 'Primera mujer creada por los dioses.', 'Pandora abrió la caja por curiosidad, aun cuando su única instrucción era no abrirla.', 1),
+-- 6
 ('¿Cómo se llama el caballo alado?', 'heroica', 'Nació de la sangre de Medusa.', 'Pegaso es el famoso caballo con alas.', 1),
-('¿Quién robó el fuego para dárselo a los humanos?', 'heroica', 'Fue castigado por Zeus.', 'Prometeo desafió a los dioses para ayudar a la humanidad.', 1),
-('¿Cómo se llama el perro de tres cabezas?', 'heroica', 'Guarda la entrada del inframundo.', 'Cerbero vigila las puertas del Hades.', 1),
+-- 7
+('¿Quién robó el fuego para dárselo a los humanos?', 'heroica', 'Fue castigado por Zeus toda la eternidad.', 'Prometeo desafió a los dioses para ayudar a la humanidad.', 1),
+-- 8
+('¿Cómo se llama el perro de tres cabezas?', 'heroica', 'Custodia la entrada del inframundo.', 'Cerbero vigila las puertas del Hades.', 1),
+-- 9
 ('¿Quién es la diosa del amor y la belleza?', 'heroica', 'Nació de la espuma del mar.', 'Afrodita es la diosa del amor.', 1),
-('¿Qué titán sostiene el mundo?', 'heroica', 'Su nombre se usa para mapas.', 'Atlas fue condenado a cargar el cielo.', 1),
-('¿Quién completó los doce trabajos?', 'heroica', 'Famoso por su fuerza sobrehumana.', 'Heracles realizó doce trabajos como penitencia.', 1),
+-- 10
+('¿Qué titán sostiene el firmamento?', 'heroica', 'Su nombre se usa para los mapas.', 'Atlas fue condenado por Zeus a cargar la bóveda celeste.', 1),
+-- 11
+('¿Quién completó los doce trabajos?', 'heroica', 'Hijo de Zeus.', 'Heracles realizó doce trabajos como penitencia por matar a su familia, confunfido por la magia de Hera.', 1),
+-- 12
 ('¿Cómo se llama el dios de la guerra?', 'heroica', 'Hijo de Zeus y Hera.', 'Ares es el dios griego de la guerra.', 1),
-('¿Quién es el mensajero de los dioses?', 'heroica', 'Lleva sandalias aladas.', 'Hermes es el mensajero divino.', 1),
-('¿Cómo se llama la diosa de la caza?', 'heroica', 'Hermana gemela de Apolo.', 'Artemisa es la diosa cazadora.', 1),
-('¿Quién castigó a Sísifo?', 'heroica', 'Rey del inframundo.', 'Hades impuso el castigo eterno a Sísifo.', 1),
-('¿Qué monstruo convertía en piedra con la mirada?', 'heroica', 'Tenía serpientes por cabello.', 'Medusa petrificaba a quien la mirara.', 1),
+-- 13
+('¿Quién es el mensajero de los dioses?', 'heroica', 'Puede entrar y salir del Inframundo a voluntad.', 'Hermes es el mensajero divino.', 1),
+-- 14
+('¿Cómo se llama la diosa de la caza?', 'heroica', 'Hermana gemela de Apolo.', 'Artemisa es la diosa de la caza y la Luna.', 1),
+-- 15
+('¿Quién castigó a Sísifo?', 'heroica', 'Rey del Inframundo.', 'Hades impuso el famoso castigo eterno de empujar la roca a Sísifo.', 1),
+-- 16
+('¿Qué monstruo convertía en piedra con la mirada?', 'heroica', 'Tenía serpientes por cabello.', 'Medusa petrificaba a quien la mirase.', 1),
+-- 17
 ('¿Quién mató a Medusa?', 'heroica', 'Usó un escudo como espejo.', 'Perseo decapitó a Medusa.', 1),
-('¿Cómo se llama el dios del sol?', 'heroica', 'Hermano de Artemisa.', 'Apolo es el dios de la luz y la música.', 1),
-('¿Quién es la esposa de Zeus?', 'heroica', 'Diosa del matrimonio.', 'Hera es la reina del Olimpo.', 1),
+-- 18
+('¿Cómo se llama el dios del Sol?', 'heroica', 'Hermano gemelo de Artemisa.', 'Apolo es el dios del Sol, la luz y la música, entre muchas otras cosas', 1),
+-- 19
+('¿Quién es la reina del Olimpo?', 'heroica', 'Diosa del matrimonio.', 'Hera es la actual esposa de Zeus y su hermana.', 1),
+-- 20
 ('¿Qué criatura tenía cuerpo de león y cabeza humana?', 'heroica', 'Hacía acertijos mortales.', 'La Esfinge aterrorizaba Tebas con sus enigmas.', 1),
-('¿Quién es el dios del inframundo?', 'heroica', 'Hermano de Zeus y Poseidón.', 'Hades gobierna el reino de los muertos.', 1),
+-- 21
+('¿Quién es el dios del Inframundo?', 'heroica', 'Hermano mayor de Zeus y Poseidón.', 'Hades gobierna el reino de los muertos.', 1),
+-- 22
 ('¿Cómo se llama la diosa de la agricultura?', 'heroica', 'Madre de Perséfone.', 'Deméter controla las cosechas.', 1),
-('¿Qué héroe navegó durante diez años para volver a casa?', 'heroica', 'Rey de Ítaca.', 'Odiseo protagonizó la Odisea.', 1),
-('¿Quién era invulnerable excepto en el talón?', 'heroica', 'Héroe de la guerra de Troya.', 'Aquiles tenía un punto débil en el talón.', 1),
-('¿Cómo se llama el monte donde viven los dioses?', 'heroica', 'La montaña más alta de Grecia.', 'El monte Olimpo es el hogar divino.', 1),
+-- 23
+('¿Qué héroe navegó durante diez años para volver a casa?', 'heroica', 'Rey de Ítaca.', 'Odiseo protagonizó la Odisea tras la guerra de Troya.', 1),
+-- 24
+('¿Quién era invulnerable excepto en el talón?', 'heroica', 'Su madre lo sumergió en el Estigia.', 'Aquiles tenía un punto débil en el talón.', 1),
+-- 25
+('¿Cómo se llama el monte donde viven los dioses?', 'heroica', 'La montaña más alta de Grecia.', 'El monte Olimpo es el hogar de los dioses principales.', 1),
+-- 26
 ('¿Quién construyó el laberinto de Creta?', 'heroica', 'Famoso inventor y arquitecto.', 'Dédalo diseñó el laberinto del Minotauro.', 1),
-('¿Qué le pasó a Ícaro?', 'heroica', 'Voló demasiado cerca del sol.', 'Ícaro se precipitó al mar cuando se derritió la cera.', 1),
-('¿Quién es el dios del vino?', 'heroica', 'También llamado Baco.', 'Dioniso es el dios de la vid y la celebración.', 1),
-('¿Cómo se llama la mujer más bella del mundo?', 'heroica', 'Su rapto causó la guerra de Troya.', 'Helena de Troya era famosa por su belleza.', 1),
-('¿Quién tocaba la lira tan bien que calmaba a las fieras?', 'heroica', 'Bajó al inframundo por amor.', 'Orfeo era un músico legendario.', 1),
-('¿Qué guerreras amazonas lucharon contra los griegos?', 'heroica', 'Sociedad de mujeres guerreras.', 'Las Amazonas eran temibles luchadoras.', 1),
-('¿Quién era el centauro más sabio?', 'heroica', 'Maestro de muchos héroes.', 'Quirón educó a grandes héroes griegos.', 1),
-('¿Cómo se llama el río que separa el mundo de los muertos?', 'heroica', 'Hay que pagar al barquero.', 'El río Estigia divide el mundo de los vivos y muertos.', 1),
-('¿Quién es el barquero del inframundo?', 'heroica', 'Transporta almas al otro lado.', 'Caronte lleva las almas por el río Estigia.', 1),
-('¿Qué criatura tenía múltiples cabezas que regeneraban?', 'heroica', 'Heracles la derrotó.', 'La Hidra de Lerna regeneraba sus cabezas.', 1),
+-- 27
+('¿Quién murió por volar demasiado cerca del Sol?', 'heroica', 'No hizo caso a las indicaciones de su padre.', 'Ícaro se precipitó al mar cuando se derritió la cera de sus alas.', 1),
+-- 28
+('¿Quién es el dios del vino?', 'heroica', 'También es el dios de la locura y las fiestas.', 'Dioniso es el dios de la vid y la celebración.', 1),
+-- 29
+('¿Cómo se llamaba la mujer más bella del mundo?', 'heroica', 'Su rapto causó la guerra de Troya.', 'Helena de Troya era famosa por su belleza.', 1),
+-- 30
+('¿Quién tocaba la lira tan bien que calmaba a las fieras?', 'heroica', 'Bajó al Inframundo por amor.', 'Orfeo era un músico legendario.', 1),
+-- 31
+('¿Qué raza de mujeres guerreras desciende de Ares?', 'heroica', 'No permitían hombres mas que para procrear.', 'Las Amazonas eran temibles luchadoras, todas hijas del dios de la guerra.', 1),
+-- 32
+('¿Quién era el centauro más sabio?', 'heroica', 'Maestro de muchos héroes.', 'Quirón educó a grandes héroes griegos, como Aquiles y Jasón.', 1),
+-- 33
+('¿Cómo se llama el río principal del Hades?', 'heroica', 'Hay que pagar al barquero para no vagar 100 años en sus aguas.', 'El río Estigia, que a su vez es una deidad.', 1),
+-- 34
+('¿Quién es el barquero del inframundo?', 'heroica', 'Transporta almas a sus respectivos lugares.', 'Caronte lleva las almas por el río Estigia.', 1),
+-- 35
+('¿Qué criatura tenía múltiples cabezas que regeneraban?', 'heroica', 'Heracles la derrotó.', 'La Hidra de Lerna regeneraba dos cabezas por cada cabeza cercenada.', 1),
+-- 36
 ('¿Quién era el rey de Troya?', 'heroica', 'Padre de Héctor y Paris.', 'Príamo gobernaba Troya durante la guerra.', 1),
+-- 37
 ('¿Cómo se llama el héroe troyano más valiente?', 'heroica', 'Hermano de Paris.', 'Héctor defendió Troya valientemente.', 1),
+-- 38
 ('¿Quién raptó a Helena?', 'heroica', 'Príncipe troyano.', 'Paris causó la guerra al raptar a Helena.', 1),
+-- 39
 ('¿Qué estratagema usaron los griegos para entrar en Troya?', 'heroica', 'Un regalo de madera.', 'El caballo de Troya fue una trampa genial.', 1),
+-- 40
 ('¿Quién ideó el caballo de Troya?', 'heroica', 'Rey de Ítaca, muy astuto.', 'Odiseo planeó la estratagema del caballo.', 1),
+-- 41
 ('¿Cómo se llama la diosa de la discordia?', 'heroica', 'Causó problemas en una boda.', 'Eris provocó el juicio de Paris.', 1),
+-- 42
 ('¿Qué fruta causó el juicio de Paris?', 'heroica', 'Fruto dorado de la discordia.', 'La manzana de oro inició la disputa entre diosas.', 1),
+-- 43
 ('¿Quién forjaba las armas de los dioses?', 'heroica', 'Dios cojo del fuego.', 'Hefesto era el herrero divino.', 1),
+-- 44
 ('¿Cómo se llama la ninfa que se enamoró de su reflejo?', 'heroica', 'Se convirtió en flor.', 'Narciso se enamoró de su propia imagen.', 1),
+-- 45
 ('¿Quién era la musa de la épica?', 'heroica', 'Inspiraba grandes poemas.', 'Calíope era la musa de la poesía épica.', 1),
+-- 46
 ('¿Quién era el padre de Zeus?', 'heroica', 'Titán que devoraba a sus hijos.', 'Cronos temía ser destronado por sus descendientes.', 1),
+-- 47
 ('¿Cómo se llama la diosa del hogar?', 'heroica', 'Hermana de Zeus, muy pacífica.', 'Hestia protegía el fuego sagrado del hogar.', 1),
+-- 48
 ('¿Qué criatura tenía cabeza de toro y cuerpo de hombre?', 'heroica', 'Vivía en un laberinto en Creta.', 'El Minotauro era hijo de Pasífae y un toro.', 1),
+-- 49
 ('¿Quién era la madre de Perséfone?', 'heroica', 'Diosa de las cosechas.', 'Deméter buscó desesperadamente a su hija raptada.', 1),
+-- 50
 ('¿Cómo se llama el dios de los sueños?', 'heroica', 'Hijo de Hipnos, el sueño.', 'Morfeo enviaba sueños a los mortales.', 1);
 
 -- Respuestas nivel medio
 INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
-('Zeus', TRUE, 1), ('Poseidón', FALSE, 1), ('Hades', FALSE, 1), ('Apolo', FALSE, 1),
-('Poseidón', TRUE, 2), ('Zeus', FALSE, 2), ('Hades', FALSE, 2), ('Ares', FALSE, 2),
-('Atenea', TRUE, 3), ('Hera', FALSE, 3), ('Afrodita', FALSE, 3), ('Artemisa', FALSE, 3),
-('Teseo', TRUE, 4), ('Heracles', FALSE, 4), ('Perseo', FALSE, 4), ('Aquiles', FALSE, 4),
-('Pandora', TRUE, 5), ('Helena', FALSE, 5), ('Casandra', FALSE, 5), ('Penélope', FALSE, 5),
-('Pegaso', TRUE, 6), ('Centauro', FALSE, 6), ('Hipogrifo', FALSE, 6), ('Unicornio', FALSE, 6),
-('Prometeo', TRUE, 7), ('Epimeteo', FALSE, 7), ('Atlas', FALSE, 7), ('Cronos', FALSE, 7),
-('Cerbero', TRUE, 8), ('Hidra', FALSE, 8), ('Quimera', FALSE, 8), ('Esfinge', FALSE, 8),
-('Afrodita', TRUE, 9), ('Hera', FALSE, 9), ('Atenea', FALSE, 9), ('Deméter', FALSE, 9),
-('Atlas', TRUE, 10), ('Cronos', FALSE, 10), ('Prometeo', FALSE, 10), ('Epimeteo', FALSE, 10),
-('Heracles', TRUE, 11), ('Teseo', FALSE, 11), ('Perseo', FALSE, 11), ('Aquiles', FALSE, 11),
-('Ares', TRUE, 12), ('Zeus', FALSE, 12), ('Apolo', FALSE, 12), ('Hermes', FALSE, 12),
-('Hermes', TRUE, 13), ('Apolo', FALSE, 13), ('Ares', FALSE, 13), ('Hefesto', FALSE, 13),
-('Artemisa', TRUE, 14), ('Atenea', FALSE, 14), ('Hera', FALSE, 14), ('Afrodita', FALSE, 14),
-('Hades', TRUE, 15), ('Zeus', FALSE, 15), ('Poseidón', FALSE, 15), ('Ares', FALSE, 15),
-('Medusa', TRUE, 16), ('Esfinge', FALSE, 16), ('Quimera', FALSE, 16), ('Hidra', FALSE, 16),
-('Perseo', TRUE, 17), ('Heracles', FALSE, 17), ('Teseo', FALSE, 17), ('Aquiles', FALSE, 17),
-('Apolo', TRUE, 18), ('Helios', FALSE, 18), ('Zeus', FALSE, 18), ('Hermes', FALSE, 18),
-('Hera', TRUE, 19), ('Atenea', FALSE, 19), ('Afrodita', FALSE, 19), ('Deméter', FALSE, 19),
-('Esfinge', TRUE, 20), ('Medusa', FALSE, 20), ('Quimera', FALSE, 20), ('Hidra', FALSE, 20),
-('Hades', TRUE, 21), ('Zeus', FALSE, 21), ('Poseidón', FALSE, 21), ('Ares', FALSE, 21),
-('Deméter', TRUE, 22), ('Hera', FALSE, 22), ('Atenea', FALSE, 22), ('Artemisa', FALSE, 22),
-('Odiseo', TRUE, 23), ('Aquiles', FALSE, 23), ('Héctor', FALSE, 23), ('Paris', FALSE, 23),
+('Zeus', TRUE, 1), ('Cronos', FALSE, 1), ('Hades', FALSE, 1), ('Apolo', FALSE, 1),
+('Poseidón', TRUE, 2), ('Ponto', FALSE, 2), ('Nereo', FALSE, 2), ('Tritón', FALSE, 2),
+('Atenea', TRUE, 3), ('Hera', FALSE, 3), ('Hestia', FALSE, 3), ('Artemisa', FALSE, 3),
+('Teseo', TRUE, 4), ('Heracles', FALSE, 4), ('Perseo', FALSE, 4), ('Jasón', FALSE, 4),
+('Pandora', TRUE, 5), ('Epimeteo', FALSE, 5), ('Zeus', FALSE, 5), ('Prometeo', FALSE, 5),
+('Pegaso', TRUE, 6), ('Arión', FALSE, 6), ('Hipogrifo', FALSE, 6), ('Unicornio', FALSE, 6),
+('Prometeo', TRUE, 7), ('Epimeteo', FALSE, 7), ('Atlas', FALSE, 7), ('Heracles', FALSE, 7),
+('Cerbero', TRUE, 8), ('Hidra', FALSE, 8), ('Quimera', FALSE, 8), ('Hades', FALSE, 8),
+('Afrodita', TRUE, 9), ('Hera', FALSE, 9), ('Psique', FALSE, 9), ('Artemisa', FALSE, 9),
+('Atlas', TRUE, 10), ('Helios', FALSE, 10), ('Prometeo', FALSE, 10), ('Epimeteo', FALSE, 10),
+('Heracles', TRUE, 11), ('Odiseo', FALSE, 11), ('Perseo', FALSE, 11), ('Aquiles', FALSE, 11),
+('Ares', TRUE, 12), ('Hades', FALSE, 12), ('Apolo', FALSE, 12), ('Hermes', FALSE, 12),
+('Hermes', TRUE, 13), ('Apolo', FALSE, 13), ('Ares', FALSE, 13), ('Prometeo', FALSE, 13),
+('Artemisa', TRUE, 14), ('Atenea', FALSE, 14), ('Atalanta', FALSE, 14), ('Selene', FALSE, 14),
+('Hades', TRUE, 15), ('Zeus', FALSE, 15), ('Tánatos', FALSE, 15), ('Caronte', FALSE, 15),
+('Medusa', TRUE, 16), ('Mantícora', FALSE, 16), ('Quimera', FALSE, 16), ('Hidra', FALSE, 16),
+('Perseo', TRUE, 17), ('Odiseo', FALSE, 17), ('Teseo', FALSE, 17), ('Poseidón', FALSE, 17),
+('Apolo', TRUE, 18), ('Helios', FALSE, 18), ('Urano', FALSE, 18), ('Hefesto', FALSE, 18),
+('Hera', TRUE, 19), ('Atenea', FALSE, 19), ('Afrodita', FALSE, 19), ('Hestia', FALSE, 19),
+('Esfinge', TRUE, 20), ('Mantícora', FALSE, 20), ('Quimera', FALSE, 20), ('León de Nemea', FALSE, 20),
+('Hades', TRUE, 21), ('Caronte', FALSE, 21), ('Tártaro', FALSE, 21), ('Ares', FALSE, 21),
+('Deméter', TRUE, 22), ('Hera', FALSE, 22), ('Hestia', FALSE, 22), ('Perséfone', FALSE, 22),
+('Odiseo', TRUE, 23), ('Aquiles', FALSE, 23), ('Héctor', FALSE, 23), ('Heracles', FALSE, 23),
 ('Aquiles', TRUE, 24), ('Heracles', FALSE, 24), ('Teseo', FALSE, 24), ('Perseo', FALSE, 24),
-('Olimpo', TRUE, 25), ('Parnaso', FALSE, 25), ('Helicón', FALSE, 25), ('Etna', FALSE, 25),
-('Dédalo', TRUE, 26), ('Hefesto', FALSE, 26), ('Prometeo', FALSE, 26), ('Atlas', FALSE, 26),
-('Ícaro', TRUE, 27), ('Dédalo', FALSE, 27), ('Hermes', FALSE, 27), ('Pegaso', FALSE, 27),
-('Dioniso', TRUE, 28), ('Apolo', FALSE, 28), ('Hermes', FALSE, 28), ('Ares', FALSE, 28),
-('Helena', TRUE, 29), ('Afrodita', FALSE, 29), ('Hera', FALSE, 29), ('Casandra', FALSE, 29),
-('Orfeo', TRUE, 30), ('Apolo', FALSE, 30), ('Hermes', FALSE, 30), ('Dioniso', FALSE, 30),
-('Amazonas', TRUE, 31), ('Valkirias', FALSE, 31), ('Ninfas', FALSE, 31), ('Musas', FALSE, 31),
+('Olimpo', TRUE, 25), ('Parnaso', FALSE, 25), ('Otris', FALSE, 25), ('Etna', FALSE, 25),
+('Dédalo', TRUE, 26), ('Hefesto', FALSE, 26), ('Minos', FALSE, 26), ('Ícaro', FALSE, 26),
+('Ícaro', TRUE, 27), ('Dédalo', FALSE, 27), ('Faetón', FALSE, 27), ('Pegaso', FALSE, 27),
+('Dioniso', TRUE, 28), ('Apolo', FALSE, 28), ('Deméter', FALSE, 28), ('Ares', FALSE, 28),
+('Helena', TRUE, 29), ('Hipólita', FALSE, 29), ('Psique', FALSE, 29), ('Casandra', FALSE, 29),
+('Orfeo', TRUE, 30), ('Apolo', FALSE, 30), ('Hermes', FALSE, 30), ('Lino', FALSE, 30),
+('Amazonas', TRUE, 31), ('Valquirias', FALSE, 31), ('Nereidas', FALSE, 31), ('Musas', FALSE, 31),
 ('Quirón', TRUE, 32), ('Neso', FALSE, 32), ('Folo', FALSE, 32), ('Euritión', FALSE, 32),
-('Estigia', TRUE, 33), ('Leteo', FALSE, 33), ('Aqueronte', FALSE, 33), ('Cocito', FALSE, 33),
-('Caronte', TRUE, 34), ('Hades', FALSE, 34), ('Tánato', FALSE, 34), ('Minos', FALSE, 34),
-('Hidra', TRUE, 35), ('Cerbero', FALSE, 35), ('Quimera', FALSE, 35), ('Esfinge', FALSE, 35),
+('Estigia', TRUE, 33), ('Leteo', FALSE, 33), ('Aqueronte', FALSE, 33), ('Guadalmedina', FALSE, 33),
+('Caronte', TRUE, 34), ('Hades', FALSE, 34), ('Tánatos', FALSE, 34), ('Minos', FALSE, 34),
+('Hidra', TRUE, 35), ('Cerbero', FALSE, 35), ('Quimera', FALSE, 35), ('Ladón', FALSE, 35),
 ('Príamo', TRUE, 36), ('Héctor', FALSE, 36), ('Paris', FALSE, 36), ('Agamenón', FALSE, 36),
 ('Héctor', TRUE, 37), ('Paris', FALSE, 37), ('Eneas', FALSE, 37), ('Príamo', FALSE, 37),
 ('Paris', TRUE, 38), ('Héctor', FALSE, 38), ('Eneas', FALSE, 38), ('Príamo', FALSE, 38),
@@ -176,59 +226,109 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Hestia', TRUE, 47), ('Hera', FALSE, 47), ('Deméter', FALSE, 47), ('Atenea', FALSE, 47),
 ('Minotauro', TRUE, 48), ('Centauro', FALSE, 48), ('Sátiro', FALSE, 48), ('Cíclope', FALSE, 48),
 ('Deméter', TRUE, 49), ('Hera', FALSE, 49), ('Atenea', FALSE, 49), ('Afrodita', FALSE, 49),
-('Morfeo', TRUE, 50), ('Hipnos', FALSE, 50), ('Tánato', FALSE, 50), ('Oneiros', FALSE, 50);
+('Morfeo', TRUE, 50), ('Hipnos', FALSE, 50), ('Tánatos', FALSE, 50), ('Oneiros', FALSE, 50);
 
 -- Preguntas nivel difícil
 INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
+-- 51
 ('¿Cuál era el nombre del primer rey de Atenas según la mitología?', 'divina', 'Nació de la tierra y fue medio serpiente.', 'Cécrope fue el primer rey mítico de Atenas, nacido de la tierra.', 1),
+-- 52
 ('¿Qué ninfa se transformó en laurel para escapar de Apolo?', 'divina', 'Su nombre se asocia con las coronas de victoria.', 'Dafne se convirtió en laurel, árbol sagrado de Apolo.', 1),
+-- 53
 ('¿Quién era la madre de las Musas?', 'divina', 'Titánide de la memoria.', 'Mnemósine, la personificación de la memoria, fue madre de las nueve Musas.', 1),
+-- 54
 ('¿Cómo se llamaba el gigante que intentó violar a Leto?', 'divina', 'Fue enviado al Tártaro por Zeus.', 'Ticio fue castigado eternamente por intentar agredir a la madre de Apolo y Artemisa.', 1),
+-- 55
 ('¿Qué rey fue transformado en lobo por Zeus?', 'divina', 'Sirvió carne humana a los dioses.', 'Licaón fue castigado por su impiedad y canibalismo.', 1),
+-- 56
 ('¿Cuál era el nombre del caballo de Poseidón?', 'divina', 'Significa "espuma del mar".', 'Escifio era uno de los caballos inmortales de Poseidón.', 1),
+-- 57
 ('¿Qué titán robó el néctar y la ambrosía?', 'divina', 'Hijo de Jápeto, hermano de Prometeo.', 'Epimeteo, el "que piensa después", cometió este robo.', 1),
+-- 58
 ('¿Quién era el padre de las Harpías?', 'divina', 'Dios del viento del oeste.', 'Céfiro engendró a las Harpías con la ninfa Podarge.', 1),
+-- 59
 ('¿Cómo se llamaba la primera esposa de Zeus?', 'divina', 'Titánide de la prudencia.', 'Metis fue devorada por Zeus para evitar la profecía.', 1),
+-- 60
 ('¿Qué héroe fundó la ciudad de Micenas?', 'divina', 'Hijo de Perseo y Andrómeda.', 'Perses fundó Micenas según algunas versiones del mito.', 1),
+-- 61
 ('¿Cuál era el nombre del perro de Orión?', 'divina', 'Se convirtió en constelación.', 'Sirio, el perro de Orión, brilla como la estrella más luminosa.', 1),
+-- 62
 ('¿Qué diosa nació de la espuma del mar mezclada con los genitales de Urano?', 'divina', 'Surgió cerca de Chipre.', 'Afrodita nació de esta manera según Hesíodo.', 1),
+-- 63
 ('¿Quién era el auriga del carro solar antes que Helios?', 'divina', 'Titán de la luz.', 'Hiperión conducía el carro solar en la era de los Titanes.', 1),
+-- 64
 ('¿Cómo se llamaba la nodriza de Zeus en Creta?', 'divina', 'Cabra divina que lo amamantó.', 'Amaltea cuidó al joven Zeus en una cueva del monte Ida.', 1),
+-- 65
 ('¿Qué rey de Frigia convirtió todo en oro?', 'divina', 'Recibió este don de Dioniso.', 'Midas aprendió que la riqueza no lo es todo.', 1),
+-- 66
 ('¿Cuál era el nombre del río de fuego en el inframundo?', 'divina', 'Uno de los cinco ríos infernales.', 'Piriflegetonte era el río ardiente del Hades.', 1),
+-- 67
 ('¿Qué ninfa se enamoró de Narciso y se consumió de amor?', 'divina', 'Solo podía repetir las últimas palabras.', 'Eco fue castigada por Hera y se desvaneció por amor no correspondido.', 1),
+-- 68
 ('¿Quién era el padre de los Cíclopes?', 'divina', 'Primordial del cielo.', 'Urano engendró a los Cíclopes con Gea.', 1),
+-- 69
 ('¿Cómo se llamaba el gigante que sostenía las columnas del cielo?', 'divina', 'Hermano de Prometeo.', 'Atlas fue condenado a esta tarea tras la Titanomaquia.', 1),
+-- 70
 ('¿Qué diosa presidía los juramentos?', 'divina', 'Hija de la Noche.', 'Estigia personificaba los juramentos sagrados e inquebrantables.', 1),
-('¿Quién era el heraldo de Hades?', 'divina', 'Dios de la muerte no violenta.', 'Tánato servía como mensajero del señor del inframundo.', 1),
+-- 71
+('¿Quién era el heraldo de Hades?', 'divina', 'Dios de la muerte no violenta.', 'Tánatos servía como mensajero del señor del inframundo.', 1),
+-- 72
 ('¿Cómo se llamaba la madre de Perséfone?', 'divina', 'Diosa de las cosechas y la agricultura.', 'Deméter buscó desesperadamente a su hija raptada.', 1),
+-- 73
 ('¿Qué rey de Corinto fue condenado a empujar una roca eternamente?', 'divina', 'Engañó a la muerte dos veces.', 'Sísifo fue castigado por su astucia excesiva.', 1),
+-- 74
 ('¿Quién era la diosa de la venganza?', 'divina', 'También llamada Adrastea.', 'Némesis castigaba la hybris y el orgullo desmedido.', 1),
+-- 75
 ('¿Cómo se llamaba el hijo de Dédalo?', 'divina', 'Voló demasiado alto con alas de cera.', 'Ícaro ignoró las advertencias de su padre.', 1),
+-- 76
 ('¿Qué titánide era la madre de Helios?', 'divina', 'Personificación de la vista.', 'Teia dio a luz al dios del sol.', 1),
+-- 77
 ('¿Quién era el dios de los vientos del norte?', 'divina', 'El más violento de los Anemoi.', 'Bóreas traía el frío invernal desde Tracia.', 1),
+-- 78
 ('¿Cómo se llamaba la esposa de Hefesto?', 'divina', 'Una de las Cárites.', 'Aglae era la más joven de las tres Gracias.', 1),
+-- 79
 ('¿Qué héroe mató a la Quimera?', 'divina', 'Montaba a Pegaso.', 'Belerofonte derrotó al monstruo desde el aire.', 1),
+-- 80
 ('¿Quién era el rey de los Lapitas?', 'divina', 'Luchó contra los Centauros en su boda.', 'Piritoo fue amigo de Teseo y enemigo de los Centauros.', 1),
+-- 81
 ('¿Cómo se llamaba la nave de Jasón?', 'divina', 'Construida con madera del bosque sagrado.', 'Argo llevó a los Argonautas en busca del Vellocino de Oro.', 1),
+-- 82
 ('¿Qué diosa ayudó a Jasón a conseguir el Vellocino?', 'divina', 'Hechicera de la Cólquide.', 'Medea traicionó a su padre por amor a Jasón.', 1),
+-- 83
 ('¿Quién era el padre de Aquiles?', 'divina', 'Rey de los Mirmidones.', 'Peleo se casó con la nereida Tetis.', 1),
+-- 84
 ('¿Cómo se llamaba la madre de Aquiles?', 'divina', 'Nereida que lo sumergió en la Estigia.', 'Tetis intentó hacer inmortal a su hijo.', 1),
+-- 85
 ('¿Qué profeta ciego advirtió a Edipo?', 'divina', 'Vivió siete generaciones.', 'Tiresias reveló terribles verdades sobre el destino.', 1),
+-- 86
 ('¿Quién era el rey de Tebas cuando llegó Edipo?', 'divina', 'Fue asesinado en un cruce de caminos.', 'Layo murió a manos de su propio hijo sin saberlo.', 1),
+-- 87
 ('¿Cómo se llamaba la reina de las Amazonas?', 'divina', 'Poseía un cinturón mágico.', 'Hipólita fue derrotada por Heracles en su noveno trabajo.', 1),
+-- 88
 ('¿Qué gigante desafió a los dioses en la Gigantomaquia?', 'divina', 'Rey de los Gigantes.', 'Porfirión intentó violar a Hera durante la batalla.', 1),
+-- 89
 ('¿Quién era la diosa de la juventud?', 'divina', 'Escanciaba néctar en el Olimpo.', 'Hebe servía a los dioses antes que Ganimedes.', 1),
+-- 90
 ('¿Cómo se llamaba el caballo de Aquiles?', 'divina', 'Podía hablar y profetizar.', 'Janto predijo la muerte de su amo.', 1),
+-- 91
 ('¿Qué rey de Lidia podía convertir todo en oro?', 'divina', 'Aprendió que era una maldición.', 'Midas pidió a Dioniso que le quitara el don.', 1),
+-- 92
 ('¿Quién era la diosa de la discordia?', 'divina', 'Causó la guerra de Troya.', 'Eris arrojó la manzana dorada en la boda de Peleo y Tetis.', 1),
+-- 93
 ('¿Cómo se llamaba el barquero del río Aqueronte?', 'divina', 'Transportaba almas al inframundo.', 'Caronte exigía un óbolo por el viaje.', 1),
+-- 94
 ('¿Qué titán enseñó la astronomía a los humanos?', 'divina', 'Padre de Prometeo.', 'Jápeto transmitió conocimientos celestiales.', 1),
+-- 95
 ('¿Quién era la diosa de la magia?', 'divina', 'Asociada con los cruces de caminos.', 'Hécate tenía poder sobre la tierra, mar y cielo.', 1),
+-- 96
 ('¿Cómo se llamaba el hijo de Poseidón que fue cegado por Odiseo?', 'divina', 'Cíclope pastor de ovejas.', 'Polifemo fue engañado por la astucia de Odiseo.', 1),
+-- 97
 ('¿Qué diosa transformó a Aracne en araña?', 'divina', 'Diosa de la sabiduría y las artes.', 'Atenea castigó la arrogancia de la tejedora mortal.', 1),
+-- 98
 ('¿Quién era el dios de los rebaños y pastores?', 'divina', 'Tenía cuernos y patas de cabra.', 'Pan causaba el "pánico" con su grito.', 1),
+-- 99
 ('¿Cómo se llamaba la esposa de Orfeo?', 'divina', 'Murió por la mordedura de una serpiente.', 'Eurídice fue perdida dos veces por Orfeo.', 1),
+-- 100
 ('¿Qué rey fue castigado a tener hambre y sed eternas?', 'divina', 'Sirvió a su hijo como comida a los dioses.', 'Tántalo dio nombre al suplicio del tantalismo.', 1);
 
 -- Respuestas nivel difícil
@@ -253,7 +353,7 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Urano', TRUE, 68), ('Cronos', FALSE, 68), ('Zeus', FALSE, 68), ('Poseidón', FALSE, 68),
 ('Atlas', TRUE, 69), ('Prometeo', FALSE, 69), ('Epimeteo', FALSE, 69), ('Menecio', FALSE, 69),
 ('Estigia', TRUE, 70), ('Temis', FALSE, 70), ('Némesis', FALSE, 70), ('Dice', FALSE, 70),
-('Tánato', TRUE, 71), ('Hermes', FALSE, 71), ('Iris', FALSE, 71), ('Morfeo', FALSE, 71),
+('Tánatos', TRUE, 71), ('Hermes', FALSE, 71), ('Iris', FALSE, 71), ('Morfeo', FALSE, 71),
 ('Deméter', TRUE, 72), ('Rea', FALSE, 72), ('Hera', FALSE, 72), ('Cibeles', FALSE, 72),
 ('Sísifo', TRUE, 73), ('Tántalo', FALSE, 73), ('Ixión', FALSE, 73), ('Ticio', FALSE, 73),
 ('Némesis', TRUE, 74), ('Eris', FALSE, 74), ('Ate', FALSE, 74), ('Enio', FALSE, 74),
@@ -288,55 +388,105 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 
 -- Preguntas nivel medio
 INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
+-- 101
 ('¿Cuál es el nombre real de Superman?', 'heroica', 'Reportero del Daily Planet.', 'Clark Kent es la identidad secreta de Superman.', 2),
+-- 102
 ('¿De qué planeta viene Superman?', 'heroica', 'Fue destruido antes de que naciera.', 'Krypton era el planeta natal de Superman.', 2),
+-- 103
 ('¿Cuál es la debilidad de Superman?', 'heroica', 'Mineral radioactivo de su planeta.', 'La kryptonita es mortal para Superman.', 2),
+-- 104
 ('¿Cómo se llama la ciudad donde vive Superman?', 'heroica', 'Ciudad ficticia donde trabaja como reportero.', 'Metrópolis es el hogar adoptivo de Superman.', 2),
+-- 105
 ('¿Cuál es el nombre real de Batman?', 'heroica', 'Millonario de Gotham City.', 'Bruce Wayne es la identidad secreta de Batman.', 2),
+-- 106
 ('¿Cómo se llama el mayordomo de Batman?', 'heroica', 'Fiel servidor de la familia Wayne.', 'Alfred Pennyworth cuida de Bruce Wayne.', 2),
+-- 107
 ('¿En qué ciudad opera Batman?', 'heroica', 'Ciudad oscura y corrupta.', 'Gotham City es el territorio de Batman.', 2),
+-- 108
 ('¿Cuál es el nombre real de Spider-Man?', 'heroica', 'Estudiante que fue mordido por una araña.', 'Peter Parker se convirtió en Spider-Man.', 2),
+-- 109
 ('¿Qué le dio poderes a Spider-Man?', 'heroica', 'Accidente en un laboratorio.', 'Una araña radioactiva mordió a Peter Parker.', 2),
+-- 110
 ('¿Cuál es el nombre real de Wonder Woman?', 'heroica', 'Princesa amazona.', 'Diana Prince es la identidad de Wonder Woman.', 2),
+-- 111
 ('¿De dónde viene Wonder Woman?', 'heroica', 'Isla habitada solo por mujeres guerreras.', 'Themyscira es el hogar de las amazonas.', 2),
+-- 112
 ('¿Cuál es el arma característica de Wonder Woman?', 'heroica', 'Cuerda mágica que obliga a decir la verdad.', 'El lazo de la verdad es su arma principal.', 2),
+-- 113
 ('¿Cuál es el nombre real de Flash?', 'heroica', 'Científico forense de Central City.', 'Barry Allen es la identidad de Flash.', 2),
+-- 114
 ('¿Cuál es el superpoder principal de Flash?', 'heroica', 'Puede correr más rápido que la luz.', 'La súper velocidad es el poder de Flash.', 2),
+-- 115
 ('¿Cuál es el nombre real de Green Lantern?', 'heroica', 'Piloto de pruebas.', 'Hal Jordan es uno de los Green Lantern más famosos.', 2),
+-- 116
 ('¿De dónde obtiene sus poderes Green Lantern?', 'heroica', 'Joya alienígena en su dedo.', 'El anillo de poder le da sus habilidades.', 2),
+-- 117
 ('¿Cuál es el nombre real de Aquaman?', 'heroica', 'Rey de los océanos.', 'Arthur Curry es la identidad de Aquaman.', 2),
+-- 118
 ('¿Dónde gobierna Aquaman?', 'heroica', 'Reino submarino.', 'Atlantis es el reino de Aquaman.', 2),
+-- 119
 ('¿Cuál es el nombre del archienemigo de Batman?', 'heroica', 'Payaso criminal loco.', 'El Joker es el némesis principal de Batman.', 2),
+-- 120
 ('¿Cómo se llama el archienemigo de Superman?', 'heroica', 'Genio criminal calvo.', 'Lex Luthor es el enemigo más conocido de Superman.', 2),
+-- 121
 ('¿Cuál es el nombre real de Iron Man?', 'heroica', 'Genio millonario inventor.', 'Tony Stark es la identidad de Iron Man.', 2),
+-- 122
 ('¿Qué alimenta el traje de Iron Man?', 'heroica', 'Reactor en su pecho.', 'El reactor arc mantiene vivo a Tony Stark.', 2),
+-- 123
 ('¿Cuál es el nombre real de Captain America?', 'heroica', 'Soldado de la Segunda Guerra Mundial.', 'Steve Rogers se convirtió en Captain America.', 2),
+-- 124
 ('¿Qué objeto característico usa Captain America?', 'heroica', 'Arma defensiva circular.', 'Su escudo de vibranium es indestructible.', 2),
+-- 125
 ('¿Cuál es el nombre real de Thor?', 'heroica', 'Dios nórdico del trueno.', 'Thor Odinson es su nombre completo.', 2),
+-- 126
 ('¿Cómo se llama el martillo de Thor?', 'heroica', 'Solo los dignos pueden levantarlo.', 'Mjolnir es el martillo encantado de Thor.', 2),
+-- 127
 ('¿Cuál es el nombre real de Hulk?', 'heroica', 'Científico expuesto a radiación gamma.', 'Bruce Banner se transforma en Hulk.', 2),
+-- 128
 ('¿Qué desencadena la transformación de Hulk?', 'heroica', 'Emoción intensa negativa.', 'La ira convierte a Banner en Hulk.', 2),
+-- 129
 ('¿Cuál es el nombre real de Black Widow?', 'heroica', 'Espía rusa entrenada desde niña.', 'Natasha Romanoff es Black Widow.', 2),
+-- 130
 ('¿Cuál es el nombre real de Hawkeye?', 'heroica', 'Arquero experto de S.H.I.E.L.D.', 'Clint Barton es la identidad de Hawkeye.', 2),
+-- 131
 ('¿Cómo se llama el grupo de superhéroes de Marvel?', 'heroica', 'Los héroes más poderosos de la Tierra.', 'Los Vengadores protegen el mundo.', 2),
+-- 132
 ('¿Cómo se llama el grupo de superhéroes de DC?', 'heroica', 'Liga de los héroes más importantes.', 'La Liga de la Justicia defiende la Tierra.', 2),
+-- 133
 ('¿Cuál es el nombre real de Wolverine?', 'heroica', 'Mutante con garras de adamantium.', 'Logan es el nombre de Wolverine.', 2),
+-- 134
 ('¿Cuál es el poder principal de Wolverine?', 'heroica', 'Puede curarse de cualquier herida.', 'El factor de curación regenera su cuerpo.', 2),
+-- 135
 ('¿Cuál es el nombre real de Cyclops?', 'heroica', 'Líder de los X-Men.', 'Scott Summers es la identidad de Cyclops.', 2),
+-- 136
 ('¿Cuál es el poder de Cyclops?', 'heroica', 'Rayos destructivos de sus ojos.', 'Los rayos ópticos son su habilidad mutante.', 2),
+-- 137
 ('¿Cuál es el nombre real de Storm?', 'heroica', 'Mutante que controla el clima.', 'Ororo Munroe es la identidad de Storm.', 2),
+-- 138
 ('¿Cuál es el poder de Storm?', 'heroica', 'Domina los fenómenos meteorológicos.', 'Puede controlar el tiempo atmosférico.', 2),
+-- 139
 ('¿Quién es el líder de los X-Men?', 'heroica', 'Profesor telepático en silla de ruedas.', 'Charles Xavier fundó la escuela para mutantes.', 2),
+-- 140
 ('¿Cuál es el nombre real del Profesor X?', 'heroica', 'Telepático más poderoso del mundo.', 'Charles Francis Xavier es su nombre completo.', 2),
+-- 141
 ('¿Cuál es el archienemigo de los X-Men?', 'heroica', 'Mutante que controla el magnetismo.', 'Magneto es el némesis principal de los X-Men.', 2),
+-- 142
 ('¿Cuál es el nombre real de Magneto?', 'heroica', 'Sobreviviente del Holocausto.', 'Erik Lehnsherr es la identidad de Magneto.', 2),
+-- 143
 ('¿Cuál es el nombre real de Deadpool?', 'heroica', 'Mercenario con factor de curación.', 'Wade Wilson se convirtió en Deadpool.', 2),
+-- 144
 ('¿Qué característica especial tiene Deadpool?', 'heroica', 'Habla directamente con el lector.', 'Rompe la cuarta pared constantemente.', 2),
+-- 145
 ('¿Cuál es el nombre real de Daredevil?', 'heroica', 'Abogado ciego de Hells Kitchen.', 'Matt Murdock es la identidad de Daredevil.', 2),
+-- 146
 ('¿Qué sentido perdió Daredevil?', 'heroica', 'Accidente químico en su infancia.', 'Perdió la vista pero ganó otros sentidos.', 2),
+-- 147
 ('¿Cuál es el nombre real de Punisher?', 'heroica', 'Ex-marine que busca venganza.', 'Frank Castle se convirtió en Punisher.', 2),
+-- 148
 ('¿Qué motivó a Punisher a convertirse en vigilante?', 'heroica', 'Tragedia familiar causada por criminales.', 'La muerte de su familia lo transformó.', 2),
+-- 149
 ('¿Cuál es el nombre real de Doctor Strange?', 'heroica', 'Cirujano que se convirtió en hechicero.', 'Stephen Strange es el Hechicero Supremo.', 2),
+-- 150
 ('¿Cuál es la especialidad de Doctor Strange?', 'heroica', 'Artes místicas y dimensiones alternativas.', 'Domina la magia y protege la realidad.', 2);
 
 -- Respuestas nivel medio
@@ -394,55 +544,105 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 
 -- Preguntas nivel difícil
 INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
+-- 151
 ('¿En qué año fue creado Superman por Jerry Siegel y Joe Shuster?', 'divina', 'Década de los 30 del siglo XX.', 'Superman apareció por primera vez en Action Comics #1 en 1938.', 2),
+-- 152
 ('¿Cuál es el nombre kryptoniano de Superman?', 'divina', 'Su nombre de nacimiento en Krypton.', 'Kal-El es su verdadero nombre kryptoniano.', 2),
+-- 153
 ('¿Cómo se llama el padre biológico de Superman?', 'divina', 'Científico de Krypton que lo envió a la Tierra.', 'Jor-El salvó a su hijo del destino de Krypton.', 2),
+-- 154
 ('¿Cuál es el nombre de la fortaleza secreta de Superman?', 'divina', 'Refugio en el Ártico hecho de cristales.', 'La Fortaleza de la Soledad es su santuario.', 2),
+-- 155
 ('¿Qué significa la "S" en el pecho de Superman?', 'divina', 'No es una letra del alfabeto terrestre.', 'Es el símbolo kryptoniano de la esperanza.', 2),
+-- 156
 ('¿Cuál es el nombre real del primer Robin?', 'divina', 'Acróbata huérfano del circo.', 'Dick Grayson fue el primer compañero de Batman.', 2),
+-- 157
 ('¿Cómo se llama la cárcel psiquiátrica de Gotham?', 'divina', 'Donde encierran a los villanos locos.', 'Arkham Asylum alberga a los criminales dementes.', 2),
+-- 158
 ('¿Cuál es el nombre del comisionado de policía aliado de Batman?', 'divina', 'Padre de Batgirl en algunas versiones.', 'James Gordon es el aliado más leal de Batman.', 2),
+-- 159
 ('¿Qué empresa dirige Bruce Wayne?', 'divina', 'Corporación multimillonaria de Gotham.', 'Wayne Enterprises financia las actividades de Batman.', 2),
+-- 160
 ('¿Cuál es el nombre del tío de Spider-Man?', 'divina', 'Su muerte motivó a Peter a ser héroe.', 'Ben Parker le enseñó que "un gran poder conlleva una gran responsabilidad".', 2),
+-- 161
 ('¿Cómo se llama la tía de Spider-Man?', 'divina', 'Cuidó de Peter tras la muerte de sus padres.', 'May Parker es la figura materna de Peter.', 2),
+-- 162
 ('¿Cuál es el nombre del periódico donde trabaja Peter Parker?', 'divina', 'Diario sensacionalista de Nueva York.', 'El Daily Bugle publica fotos de Spider-Man.', 2),
+-- 163
 ('¿Cómo se llama el jefe de Peter Parker en el periódico?', 'divina', 'Editor que odia a Spider-Man.', 'J. Jonah Jameson considera a Spider-Man una amenaza.', 2),
+-- 164
 ('¿Cuál es el nombre de la madre de Wonder Woman?', 'divina', 'Reina de las Amazonas.', 'Hipólita gobierna Themyscira y es madre de Diana.', 2),
+-- 165
 ('¿Quién creó a Wonder Woman en los cómics?', 'divina', 'Psicólogo que inventó el detector de mentiras.', 'William Moulton Marston creó el personaje en 1941.', 2),
+-- 166
 ('¿Cuál es el nombre del dios que le dio poderes a Wonder Woman?', 'divina', 'Mensajero de los dioses griegos.', 'Hermes le otorgó velocidad y capacidad de vuelo.', 2),
+-- 167
 ('¿Cómo se llama la ciudad natal de Flash?', 'divina', 'Ciudad gemela de Keystone City.', 'Central City es el hogar de Barry Allen.', 2),
+-- 168
 ('¿Cuál es el nombre de la dimensión de donde obtiene velocidad Flash?', 'divina', 'Fuente extradimensional de energía.', 'La Speed Force es el origen de sus poderes.', 2),
+-- 169
 ('¿Quién fue el Flash original de los años 40?', 'divina', 'Miembro de la Sociedad de la Justicia.', 'Jay Garrick fue el primer Flash en los cómics.', 2),
+-- 170
 ('¿Cuál es el nombre del cuerpo de Green Lanterns?', 'divina', 'Organización intergaláctica de paz.', 'El Green Lantern Corps protege el universo.', 2),
+-- 171
 ('¿En qué planeta está la sede del Green Lantern Corps?', 'divina', 'Mundo artificial en el centro del universo.', 'Oa es el planeta hogar de los Guardianes.', 2),
+-- 172
 ('¿Cómo se llaman los creadores del Green Lantern Corps?', 'divina', 'Seres azules inmortales.', 'Los Guardianes del Universo fundaron el cuerpo.', 2),
+-- 173
 ('¿Cuál es el nombre del tridente de Aquaman?', 'divina', 'Arma mágica de los reyes de Atlantis.', 'El Tridente de Neptuno le da poder sobre los mares.', 2),
+-- 174
 ('¿Cómo se llama el medio hermano villano de Aquaman?', 'divina', 'Pretendiente al trono de Atlantis.', 'Ocean Master es uno de sus enemigos recurrentes.', 2),
+-- 175
 ('¿Cuál es el nombre real de Ocean Master?', 'divina', 'Hermano celoso del rey de Atlantis.', 'Orm Marius es la identidad de Ocean Master.', 2),
+-- 176
 ('¿Cómo se llama la inteligencia artificial de Iron Man?', 'divina', 'Asistente virtual del traje.', 'FRIDAY reemplazó a JARVIS en algunas versiones.', 2),
+-- 177
 ('¿Cuál era el nombre de la IA anterior de Tony Stark?', 'divina', 'Mayordomo virtual basado en Alfred.', 'JARVIS fue la primera IA de Iron Man.', 2),
+-- 178
 ('¿Cómo se llama la empresa de Tony Stark?', 'divina', 'Corporación de tecnología avanzada.', 'Stark Industries desarrolla tecnología militar.', 2),
+-- 179
 ('¿Cuál es el nombre del suero que creó a Captain America?', 'divina', 'Fórmula militar experimental.', 'El Suero del Súper Soldado transformó a Steve Rogers.', 2),
+-- 180
 ('¿Quién creó el suero del súper soldado?', 'divina', 'Científico alemán refugiado.', 'Abraham Erskine desarrolló la fórmula secreta.', 2),
+-- 181
 ('¿Cuál es el nombre del reino de Thor?', 'divina', 'Uno de los nueve mundos nórdicos.', 'Asgard es el hogar de los dioses nórdicos.', 2),
+-- 182
 ('¿Cómo se llama el padre de Thor?', 'divina', 'Rey de Asgard y padre de todos.', 'Odín es el Padre de Todo en la mitología nórdica.', 2),
+-- 183
 ('¿Cuál es el nombre del hermano adoptivo de Thor?', 'divina', 'Dios de las mentiras y el engaño.', 'Loki es el hermano problemático de Thor.', 2),
+-- 184
 ('¿Cómo se llama el puente que conecta los nueve mundos?', 'divina', 'Puente arcoíris de la mitología nórdica.', 'Bifrost conecta Asgard con otros reinos.', 2),
+-- 185
 ('¿Cuál es el nombre del científico que creó a Hulk?', 'divina', 'Trabajaba en la bomba gamma.', 'Bruce Banner se expuso accidentalmente a radiación gamma.', 2),
+-- 186
 ('¿Cómo se llama la prima de Bruce Banner?', 'divina', 'Abogada que también se volvió verde.', 'Jennifer Walters se convirtió en She-Hulk.', 2),
+-- 187
 ('¿Cuál es el nombre de la organización de espías de Marvel?', 'divina', 'Agencia internacional de seguridad.', 'S.H.I.E.L.D. protege el mundo de amenazas.', 2),
+-- 188
 ('¿Quién es el director de S.H.I.E.L.D. más famoso?', 'divina', 'Veterano de guerra con parche en el ojo.', 'Nick Fury dirigió la organización durante décadas.', 2),
+-- 189
 ('¿Cuál es el nombre real de la Viuda Negra original?', 'divina', 'Espía rusa entrenada en la Habitación Roja.', 'Natasha Romanoff es su identidad occidental.', 2),
+-- 190
 ('¿Cómo se llama el programa que entrenó a Black Widow?', 'divina', 'Programa soviético de espías.', 'La Habitación Roja creó asesinas perfectas.', 2),
+-- 191
 ('¿Cuál es el nombre del metal que cubre el esqueleto de Wolverine?', 'divina', 'Metal indestructible creado artificialmente.', 'El adamantium fue fusionado con sus huesos.', 2),
+-- 192
 ('¿Cómo se llama el programa que experimentó con Wolverine?', 'divina', 'Proyecto militar canadiense secreto.', 'Weapon X creó soldados mutantes mejorados.', 2),
+-- 193
 ('¿Cuál es el nombre de la escuela de los X-Men?', 'divina', 'Instituto para jóvenes superdotados.', 'La Escuela Xavier para Jóvenes Superdotados.', 2),
+-- 194
 ('¿En qué estado está ubicada la mansión X?', 'divina', 'Estado del noreste de Estados Unidos.', 'Westchester, Nueva York alberga la escuela.', 2),
+-- 195
 ('¿Cuál es el nombre real de Jean Grey?', 'divina', 'Telepática que se convirtió en Fénix.', 'Jean Grey-Summers es su nombre completo.', 2),
+-- 196
 ('¿Cómo se llama la entidad cósmica que poseyó a Jean Grey?', 'divina', 'Fuerza primordial de vida y muerte.', 'La Fuerza Fénix es una entidad cósmica.', 2),
+-- 197
 ('¿Cuál es el nombre del metal del escudo de Captain America?', 'divina', 'Metal ficticio más resistente que existe.', 'El vibranium absorbe vibraciones y energía.', 2),
+-- 198
 ('¿De qué país africano proviene el vibranium?', 'divina', 'Nación tecnológicamente avanzada.', 'Wakanda es la fuente principal de vibranium.', 2),
+-- 199
 ('¿Cuál es el nombre del rey de Wakanda?', 'divina', 'Superhéroe protector de su nación.', 'TChalla es el Black Panther y rey.', 2),
+-- 200
 ('¿Cómo se llama la hermana genio de TChalla?', 'divina', 'Princesa e inventora de Wakanda.', 'Shuri es la hermana menor de Black Panther.', 2);
 
 -- Respuestas nivel difícil
