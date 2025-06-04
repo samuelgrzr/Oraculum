@@ -137,7 +137,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 31
 ('¿Qué raza de mujeres guerreras desciende de Ares?', 'heroica', 'No permitían hombres mas que para procrear.', 'Las Amazonas eran temibles luchadoras, todas hijas del dios de la guerra.', 1),
 -- 32
-('¿Quién era el centauro más sabio?', 'heroica', 'Maestro de muchos héroes.', 'Quirón educó a grandes héroes griegos, como Aquiles y Jasón.', 1),
+('¿Quién era el centauro conocido como el padre de la medicina?', 'heroica', 'Maestro de muchos héroes.', 'Quirón educó a grandes héroes griegos, como Aquiles y Jasón y fue precursor del arte de la medicina.', 1),
 -- 33
 ('¿Cómo se llama el río principal del Hades?', 'heroica', 'Hay que pagar al barquero para no vagar 100 años en sus aguas.', 'El río Estigia, que a su vez es una deidad.', 1),
 -- 34
