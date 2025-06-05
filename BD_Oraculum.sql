@@ -115,7 +115,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 20
 ('¿Qué criatura tenía cuerpo de león y cabeza humana?', 'heroica', 'Hacía acertijos mortales.', 'La Esfinge aterrorizaba Tebas con sus enigmas.', 1),
 -- 21
-('¿Quién es el dios del Inframundo?', 'heroica', 'Hermano mayor de Zeus y Poseidón.', 'Hades gobierna el reino de los muertos.', 1),
+('¿Quién es el rey del Inframundo?', 'heroica', 'Hermano mayor de Zeus y Poseidón.', 'Hades gobierna el reino de los muertos.', 1),
 -- 22
 ('¿Cómo se llama la diosa de la agricultura?', 'heroica', 'Madre de Perséfone.', 'Deméter controla las cosechas.', 1),
 -- 23
@@ -131,49 +131,49 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 28
 ('¿Quién es el dios del vino?', 'heroica', 'También es el dios de la locura y las fiestas.', 'Dioniso es el dios de la vid y la celebración.', 1),
 -- 29
-('¿Cómo se llamaba la mujer más bella del mundo?', 'heroica', 'Su rapto causó la guerra de Troya.', 'Helena de Troya era famosa por su belleza.', 1),
+('¿Cómo se llamaba la mujer más bella del mundo?', 'heroica', 'Su rapto causó la guerra de Troya.', 'Helena de Troya era famosa por su belleza incomparable.', 1),
 -- 30
 ('¿Quién tocaba la lira tan bien que calmaba a las fieras?', 'heroica', 'Bajó al Inframundo por amor.', 'Orfeo era un músico legendario.', 1),
 -- 31
 ('¿Qué raza de mujeres guerreras desciende de Ares?', 'heroica', 'No permitían hombres mas que para procrear.', 'Las Amazonas eran temibles luchadoras, todas hijas del dios de la guerra.', 1),
 -- 32
-('¿Quién era el centauro conocido como el padre de la medicina?', 'heroica', 'Maestro de muchos héroes.', 'Quirón educó a grandes héroes griegos, como Aquiles y Jasón y fue precursor del arte de la medicina.', 1),
+('¿Quién era el centauro conocido como el padre de la medicina?', 'heroica', 'Fue maestro de muchos héroes, como Aquiles y Jasón.', 'Quirón, un centauro inmortal hijo de Cronos, fue el precursor del arte de la medicina.', 1),
 -- 33
 ('¿Cómo se llama el río principal del Hades?', 'heroica', 'Hay que pagar al barquero para no vagar 100 años en sus aguas.', 'El río Estigia, que a su vez es una deidad.', 1),
 -- 34
-('¿Quién es el barquero del inframundo?', 'heroica', 'Transporta almas a sus respectivos lugares.', 'Caronte lleva las almas por el río Estigia.', 1),
+('¿Quién es el barquero del inframundo?', 'heroica', 'Transporta las almas a sus respectivos lugares.', 'Caronte lleva las almas por el río Estigia.', 1),
 -- 35
-('¿Qué criatura tenía múltiples cabezas que regeneraban?', 'heroica', 'Heracles la derrotó.', 'La Hidra de Lerna regeneraba dos cabezas por cada cabeza cercenada.', 1),
+('¿Qué criatura tenía múltiples cabezas que regeneraban?', 'heroica', 'Heracles la derrotó en su segundo trabajo.', 'La Hidra de Lerna regeneraba dos cabezas por cada cabeza cercenada.', 1),
 -- 36
-('¿Quién era el rey de Troya?', 'heroica', 'Padre de Héctor y Paris.', 'Príamo gobernaba Troya durante la guerra.', 1),
+('¿Quién era el rey de Troya durante la famosa guerra?', 'heroica', 'Padre de Héctor y Paris.', 'Príamo gobernaba Troya durante la guerra.', 1),
 -- 37
-('¿Cómo se llama el héroe troyano más valiente?', 'heroica', 'Hermano de Paris.', 'Héctor defendió Troya valientemente.', 1),
+('¿Cómo se llamaba el mayor héroe troyano?', 'heroica', 'Hermano de Paris y príncipe heredero.', 'Héctor defendió Troya valientemente, pero murió en un duelo a manos de Aquiles.', 1),
 -- 38
-('¿Quién raptó a Helena?', 'heroica', 'Príncipe troyano.', 'Paris causó la guerra al raptar a Helena.', 1),
+('¿Quién raptó a Helena de Esparta?', 'heroica', 'Príncipe troyano.', 'Paris causó la guerra de Troya al raptar a Helena.', 1),
 -- 39
-('¿Qué estratagema usaron los griegos para entrar en Troya?', 'heroica', 'Un regalo de madera.', 'El caballo de Troya fue una trampa genial.', 1),
+('¿Qué estratagema usaron los griegos para entrar en Troya?', 'heroica', 'Un regalo de madera.', 'El caballo de Troya fue una trampa disfrazada de ofrenda a los dioses, fabricado con la madera de los barcos aqueos.', 1),
 -- 40
-('¿Quién ideó el caballo de Troya?', 'heroica', 'Rey de Ítaca, muy astuto.', 'Odiseo planeó la estratagema del caballo.', 1),
+('¿Quién ideó el caballo de Troya?', 'heroica', 'Rey de Ítaca, muy astuto.', 'Odiseo planeó la estratagema del caballo para acabar con el estancamiento de la guerra tras 10 años.', 1),
 -- 41
-('¿Cómo se llama la diosa de la discordia?', 'heroica', 'Causó problemas en una boda.', 'Eris provocó el juicio de Paris.', 1),
+('¿Cómo se llama la diosa de la discordia?', 'heroica', 'Causó problemas en una boda.', 'Eris, hija de Ares, provocó el juicio de Paris ofreciendo una manzana a la diosa más bella, pero sin concretarla.', 1),
 -- 42
-('¿Qué fruta causó el juicio de Paris?', 'heroica', 'Fruto dorado de la discordia.', 'La manzana de oro inició la disputa entre diosas.', 1),
+('¿Qué fruta causó el juicio de Paris?', 'heroica', 'Fruto dorado de la discordia.', 'La manzana de oro inició la disputa entre diosas, e indirectamente la guerra de Troya.', 1),
 -- 43
-('¿Quién forjaba las armas de los dioses?', 'heroica', 'Dios cojo del fuego.', 'Hefesto era el herrero divino.', 1),
+('¿Quién forjaba las armas de los dioses?', 'heroica', 'Dios del fuego y la forja, hijo de Hera y Zeus.', 'Hefesto era el herrero divino, recluido en su forja a causa de su deformidad.', 1),
 -- 44
-('¿Cómo se llama la ninfa que se enamoró de su reflejo?', 'heroica', 'Se convirtió en flor.', 'Narciso se enamoró de su propia imagen.', 1),
+('¿Cómo se llamaba el mortal que se enamoró de sí mismo?', 'heroica', 'Se convirtió en flor.', 'Narciso se enamoró de su propia imagen, debido a los poderes de Afrodita, y murió intentando alcanzarla en un lago.', 1),
 -- 45
-('¿Quién era la musa de la épica?', 'heroica', 'Inspiraba grandes poemas.', 'Calíope era la musa de la poesía épica.', 1),
+('¿Qué titán fue condenado a contar cada segundo de la eternidad?', 'heroica', 'Su castigo fue impuesto por liderar la Titanomaquia.', 'Cronos, padre de Zeus y líder de los titanes, fue condenado en el Tártaro por la eternidad y dio inicio al tiempo.', 1),
 -- 46
-('¿Quién era el padre de Zeus?', 'heroica', 'Titán que devoraba a sus hijos.', 'Cronos temía ser destronado por sus descendientes.', 1),
+('¿Quién es el padre de Zeus?', 'heroica', 'Titán que devoraba a sus hijos.', 'Cronos temía ser destronado por sus descendientes, debido a la profecía de su padre, Urano.', 1),
 -- 47
-('¿Cómo se llama la diosa del hogar?', 'heroica', 'Hermana de Zeus, muy pacífica.', 'Hestia protegía el fuego sagrado del hogar.', 1),
+('¿Cómo se llama la diosa del hogar?', 'heroica', 'Hermana de Zeus, muy pacífica.', 'Hestia protegía el fuego sagrado del hogar, que en la antigua Grecia era como se llamaba a la chimenea central de las casas.', 1),
 -- 48
-('¿Qué criatura tenía cabeza de toro y cuerpo de hombre?', 'heroica', 'Vivía en un laberinto en Creta.', 'El Minotauro era hijo de Pasífae y un toro.', 1),
+('¿Qué criatura tenía cabeza de toro y cuerpo de hombre?', 'heroica', 'Vivía en un laberinto en Creta.', 'El Minotauro era hijo de Pasífae y el toro de Creta, octavo trabajo de Heracles.', 1),
 -- 49
-('¿Quién era la madre de Perséfone?', 'heroica', 'Diosa de las cosechas.', 'Deméter buscó desesperadamente a su hija raptada.', 1),
+('¿Quién es la madre de Perséfone?', 'heroica', 'Diosa de las cosechas.', 'Deméter buscó desesperadamente a su hija, raptada por Hades, y durante ese tiempo no hubo cosechas para la humanidad.', 1),
 -- 50
-('¿Cómo se llama el dios de los sueños?', 'heroica', 'Hijo de Hipnos, el sueño.', 'Morfeo enviaba sueños a los mortales.', 1);
+('¿Cómo se llama el dios de los sueños?', 'heroica', 'Hijo de Hipnos, la personificación del sueño.', 'Morfeo enviaba sueños a los mortales.', 1);
 
 -- Respuestas nivel medio
 INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
@@ -212,21 +212,21 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Estigia', TRUE, 33), ('Leteo', FALSE, 33), ('Aqueronte', FALSE, 33), ('Guadalmedina', FALSE, 33),
 ('Caronte', TRUE, 34), ('Hades', FALSE, 34), ('Tánatos', FALSE, 34), ('Minos', FALSE, 34),
 ('Hidra', TRUE, 35), ('Cerbero', FALSE, 35), ('Quimera', FALSE, 35), ('Ladón', FALSE, 35),
-('Príamo', TRUE, 36), ('Héctor', FALSE, 36), ('Paris', FALSE, 36), ('Agamenón', FALSE, 36),
+('Príamo', TRUE, 36), ('Menelao', FALSE, 36), ('Héctor', FALSE, 36), ('Agamenón', FALSE, 36),
 ('Héctor', TRUE, 37), ('Paris', FALSE, 37), ('Eneas', FALSE, 37), ('Príamo', FALSE, 37),
 ('Paris', TRUE, 38), ('Héctor', FALSE, 38), ('Eneas', FALSE, 38), ('Príamo', FALSE, 38),
-('Caballo de Troya', TRUE, 39), ('Asedio', FALSE, 39), ('Traición', FALSE, 39), ('Soborno', FALSE, 39),
+('Caballo', TRUE, 39), ('Asedio', FALSE, 39), ('Traición', FALSE, 39), ('Soborno', FALSE, 39),
 ('Odiseo', TRUE, 40), ('Aquiles', FALSE, 40), ('Agamenón', FALSE, 40), ('Menelao', FALSE, 40),
-('Eris', TRUE, 41), ('Hera', FALSE, 41), ('Atenea', FALSE, 41), ('Afrodita', FALSE, 41),
-('Manzana', TRUE, 42), ('Pera', FALSE, 42), ('Uva', FALSE, 42), ('Granada', FALSE, 42),
-('Hefesto', TRUE, 43), ('Ares', FALSE, 43), ('Apolo', FALSE, 43), ('Hermes', FALSE, 43),
+('Eris', TRUE, 41), ('Hera', FALSE, 41), ('Iris', FALSE, 41), ('Afrodita', FALSE, 41),
+('Manzana', TRUE, 42), ('Pera', FALSE, 42), ('Higo', FALSE, 42), ('Granada', FALSE, 42),
+('Hefesto', TRUE, 43), ('Ares', FALSE, 43), ('Atenea', FALSE, 43), ('Poseidón', FALSE, 43),
 ('Narciso', TRUE, 44), ('Adonis', FALSE, 44), ('Endimión', FALSE, 44), ('Ganimedes', FALSE, 44),
-('Calíope', TRUE, 45), ('Clío', FALSE, 45), ('Euterpe', FALSE, 45), ('Melpómene', FALSE, 45),
-('Cronos', TRUE, 46), ('Zeus', FALSE, 46), ('Urano', FALSE, 46), ('Gea', FALSE, 46),
-('Hestia', TRUE, 47), ('Hera', FALSE, 47), ('Deméter', FALSE, 47), ('Atenea', FALSE, 47),
-('Minotauro', TRUE, 48), ('Centauro', FALSE, 48), ('Sátiro', FALSE, 48), ('Cíclope', FALSE, 48),
-('Deméter', TRUE, 49), ('Hera', FALSE, 49), ('Atenea', FALSE, 49), ('Afrodita', FALSE, 49),
-('Morfeo', TRUE, 50), ('Hipnos', FALSE, 50), ('Tánatos', FALSE, 50), ('Oneiros', FALSE, 50);
+('Cronos', TRUE, 45), ('Epimeteo', FALSE, 45), ('Prometeo', FALSE, 45), ('Ponto', FALSE, 45),
+('Cronos', TRUE, 46), ('Érebo', FALSE, 46), ('Urano', FALSE, 46), ('Gea', FALSE, 46),
+('Hestia', TRUE, 47), ('Hera', FALSE, 47), ('Pirra', FALSE, 47), ('Kore', FALSE, 47),
+('Minotauro', TRUE, 48), ('Centauro', FALSE, 48), ('Sátiro', FALSE, 48), ('Cretáceo', FALSE, 48),
+('Deméter', TRUE, 49), ('Hera', FALSE, 49), ('Hestia', FALSE, 49), ('Persefata', FALSE, 49),
+('Morfeo', TRUE, 50), ('Hipnos', FALSE, 50), ('Tánatos', FALSE, 50), ('Nix', FALSE, 50);
 
 -- Preguntas nivel difícil
 INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
