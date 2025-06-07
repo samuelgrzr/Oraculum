@@ -393,7 +393,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 102
 ('¿De qué planeta viene Superman?', 'heroica', 'Fue destruido antes de que naciera.', 'Krypton era el planeta natal de Superman.', 2),
 -- 103
-('¿Cuál es la debilidad de Superman?', 'heroica', 'Mineral radioactivo de su planeta.', 'La kryptonita es mortal para Superman.', 2),
+('¿Cuál es la principal debilidad de Superman?', 'heroica', 'Mineral radioactivo de su planeta.', 'La kryptonita es mortal para Superman.', 2),
 -- 104
 ('¿Cómo se llama la ciudad donde vive Superman?', 'heroica', 'Ciudad ficticia donde trabaja como reportero.', 'Metrópolis es el hogar adoptivo de Superman.', 2),
 -- 105
@@ -403,7 +403,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 107
 ('¿En qué ciudad opera Batman?', 'heroica', 'Ciudad oscura y corrupta.', 'Gotham City es el territorio de Batman.', 2),
 -- 108
-('¿Cuál es el nombre real de Spider-Man?', 'heroica', 'Estudiante que fue mordido por una araña.', 'Peter Parker se convirtió en Spider-Man.', 2),
+('¿Cuál es el nombre real del Spider-Man principal?', 'heroica', 'Estudiante que fue mordido por una araña.', 'Peter Parker se convirtió en Spider-Man.', 2),
 -- 109
 ('¿Qué le dio poderes a Spider-Man?', 'heroica', 'Accidente en un laboratorio.', 'Una araña radioactiva mordió a Peter Parker.', 2),
 -- 110
@@ -413,13 +413,13 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 112
 ('¿Cuál es el arma característica de Wonder Woman?', 'heroica', 'Cuerda mágica que obliga a decir la verdad.', 'El lazo de la verdad es su arma principal.', 2),
 -- 113
-('¿Cuál es el nombre real de Flash?', 'heroica', 'Científico forense de Central City.', 'Barry Allen es la identidad de Flash.', 2),
+('¿Cuál es el nombre real del Flash principal?', 'heroica', 'Científico forense de Central City.', 'Barry Allen es la identidad de Flash.', 2),
 -- 114
-('¿Cuál es el superpoder principal de Flash?', 'heroica', 'Puede correr más rápido que la luz.', 'La súper velocidad es el poder de Flash.', 2),
+('¿Cuál es el poder de Flash?', 'heroica', 'Puede correr más rápido que la luz.', 'La súper velocidad es el poder de Flash.', 2),
 -- 115
-('¿Cuál es el nombre real de Green Lantern?', 'heroica', 'Piloto de pruebas.', 'Hal Jordan es uno de los Green Lantern más famosos.', 2),
+('¿Cuál es el nombre del Green Lantern principal?', 'heroica', 'Piloto de pruebas.', 'Hal Jordan es uno de los Green Lantern más famosos.', 2),
 -- 116
-('¿De dónde obtiene sus poderes Green Lantern?', 'heroica', 'Joya alienígena en su dedo.', 'El anillo de poder le da sus habilidades.', 2),
+('¿Cuál es la fuente de poder de los Green Lantern?', 'heroica', 'Forma parte de una de las emociones que conforman el espectro luminoso en DC.', 'El anillo de poder, que debe cargarse en la batería central en Oa, utiliza la fuerza de voluntad de su usuario para funcionar.', 2),
 -- 117
 ('¿Cuál es el nombre real de Aquaman?', 'heroica', 'Rey de los océanos.', 'Arthur Curry es la identidad de Aquaman.', 2),
 -- 118
@@ -433,9 +433,9 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 122
 ('¿Qué alimenta el traje de Iron Man?', 'heroica', 'Reactor en su pecho.', 'El reactor arc mantiene vivo a Tony Stark.', 2),
 -- 123
-('¿Cuál es el nombre real de Captain America?', 'heroica', 'Soldado de la Segunda Guerra Mundial.', 'Steve Rogers se convirtió en Captain America.', 2),
+('¿Cuál es el nombre real del Captitán América?', 'heroica', 'Soldado de la Segunda Guerra Mundial.', 'Steve Rogers se convirtió en el Capitán América.', 2),
 -- 124
-('¿Qué objeto característico usa Captain America?', 'heroica', 'Arma defensiva circular.', 'Su escudo de vibranium es indestructible.', 2),
+('¿Qué objeto característico usa el Capitán América?', 'heroica', 'Arma defensiva circular.', 'Su escudo de vibranium es indestructible.', 2),
 -- 125
 ('¿Cuál es el nombre real de Thor?', 'heroica', 'Dios nórdico del trueno.', 'Thor Odinson es su nombre completo.', 2),
 -- 126
@@ -449,9 +449,9 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 130
 ('¿Cuál es el nombre real de Hawkeye?', 'heroica', 'Arquero experto de S.H.I.E.L.D.', 'Clint Barton es la identidad de Hawkeye.', 2),
 -- 131
-('¿Cómo se llama el grupo de superhéroes de Marvel?', 'heroica', 'Los héroes más poderosos de la Tierra.', 'Los Vengadores protegen el mundo.', 2),
+('¿Cómo se llama el grupo principal de superhéroes de Marvel?', 'heroica', 'Los héroes más poderosos de la Tierra.', 'Los Vengadores protegen el mundo.', 2),
 -- 132
-('¿Cómo se llama el grupo de superhéroes de DC?', 'heroica', 'Liga de los héroes más importantes.', 'La Liga de la Justicia defiende la Tierra.', 2),
+('¿Cómo se llama el grupo principal de superhéroes de DC?', 'heroica', 'Liga de los héroes más importantes.', 'La Liga de la Justicia defiende la Tierra.', 2),
 -- 133
 ('¿Cuál es el nombre real de Wolverine?', 'heroica', 'Mutante con garras de adamantium.', 'Logan es el nombre de Wolverine.', 2),
 -- 134
@@ -467,7 +467,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 139
 ('¿Quién es el líder de los X-Men?', 'heroica', 'Profesor telepático en silla de ruedas.', 'Charles Xavier fundó la escuela para mutantes.', 2),
 -- 140
-('¿Cuál es el nombre real del Profesor X?', 'heroica', 'Telepático más poderoso del mundo.', 'Charles Francis Xavier es su nombre completo.', 2),
+('¿Cuál es el poder del Profesor X?', 'heroica', 'Se dedica a encontrar mutantes ocultos por el mundo.', 'Charles Xavier es uno de los telépatas más poderosos de Marvel.', 2),
 -- 141
 ('¿Cuál es el archienemigo de los X-Men?', 'heroica', 'Mutante que controla el magnetismo.', 'Magneto es el némesis principal de los X-Men.', 2),
 -- 142
@@ -475,7 +475,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 143
 ('¿Cuál es el nombre real de Deadpool?', 'heroica', 'Mercenario con factor de curación.', 'Wade Wilson se convirtió en Deadpool.', 2),
 -- 144
-('¿Qué característica especial tiene Deadpool?', 'heroica', 'Habla directamente con el lector.', 'Rompe la cuarta pared constantemente.', 2),
+('¿Qué característica única tiene Deadpool?', 'heroica', 'Habla directamente con el lector.', 'Rompe la cuarta pared constantemente.', 2),
 -- 145
 ('¿Cuál es el nombre real de Daredevil?', 'heroica', 'Abogado ciego de Hells Kitchen.', 'Matt Murdock es la identidad de Daredevil.', 2),
 -- 146
@@ -506,14 +506,14 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Barry Allen', TRUE, 113), ('Wally West', FALSE, 113), ('Jay Garrick', FALSE, 113), ('Bart Allen', FALSE, 113),
 ('Súper velocidad', TRUE, 114), ('Fuerza', FALSE, 114), ('Vuelo', FALSE, 114), ('Invisibilidad', FALSE, 114),
 ('Hal Jordan', TRUE, 115), ('John Stewart', FALSE, 115), ('Guy Gardner', FALSE, 115), ('Kyle Rayner', FALSE, 115),
-('Anillo de poder', TRUE, 116), ('Linterna', FALSE, 116), ('Batería', FALSE, 116), ('Cristal', FALSE, 116),
+('Fuerza de voluntad', TRUE, 116), ('Linterna', FALSE, 116), ('Luz', FALSE, 116), ('Furia', FALSE, 116),
 ('Arthur Curry', TRUE, 117), ('Orin', FALSE, 117), ('Kaldur', FALSE, 117), ('Garth', FALSE, 117),
 ('Atlantis', TRUE, 118), ('Lemuria', FALSE, 118), ('Pacifica', FALSE, 118), ('Oceania', FALSE, 118),
 ('Joker', TRUE, 119), ('Pingüino', FALSE, 119), ('Riddler', FALSE, 119), ('Two-Face', FALSE, 119),
 ('Lex Luthor', TRUE, 120), ('Brainiac', FALSE, 120), ('Doomsday', FALSE, 120), ('Bizarro', FALSE, 120),
 ('Tony Stark', TRUE, 121), ('James Rhodes', FALSE, 121), ('Pepper Potts', FALSE, 121), ('Happy Hogan', FALSE, 121),
 ('Reactor arc', TRUE, 122), ('Energía solar', FALSE, 122), ('Batería', FALSE, 122), ('Combustible', FALSE, 122),
-('Steve Rogers', TRUE, 123), ('Bucky Barnes', FALSE, 123), ('Sam Wilson', FALSE, 123), ('John Walker', FALSE, 123),
+('Steve Rogers', TRUE, 123), ('Bucky Barnes', FALSE, 123), ('Sam Wilson', FALSE, 123), ('Johnny Walker', FALSE, 123),
 ('Escudo', TRUE, 124), ('Martillo', FALSE, 124), ('Espada', FALSE, 124), ('Hacha', FALSE, 124),
 ('Thor Odinson', TRUE, 125), ('Loki Laufeyson', FALSE, 125), ('Balder', FALSE, 125), ('Heimdall', FALSE, 125),
 ('Mjolnir', TRUE, 126), ('Stormbreaker', FALSE, 126), ('Gungnir', FALSE, 126), ('Gram', FALSE, 126),
@@ -521,16 +521,16 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Ira', TRUE, 128), ('Miedo', FALSE, 128), ('Tristeza', FALSE, 128), ('Dolor', FALSE, 128),
 ('Natasha Romanoff', TRUE, 129), ('Yelena Belova', FALSE, 129), ('Melina Vostokoff', FALSE, 129), ('Dottie Underwood', FALSE, 129),
 ('Clint Barton', TRUE, 130), ('Kate Bishop', FALSE, 130), ('Trick Shot', FALSE, 130), ('Crossfire', FALSE, 130),
-('Vengadores', TRUE, 131), ('Defensores', FALSE, 131), ('Cuatro Fantásticos', FALSE, 131), ('X-Men', FALSE, 131),
-('Liga de la Justicia', TRUE, 132), ('Sociedad de la Justicia', FALSE, 132), ('Titanes', FALSE, 132), ('Doom Patrol', FALSE, 132),
-('Logan', TRUE, 133), ('James Howlett', FALSE, 133), ('Weapon X', FALSE, 133), ('Patch', FALSE, 133),
+('Vengadores', TRUE, 131), ('Guardianes de la Galaxia', FALSE, 131), ('Cuatro Fantásticos', FALSE, 131), ('X-Men', FALSE, 131),
+('Liga de la Justicia', TRUE, 132), ('Sociedad de la Justicia', FALSE, 132), ('Titanes', FALSE, 132), ('Escuadrón Suicida', FALSE, 132),
+('Logan', TRUE, 133), ('James Howlett', FALSE, 133), ('Arma X', FALSE, 133), ('Patch', FALSE, 133),
 ('Factor de curación', TRUE, 134), ('Garras', FALSE, 134), ('Fuerza', FALSE, 134), ('Sentidos', FALSE, 134),
 ('Scott Summers', TRUE, 135), ('Alex Summers', FALSE, 135), ('Gabriel Summers', FALSE, 135), ('Nathan Summers', FALSE, 135),
 ('Rayos ópticos', TRUE, 136), ('Telepatía', FALSE, 136), ('Telequinesis', FALSE, 136), ('Fuerza', FALSE, 136),
 ('Ororo Munroe', TRUE, 137), ('Jean Grey', FALSE, 137), ('Rogue', FALSE, 137), ('Kitty Pryde', FALSE, 137),
 ('Control del clima', TRUE, 138), ('Telepatía', FALSE, 138), ('Vuelo', FALSE, 138), ('Fuerza', FALSE, 138),
 ('Charles Xavier', TRUE, 139), ('Erik Lehnsherr', FALSE, 139), ('Logan', FALSE, 139), ('Scott Summers', FALSE, 139),
-('Charles Francis Xavier', TRUE, 140), ('Charles Montgomery Xavier', FALSE, 140), ('Charles Edward Xavier', FALSE, 140), ('Charles William Xavier', FALSE, 140),
+('Telepatía', TRUE, 140), ('Supervelocidad', FALSE, 140), ('Telequinesis', FALSE, 140), ('Metamorfosis', FALSE, 140),
 ('Magneto', TRUE, 141), ('Apocalipsis', FALSE, 141), ('Siniestro', FALSE, 141), ('Centinelas', FALSE, 141),
 ('Erik Lehnsherr', TRUE, 142), ('Max Eisenhardt', FALSE, 142), ('Magnus', FALSE, 142), ('Erik Magnus', FALSE, 142),
 ('Wade Wilson', TRUE, 143), ('Jack Wilson', FALSE, 143), ('Ryan Wilson', FALSE, 143), ('Wade Williams', FALSE, 143),
@@ -551,7 +551,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 153
 ('¿Cómo se llama el padre biológico de Superman?', 'divina', 'Científico de Krypton que lo envió a la Tierra.', 'Jor-El salvó a su hijo del destino de Krypton.', 2),
 -- 154
-('¿Cuál es el nombre de la fortaleza secreta de Superman?', 'divina', 'Refugio en el Ártico hecho de cristales.', 'La Fortaleza de la Soledad es su santuario.', 2),
+('¿Cuál es el nombre de la base de Superman?', 'divina', 'Refugio en el Ártico hecho de cristales.', 'La Fortaleza de la Soledad es su santuario.', 2),
 -- 155
 ('¿Qué significa la "S" en el pecho de Superman?', 'divina', 'No es una letra del alfabeto terrestre.', 'Es el símbolo kryptoniano de la esperanza.', 2),
 -- 156
@@ -575,19 +575,19 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 165
 ('¿Quién creó a Wonder Woman en los cómics?', 'divina', 'Psicólogo que inventó el detector de mentiras.', 'William Moulton Marston creó el personaje en 1941.', 2),
 -- 166
-('¿Cuál es el nombre del dios que le dio poderes a Wonder Woman?', 'divina', 'Mensajero de los dioses griegos.', 'Hermes le otorgó velocidad y capacidad de vuelo.', 2),
+('¿Quién es el padre de Wonder Woman?', 'divina', 'Rey de los dioses griegos.', 'Zeus tuvo a Diana con Hipólita, reina de las Amazonas.', 2),
 -- 167
 ('¿Cómo se llama la ciudad natal de Flash?', 'divina', 'Ciudad gemela de Keystone City.', 'Central City es el hogar de Barry Allen.', 2),
 -- 168
-('¿Cuál es el nombre de la dimensión de donde obtiene velocidad Flash?', 'divina', 'Fuente extradimensional de energía.', 'La Speed Force es el origen de sus poderes.', 2),
+('¿Cuál es el nombre de la dimensión de donde obtiene sus poderes Flash?', 'divina', 'Fuente extradimensional de energía.', 'La Speed Force es el origen de los poderes de todos los velocistas.', 2),
 -- 169
 ('¿Quién fue el Flash original de los años 40?', 'divina', 'Miembro de la Sociedad de la Justicia.', 'Jay Garrick fue el primer Flash en los cómics.', 2),
 -- 170
 ('¿Cuál es el nombre del cuerpo de Green Lanterns?', 'divina', 'Organización intergaláctica de paz.', 'El Green Lantern Corps protege el universo.', 2),
 -- 171
-('¿En qué planeta está la sede del Green Lantern Corps?', 'divina', 'Mundo artificial en el centro del universo.', 'Oa es el planeta hogar de los Guardianes.', 2),
+('¿En qué planeta está la sede de los Green Lantern Corps?', 'divina', 'Mundo artificial en el centro del universo.', 'Oa es el planeta hogar de los Guardianes.', 2),
 -- 172
-('¿Cómo se llaman los creadores del Green Lantern Corps?', 'divina', 'Seres azules inmortales.', 'Los Guardianes del Universo fundaron el cuerpo.', 2),
+('¿Cómo se llaman los creadores de los Green Lantern Corps?', 'divina', 'Seres azules inmortales.', 'Los Guardianes del Universo fundaron el cuerpo.', 2),
 -- 173
 ('¿Cuál es el nombre del tridente de Aquaman?', 'divina', 'Arma mágica de los reyes de Atlantis.', 'El Tridente de Neptuno le da poder sobre los mares.', 2),
 -- 174
@@ -595,13 +595,13 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 175
 ('¿Cuál es el nombre real de Ocean Master?', 'divina', 'Hermano celoso del rey de Atlantis.', 'Orm Marius es la identidad de Ocean Master.', 2),
 -- 176
-('¿Cómo se llama la inteligencia artificial de Iron Man?', 'divina', 'Asistente virtual del traje.', 'FRIDAY reemplazó a JARVIS en algunas versiones.', 2),
+('¿Cómo se llama la inteligencia artificial que Iron Man deja a Spider-Man?', 'divina', 'Asistente virtual del traje.', 'FRIDAY reemplazó a JARVIS en algunas versiones.', 2),
 -- 177
 ('¿Cuál era el nombre de la IA anterior de Tony Stark?', 'divina', 'Mayordomo virtual basado en Alfred.', 'JARVIS fue la primera IA de Iron Man.', 2),
 -- 178
 ('¿Cómo se llama la empresa de Tony Stark?', 'divina', 'Corporación de tecnología avanzada.', 'Stark Industries desarrolla tecnología militar.', 2),
 -- 179
-('¿Cuál es el nombre del suero que creó a Captain America?', 'divina', 'Fórmula militar experimental.', 'El Suero del Súper Soldado transformó a Steve Rogers.', 2),
+('¿Cuál es el nombre del suero que creó al Capitán América?', 'divina', 'Fórmula militar experimental.', 'El Suero del Súper Soldado transformó a Steve Rogers.', 2),
 -- 180
 ('¿Quién creó el suero del súper soldado?', 'divina', 'Científico alemán refugiado.', 'Abraham Erskine desarrolló la fórmula secreta.', 2),
 -- 181
@@ -613,7 +613,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 184
 ('¿Cómo se llama el puente que conecta los nueve mundos?', 'divina', 'Puente arcoíris de la mitología nórdica.', 'Bifrost conecta Asgard con otros reinos.', 2),
 -- 185
-('¿Cuál es el nombre del científico que creó a Hulk?', 'divina', 'Trabajaba en la bomba gamma.', 'Bruce Banner se expuso accidentalmente a radiación gamma.', 2),
+('¿Cuál es el nombre del científico que se convirtió en Hulk?', 'divina', 'Trabajaba en la bomba gamma.', 'Bruce Banner se expuso accidentalmente a radiación gamma.', 2),
 -- 186
 ('¿Cómo se llama la prima de Bruce Banner?', 'divina', 'Abogada que también se volvió verde.', 'Jennifer Walters se convirtió en She-Hulk.', 2),
 -- 187
@@ -627,17 +627,17 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 191
 ('¿Cuál es el nombre del metal que cubre el esqueleto de Wolverine?', 'divina', 'Metal indestructible creado artificialmente.', 'El adamantium fue fusionado con sus huesos.', 2),
 -- 192
-('¿Cómo se llama el programa que experimentó con Wolverine?', 'divina', 'Proyecto militar canadiense secreto.', 'Weapon X creó soldados mutantes mejorados.', 2),
+('¿Cómo se llama el programa que experimentó con Wolverine?', 'divina', 'Proyecto militar canadiense secreto.', 'Arma X creó soldados mutantes mejorados.', 2),
 -- 193
 ('¿Cuál es el nombre de la escuela de los X-Men?', 'divina', 'Instituto para jóvenes superdotados.', 'La Escuela Xavier para Jóvenes Superdotados.', 2),
 -- 194
 ('¿En qué estado está ubicada la mansión X?', 'divina', 'Estado del noreste de Estados Unidos.', 'Westchester, Nueva York alberga la escuela.', 2),
 -- 195
-('¿Cuál es el nombre real de Jean Grey?', 'divina', 'Telepática que se convirtió en Fénix.', 'Jean Grey-Summers es su nombre completo.', 2),
+('¿Cuál es el nombre real de Fénix, de los X-Men?', 'divina', 'Telepática que se convirtió en Fénix.', 'Jean Grey-Summers es su nombre completo, tras casarse con Scott Summers, Cyclops.', 2),
 -- 196
 ('¿Cómo se llama la entidad cósmica que poseyó a Jean Grey?', 'divina', 'Fuerza primordial de vida y muerte.', 'La Fuerza Fénix es una entidad cósmica.', 2),
 -- 197
-('¿Cuál es el nombre del metal del escudo de Captain America?', 'divina', 'Metal ficticio más resistente que existe.', 'El vibranium absorbe vibraciones y energía.', 2),
+('¿Cuál es el nombre del metal del escudo de Capitán América?', 'divina', 'Metal ficticio más resistente que existe.', 'El vibranium absorbe vibraciones y energía.', 2),
 -- 198
 ('¿De qué país africano proviene el vibranium?', 'divina', 'Nación tecnológicamente avanzada.', 'Wakanda es la fuente principal de vibranium.', 2),
 -- 199
@@ -662,7 +662,7 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('J. Jonah Jameson', TRUE, 163), ('Robbie Robertson', FALSE, 163), ('Ben Urich', FALSE, 163), ('Frederick Foswell', FALSE, 163),
 ('Hipólita', TRUE, 164), ('Antíope', FALSE, 164), ('Penthesilea', FALSE, 164), ('Artemisa', FALSE, 164),
 ('William Moulton Marston', TRUE, 165), ('Bob Kane', FALSE, 165), ('Jerry Siegel', FALSE, 165), ('Stan Lee', FALSE, 165),
-('Hermes', TRUE, 166), ('Zeus', FALSE, 166), ('Ares', FALSE, 166), ('Apolo', FALSE, 166),
+('Zeus', TRUE, 166), ('Hermes', FALSE, 166), ('Ares', FALSE, 166), ('Apolo', FALSE, 166),
 ('Central City', TRUE, 167), ('Keystone City', FALSE, 167), ('Coast City', FALSE, 167), ('Star City', FALSE, 167),
 ('Speed Force', TRUE, 168), ('Time Force', FALSE, 168), ('Velocity Force', FALSE, 168), ('Kinetic Force', FALSE, 168),
 ('Jay Garrick', TRUE, 169), ('Barry Allen', FALSE, 169), ('Wally West', FALSE, 169), ('Bart Allen', FALSE, 169),
@@ -688,10 +688,10 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Natasha Romanoff', TRUE, 189), ('Yelena Belova', FALSE, 189), ('Melina Vostokoff', FALSE, 189), ('Dottie Underwood', FALSE, 189),
 ('Habitación Roja', TRUE, 190), ('Programa Invierno', FALSE, 190), ('Proyecto Insight', FALSE, 190), ('Operación Paperclip', FALSE, 190),
 ('Adamantium', TRUE, 191), ('Vibranium', FALSE, 191), ('Unobtainium', FALSE, 191), ('Carbonadium', FALSE, 191),
-('Weapon X', TRUE, 192), ('Weapon Plus', FALSE, 192), ('Proyecto Rebirth', FALSE, 192), ('Experimento X', FALSE, 192),
+('Arma X', TRUE, 192), ('Arma Plus', FALSE, 192), ('Proyecto Rebirth', FALSE, 192), ('Experimento X', FALSE, 192),
 ('Escuela Xavier', TRUE, 193), ('Instituto Mutante', FALSE, 193), ('Academia X', FALSE, 193), ('Escuela Gifted', FALSE, 193),
 ('Nueva York', TRUE, 194), ('Massachusetts', FALSE, 194), ('Connecticut', FALSE, 194), ('Nueva Jersey', FALSE, 194),
-('Jean Grey', TRUE, 195), ('Jean Summers', FALSE, 195), ('Marvel Girl', FALSE, 195), ('Phoenix', FALSE, 195),
+('Jean Grey', TRUE, 195), ('Jean Summers', FALSE, 195), ('Marvel Girl', FALSE, 195), ('Fénix', FALSE, 195),
 ('Fuerza Fénix', TRUE, 196), ('Entidad Cósmica', FALSE, 196), ('Poder Fénix', FALSE, 196), ('Espíritu Fénix', FALSE, 196),
 ('Vibranium', TRUE, 197), ('Adamantium', FALSE, 197), ('Unobtainium', FALSE, 197), ('Proto-Adamantium', FALSE, 197),
 ('Wakanda', TRUE, 198), ('Genosha', FALSE, 198), ('Latveria', FALSE, 198), ('Atlantis', FALSE, 198),
