@@ -30,25 +30,25 @@
                     <!-- Columna 1: Modo de juego -->
                     <div class="flex-1 space-y-2">
                         <label class="block text-lg font-medium text-[var(--greek-blue)]">Modo de juego</label>
-                        <div class="grid grid-cols-2 lg:grid-cols-1 gap-4">
+                        <div class="grid grid-cols-1 lg:grid-cols-1 gap-4">
                             <div *ngFor="let modo of modoJuego" class="relative">
                                 <input type="radio" [id]="'modo-' + modo" [value]="modo" formControlName="modo_juego"
                                     class="hidden peer">
                                 <label [for]="'modo-' + modo"
-                                    class="block p-4 border-2 rounded-lg cursor-pointer transition-all" [ngClass]="{
+                                    class="block p-3 sm:p-4 border-2 rounded-lg cursor-pointer transition-all" [ngClass]="{
                         'border-[var(--greek-gold)] bg-white': partidaForm.get('modo_juego')?.value === modo,
                         'border-gray-300 bg-gray-100': partidaForm.get('modo_juego')?.value !== modo
                       }">
                                     <div class="flex justify-between items-start">
-                                        <div class="flex-1">
-                                            <span class="block font-medium capitalize text-[var(--greek-blue)]">{{ modo
+                                        <div class="flex-1 pr-2">
+                                            <span class="block font-medium capitalize text-[var(--greek-blue)] text-sm sm:text-base">{{ modo
                                                 }}</span>
-                                            <p class="text-sm text-gray-600 mt-1">{{ descripcionesModos[modo] }}</p>
+                                            <p class="text-xs sm:text-sm text-gray-600 mt-1 leading-tight">{{ descripcionesModos[modo] }}</p>
                                         </div>
                                         <button type="button" (click)="mostrarInfoModo(modo, $event)"
-                                            class="ml-2 p-1 rounded-full hover:bg-[var(--light-blue)] hover:text-white transition-colors"
+                                            class="ml-1 sm:ml-2 p-1 rounded-full hover:bg-[var(--light-blue)] hover:text-white transition-colors flex-shrink-0"
                                             title="Más información">
-                                            <svg class="w-5 h-5 cursor-pointer text-[var(--greek-blue)]" fill="none"
+                                            <svg class="w-4 h-4 sm:w-5 sm:h-5 cursor-pointer text-[var(--greek-blue)]" fill="none"
                                                 stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
