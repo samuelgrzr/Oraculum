@@ -83,13 +83,13 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 4
 ('¿Qué héroe mató al Minotauro?', 'heroica', 'Usó un hilo para no perderse.', 'Teseo derrotó al Minotauro en el laberinto de Creta.', 1),
 -- 5
-('¿Quién abrió la caja que liberó todos los males?', 'heroica', 'Primera mujer creada por los dioses.', 'Pandora abrió la caja por curiosidad, aun cuando su única instrucción era no abrirla.', 1),
+('¿Quién abrió la caja que liberó todos los males?', 'heroica', 'Primera mujer creada por los dioses.', 'Pandora abrió la caja o ánfora por curiosidad, aun cuando su única instrucción era no abrirla.', 1),
 -- 6
 ('¿Cómo se llama el caballo alado?', 'heroica', 'Nació de la sangre de Medusa.', 'Pegaso es el famoso caballo con alas.', 1),
 -- 7
 ('¿Quién robó el fuego para dárselo a los humanos?', 'heroica', 'Fue castigado por Zeus toda la eternidad.', 'Prometeo desafió a los dioses para ayudar a la humanidad.', 1),
 -- 8
-('¿Cómo se llama el perro de tres cabezas?', 'heroica', 'Custodia la entrada del inframundo.', 'Cerbero vigila las puertas del Hades.', 1),
+('¿Cómo se llama el perro de tres cabezas?', 'heroica', 'Custodia la entrada del Inframundo.', 'Cerbero vigila las puertas del Hades.', 1),
 -- 9
 ('¿Quién es la diosa del amor y la belleza?', 'heroica', 'Nació de la espuma del mar.', 'Afrodita es la diosa del amor.', 1),
 -- 10
@@ -141,7 +141,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 33
 ('¿Cómo se llama el río principal del Hades?', 'heroica', 'Hay que pagar al barquero para no vagar 100 años en sus aguas.', 'El río Estigia, que a su vez es una deidad.', 1),
 -- 34
-('¿Quién es el barquero del inframundo?', 'heroica', 'Transporta las almas a sus respectivos lugares.', 'Caronte lleva las almas por el río Estigia.', 1),
+('¿Quién es el barquero del Inframundo?', 'heroica', 'Transporta las almas a sus respectivos lugares.', 'Caronte lleva las almas por el río Estigia.', 1),
 -- 35
 ('¿Qué criatura tenía múltiples cabezas que regeneraban?', 'heroica', 'Heracles la derrotó en su segundo trabajo.', 'La Hidra de Lerna regeneraba dos cabezas por cada cabeza cercenada.', 1),
 -- 36
@@ -231,156 +231,156 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 -- Preguntas nivel difícil
 INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
 -- 51
-('¿Cuál era el nombre del primer rey de Atenas según la mitología?', 'divina', 'Nació de la tierra y fue medio serpiente.', 'Cécrope fue el primer rey mítico de Atenas, nacido de la tierra.', 1),
+('¿Cuál era el nombre del rey de Atenas cuando murió el Minotauro?', 'divina', 'Padre de Teseo y dio nombre al mar que la rodea.', 'Egeo fue el rey de Atenas, quien se suicidó al creer que Teseo no volvió con vida de su misión.', 1),
 -- 52
-('¿Qué ninfa se transformó en laurel para escapar de Apolo?', 'divina', 'Su nombre se asocia con las coronas de victoria.', 'Dafne se convirtió en laurel, árbol sagrado de Apolo.', 1),
+('¿En qué árbol se transformó la ninfa Dafne para escapar de Apolo?', 'divina', 'Su nombre se asocia con las coronas de victoria.', 'Dafne pidió a su padre, un río, que la convirtiera en laurel para que el dios la dejase en paz.', 1),
 -- 53
-('¿Quién era la madre de las Musas?', 'divina', 'Titánide de la memoria.', 'Mnemósine, la personificación de la memoria, fue madre de las nueve Musas.', 1),
+('¿Quién era la madre de las Musas?', 'divina', 'Titánide de la memoria, tía de Zeus.', 'Mnemósine, la personificación de la memoria, fue madre de las nueve Musas.', 1),
 -- 54
-('¿Cómo se llamaba el gigante que intentó violar a Leto?', 'divina', 'Fue enviado al Tártaro por Zeus.', 'Ticio fue castigado eternamente por intentar agredir a la madre de Apolo y Artemisa.', 1),
+('¿Cómo se llamaba el dragón que custodiaba el Jardín de las Hespérides?', 'divina', 'Tenía 100 cabezas.', 'Ladón guardaba las manzanas de cualquier intruso, hasta que fue derrotado por Heracles en su undécimo trabajo.', 1),
 -- 55
-('¿Qué rey fue transformado en lobo por Zeus?', 'divina', 'Sirvió carne humana a los dioses.', 'Licaón fue castigado por su impiedad y canibalismo.', 1),
+('¿Quién es el viento del norte?', 'divina', 'Es el más frío de los cuatro.', 'Bóreas es el gélido viento del norte.', 1),
 -- 56
-('¿Cuál era el nombre del caballo de Poseidón?', 'divina', 'Significa "espuma del mar".', 'Escifio era uno de los caballos inmortales de Poseidón.', 1),
+('¿Qué titán fue condenado a contar cada segundo por la eternidad?', 'divina', 'Lideró a los titanes durante la Titanomaquina.', 'Cronos fue encerrado en el Tártaro, obligado a contar los segundos eternamente desde ese momento, dando inicio al tiempo.', 1),
 -- 57
-('¿Qué titán robó el néctar y la ambrosía?', 'divina', 'Hijo de Jápeto, hermano de Prometeo.', 'Epimeteo, el "que piensa después", cometió este robo.', 1),
+('¿Qué monstruo logró derrotar a Zeus?', 'divina', 'Nació de Gea y Tártaro como respuesta a su ira por el destierro y encierro de los titanes.', 'Tifón, padre de los mayores monstruos, fue el único capaz de derrotar a Zeus, cortándole los tendones.', 1),
 -- 58
-('¿Quién era el padre de las Harpías?', 'divina', 'Dios del viento del oeste.', 'Céfiro engendró a las Harpías con la ninfa Podarge.', 1),
+('¿Quién es el dios de la riqueza?', 'divina', 'Rey de su propio reino.', 'Hades es el dios de la riqueza, ya que todas las pertenencias de los muertos acaban en su posesión.', 1),
 -- 59
-('¿Cómo se llamaba la primera esposa de Zeus?', 'divina', 'Titánide de la prudencia.', 'Metis fue devorada por Zeus para evitar la profecía.', 1),
+('¿Cómo se llamaba la primera esposa de Zeus?', 'divina', 'Titánide de la prudencia, madre de Atenea.', 'Metis fue devorada por Zeus para evitar una profecía, sin éxito.', 1),
 -- 60
-('¿Qué héroe fundó la ciudad de Micenas?', 'divina', 'Hijo de Perseo y Andrómeda.', 'Perses fundó Micenas según algunas versiones del mito.', 1),
+('¿Quién no es uno de los hijos del titán Hiperión, la luz?', 'divina', 'Es, junto a Hermes, mensajera de los dioses.', 'Iris es una diosa, hija de los titanes Taumante y Electra y hermana de las harpías.', 1),
 -- 61
 ('¿Cuál era el nombre del perro de Orión?', 'divina', 'Se convirtió en constelación.', 'Sirio, el perro de Orión, brilla como la estrella más luminosa.', 1),
 -- 62
-('¿Qué diosa nació de la espuma del mar mezclada con los genitales de Urano?', 'divina', 'Surgió cerca de Chipre.', 'Afrodita nació de esta manera según Hesíodo.', 1),
+('¿Qué diosa nació de la espuma del mar mezclada con los genitales de Urano?', 'divina', 'Surgió cerca de Chipre.', 'Afrodita nació de esta manera según Hesíodo, cuando Cronos cortó los testículos de su padre y cayeron al mar.', 1),
 -- 63
-('¿Quién era el auriga del carro solar antes que Helios?', 'divina', 'Titán de la luz.', 'Hiperión conducía el carro solar en la era de los Titanes.', 1),
+('¿Quién llevaba el carro solar antes que Apolo?', 'divina', 'Titán personificación del Sol.', 'Helios conducía el carro solar hasta que Apolo, hijo de Zeus y dios del Sol y de la luz, le relevó de su puesto.', 1),
 -- 64
-('¿Cómo se llamaba la nodriza de Zeus en Creta?', 'divina', 'Cabra divina que lo amamantó.', 'Amaltea cuidó al joven Zeus en una cueva del monte Ida.', 1),
+('¿Cómo se llamaba la nodriza de Zeus en Creta?', 'divina', 'Cabra divina que lo amamantó.', 'Amaltea cuidó al joven Zeus en una cueva del monte Ida, según algunas versiones se convirtió en la constelación de Aries tras su muerte.', 1),
 -- 65
-('¿Qué rey de Frigia convirtió todo en oro?', 'divina', 'Recibió este don de Dioniso.', 'Midas aprendió que la riqueza no lo es todo.', 1),
+('¿Qué rey de Frigia podía convertir todo en oro?', 'divina', 'Recibió este don de Dioniso.', 'Midas aprendió que la riqueza no lo es todo, y acabó inmortalizado en ella para la posteridad.', 1),
 -- 66
-('¿Cuál era el nombre del río de fuego en el inframundo?', 'divina', 'Uno de los cinco ríos infernales.', 'Piriflegetonte era el río ardiente del Hades.', 1),
+('¿Cuál es el nombre del río de fuego en el Inframundo?', 'divina', 'Uno de los cinco ríos infernales.', 'Flegetonte era el río ardiente del Hades.', 1),
 -- 67
-('¿Qué ninfa se enamoró de Narciso y se consumió de amor?', 'divina', 'Solo podía repetir las últimas palabras.', 'Eco fue castigada por Hera y se desvaneció por amor no correspondido.', 1),
+('¿Qué ninfa perdió la capacidad de hablar por voluntad propia?', 'divina', 'Solo podía repetir las últimas palabras de lo que escuchaba.', 'Eco proclamó que su voz era más hermosa que la de Hera y sufrió las consecuencias.', 1),
 -- 68
-('¿Quién era el padre de los Cíclopes?', 'divina', 'Primordial del cielo.', 'Urano engendró a los Cíclopes con Gea.', 1),
+('¿Quién es el padre de los Cíclopes?', 'divina', 'Personificación del cielo.', 'Urano engendró a los cíclopes con Gea, pero le parecieron horribles y los encerró en el Tártaro.', 1),
 -- 69
-('¿Cómo se llamaba el gigante que sostenía las columnas del cielo?', 'divina', 'Hermano de Prometeo.', 'Atlas fue condenado a esta tarea tras la Titanomaquia.', 1),
+('¿Cuál es el nombre del río del olvido en el Inframundo?', 'divina', 'Se encuentra rodeando los Campos Elíseos.', 'Los héroes o personas ejemplares que pueden comenzar de nuevo su vida en los Campos Elíseos, tienen la oportunidad de beber de este río para olvidar su vida anterior y no sufrir.', 1),
 -- 70
-('¿Qué diosa presidía los juramentos?', 'divina', 'Hija de la Noche.', 'Estigia personificaba los juramentos sagrados e inquebrantables.', 1),
+('¿Qué diosa presidía los juramentos?', 'divina', 'Hija de Nix, la noche.', 'Estigia, el río del Inframundo, personificaba los juramentos sagrados e inquebrantables, incluso los de los dioses y titanes.', 1),
 -- 71
-('¿Quién era el heraldo de Hades?', 'divina', 'Dios de la muerte no violenta.', 'Tánatos servía como mensajero del señor del inframundo.', 1),
+('¿Quién es el dios de la muerte?', 'divina', 'Ahora es conocido como la Parca.', 'Tánatos actúa como psicopompo, transporta al Inframundo las almas de aquellos a quienes les ha llegado la hora.', 1),
 -- 72
-('¿Cómo se llamaba la madre de Perséfone?', 'divina', 'Diosa de las cosechas y la agricultura.', 'Deméter buscó desesperadamente a su hija raptada.', 1),
+('¿Cuál era el nombre de Perséfone antes de convertirse en la reina del Inframundo?', 'divina', 'Significa doncella.', 'Kore fue su nombre de nacimiento, que luego fue cambiado a Perséfone, "la que trae muerte".', 1),
 -- 73
-('¿Qué rey de Corinto fue condenado a empujar una roca eternamente?', 'divina', 'Engañó a la muerte dos veces.', 'Sísifo fue castigado por su astucia excesiva.', 1),
+('¿Qué rey de Corinto fue condenado a empujar una roca eternamente?', 'divina', 'Engañó a la muerte dos veces.', 'Sísifo fue castigado por su astucia excesiva. Tras engañar a Tánatos y apresarlo, las almas no pudieron ir al Inframundo y Hades se enfureció.', 1),
 -- 74
-('¿Quién era la diosa de la venganza?', 'divina', 'También llamada Adrastea.', 'Némesis castigaba la hybris y el orgullo desmedido.', 1),
+('¿Quién era la diosa de la venganza?', 'divina', 'Se le representa con una balanza.', 'Némesis castigaba la hibris, un concepto griego que representa la desmesura, arrogancia u orgullo excesivo, que supere los límites establecidos por los dioses.', 1),
 -- 75
-('¿Cómo se llamaba el hijo de Dédalo?', 'divina', 'Voló demasiado alto con alas de cera.', 'Ícaro ignoró las advertencias de su padre.', 1),
+('¿Cómo se llamaba el hijo de Dédalo?', 'divina', 'Voló demasiado alto con alas de cera.', 'Ícaro ignoró las advertencias de su padre al volar para escapar del laberinto de Creta y murió ahogado al precipitarse al mar.', 1),
 -- 76
-('¿Qué titánide era la madre de Helios?', 'divina', 'Personificación de la vista.', 'Teia dio a luz al dios del sol.', 1),
+('¿Cómo se llamaba el monte donde reinaban los titanes?', 'divina', 'Se pensaba que era el centro del mundo.', 'El monte Otris fue el centro del reinado de Cronos, hasta que fue derrotado por Zeus y sus hermanos y se establecieron en el monte Olimpo.', 1),
 -- 77
-('¿Quién era el dios de los vientos del norte?', 'divina', 'El más violento de los Anemoi.', 'Bóreas traía el frío invernal desde Tracia.', 1),
+('¿Qué dios del viento ayudó a Odiseo en su viaje?', 'divina', 'Su nombre se usa ahora para la energía nacida del viento.', 'Eolo, en su isla flotante, obsequió a Odiseo con una bolsa o ánfora que contenía los vientos del Este.', 1),
 -- 78
-('¿Cómo se llamaba la esposa de Hefesto?', 'divina', 'Una de las Cárites.', 'Aglae era la más joven de las tres Gracias.', 1),
+('¿Cómo se llama la esposa de Hefesto?', 'divina', 'Se casaron en contra de la voluntad de ella.', 'Afrodita, quien era deseada por todos, fue ofrecida a Hefesto como recompensa por liberar a Hera de un trono dorado que la rentendría por siempre.', 1),
 -- 79
 ('¿Qué héroe mató a la Quimera?', 'divina', 'Montaba a Pegaso.', 'Belerofonte derrotó al monstruo desde el aire.', 1),
 -- 80
-('¿Quién era el rey de los Lapitas?', 'divina', 'Luchó contra los Centauros en su boda.', 'Piritoo fue amigo de Teseo y enemigo de los Centauros.', 1),
+('¿Cómo se llamaba la madre de Perseo?', 'divina', 'Zeus la fecundó convirtiéndose en lluvia dorada.', 'Dánae fue encerrada para evitar una profecía que mataría a su padre, pero esto no impidió que Zeus se fijase en ella.', 1),
 -- 81
-('¿Cómo se llamaba la nave de Jasón?', 'divina', 'Construida con madera del bosque sagrado.', 'Argo llevó a los Argonautas en busca del Vellocino de Oro.', 1),
+('¿Cómo se llamaba la nave de Jasón?', 'divina', 'Construida con ayuda de Atenea por Argos, hijo de Frixo, quien montó al Carnero de oro.', 'El Argo llevó a Jasón y los argonautas en busca del Vellocino de Oro.', 1),
 -- 82
-('¿Qué diosa ayudó a Jasón a conseguir el Vellocino?', 'divina', 'Hechicera de la Cólquide.', 'Medea traicionó a su padre por amor a Jasón.', 1),
+('¿Qué diosa ayudó a Jasón a conseguir el Vellocino?', 'divina', 'Hechicera de la Cólquide.', 'Medea traicionó a su padre por amor a Jasón, debido a las flechas de Eros.', 1),
 -- 83
-('¿Quién era el padre de Aquiles?', 'divina', 'Rey de los Mirmidones.', 'Peleo se casó con la nereida Tetis.', 1),
+('¿Quién era el padre de Aquiles?', 'divina', 'Rey de los Mirmidones.', 'Peleo se casó con la nereida Tetis, boda en la que Eris comenzó indirectamente la guerra de Troya.', 1),
 -- 84
 ('¿Cómo se llamaba la madre de Aquiles?', 'divina', 'Nereida que lo sumergió en la Estigia.', 'Tetis intentó hacer inmortal a su hijo.', 1),
 -- 85
-('¿Qué profeta ciego advirtió a Edipo?', 'divina', 'Vivió siete generaciones.', 'Tiresias reveló terribles verdades sobre el destino.', 1),
+('¿Qué profeta ciego advirtió a Edipo?', 'divina', 'Vivió siete generaciones y ayudó también a Odiseo.', 'Tiresias reveló terribles verdades sobre el destino a diferentes héroes, en el caso de Edipo no ayudaron a que su final no fuera trágico.', 1),
 -- 86
-('¿Quién era el rey de Tebas cuando llegó Edipo?', 'divina', 'Fue asesinado en un cruce de caminos.', 'Layo murió a manos de su propio hijo sin saberlo.', 1),
+('¿Quién no es uno de los jueces del Inframundo?', 'divina', 'Es profeta en el Inframundo.', 'Éaco, Radamantis y Minos son los tres jueces del Inframundo, debido a su astucia en vida y a que son hijos de Zeus.', 1),
 -- 87
-('¿Cómo se llamaba la reina de las Amazonas?', 'divina', 'Poseía un cinturón mágico.', 'Hipólita fue derrotada por Heracles en su noveno trabajo.', 1),
+('¿Cómo se llamaba la reina de las Amazonas?', 'divina', 'Poseía un cinturón mágico que la hacía invulnerable.', 'Hipólita fue derrotada por Heracles en su noveno trabajo, ya que pensó que los estaban traicionando, por culpa de un engaño de la diosa Hera.', 1),
 -- 88
-('¿Qué gigante desafió a los dioses en la Gigantomaquia?', 'divina', 'Rey de los Gigantes.', 'Porfirión intentó violar a Hera durante la batalla.', 1),
+('¿Qué gigante desafió a los dioses en la Gigantomaquia?', 'divina', 'Rey de los Gigantes, de su nombre deriva un sinónimo actual de "discutir".', 'Porfirión intentó violar a Hera durante la batalla.', 1),
 -- 89
-('¿Quién era la diosa de la juventud?', 'divina', 'Escanciaba néctar en el Olimpo.', 'Hebe servía a los dioses antes que Ganimedes.', 1),
+('¿Quién era la diosa de la juventud?', 'divina', 'Escanciaba néctar en el Olimpo.', 'Hebe servía a los dioses antes que Ganimedes, pues su trabajo era ser la copera de los olímpicos.', 1),
 -- 90
-('¿Cómo se llamaba el caballo de Aquiles?', 'divina', 'Podía hablar y profetizar.', 'Janto predijo la muerte de su amo.', 1),
+('¿Qué héroe fue conocido como Nadie por su enemigo?', 'divina', 'El más astuto de los héroes, utilizó este engaño para escapar con vida.', 'Odiseo se presentó como Nadie ante el cíclope Polifemo, para que, cuando pidiera ayuda, dijese que Nadie le estaba atacando y no la recibiera.', 1),
 -- 91
-('¿Qué rey de Lidia podía convertir todo en oro?', 'divina', 'Aprendió que era una maldición.', 'Midas pidió a Dioniso que le quitara el don.', 1),
+('¿Cuál no es un trabajo de Heracles?', 'divina', 'Hércules tenía una gigantesca fuerza, pero no era muy inteligente.', 'Quien se adentró en el laberinto de Creta para vencer al Minotauro con ayuda de la princesa Ariadna fue Jasón.', 1),
 -- 92
-('¿Quién era la diosa de la discordia?', 'divina', 'Causó la guerra de Troya.', 'Eris arrojó la manzana dorada en la boda de Peleo y Tetis.', 1),
+('¿Quién no es una Erinia?', 'divina', 'Fue princesa y había una ciudad con su nombre.', 'Megara, princesa de Tebas, fue la esposa de Heracles hasta que este la mató, engañado por Hera.', 1),
 -- 93
-('¿Cómo se llamaba el barquero del río Aqueronte?', 'divina', 'Transportaba almas al inframundo.', 'Caronte exigía un óbolo por el viaje.', 1),
+('¿Cómo se llama el barquero del Inframundo?', 'divina', 'Transportaba las almas a través del río Estigia.', 'Caronte exigía un óbolo por el viaje, que debían enterrar los vivos junto con el cuerpo.', 1),
 -- 94
-('¿Qué titán enseñó la astronomía a los humanos?', 'divina', 'Padre de Prometeo.', 'Jápeto transmitió conocimientos celestiales.', 1),
+('¿Qué titán enseñó la astronomía a los humanos?', 'divina', 'Padre de Prometeo y Epimeteo.', 'Jápeto transmitió conocimientos celestiales a los humanos.', 1),
 -- 95
-('¿Quién era la diosa de la magia?', 'divina', 'Asociada con los cruces de caminos.', 'Hécate tenía poder sobre la tierra, mar y cielo.', 1),
+('¿Quién era la diosa de la magia?', 'divina', 'Asociada con los cruces de caminos, se dice que tenía 3 cabezas.', 'Hécate tenía poder sobre la tierra, mar y cielo, era una diosa anterior a los olímpicos.', 1),
 -- 96
-('¿Cómo se llamaba el hijo de Poseidón que fue cegado por Odiseo?', 'divina', 'Cíclope pastor de ovejas.', 'Polifemo fue engañado por la astucia de Odiseo.', 1),
+('¿Cómo se llama el hijo de Poseidón que fue cegado por Odiseo?', 'divina', 'Cíclope pastor de ovejas.', 'Polifemo fue engañado por la astucia de Odiseo y le ensartaron el ojo mientras dormía.', 1),
 -- 97
-('¿Qué diosa transformó a Aracne en araña?', 'divina', 'Diosa de la sabiduría y las artes.', 'Atenea castigó la arrogancia de la tejedora mortal.', 1),
+('¿Qué diosa transformó a Aracne en araña?', 'divina', 'Diosa de la sabiduría y el tejido.', 'Atenea castigó la arrogancia de la tejedora mortal, quien se proclamó superior a ella.', 1),
 -- 98
-('¿Quién era el dios de los rebaños y pastores?', 'divina', 'Tenía cuernos y patas de cabra.', 'Pan causaba el "pánico" con su grito.', 1),
+('¿Quién era el dios de los pastores y la Naturaleza?', 'divina', 'Tenía cuernos y patas de cabra.', 'Pan, hijo de Hermes, era parecido a un sátiro pero no compartía su naturaleza salvaje y su libido.', 1),
 -- 99
-('¿Cómo se llamaba la esposa de Orfeo?', 'divina', 'Murió por la mordedura de una serpiente.', 'Eurídice fue perdida dos veces por Orfeo.', 1),
+('¿Cómo se llamaba la esposa de Orfeo?', 'divina', 'Murió por la mordedura de una serpiente.', 'Eurídice fue perdida dos veces por Orfeo, quien no pudo cumplir con la condición de Hades para sacarla del Inframundo.', 1),
 -- 100
-('¿Qué rey fue castigado a tener hambre y sed eternas?', 'divina', 'Sirvió a su hijo como comida a los dioses.', 'Tántalo dio nombre al suplicio del tantalismo.', 1);
+('¿Qué rey fue castigado a tener hambre y sed eternas?', 'divina', 'Sirvió a su hijo como comida a los dioses.', 'Tántalo dio nombre al suplicio del tantalismo, castigado por los dioses con repeler cualquier comida o bebida.', 1);
 
 -- Respuestas nivel difícil
 INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
-('Cécrope', TRUE, 51), ('Erecteo', FALSE, 51), ('Teseo', FALSE, 51), ('Egeo', FALSE, 51),
-('Dafne', TRUE, 52), ('Siringa', FALSE, 52), ('Eco', FALSE, 52), ('Clitia', FALSE, 52),
+('Egeo', TRUE, 51), ('Erecteo', FALSE, 51), ('Teseo', FALSE, 51), ('Peleo', FALSE, 51),
+('Laurel', TRUE, 52), ('Sauce', FALSE, 52), ('Secuoya', FALSE, 52), ('Menta', FALSE, 52),
 ('Mnemósine', TRUE, 53), ('Temis', FALSE, 53), ('Rea', FALSE, 53), ('Tetis', FALSE, 53),
-('Ticio', TRUE, 54), ('Ixión', FALSE, 54), ('Sísifo', FALSE, 54), ('Tántalo', FALSE, 54),
-('Licaón', TRUE, 55), ('Penteo', FALSE, 55), ('Acteón', FALSE, 55), ('Orfeo', FALSE, 55),
-('Escifio', TRUE, 56), ('Arión', FALSE, 56), ('Pegaso', FALSE, 56), ('Janto', FALSE, 56),
-('Epimeteo', TRUE, 57), ('Prometeo', FALSE, 57), ('Atlas', FALSE, 57), ('Menecio', FALSE, 57),
-('Céfiro', TRUE, 58), ('Bóreas', FALSE, 58), ('Noto', FALSE, 58), ('Euro', FALSE, 58),
+('Ladón', TRUE, 54), ('Pitón', FALSE, 54), ('Sísifo', FALSE, 54), ('Smaug', FALSE, 54),
+('Bóreas', TRUE, 55), ('Céfiro', FALSE, 55), ('Noto', FALSE, 55), ('Eolo', FALSE, 55),
+('Cronos', TRUE, 56), ('Epimeteo', FALSE, 56), ('Ponto', FALSE, 56), ('Jápeto', FALSE, 56),
+('Tifón', TRUE, 57), ('Pitón', FALSE, 57), ('Equidna', FALSE, 57), ('Nidhog', FALSE, 57),
+('Hades', TRUE, 58), ('Hermes', FALSE, 58), ('Nereo', FALSE, 58), ('Euro', FALSE, 58),
 ('Metis', TRUE, 59), ('Temis', FALSE, 59), ('Hera', FALSE, 59), ('Leto', FALSE, 59),
-('Perses', TRUE, 60), ('Alceo', FALSE, 60), ('Esténelo', FALSE, 60), ('Electrión', FALSE, 60),
-('Sirio', TRUE, 61), ('Lélape', FALSE, 61), ('Argos', FALSE, 61), ('Ortro', FALSE, 61),
+('Iris', TRUE, 60), ('Selene', FALSE, 60), ('Eos', FALSE, 60), ('Helios', FALSE, 60),
+('Sirio', TRUE, 61), ('Layla', FALSE, 61), ('Argos', FALSE, 61), ('Ortro', FALSE, 61),
 ('Afrodita', TRUE, 62), ('Atenea', FALSE, 62), ('Hera', FALSE, 62), ('Artemisa', FALSE, 62),
-('Hiperión', TRUE, 63), ('Helios', FALSE, 63), ('Apolo', FALSE, 63), ('Febo', FALSE, 63),
-('Amaltea', TRUE, 64), ('Ida', FALSE, 64), ('Adrastea', FALSE, 64), ('Melissa', FALSE, 64),
+('Helios', TRUE, 63), ('Hiperión', FALSE, 63), ('Iris', FALSE, 63), ('Febo', FALSE, 63),
+('Amaltea', TRUE, 64), ('Rea', FALSE, 64), ('Adrastea', FALSE, 64), ('Melissa', FALSE, 64),
 ('Midas', TRUE, 65), ('Creso', FALSE, 65), ('Giges', FALSE, 65), ('Candaules', FALSE, 65),
-('Piriflegetonte', TRUE, 66), ('Cocito', FALSE, 66), ('Aqueronte', FALSE, 66), ('Leteo', FALSE, 66),
-('Eco', TRUE, 67), ('Siringa', FALSE, 67), ('Dafne', FALSE, 67), ('Clitia', FALSE, 67),
+('Flegetonte', TRUE, 66), ('Cocito', FALSE, 66), ('Aqueronte', FALSE, 66), ('Leteo', FALSE, 66),
+('Eco', TRUE, 67), ('Kore', FALSE, 67), ('Dafne', FALSE, 67), ('Clitia', FALSE, 67),
 ('Urano', TRUE, 68), ('Cronos', FALSE, 68), ('Zeus', FALSE, 68), ('Poseidón', FALSE, 68),
-('Atlas', TRUE, 69), ('Prometeo', FALSE, 69), ('Epimeteo', FALSE, 69), ('Menecio', FALSE, 69),
+('Leteo', TRUE, 69), ('Cocito', FALSE, 69), ('Aqueronte', FALSE, 69), ('Flegetonte', FALSE, 69),
 ('Estigia', TRUE, 70), ('Temis', FALSE, 70), ('Némesis', FALSE, 70), ('Dice', FALSE, 70),
-('Tánatos', TRUE, 71), ('Hermes', FALSE, 71), ('Iris', FALSE, 71), ('Morfeo', FALSE, 71),
-('Deméter', TRUE, 72), ('Rea', FALSE, 72), ('Hera', FALSE, 72), ('Cibeles', FALSE, 72),
+('Tánatos', TRUE, 71), ('Hermes', FALSE, 71), ('Hades', FALSE, 71), ('Morfeo', FALSE, 71),
+('Kore', TRUE, 72), ('Rea', FALSE, 72), ('Deméter', FALSE, 72), ('Cibeles', FALSE, 72),
 ('Sísifo', TRUE, 73), ('Tántalo', FALSE, 73), ('Ixión', FALSE, 73), ('Ticio', FALSE, 73),
-('Némesis', TRUE, 74), ('Eris', FALSE, 74), ('Ate', FALSE, 74), ('Enio', FALSE, 74),
+('Némesis', TRUE, 74), ('Eris', FALSE, 74), ('Metis', FALSE, 74), ('Temis', FALSE, 74),
 ('Ícaro', TRUE, 75), ('Talos', FALSE, 75), ('Perdix', FALSE, 75), ('Catreo', FALSE, 75),
-('Teia', TRUE, 76), ('Febe', FALSE, 76), ('Temis', FALSE, 76), ('Mnemósine', FALSE, 76),
-('Bóreas', TRUE, 77), ('Céfiro', FALSE, 77), ('Noto', FALSE, 77), ('Euro', FALSE, 77),
-('Aglae', TRUE, 78), ('Afrodita', FALSE, 78), ('Talía', FALSE, 78), ('Eufrósine', FALSE, 78),
+('Otris', TRUE, 76), ('Olimpo', FALSE, 76), ('Etna', FALSE, 76), ('Parnaso', FALSE, 76),
+('Eolo', TRUE, 77), ('Céfiro', FALSE, 77), ('Noto', FALSE, 77), ('Bóreas', FALSE, 77),
+('Afrodita', TRUE, 78), ('Dafne', FALSE, 78), ('Talía', FALSE, 78), ('Eufrósine', FALSE, 78),
 ('Belerofonte', TRUE, 79), ('Perseo', FALSE, 79), ('Heracles', FALSE, 79), ('Teseo', FALSE, 79),
-('Piritoo', TRUE, 80), ('Teseo', FALSE, 80), ('Céneo', FALSE, 80), ('Caeneus', FALSE, 80),
-('Argo', TRUE, 81), ('Beagle', FALSE, 81), ('Calipso', FALSE, 81), ('Sirena', FALSE, 81),
+('Dánae', TRUE, 80), ('Io', FALSE, 80), ('Dafne', FALSE, 80), ('Anticlea', FALSE, 80),
+('Argo', TRUE, 81), ('Nautilo', FALSE, 81), ('Perla Negra', FALSE, 81), ('Hipocampo', FALSE, 81),
 ('Medea', TRUE, 82), ('Circe', FALSE, 82), ('Hécate', FALSE, 82), ('Pasífae', FALSE, 82),
 ('Peleo', TRUE, 83), ('Eaco', FALSE, 83), ('Telamón', FALSE, 83), ('Menecio', FALSE, 83),
 ('Tetis', TRUE, 84), ('Anfitrite', FALSE, 84), ('Galatea', FALSE, 84), ('Nereida', FALSE, 84),
 ('Tiresias', TRUE, 85), ('Calcas', FALSE, 85), ('Anfiarao', FALSE, 85), ('Melampo', FALSE, 85),
-('Layo', TRUE, 86), ('Creonte', FALSE, 86), ('Eteocles', FALSE, 86), ('Polinices', FALSE, 86),
-('Hipólita', TRUE, 87), ('Pentesilea', FALSE, 87), ('Antíope', FALSE, 87), ('Oritía', FALSE, 87),
+('Tiresias', TRUE, 86), ('Éaco', FALSE, 86), ('Minos', FALSE, 86), ('Radamantis', FALSE, 86),
+('Hipólita', TRUE, 87), ('Pentesilea', FALSE, 87), ('Antíope', FALSE, 87), ('Diana', FALSE, 87),
 ('Porfirión', TRUE, 88), ('Alcioneo', FALSE, 88), ('Encélado', FALSE, 88), ('Tifón', FALSE, 88),
 ('Hebe', TRUE, 89), ('Iris', FALSE, 89), ('Ganimedes', FALSE, 89), ('Peito', FALSE, 89),
-('Janto', TRUE, 90), ('Balio', FALSE, 90), ('Arión', FALSE, 90), ('Pegaso', FALSE, 90),
-('Midas', TRUE, 91), ('Creso', FALSE, 91), ('Giges', FALSE, 91), ('Candaules', FALSE, 91),
-('Eris', TRUE, 92), ('Némesis', FALSE, 92), ('Ate', FALSE, 92), ('Enio', FALSE, 92),
-('Caronte', TRUE, 93), ('Radamantis', FALSE, 93), ('Minos', FALSE, 93), ('Eaco', FALSE, 93),
-('Jápeto', TRUE, 94), ('Cronos', FALSE, 94), ('Océano', FALSE, 94), ('Ceo', FALSE, 94),
+('Odiseo', TRUE, 90), ('Jasón', FALSE, 90), ('Teseo', FALSE, 90), ('Heracles', FALSE, 90),
+('Laberinto de Creta', TRUE, 91), ('Toro de Creta', FALSE, 91), ('Aves de Estínfalo', FALSE, 91), ('Cinturón de Hipólita', FALSE, 91),
+('Megara', TRUE, 92), ('Tisífone', FALSE, 92), ('Megera', FALSE, 92), ('Alecto', FALSE, 92),
+('Caronte', TRUE, 93), ('Radamantis', FALSE, 93), ('Minos', FALSE, 93), ('Éaco', FALSE, 93),
+('Jápeto', TRUE, 94), ('Cronos', FALSE, 94), ('Prometeo', FALSE, 94), ('Astrea', FALSE, 94),
 ('Hécate', TRUE, 95), ('Circe', FALSE, 95), ('Medea', FALSE, 95), ('Pasífae', FALSE, 95),
-('Polifemo', TRUE, 96), ('Brontes', FALSE, 96), ('Estéropes', FALSE, 96), ('Arges', FALSE, 96),
-('Atenea', TRUE, 97), ('Hera', FALSE, 97), ('Afrodita', FALSE, 97), ('Artemisa', FALSE, 97),
-('Pan', TRUE, 98), ('Silvano', FALSE, 98), ('Fauno', FALSE, 98), ('Príapo', FALSE, 98),
+('Polifemo', TRUE, 96), ('Brontes', FALSE, 96), ('Estéropes', FALSE, 96), ('Argos', FALSE, 96),
+('Atenea', TRUE, 97), ('Hera', FALSE, 97), ('Hestia', FALSE, 97), ('Artemisa', FALSE, 97),
+('Pan', TRUE, 98), ('Silvano', FALSE, 98), ('Fauno', FALSE, 98), ('Hermes', FALSE, 98),
 ('Eurídice', TRUE, 99), ('Calíope', FALSE, 99), ('Clío', FALSE, 99), ('Euterpe', FALSE, 99),
 ('Tántalo', TRUE, 100), ('Sísifo', FALSE, 100), ('Ixión', FALSE, 100), ('Ticio', FALSE, 100);
 
