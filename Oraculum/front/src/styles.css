@@ -125,3 +125,35 @@ main {
 .create-button:hover {
   opacity: 0.5;
 }
+
+.audiencia-unlock-popup {
+  border: 4px solid var(--greek-gold) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3) !important;
+}
+
+.audiencia-unlock-popup .swal2-title {
+  color: var(--greek-blue) !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: 1.8rem !important;
+}
+
+.golden-button {
+  background: linear-gradient(135deg, #d4af37, #ffd700) !important;
+  border: none !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.golden-button:hover {
+  background: linear-gradient(135deg, #b8860b, #d4af37) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4) !important;
+}
+
+.secondary-button {
+  background: transparent !important;
+  border: 2px solid #6c757d !important;
+  color: #6c757d !important;
+}
