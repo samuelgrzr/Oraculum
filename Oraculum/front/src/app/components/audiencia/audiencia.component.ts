@@ -141,6 +141,10 @@ export class AudienciaComponent implements OnInit {
                         };
                         this.mensajes.push(mensajeDespedida);
                         this.guardarMensajes();
+                        
+                        setTimeout(() => {
+                            this.limpiarMensajesPersistidos();
+                        }, 20000);
                     }, 2000);
                 }
             },

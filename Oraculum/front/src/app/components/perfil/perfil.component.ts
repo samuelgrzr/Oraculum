@@ -7,7 +7,7 @@ import { PartidaService } from '../../services/partida.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertService } from '../../services/alert.service';
 import { Partida } from '../../models/Partida';
-import { AudienciaService } from '../../services/audiencia.service';
+import { AudienciaService, EstadoAudiencia } from '../../services/audiencia.service';
 
 @Component({
   selector: 'app-perfil',
@@ -25,6 +25,7 @@ export class PerfilComponent implements OnInit {
   private audienciaService = inject(AudienciaService);
 
   puedeAudienciaConApolo = false;
+  estadoAudiencia: EstadoAudiencia | null = null;
 
   usuario = this.authService.currentUserValue;
   editandoContrasena = false;
@@ -144,15 +145,16 @@ export class PerfilComponent implements OnInit {
 
   verificarAccesoAudiencia() {
     this.audienciaService.obtenerEstado().subscribe({
-      next: (estado) => {
-        this.puedeAudienciaConApolo = estado.puede_conversar;
-      },
-      error: (error) => {
-        console.error('Error al verificar acceso a audiencia:', error);
-        this.puedeAudienciaConApolo = false;
-      }
+        next: (estado) => {
+            this.puedeAudienciaConApolo = estado.puede_conversar;
+            this.estadoAudiencia = estado;
+        },
+        error: (error) => {
+            console.error('Error al verificar acceso a audiencia:', error);
+            this.puedeAudienciaConApolo = false;
+        }
     });
-  }
+}
 
   abrirAudienciaApolo() {
     this.router.navigate(['/audiencia']);
@@ -212,5 +214,15 @@ export class PerfilComponent implements OnInit {
 
   modoAdmitePistas(modoJuego: string): boolean {
     return modoJuego === 'aventura' || modoJuego === 'contrarreloj';
+  }
+  
+  formatearTiempoEspera(minutos: number): string {
+    const horas = Math.floor(minutos / 60);
+    const minutosRestantes = minutos % 60;
+    
+    if (horas > 0) {
+      return `${horas}h ${minutosRestantes}m`;
+    }
+    return `${minutosRestantes}m`;
   }
 }
