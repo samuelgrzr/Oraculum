@@ -26,10 +26,11 @@ export class AudienciaComponent implements OnInit {
     mensajeActual = '';
     cargando = false;
     estado: EstadoAudiencia | null = null;
+    private readonly STORAGE_KEY = 'audiencia_mensajes';
 
     ngOnInit() {
         this.cargarEstado();
-        this.agregarMensajeBienvenida();
+        this.cargarMensajesPersistidos();
     }
 
     cargarEstado() {
@@ -37,15 +38,53 @@ export class AudienciaComponent implements OnInit {
             next: (estado) => {
                 this.estado = estado;
                 if (!estado.puede_conversar) {
+                    // Si no puede conversar, limpiar mensajes persistidos
+                    this.limpiarMensajesPersistidos();
                     this.alertService.error('Solo los 3 mejores del ranking pueden tener audiencia con Apolo');
                     this.router.navigate(['/perfil']);
+                } else {
+                    // Si puede conversar pero no hay mensajes, agregar bienvenida
+                    if (this.mensajes.length === 0) {
+                        this.agregarMensajeBienvenida();
+                    }
                 }
             },
             error: (error) => {
                 console.error('Error al cargar estado de audiencia:', error);
+                this.limpiarMensajesPersistidos();
                 this.router.navigate(['/perfil']);
             }
         });
+    }
+
+    cargarMensajesPersistidos() {
+        try {
+            const mensajesGuardados = localStorage.getItem(this.STORAGE_KEY);
+            if (mensajesGuardados) {
+                const mensajes = JSON.parse(mensajesGuardados);
+                // Convertir las fechas de string a Date
+                this.mensajes = mensajes.map((msg: any) => ({
+                    ...msg,
+                    timestamp: new Date(msg.timestamp)
+                }));
+            }
+        } catch (error) {
+            console.error('Error al cargar mensajes persistidos:', error);
+            this.limpiarMensajesPersistidos();
+        }
+    }
+
+    guardarMensajes() {
+        try {
+            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.mensajes));
+        } catch (error) {
+            console.error('Error al guardar mensajes:', error);
+        }
+    }
+
+    limpiarMensajesPersistidos() {
+        localStorage.removeItem(this.STORAGE_KEY);
+        this.mensajes = [];
     }
 
     agregarMensajeBienvenida() {
@@ -55,6 +94,7 @@ export class AudienciaComponent implements OnInit {
             timestamp: new Date()
         };
         this.mensajes.push(mensajeBienvenida);
+        this.guardarMensajes();
     }
 
     enviarMensaje() {
@@ -70,6 +110,7 @@ export class AudienciaComponent implements OnInit {
             timestamp: new Date()
         };
         this.mensajes.push(mensajeUsuario);
+        this.guardarMensajes();
 
         const mensaje = this.mensajeActual;
         this.mensajeActual = '';
@@ -83,6 +124,7 @@ export class AudienciaComponent implements OnInit {
                     timestamp: new Date()
                 };
                 this.mensajes.push(mensajeApolo);
+                this.guardarMensajes();
 
                 if (this.estado) {
                     this.estado.preguntas_restantes = response.preguntas_restantes;
@@ -98,6 +140,7 @@ export class AudienciaComponent implements OnInit {
                             timestamp: new Date()
                         };
                         this.mensajes.push(mensajeDespedida);
+                        this.guardarMensajes();
                     }, 2000);
                 }
             },
@@ -111,5 +154,18 @@ export class AudienciaComponent implements OnInit {
 
     volver() {
         this.router.navigate(['/perfil']);
+    }
+
+    get tiempoEsperaFormateado(): string {
+        if (!this.estado?.tiempo_espera_restante) return '';
+        
+        const minutos = this.estado.tiempo_espera_restante;
+        const horas = Math.floor(minutos / 60);
+        const minutosRestantes = minutos % 60;
+        
+        if (horas > 0) {
+            return `${horas}h ${minutosRestantes}m`;
+        }
+        return `${minutosRestantes}m`;
     }
 }

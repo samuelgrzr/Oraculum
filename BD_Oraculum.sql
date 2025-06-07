@@ -293,7 +293,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 81
 ('¿Cómo se llamaba la nave de Jasón?', 'divina', 'Construida con ayuda de Atenea por Argos, hijo de Frixo, quien montó al Carnero de oro.', 'El Argo llevó a Jasón y los argonautas en busca del Vellocino de Oro.', 1),
 -- 82
-('¿Qué diosa ayudó a Jasón a conseguir el Vellocino?', 'divina', 'Hechicera de la Cólquide.', 'Medea traicionó a su padre por amor a Jasón, debido a las flechas de Eros.', 1),
+('¿Qué hechicera ayudó a Jasón a conseguir el Vellocino?', 'divina', 'Hechicera de la Cólquide, sobrina de Circe y nieta de Helios.', 'Medea traicionó a su padre por amor a Jasón, debido a las flechas de Eros.', 1),
 -- 83
 ('¿Quién era el padre de Aquiles?', 'divina', 'Rey de los Mirmidones.', 'Peleo se casó con la nereida Tetis, boda en la que Eris comenzó indirectamente la guerra de Troya.', 1),
 -- 84

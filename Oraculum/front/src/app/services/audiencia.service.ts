@@ -15,6 +15,7 @@ export interface EstadoAudiencia {
   puede_conversar: boolean;
   preguntas_restantes: number;
   posicion_ranking: number | null;
+  tiempo_espera_restante?: number; // en minutos
 }
 
 @Injectable({
