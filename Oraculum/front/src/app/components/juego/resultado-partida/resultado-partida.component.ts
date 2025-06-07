@@ -40,7 +40,7 @@ export class ResultadoPartidaComponent {
   get colorResultado(): string {
     if (this.porcentajeAciertos >= 90) return 'text-yellow-600';
     if (this.porcentajeAciertos >= 70) return 'text-green-600';
-    if (this.porcentajeAciertos >= 50) return 'text-blue-600';
+    if (this.porcentajeAciertos >= 50) return 'text-[var(--greek-blue)]';
     return 'text-gray-600';
   }
 
