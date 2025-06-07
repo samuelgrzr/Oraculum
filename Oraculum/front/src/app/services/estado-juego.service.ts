@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { EstadoJuego } from '../models/EstadoJuego';
 import { Pregunta } from '../models/Pregunta';
+import { Respuesta } from '../models/Respuesta';
 
 @Injectable({
   providedIn: 'root'
@@ -61,18 +62,31 @@ export class EstadoJuegoService {
     });
   }
 
-  registrarRespuesta(idRespuestaElegida: number, idRespuestaCorrecta: number, 
-                    tiempoRespuesta: number, usoPista: boolean, puntuacionPregunta: number): void {
-    const estado = this.estadoActual;
+  registrarRespuesta(
+    idRespuestaElegida: number, 
+    idRespuestaCorrecta: number, 
+    tiempoRespuesta: number, 
+    usoPista: boolean, 
+    puntuacionPregunta: number,
+    respuestas: Respuesta[] = []
+  ): void {
+    const estado = this.estadoSubject.value;
     const esCorrecta = idRespuestaElegida === idRespuestaCorrecta;
-    
+  
+    const respuestaElegida = respuestas.find(r => r.id === idRespuestaElegida);
+    const respuestaCorrecta = respuestas.find(r => r.id === idRespuestaCorrecta);
+  
     const nuevoDatoPartida = {
-      id_pregunta: estado.preguntaActual!.id,
+      id_pregunta: estado.preguntaActual?.id || 0,
       id_respuesta_elegida: idRespuestaElegida,
       id_respuesta_correcta: idRespuestaCorrecta,
       tiempo_respuesta: tiempoRespuesta,
       uso_pista: usoPista,
-      puntuacion_pregunta: puntuacionPregunta
+      puntuacion_pregunta: puntuacionPregunta,
+      preguntaTexto: estado.preguntaActual?.enunciado || 'Pregunta no disponible',
+      preguntaExplicacion: estado.preguntaActual?.explicacion || '',
+      respuestaElegidaTexto: respuestaElegida?.texto || 'Respuesta no disponible',
+      respuestaCorrectaTexto: respuestaCorrecta?.texto || 'Respuesta no disponible'
     };
 
     this.estadoSubject.next({

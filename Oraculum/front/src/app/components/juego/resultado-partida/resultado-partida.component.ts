@@ -13,9 +13,12 @@ import { ConfiguracionJuego } from '../../../models/ConfiguracionJuego';
 export class ResultadoPartidaComponent {
   @Input() estado!: EstadoJuego;
   @Input() configuracion!: ConfiguracionJuego | null;
+  @Input() datosPartida: any[] = []; // Nuevo input para los datos de la partida
   @Output() volverMenu = new EventEmitter<void>();
 
-  constructor(private router: Router) {}
+  mostrandoDetalles = false;
+
+  constructor(private router: Router) { }
 
   get porcentajeAciertos(): number {
     const totalRespuestas = this.estado.respuestasCorrectas + this.estado.respuestasIncorrectas;
@@ -57,8 +60,18 @@ export class ResultadoPartidaComponent {
   jugarDeNuevo(): void {
     this.router.navigate(['/jugar']);
   }
-  
+
   onVolverMenu(): void {
     this.volverMenu.emit();
+  }
+
+  get respuestasIncorrectas() {
+    return this.datosPartida.filter(dato =>
+      dato.id_respuesta_elegida !== dato.id_respuesta_correcta
+    );
+  }
+
+  toggleDetalles() {
+    this.mostrandoDetalles = !this.mostrandoDetalles;
   }
 }

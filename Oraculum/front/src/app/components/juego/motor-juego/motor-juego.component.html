@@ -38,7 +38,7 @@
 
             <!-- Resultado de la partida -->
             <app-resultado-partida *ngIf="estado?.juegoTerminado && estado && configuracion" [estado]="estado"
-                [configuracion]="configuracion" (volverMenu)="volverAlMenu()">
+                [configuracion]="configuracion" [datosPartida]="estado.datosPartida || []" (volverMenu)="volverAlMenu()">
             </app-resultado-partida>
 
         </div>

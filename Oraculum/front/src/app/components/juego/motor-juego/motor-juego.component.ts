@@ -164,12 +164,14 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
           this.estado!.dificultad
         );
 
+        // Esto es para poder mostrar las respuestas en la revisión del modo Prueba
         this.estadoJuegoService.registrarRespuesta(
           event.idRespuesta,
           respuestaCorrecta.id,
           event.tiempoRespuesta,
           event.usoPista,
-          puntuacionPregunta
+          puntuacionPregunta,
+          respuestas
         );
 
         this.estadoJuegoService.actualizarPuntuacion(puntuacionPregunta);
