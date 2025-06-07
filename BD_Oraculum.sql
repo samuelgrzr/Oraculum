@@ -141,7 +141,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 33
 ('¿Cómo se llama el río principal del Hades?', 'heroica', 'Hay que pagar al barquero para no vagar 100 años en sus aguas.', 'El río Estigia, que a su vez es una deidad.', 1),
 -- 34
-('¿Quién es el barquero del Inframundo?', 'heroica', 'Transporta las almas a sus respectivos lugares.', 'Caronte lleva las almas por el río Estigia.', 1),
+('¿Cómo se llama el barquero del Inframundo?', 'heroica', 'Transporta las almas a través del río Estigia.', 'Caronte exigía un óbolo por el viaje, que debían enterrar los vivos junto con el cuerpo.', 1),
 -- 35
 ('¿Qué criatura tenía múltiples cabezas que regeneraban?', 'heroica', 'Heracles la derrotó en su segundo trabajo.', 'La Hidra de Lerna regeneraba dos cabezas por cada cabeza cercenada.', 1),
 -- 36
@@ -159,11 +159,11 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 42
 ('¿Qué fruta causó el juicio de Paris?', 'heroica', 'Fruto dorado de la discordia.', 'La manzana de oro inició la disputa entre diosas, e indirectamente la guerra de Troya.', 1),
 -- 43
-('¿Quién forjaba las armas de los dioses?', 'heroica', 'Dios del fuego y la forja, hijo de Hera y Zeus.', 'Hefesto era el herrero divino, recluido en su forja a causa de su deformidad.', 1),
+('¿Quién forja las armas de los dioses?', 'heroica', 'Dios del fuego y la forja, hijo de Hera y Zeus.', 'Hefesto es el herrero divino, recluido en su forja a causa de su deformidad.', 1),
 -- 44
 ('¿Cómo se llamaba el mortal que se enamoró de sí mismo?', 'heroica', 'Se convirtió en flor.', 'Narciso se enamoró de su propia imagen, debido a los poderes de Afrodita, y murió intentando alcanzarla en un lago.', 1),
 -- 45
-('¿Qué titán fue condenado a contar cada segundo de la eternidad?', 'heroica', 'Su castigo fue impuesto por liderar la Titanomaquia.', 'Cronos, padre de Zeus y líder de los titanes, fue condenado en el Tártaro por la eternidad y dio inicio al tiempo.', 1),
+('¿Qué titán fue condenado a contar cada segundo por la eternidad?', 'heroica', 'Su castigo fue impuesto por liderar la Titanomaquia.', 'Cronos fue encerrado en el Tártaro, obligado a contar los segundos eternamente, dando inicio al tiempo..', 1),
 -- 46
 ('¿Quién es el padre de Zeus?', 'heroica', 'Titán que devoraba a sus hijos.', 'Cronos temía ser destronado por sus descendientes, debido a la profecía de su padre, Urano.', 1),
 -- 47
@@ -210,7 +210,7 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Amazonas', TRUE, 31), ('Valquirias', FALSE, 31), ('Nereidas', FALSE, 31), ('Musas', FALSE, 31),
 ('Quirón', TRUE, 32), ('Neso', FALSE, 32), ('Folo', FALSE, 32), ('Euritión', FALSE, 32),
 ('Estigia', TRUE, 33), ('Leteo', FALSE, 33), ('Aqueronte', FALSE, 33), ('Guadalmedina', FALSE, 33),
-('Caronte', TRUE, 34), ('Hades', FALSE, 34), ('Tánatos', FALSE, 34), ('Minos', FALSE, 34),
+('Caronte', TRUE, 34), ('Aqueronte', FALSE, 34), ('Tánatos', FALSE, 34), ('Minos', FALSE, 34),
 ('Hidra', TRUE, 35), ('Cerbero', FALSE, 35), ('Quimera', FALSE, 35), ('Ladón', FALSE, 35),
 ('Príamo', TRUE, 36), ('Menelao', FALSE, 36), ('Héctor', FALSE, 36), ('Agamenón', FALSE, 36),
 ('Héctor', TRUE, 37), ('Paris', FALSE, 37), ('Eneas', FALSE, 37), ('Príamo', FALSE, 37),
@@ -241,7 +241,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 55
 ('¿Quién es el viento del norte?', 'divina', 'Es el más frío de los cuatro.', 'Bóreas es el gélido viento del norte.', 1),
 -- 56
-('¿Qué titán fue condenado a contar cada segundo por la eternidad?', 'divina', 'Lideró a los titanes durante la Titanomaquina.', 'Cronos fue encerrado en el Tártaro, obligado a contar los segundos eternamente desde ese momento, dando inicio al tiempo.', 1),
+('¿Qué titán se casó con Pandora?', 'divina', 'Hermano de Prometeo.', 'Epimeteo, quien también se moría de curiosidad por ver qué había en la caja o ánfora, instigó a Pandora para que la abriera.', 1),
 -- 57
 ('¿Qué monstruo logró derrotar a Zeus?', 'divina', 'Nació de Gea y Tártaro como respuesta a su ira por el destierro y encierro de los titanes.', 'Tifón, padre de los mayores monstruos, fue el único capaz de derrotar a Zeus, cortándole los tendones.', 1),
 -- 58
@@ -259,7 +259,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 64
 ('¿Cómo se llamaba la nodriza de Zeus en Creta?', 'divina', 'Cabra divina que lo amamantó.', 'Amaltea cuidó al joven Zeus en una cueva del monte Ida, según algunas versiones se convirtió en la constelación de Aries tras su muerte.', 1),
 -- 65
-('¿Qué rey de Frigia podía convertir todo en oro?', 'divina', 'Recibió este don de Dioniso.', 'Midas aprendió que la riqueza no lo es todo, y acabó inmortalizado en ella para la posteridad.', 1),
+('¿Qué rey podía convertir todo en oro?', 'divina', 'Recibió este don de Dioniso.', 'Midas aprendió que la riqueza no lo es todo, y acabó inmortalizado en ella para la posteridad.', 1),
 -- 66
 ('¿Cuál es el nombre del río de fuego en el Inframundo?', 'divina', 'Uno de los cinco ríos infernales.', 'Flegetonte era el río ardiente del Hades.', 1),
 -- 67
@@ -277,7 +277,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 73
 ('¿Qué rey de Corinto fue condenado a empujar una roca eternamente?', 'divina', 'Engañó a la muerte dos veces.', 'Sísifo fue castigado por su astucia excesiva. Tras engañar a Tánatos y apresarlo, las almas no pudieron ir al Inframundo y Hades se enfureció.', 1),
 -- 74
-('¿Quién era la diosa de la venganza?', 'divina', 'Se le representa con una balanza.', 'Némesis castigaba la hibris, un concepto griego que representa la desmesura, arrogancia u orgullo excesivo, que supere los límites establecidos por los dioses.', 1),
+('¿Quién es la diosa de la venganza?', 'divina', 'Se le representa con una balanza.', 'Némesis castiga la hibris, un concepto griego que representa la desmesura, arrogancia u orgullo excesivo, que supere los límites establecidos por los dioses.', 1),
 -- 75
 ('¿Cómo se llamaba el hijo de Dédalo?', 'divina', 'Voló demasiado alto con alas de cera.', 'Ícaro ignoró las advertencias de su padre al volar para escapar del laberinto de Creta y murió ahogado al precipitarse al mar.', 1),
 -- 76
@@ -297,7 +297,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 83
 ('¿Quién era el padre de Aquiles?', 'divina', 'Rey de los Mirmidones.', 'Peleo se casó con la nereida Tetis, boda en la que Eris comenzó indirectamente la guerra de Troya.', 1),
 -- 84
-('¿Cómo se llamaba la madre de Aquiles?', 'divina', 'Nereida que lo sumergió en la Estigia.', 'Tetis intentó hacer inmortal a su hijo.', 1),
+('¿Cómo se llama la madre de Aquiles?', 'divina', 'Nereida que lo sumergió en la Estigia.', 'Tetis intentó hacer inmortal a su hijo.', 1),
 -- 85
 ('¿Qué profeta ciego advirtió a Edipo?', 'divina', 'Vivió siete generaciones y ayudó también a Odiseo.', 'Tiresias reveló terribles verdades sobre el destino a diferentes héroes, en el caso de Edipo no ayudaron a que su final no fuera trágico.', 1),
 -- 86
@@ -315,7 +315,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 92
 ('¿Quién no es una Erinia?', 'divina', 'Fue princesa y había una ciudad con su nombre.', 'Megara, princesa de Tebas, fue la esposa de Heracles hasta que este la mató, engañado por Hera.', 1),
 -- 93
-('¿Cómo se llama el barquero del Inframundo?', 'divina', 'Transportaba las almas a través del río Estigia.', 'Caronte exigía un óbolo por el viaje, que debían enterrar los vivos junto con el cuerpo.', 1),
+('¿Quién es el potero del Olimpo?', 'divina', 'Como recompensa por su heroica vida, fue ascendido a divinidad.', 'Cuando Heracles murió, Zeus hizo que su parte divina ascendiera al Olimpo, donde residiría por la eternidad como portero y se casaría con su hermana Hebe.', 1),
 -- 94
 ('¿Qué titán enseñó la astronomía a los humanos?', 'divina', 'Padre de Prometeo y Epimeteo.', 'Jápeto transmitió conocimientos celestiales a los humanos.', 1),
 -- 95
@@ -338,7 +338,7 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Mnemósine', TRUE, 53), ('Temis', FALSE, 53), ('Rea', FALSE, 53), ('Tetis', FALSE, 53),
 ('Ladón', TRUE, 54), ('Pitón', FALSE, 54), ('Sísifo', FALSE, 54), ('Smaug', FALSE, 54),
 ('Bóreas', TRUE, 55), ('Céfiro', FALSE, 55), ('Noto', FALSE, 55), ('Eolo', FALSE, 55),
-('Cronos', TRUE, 56), ('Epimeteo', FALSE, 56), ('Ponto', FALSE, 56), ('Jápeto', FALSE, 56),
+('Epimeteo', TRUE, 56), ('Prometeo', FALSE, 56), ('Ponto', FALSE, 56), ('Jápeto', FALSE, 56),
 ('Tifón', TRUE, 57), ('Pitón', FALSE, 57), ('Equidna', FALSE, 57), ('Nidhog', FALSE, 57),
 ('Hades', TRUE, 58), ('Hermes', FALSE, 58), ('Nereo', FALSE, 58), ('Euro', FALSE, 58),
 ('Metis', TRUE, 59), ('Temis', FALSE, 59), ('Hera', FALSE, 59), ('Leto', FALSE, 59),
@@ -375,7 +375,7 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Odiseo', TRUE, 90), ('Jasón', FALSE, 90), ('Teseo', FALSE, 90), ('Heracles', FALSE, 90),
 ('Laberinto de Creta', TRUE, 91), ('Toro de Creta', FALSE, 91), ('Aves de Estínfalo', FALSE, 91), ('Cinturón de Hipólita', FALSE, 91),
 ('Megara', TRUE, 92), ('Tisífone', FALSE, 92), ('Megera', FALSE, 92), ('Alecto', FALSE, 92),
-('Caronte', TRUE, 93), ('Radamantis', FALSE, 93), ('Minos', FALSE, 93), ('Éaco', FALSE, 93),
+('Heracles', TRUE, 93), ('Ares', FALSE, 93), ('San Pedro', FALSE, 93), ('Argos', FALSE, 93),
 ('Jápeto', TRUE, 94), ('Cronos', FALSE, 94), ('Prometeo', FALSE, 94), ('Astrea', FALSE, 94),
 ('Hécate', TRUE, 95), ('Circe', FALSE, 95), ('Medea', FALSE, 95), ('Pasífae', FALSE, 95),
 ('Polifemo', TRUE, 96), ('Brontes', FALSE, 96), ('Estéropes', FALSE, 96), ('Argos', FALSE, 96),
