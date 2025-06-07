@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import auth, usuarios, categorias, preguntas, respuestas, partidas
+from routers import auth, usuarios, categorias, preguntas, respuestas, partidas, audiencia
 
 from database import engine, Base
 
@@ -22,3 +22,4 @@ app.include_router(categorias.router)
 app.include_router(preguntas.router)
 app.include_router(respuestas.router)
 app.include_router(partidas.router)
+app.include_router(audiencia.router)

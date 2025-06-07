@@ -10,6 +10,7 @@ import { GestionComponent } from './components/gestion/gestion.component';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { InicioPartidaComponent } from './components/juego/inicio-partida/inicio-partida.component';
 import { MotorJuegoComponent } from './components/juego/motor-juego/motor-juego.component';
+import { AudienciaComponent } from './components/audiencia/audiencia.component';
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -23,4 +24,5 @@ export const routes: Routes = [
     { path: "ranking", component: RankingComponent },
     { path: "jugar", component: InicioPartidaComponent },
     { path: "juego", component: MotorJuegoComponent },
+    { path: 'audiencia', component: AudienciaComponent }
 ];

@@ -1,0 +1,84 @@
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6 border-2 border-[var(--greek-gold)]">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-sun text-4xl" style="color: var(--greek-gold)"></i>
+                    <div>
+                        <h1 class="text-3xl font-bold greek-title">Audiencia con Apolo</h1>
+                        <p class="text-[var(--greek-blue)] mt-1">Templo Sagrado del Dios del Sol</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-[var(--greek-blue)]" *ngIf="estado">
+                        Posición en ranking: #{{ estado.posicion_ranking }}
+                    </p>
+                    <p class="text-sm text-[var(--greek-blue)]" *ngIf="estado">
+                        Preguntas restantes: {{ estado.preguntas_restantes }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="bg-white rounded-lg shadow-md border-2 border-[var(--greek-gold)] overflow-hidden">
+            <!-- Messages Area -->
+            <div class="h-96 overflow-y-auto p-6 space-y-4">
+                <div *ngFor="let mensaje of mensajes" class="flex" [class.justify-end]="mensaje.esUsuario"
+                    [class.justify-start]="!mensaje.esUsuario">
+                    <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg" [class.bg-blue-500]="mensaje.esUsuario"
+                        [class.text-white]="mensaje.esUsuario" [class.bg-gradient-to-r]="!mensaje.esUsuario"
+                        [class.from-yellow-100]="!mensaje.esUsuario" [class.to-yellow-200]="!mensaje.esUsuario"
+                        [class.text-gray-800]="!mensaje.esUsuario" [class.border]="!mensaje.esUsuario"
+                        [class.border-yellow-300]="!mensaje.esUsuario">
+                        <div *ngIf="!mensaje.esUsuario" class="flex items-center mb-1">
+                            <i class="fas fa-sun text-yellow-600 mr-2"></i>
+                            <span class="text-xs font-semibold text-yellow-700">Apolo</span>
+                        </div>
+                        <p class="text-sm">{{ mensaje.texto }}</p>
+                        <p class="text-xs mt-1 opacity-70">
+                            {{ mensaje.timestamp | date:'HH:mm' }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Loading indicator -->
+                <div *ngIf="cargando" class="flex justify-start">
+                    <div
+                        class="bg-gradient-to-r from-yellow-100 to-yellow-200 text-gray-800 max-w-xs lg:max-w-md px-4 py-2 rounded-lg border border-yellow-300">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-sun fa-spin text-yellow-600"></i>
+                            <span class="text-sm">Apolo está consultando la sabiduría divina...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="border-t border-gray-200 p-4">
+                <div class="flex space-x-2">
+                    <input type="text" [(ngModel)]="mensajeActual" (keyup.enter)="enviarMensaje()"
+                        placeholder="Escribe tu pregunta al dios Apolo..."
+                        class="flex-1 p-3 border-2 rounded-lg focus:outline-none"
+                        style="border-color: var(--greek-gold); color: var(--greek-blue)"
+                        [disabled]="cargando || (estado?.preguntas_restantes !== undefined && estado!.preguntas_restantes <= 0)">
+                    <button (click)="enviarMensaje()" class="px-6 py-3 rounded-lg font-medium transition-colors"
+                        style="background-color: var(--greek-blue); color: white"
+                        [disabled]="cargando || !mensajeActual.trim() || (estado?.preguntas_restantes !== undefined && estado!.preguntas_restantes <= 0)">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-6 text-center">
+            <button (click)="volver()" class="px-8 py-3 font-medium text-lg rounded-lg transition-colors"
+                style="background-color: var(--greek-blue); color: white">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Abandonar el Templo
+            </button>
+        </div>
+    </div>
+</div>

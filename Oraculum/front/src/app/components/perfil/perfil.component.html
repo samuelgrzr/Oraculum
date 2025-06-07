@@ -19,6 +19,21 @@
           <p class="text-lg font-medium text-[var(--greek-blue)]">{{ usuario?.puntuacion }} puntos</p>
         </div>
 
+        <!-- BOTÓN AUDIENCIA CON APOLO -->
+        <div *ngIf="puedeAudienciaConApolo" class="border-t border-[var(--greek-gold)] pt-4 flex flex-col items-center">
+          <div class="text-center mb-3">
+            <i class="fas fa-crown text-2xl" style="color: var(--greek-gold)"></i>
+            <p class="text-sm text-[var(--greek-blue)] mt-1">¡Estás en el Top 3!</p>
+          </div>
+          <button (click)="abrirAudienciaApolo()" class="greek-button">
+            <i class="fas fa-sun mr-2"></i>
+            Audiencia con Apolo
+          </button>
+          <p class="text-xs text-gray-600 mt-2 text-center">
+            Como uno de los 3 mejores, puedes tener una audiencia con el dios de los oráculos
+          </p>
+        </div>
+
         <!-- CAMBIAR CONTRASEÑA -->
         <div class="border-t border-[var(--greek-gold)] pt-4 flex flex-col items-center">
           <button (click)="toggleEditarContrasena()" class="greek-button mt-2">

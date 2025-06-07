@@ -7,6 +7,7 @@ import { PartidaService } from '../../services/partida.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertService } from '../../services/alert.service';
 import { Partida } from '../../models/Partida';
+import { AudienciaService } from '../../services/audiencia.service';
 
 @Component({
   selector: 'app-perfil',
@@ -21,6 +22,9 @@ export class PerfilComponent implements OnInit {
   private router = inject(Router);
   private fb = inject(FormBuilder);
   private alertService = inject(AlertService);
+  private audienciaService = inject(AudienciaService);
+
+  puedeAudienciaConApolo = false;
 
   usuario = this.authService.currentUserValue;
   editandoContrasena = false;
@@ -135,6 +139,23 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit() {
     this.cargarHistorialPartidas();
+    this.verificarAccesoAudiencia();
+  }
+
+  verificarAccesoAudiencia() {
+    this.audienciaService.obtenerEstado().subscribe({
+      next: (estado) => {
+        this.puedeAudienciaConApolo = estado.puede_conversar;
+      },
+      error: (error) => {
+        console.error('Error al verificar acceso a audiencia:', error);
+        this.puedeAudienciaConApolo = false;
+      }
+    });
+  }
+
+  abrirAudienciaApolo() {
+    this.router.navigate(['/audiencia']);
   }
 
   cargarHistorialPartidas() {
