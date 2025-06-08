@@ -60,18 +60,6 @@
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "Oraculum:build:production"
-            },
-            "development": {
-              "buildTarget": "Oraculum:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
         },
