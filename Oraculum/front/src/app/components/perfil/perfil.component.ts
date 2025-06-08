@@ -32,8 +32,7 @@ export class PerfilComponent implements OnInit {
   mostrarContrasenaActual = false;
   mostrarContrasenaNueva = false;
   contrasenaActualVerificada = false;
-  
-  // Nuevas propiedades para el historial
+
   partidas: Partida[] = [];
   cargandoHistorial = false;
   partidaExpandida: number | null = null;
@@ -73,7 +72,7 @@ export class PerfilComponent implements OnInit {
   async verificarContrasenaActual() {
     if (this.verificarContrasenaForm.valid && this.usuario) {
       const contrasenaActual = this.verificarContrasenaForm.value.contrasenaActual;
-      
+
       this.authService.login(this.usuario.nombre, contrasenaActual).subscribe({
         next: () => {
           this.contrasenaActualVerificada = true;
@@ -140,21 +139,35 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit() {
     this.cargarHistorialPartidas();
-    this.verificarAccesoAudiencia();
+    if (this.usuario) {
+      this.verificarAccesoAudiencia();
+    } else {
+      setTimeout(() => {
+        if (this.authService.currentUserValue) {
+          this.usuario = this.authService.currentUserValue;
+          this.verificarAccesoAudiencia();
+        }
+      }, 100);
+    }
   }
 
   verificarAccesoAudiencia() {
+    if (!this.authService.currentUserValue) {
+      this.puedeAudienciaConApolo = false;
+      return;
+    }
+
     this.audienciaService.obtenerEstado().subscribe({
-        next: (estado) => {
-            this.puedeAudienciaConApolo = estado.puede_conversar;
-            this.estadoAudiencia = estado;
-        },
-        error: (error) => {
-            console.error('Error al verificar acceso a audiencia:', error);
-            this.puedeAudienciaConApolo = false;
-        }
+      next: (estado) => {
+        this.puedeAudienciaConApolo = estado.puede_conversar;
+        this.estadoAudiencia = estado;
+      },
+      error: (error) => {
+        console.error('Error al verificar acceso a audiencia:', error);
+        this.puedeAudienciaConApolo = false;
+      }
     });
-}
+  }
 
   abrirAudienciaApolo() {
     this.router.navigate(['/audiencia']);
@@ -162,7 +175,7 @@ export class PerfilComponent implements OnInit {
 
   cargarHistorialPartidas() {
     if (!this.usuario) return;
-    
+
     this.cargandoHistorial = true;
     this.partidaService.getHistorialUsuario(this.usuario.id).subscribe({
       next: (partidas) => {
@@ -215,11 +228,11 @@ export class PerfilComponent implements OnInit {
   modoAdmitePistas(modoJuego: string): boolean {
     return modoJuego === 'aventura' || modoJuego === 'contrarreloj';
   }
-  
+
   formatearTiempoEspera(minutos: number): string {
     const horas = Math.floor(minutos / 60);
     const minutosRestantes = minutos % 60;
-    
+
     if (horas > 0) {
       return `${horas}h ${minutosRestantes}m`;
     }

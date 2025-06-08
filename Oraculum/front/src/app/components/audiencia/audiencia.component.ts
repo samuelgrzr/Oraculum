@@ -45,6 +45,7 @@ export class AudienciaComponent implements OnInit {
                 } else {
                     // Si puede conversar pero no hay mensajes, agregar bienvenida
                     if (this.mensajes.length === 0) {
+                        this.limpiarMensajesPersistidos();
                         this.agregarMensajeBienvenida();
                     }
                 }

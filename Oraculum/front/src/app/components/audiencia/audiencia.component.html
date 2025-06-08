@@ -54,10 +54,10 @@
                         placeholder="Escribe tu pregunta al dios Apolo..."
                         class="flex-1 p-3 border-2 rounded-lg focus:outline-none"
                         style="border-color: var(--greek-gold); color: var(--greek-blue)"
-                        [disabled]="cargando || (estado?.preguntas_restantes !== undefined && estado!.preguntas_restantes <= 0)">
+                        [disabled]="cargando || (estado?.preguntas_restantes !== undefined && estado?.preguntas_restantes! <= 0)">
                     <button (click)="enviarMensaje()" class="px-6 py-3 rounded-lg font-medium transition-colors cursor-pointer"
                         style="background-color: var(--greek-blue); color: white"
-                        [disabled]="cargando || !mensajeActual.trim() || (estado?.preguntas_restantes !== undefined && estado!.preguntas_restantes <= 0)">
+                        [disabled]="cargando || !mensajeActual.trim() || (estado?.preguntas_restantes !== undefined && estado?.preguntas_restantes! <= 0)">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
