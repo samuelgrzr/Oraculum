@@ -83,7 +83,6 @@ export class RankingComponent implements OnInit {
           <p style="color: var(--greek-blue); font-size: 1rem; line-height: 1.4;">Puedes ir ahora o en otro momento desde tu perfil.</p>
         </div>
       `,
-      icon: 'success',
       confirmButtonText: '🏛️ Ir al Templo de Apolo',
       showCancelButton: true,
       cancelButtonText: '📊 Continuar en el Ranking',

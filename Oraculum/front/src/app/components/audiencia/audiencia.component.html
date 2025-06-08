@@ -13,9 +13,9 @@
             </div>
         </div>
 
-        <!-- Chat Container -->
+        <!-- Chat -->
         <div class="bg-white rounded-lg shadow-md border-2 border-[var(--greek-gold)] overflow-hidden">
-            <!-- Messages Area -->
+            <!-- Mensajes -->
             <div class="h-96 overflow-y-auto p-6 space-y-4">
                 <div *ngFor="let mensaje of mensajes" class="flex" [class.justify-end]="mensaje.esUsuario"
                     [class.justify-start]="!mensaje.esUsuario">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <!-- Loading indicator -->
+                <!-- Cargando... -->
                 <div *ngIf="cargando" class="flex justify-start">
                     <div
                         class="bg-gradient-to-r from-yellow-100 to-yellow-200 text-gray-800 max-w-xs lg:max-w-md px-4 py-2 rounded-lg border border-yellow-300">
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <!-- Input Area -->
+            <!-- Input -->
             <div class="border-t border-gray-200 p-4">
                 <div class="flex space-x-2">
                     <input type="text" [(ngModel)]="mensajeActual" (keyup.enter)="enviarMensaje()"
