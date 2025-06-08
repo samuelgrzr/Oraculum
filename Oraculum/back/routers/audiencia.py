@@ -167,15 +167,7 @@ def conversar_con_apolo(db: db_dependency, user: user_dependency, request: Mensa
         raise HTTPException(status_code=500, detail=f"Error en la comunicación divina con Apolo: {str(e)}")
 
 @router.get("/estado", response_model=EstadoAudiencia)
-def obtener_estado_audiencia(db: db_dependency, user_id: int = None):
-    if user_id is None:
-        return EstadoAudiencia(
-            puede_conversar=False,
-            preguntas_restantes=0,
-            posicion_ranking=None,
-            tiempo_espera_restante=None
-        )
-    
+def obtener_estado_audiencia(db: db_dependency, user: user_dependency):
     user_id = user.get("id")
     
     ranking = db.query(Usuario).filter(Usuario.puntuacion > 0).order_by(Usuario.puntuacion.desc()).limit(3).all()
