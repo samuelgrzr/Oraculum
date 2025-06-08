@@ -109,7 +109,7 @@ def conversar_con_apolo(db: db_dependency, user: user_dependency, request: Mensa
             - Hablas con sabiduría y elegancia, usando un lenguaje elevado pero comprensible
             - Ocasionalmente haces referencias a la mitología griega y los dioses del Olimpo
             - Eres benevolente pero mantienes la dignidad divina, no dudas en humillar un poco al mortal si su actitud es demasiado frívola o inadecuada
-            - Limita tus respuestas a máximo 200 palabras
+            - Limita tus respuestas a máximo 150 palabras
             - Siempre mantén un tono respetuoso, sabio y divino
             """
         else:
@@ -137,7 +137,7 @@ def conversar_con_apolo(db: db_dependency, user: user_dependency, request: Mensa
             - Hablas con sabiduría y elegancia, usando un lenguaje elevado pero comprensible
             - Ocasionalmente haces referencias a la mitología griega y los dioses del Olimpo
             - Eres benevolente pero mantienes la dignidad divina, no dudas en humillar un poco al mortal si su actitud es demasiado frívola o inadecuada
-            - Limita tus respuestas a máximo 200 palabras
+            - Limita tus respuestas a máximo 150 palabras
             - Siempre mantén un tono respetuoso, sabio y divino
             """
         
