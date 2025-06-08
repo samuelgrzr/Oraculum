@@ -29,6 +29,7 @@ export class AudienciaComponent implements OnInit {
     cargando = false;
     estado: EstadoAudiencia | null = null;
     private readonly STORAGE_KEY = 'audiencia_mensajes';
+    private audienciaCompletada = false;
 
     ngOnInit() {
         this.cargarEstado();
@@ -136,6 +137,7 @@ export class AudienciaComponent implements OnInit {
                 this.cargando = false;
 
                 if (response.preguntas_restantes === 0) {
+                    this.audienciaCompletada = true;
                     setTimeout(() => {
                         const mensajeDespedida: Mensaje = {
                             texto: 'Has agotado tus preguntas en esta audiencia sagrada, noble mortal. Que la sabiduría divina te acompañe hasta que volvamos a encontrarnos en mi templo. Ve en paz, hijo de los hombres.',
@@ -144,10 +146,6 @@ export class AudienciaComponent implements OnInit {
                         };
                         this.mensajes.push(mensajeDespedida);
                         this.guardarMensajes();
-
-                        setTimeout(() => {
-                            this.limpiarMensajesPersistidos();
-                        }, 20000);
                     }, 2000);
                 }
             },
@@ -160,6 +158,9 @@ export class AudienciaComponent implements OnInit {
     }
 
     volver() {
+        if (this.audienciaCompletada) {
+            this.limpiarMensajesPersistidos();
+        }
         this.router.navigate(['/perfil']);
     }
 
