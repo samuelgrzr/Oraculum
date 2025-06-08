@@ -11,6 +11,7 @@ Base.metadata.create_all(bind=engine)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:4200", "https://oraculum-rosy.vercel.app"],
+    allow_origin_regex=r"https://oraculum-rosy\.vercel\.app.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
