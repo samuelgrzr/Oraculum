@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://tu-backend-url.com'
+    apiUrl: 'https://oraculum-production.up.railway.app/'
   };
