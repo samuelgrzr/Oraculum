@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from routers import auth, usuarios, categorias, preguntas, respuestas, partidas, audiencia
 
 from database import engine, Base
@@ -7,6 +8,12 @@ from database import engine, Base
 app = FastAPI()
 
 Base.metadata.create_all(bind=engine)
+
+# Para confiar en proxies (Railway)
+app.add_middleware(
+    TrustedHostMiddleware, 
+    allowed_hosts=["*"]
+)
 
 app.add_middleware(
     CORSMiddleware,
