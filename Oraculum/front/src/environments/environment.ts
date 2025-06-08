@@ -1,4 +1,4 @@
 export const environment = {
-    production: true,
-    apiUrl: 'https://tu-backend-url.com'
+    production: false,
+    apiUrl: 'http://localhost:8000'
   };
