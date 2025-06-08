@@ -6,12 +6,14 @@ import { Usuario } from '../models/Usuario';
 import { UsuarioService } from './usuario.service';
 import { Router } from '@angular/router';
 import { ToastService } from './toast.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = 'http://localhost:8000';
+    // private apiUrl = 'http://localhost:8000';
+    private apiUrl = environment.apiUrl;
     private currentUserSubject: BehaviorSubject<Usuario | null>;
     public currentUser: Observable<Usuario | null>;
     private http = inject(HttpClient);

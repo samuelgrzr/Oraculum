@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Partida } from '../models/Partida';
 import { DatosPartida } from '../models/DatosPartida';
+import { environment } from '../../environments/environment';
 
 interface CrearPartidaRequest {
   datos_partida: Omit<DatosPartida, 'id' | 'id_partida'>[];
@@ -17,7 +18,8 @@ interface CrearPartidaRequest {
   providedIn: 'root'
 })
 export class PartidaService {
-  private apiUrl = 'http://localhost:8000/partidas';
+  // private apiUrl = 'http://localhost:8000/partidas';
+  private apiUrl = `${environment.apiUrl}/partidas`;
   private http = inject(HttpClient);
 
   getPartida(id: number): Observable<Partida> {

@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface MensajeRequest {
   mensaje: string;
@@ -22,7 +23,8 @@ export interface EstadoAudiencia {
   providedIn: 'root'
 })
 export class AudienciaService {
-  private apiUrl = 'http://localhost:8000/audiencia';
+  // private apiUrl = 'http://localhost:8000/audiencia';
+  private apiUrl = `${environment.apiUrl}/audiencia`;
   private http = inject(HttpClient);
 
   conversar(mensaje: string): Observable<MensajeResponse> {

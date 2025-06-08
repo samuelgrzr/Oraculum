@@ -2,12 +2,14 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Respuesta } from '../models/Respuesta';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class RespuestaService {
-    private apiUrl = 'http://localhost:8000/respuestas';
+    // private apiUrl = 'http://localhost:8000/respuestas';
+    private apiUrl = `${environment.apiUrl}/respuestas`;
     private http = inject(HttpClient);
 
     getRespuesta(id: number): Observable<Respuesta> {

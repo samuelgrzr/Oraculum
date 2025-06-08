@@ -3,13 +3,16 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pregunta } from '../models/Pregunta';
 import { Respuesta } from '../models/Respuesta';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PreguntaService {
-    private apiUrl = 'http://localhost:8000/preguntas';
-    private respuestasUrl = 'http://localhost:8000/respuestas';
+    // private apiUrl = 'http://localhost:8000/preguntas';
+    private apiUrl = `${environment.apiUrl}/preguntas`;
+    // private respuestasUrl = 'http://localhost:8000/respuestas';
+    private respuestasUrl = `${environment.apiUrl}/respuestas`;
     private http = inject(HttpClient);
 
     getPregunta(id: number): Observable<Pregunta> {
