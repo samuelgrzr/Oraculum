@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { EstadoJuego } from '../models/EstadoJuego';
 import { Pregunta } from '../models/Pregunta';
 import { Respuesta } from '../models/Respuesta';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Respuesta } from '../models/Respuesta';
 export class EstadoJuegoService {
   private readonly HISTORIAL_KEY = 'historialPreguntasUsadas';
   private readonly MAX_HISTORIAL = 100;
+  private storageService = inject(StorageService);
 
   private estadoInicial: EstadoJuego = {
     modoJuego: '',
@@ -130,18 +132,18 @@ export class EstadoJuegoService {
 
   obtenerHistorialPreguntas(modo: string, dificultad: string, categoria: number): number[] {
     const key = `${this.HISTORIAL_KEY}_${modo}_${dificultad}_${categoria}`;
-    const historial = typeof localStorage !== 'undefined' ? localStorage.getItem(key) : null;
+    const historial = this.storageService.getItem(key);
     return historial ? JSON.parse(historial) : [];
   }
 
   guardarHistorialPreguntas(modo: string, dificultad: string, categoria: number, preguntasUsadas: number[]): void {
     const key = `${this.HISTORIAL_KEY}_${modo}_${dificultad}_${categoria}`;
     const historialLimitado = preguntasUsadas.slice(-this.MAX_HISTORIAL);
-    localStorage.setItem(key, JSON.stringify(historialLimitado));
+    this.storageService.setItem(key, JSON.stringify(historialLimitado));
   }
 
   limpiarHistorialPreguntas(modo: string, dificultad: string, categoria: number): void {
     const key = `${this.HISTORIAL_KEY}_${modo}_${dificultad}_${categoria}`;
-    localStorage.removeItem(key);
+    this.storageService.removeItem(key);
   }
 }

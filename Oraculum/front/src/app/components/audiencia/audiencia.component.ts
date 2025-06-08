@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AudienciaService, MensajeResponse, EstadoAudiencia } from '../../services/audiencia.service';
 import { AlertService } from '../../services/alert.service';
+import { StorageService } from '../../services/storage.service';
 
 interface Mensaje {
     texto: string;
@@ -21,6 +22,7 @@ export class AudienciaComponent implements OnInit {
     private audienciaService = inject(AudienciaService);
     private alertService = inject(AlertService);
     private router = inject(Router);
+    private storageService = inject(StorageService);
 
     mensajes: Mensaje[] = [];
     mensajeActual = '';
@@ -60,7 +62,7 @@ export class AudienciaComponent implements OnInit {
 
     cargarMensajesPersistidos() {
         try {
-            const mensajesGuardados = typeof localStorage !== 'undefined' ? localStorage.getItem(this.STORAGE_KEY) : null;
+            const mensajesGuardados = this.storageService.getItem(this.STORAGE_KEY);
             if (mensajesGuardados) {
                 const mensajes = JSON.parse(mensajesGuardados);
                 // Convertir las fechas de string a Date
@@ -77,14 +79,14 @@ export class AudienciaComponent implements OnInit {
 
     guardarMensajes() {
         try {
-            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.mensajes));
+            this.storageService.setItem(this.STORAGE_KEY, JSON.stringify(this.mensajes));
         } catch (error) {
             console.error('Error al guardar mensajes:', error);
         }
     }
 
     limpiarMensajesPersistidos() {
-        localStorage.removeItem(this.STORAGE_KEY);
+        this.storageService.removeItem(this.STORAGE_KEY);
         this.mensajes = [];
     }
 

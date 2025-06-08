@@ -18,6 +18,7 @@ import { ResultadoPartidaComponent } from '../resultado-partida/resultado-partid
 import { DatosPartida } from '../../../models/DatosPartida';
 import { AlertService } from '../../../services/alert.service';
 import { TemporizadorComponent } from '../temporizador/temporizador.component';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-motor-juego',
@@ -50,6 +51,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
     private toastService: ToastService,
     private alertService: AlertService,
     private router: Router,
+    private storageService: StorageService
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +66,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit(): void { }
 
   private inicializarJuego(): void {
-    const configuracionGuardada = typeof localStorage !== 'undefined' ? localStorage.getItem('configuracionPartida') : null;
+    const configuracionGuardada = this.storageService.getItem('configuracionPartida');
     
     if (!configuracionGuardada) {
       this.toastService.showMessage('No se encontró configuración de partida');
@@ -269,7 +271,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
         if (result.isConfirmed) {
           this.estadoJuegoService.terminarJuego();
           this.estadoJuegoService.reiniciarEstado();
-          localStorage.removeItem('configuracionPartida');
+          this.storageService.removeItem('configuracionPartida');
           this.router.navigate(['/jugar']);
           this.alertService.success('Partida abandonada correctamente');
         }
@@ -310,7 +312,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
       const suscripcion = this.partidaService.crearPartida(partidaRequest).subscribe({
         next: (partida) => {
           console.log('Partida guardada:', partida);
-          localStorage.removeItem('configuracionPartida');
+          this.storageService.removeItem('configuracionPartida');
         },
         error: (error) => {
           console.error('Error al guardar partida:', error);
@@ -334,7 +336,7 @@ export class MotorJuegoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   volverAlMenu(): void {
     this.estadoJuegoService.reiniciarEstado();
-    localStorage.removeItem('configuracionPartida');
+    this.storageService.removeItem('configuracionPartida');
     this.router.navigate(['/']);
   }
 

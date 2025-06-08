@@ -7,6 +7,7 @@ import { UsuarioService } from './usuario.service';
 import { Router } from '@angular/router';
 import { ToastService } from './toast.service';
 import { environment } from '../../environments/environment';
+import { StorageService } from './storage.service';
 
 @Injectable({
     providedIn: 'root'
@@ -19,12 +20,11 @@ export class AuthService {
     private http = inject(HttpClient);
     private usuarioService = inject(UsuarioService);
     private toastService = inject(ToastService);
+    private storageService = inject(StorageService);
 
     constructor(private router: Router) {
         this.currentUserSubject = new BehaviorSubject<Usuario | null>(
-            typeof localStorage !== 'undefined' 
-                ? JSON.parse(localStorage.getItem('currentUser') || 'null')
-                : null
+            JSON.parse(this.storageService.getItem("currentUser") || "null")
         );
         this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -55,8 +55,8 @@ export class AuthService {
                             };
                             
                             if (typeof localStorage !== 'undefined') {
-                                localStorage.setItem('currentUser', JSON.stringify(userData.usuario));
-                                localStorage.setItem('token', userData.token);
+                                this.storageService.setItem('currentUser', JSON.stringify(userData.usuario));
+                                this.storageService.setItem('token', userData.token);
                             }
                             
                             this.toastService.showMessage('¡Bienvenido!');
@@ -78,7 +78,7 @@ export class AuthService {
     }
 
     logout(): void {
-        localStorage.clear();
+        this.storageService.clear();
         sessionStorage.clear();
         
         this.currentUserSubject.next(null);
@@ -92,6 +92,6 @@ export class AuthService {
     }
 
     getToken(): string | null {
-        return typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null;
+        return this.storageService.getItem('token');
     }
 }

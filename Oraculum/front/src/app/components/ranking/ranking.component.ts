@@ -5,6 +5,7 @@ import { ToastService } from '../../services/toast.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { StorageService } from '../../services/storage.service';
 
 interface RankingUsuario {
   nombre: string;
@@ -18,14 +19,17 @@ interface RankingUsuario {
   styleUrls: ['./ranking.component.css']
 })
 export class RankingComponent implements OnInit {
-  
+
   private router = inject(Router);
   private authService = inject(AuthService);
   private yaSeNotificoAudiencia = false;
-  
+
   usuarios: RankingUsuario[] = [];
 
-  constructor(private usuarioService: UsuarioService, private toastService: ToastService) {}
+  constructor(
+    private usuarioService: UsuarioService,
+    private toastService: ToastService,
+    private storageService: StorageService) { }
 
   ngOnInit() {
     this.cargarRanking();
@@ -43,19 +47,19 @@ export class RankingComponent implements OnInit {
       }
     });
   }
-  
+
   verificarDesbloqueoAudiencia(ranking: any[]) {
     if (this.yaSeNotificoAudiencia) return;
-    
+
     const usuario = this.authService.currentUserValue;
     if (!usuario) return;
-    
+
     const posicionUsuario = ranking.findIndex(u => u.id === usuario.id) + 1;
-    
+
     if (posicionUsuario <= 3 && posicionUsuario > 0) {
-      const ultimaNotificacion = typeof localStorage !== 'undefined' ? localStorage.getItem('ultima_notificacion_audiencia') : null;
+      const ultimaNotificacion = this.storageService.getItem('ultima_notificacion_audiencia');
       const ahora = new Date().getTime();
-      
+
       if (!ultimaNotificacion || (ahora - parseInt(ultimaNotificacion)) > 5 * 60 * 60 * 1000) {
         setTimeout(() => {
           this.mostrarNotificacionAudienciaDesbloqueada(posicionUsuario);
@@ -63,10 +67,10 @@ export class RankingComponent implements OnInit {
       }
     }
   }
-  
+
   mostrarNotificacionAudienciaDesbloqueada(posicion: number) {
     this.yaSeNotificoAudiencia = true;
-    
+
     Swal.fire({
       title: '¡Felicitaciones, noble mortal!',
       html: `
@@ -98,8 +102,8 @@ export class RankingComponent implements OnInit {
       allowOutsideClick: false,
       allowEscapeKey: false
     }).then((result) => {
-      localStorage.setItem('ultima_notificacion_audiencia', new Date().getTime().toString());
-      
+      this.storageService.setItem('ultima_notificacion_audiencia', new Date().getTime().toString());
+
       if (result.isConfirmed) {
         this.router.navigate(['/audiencia']);
       }

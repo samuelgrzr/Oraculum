@@ -6,6 +6,7 @@ import { CategoriaService } from '../../../services/categoria.service';
 import { AuthService } from '../../../services/auth.service';
 import { ToastService } from '../../../services/toast.service';
 import { Categoria } from '../../../models/Categoria';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-inicio-partida',
@@ -41,7 +42,8 @@ export class InicioPartidaComponent implements OnInit {
     private categoriaService: CategoriaService,
     private authService: AuthService,
     private router: Router,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private storageService: StorageService
   ) {
     this.partidaForm = this.fb.group({
       modo_juego: ['', Validators.required],
@@ -98,7 +100,7 @@ export class InicioPartidaComponent implements OnInit {
         nombre_categoria: categoriaSeleccionada?.nombre || 'Desconocida'
       };
   
-      localStorage.setItem('configuracionPartida', JSON.stringify(datosPartida));
+      this.storageService.setItem('configuracionPartida', JSON.stringify(datosPartida));
       
       this.router.navigate(['/juego']);
     }
