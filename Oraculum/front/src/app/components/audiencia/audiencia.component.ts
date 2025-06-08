@@ -60,7 +60,7 @@ export class AudienciaComponent implements OnInit {
 
     cargarMensajesPersistidos() {
         try {
-            const mensajesGuardados = localStorage.getItem(this.STORAGE_KEY);
+            const mensajesGuardados = typeof localStorage !== 'undefined' ? localStorage.getItem(this.STORAGE_KEY) : null;
             if (mensajesGuardados) {
                 const mensajes = JSON.parse(mensajesGuardados);
                 // Convertir las fechas de string a Date
@@ -142,7 +142,7 @@ export class AudienciaComponent implements OnInit {
                         };
                         this.mensajes.push(mensajeDespedida);
                         this.guardarMensajes();
-                        
+
                         setTimeout(() => {
                             this.limpiarMensajesPersistidos();
                         }, 20000);
@@ -163,11 +163,11 @@ export class AudienciaComponent implements OnInit {
 
     get tiempoEsperaFormateado(): string {
         if (!this.estado?.tiempo_espera_restante) return '';
-        
+
         const minutos = this.estado.tiempo_espera_restante;
         const horas = Math.floor(minutos / 60);
         const minutosRestantes = minutos % 60;
-        
+
         if (horas > 0) {
             return `${horas}h ${minutosRestantes}m`;
         }

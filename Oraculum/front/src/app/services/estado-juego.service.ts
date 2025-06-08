@@ -130,7 +130,7 @@ export class EstadoJuegoService {
 
   obtenerHistorialPreguntas(modo: string, dificultad: string, categoria: number): number[] {
     const key = `${this.HISTORIAL_KEY}_${modo}_${dificultad}_${categoria}`;
-    const historial = localStorage.getItem(key);
+    const historial = typeof localStorage !== 'undefined' ? localStorage.getItem(key) : null;
     return historial ? JSON.parse(historial) : [];
   }
 

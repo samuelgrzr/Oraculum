@@ -53,7 +53,7 @@ export class RankingComponent implements OnInit {
     const posicionUsuario = ranking.findIndex(u => u.id === usuario.id) + 1;
     
     if (posicionUsuario <= 3 && posicionUsuario > 0) {
-      const ultimaNotificacion = localStorage.getItem('ultima_notificacion_audiencia');
+      const ultimaNotificacion = typeof localStorage !== 'undefined' ? localStorage.getItem('ultima_notificacion_audiencia') : null;
       const ahora = new Date().getTime();
       
       if (!ultimaNotificacion || (ahora - parseInt(ultimaNotificacion)) > 5 * 60 * 60 * 1000) {
