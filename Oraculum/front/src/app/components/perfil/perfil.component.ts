@@ -219,7 +219,7 @@ export class PerfilComponent implements OnInit {
 
   obtenerTextoResultado(partida: any): string {
     if (partida.modo_juego === 'infinito') {
-      return `${partida.puntuacion} puntos`;
+      return `${partida.puntuacion}`;
     } else {
       return `${partida.respuestasCorrectas || 0}/10`;
     }
