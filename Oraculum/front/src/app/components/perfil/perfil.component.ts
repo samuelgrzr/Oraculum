@@ -214,7 +214,7 @@ export class PerfilComponent implements OnInit {
   }
 
   obtenerColorDificultad(dificultad: string): string {
-    return dificultad === 'heroica' ? 'text-yellow-800' : 'text-purple-800';
+    return dificultad === 'heroica' ? 'text-green-800' : 'text-red-800';
   }
 
   obtenerTextoResultado(partida: any): string {
