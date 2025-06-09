@@ -36,7 +36,7 @@ export interface ConfiguracionJuego {
     },
     'infinito': {
       totalPreguntas: -1,
-      tiempoLimite: 10000,
+      tiempoLimite: 7000,
       permitePistas: false,
       mostrarResultadosInmediatos: true,
       continuaHastaFallar: true,
