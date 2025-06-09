@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { EstadoJuego } from '../../../models/EstadoJuego';
@@ -10,15 +10,23 @@ import { ConfiguracionJuego } from '../../../models/ConfiguracionJuego';
   templateUrl: './resultado-partida.component.html',
   styleUrl: './resultado-partida.component.css'
 })
-export class ResultadoPartidaComponent {
+export class ResultadoPartidaComponent implements OnInit {
   @Input() estado!: EstadoJuego;
   @Input() configuracion!: ConfiguracionJuego | null;
-  @Input() datosPartida: any[] = []; // Nuevo input para los datos de la partida
+  @Input() datosPartida: any[] = [];
   @Output() volverMenu = new EventEmitter<void>();
 
   mostrandoDetalles = false;
+  private tiempoFinalCapturado: string = '';
 
   constructor(private router: Router) { }
+
+  ngOnInit() {
+    const tiempoMs = Date.now() - this.estado.tiempoInicio;
+    const minutos = Math.floor(tiempoMs / 60000);
+    const segundos = Math.floor((tiempoMs % 60000) / 1000);
+    this.tiempoFinalCapturado = `${minutos}:${segundos.toString().padStart(2, '0')}`;
+  }
 
   get porcentajeAciertos(): number {
     const totalRespuestas = this.estado.respuestasCorrectas + this.estado.respuestasIncorrectas;
@@ -27,10 +35,7 @@ export class ResultadoPartidaComponent {
   }
 
   get tiempoTotal(): string {
-    const tiempoMs = Date.now() - this.estado.tiempoInicio;
-    const minutos = Math.floor(tiempoMs / 60000);
-    const segundos = Math.floor((tiempoMs % 60000) / 1000);
-    return `${minutos}:${segundos.toString().padStart(2, '0')}`;
+    return this.tiempoFinalCapturado;
   }
 
   get mensajeResultado(): string {
