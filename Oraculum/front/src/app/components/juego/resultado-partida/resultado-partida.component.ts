@@ -68,6 +68,7 @@ export class ResultadoPartidaComponent implements OnInit {
 
   onVolverMenu(): void {
     this.volverMenu.emit();
+    this.router.navigate(['/ranking']);
   }
 
   get respuestasIncorrectas() {
