@@ -235,7 +235,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 52
 ('¿En qué árbol se transformó la ninfa Dafne para escapar de Apolo?', 'divina', 'Su nombre se asocia con las coronas de victoria.', 'Dafne pidió a su padre, un río, que la convirtiera en laurel para que el dios la dejase en paz.', 1),
 -- 53
-('¿Quién era la madre de las Musas?', 'divina', 'Titánide de la memoria, tía de Zeus.', 'Mnemósine, la personificación de la memoria, fue madre de las nueve Musas.', 1),
+('¿Quién es la madre de las Musas?', 'divina', 'Titánide de la memoria, tía de Zeus.', 'Mnemósine, la personificación de la memoria, es madre de las nueve Musas.', 1),
 -- 54
 ('¿Cómo se llamaba el dragón que custodiaba el Jardín de las Hespérides?', 'divina', 'Tenía 100 cabezas.', 'Ladón guardaba las manzanas de cualquier intruso, hasta que fue derrotado por Heracles en su undécimo trabajo.', 1),
 -- 55
@@ -295,7 +295,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 82
 ('¿Qué hechicera ayudó a Jasón a conseguir el Vellocino?', 'divina', 'Hechicera de la Cólquide, sobrina de Circe y nieta de Helios.', 'Medea traicionó a su padre por amor a Jasón, debido a las flechas de Eros.', 1),
 -- 83
-('¿Quién era el padre de Aquiles?', 'divina', 'Rey de los Mirmidones.', 'Peleo se casó con la nereida Tetis, boda en la que Eris comenzó indirectamente la guerra de Troya.', 1),
+('¿Quién era el padre de Aquiles?', 'divina', 'Rey de los Mirmidones.', 'Peleo, uno de los argonautas, se casó con la nereida Tetis, boda en la que Eris comenzó indirectamente la guerra de Troya.', 1),
 -- 84
 ('¿Cómo se llama la madre de Aquiles?', 'divina', 'Nereida que lo sumergió en la Estigia.', 'Tetis intentó hacer inmortal a su hijo.', 1),
 -- 85
@@ -307,7 +307,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 88
 ('¿Qué gigante desafió a los dioses en la Gigantomaquia?', 'divina', 'Rey de los Gigantes, de su nombre deriva un sinónimo actual de "discutir".', 'Porfirión intentó violar a Hera durante la batalla.', 1),
 -- 89
-('¿Quién era la diosa de la juventud?', 'divina', 'Escanciaba néctar en el Olimpo.', 'Hebe servía a los dioses antes que Ganimedes, pues su trabajo era ser la copera de los olímpicos.', 1),
+('¿Quién es la diosa de la juventud?', 'divina', 'Escancia néctar en el Olimpo.', 'Hebe servía a los dioses antes que Ganimedes, pues su labor es ser la copera de los olímpicos.', 1),
 -- 90
 ('¿Qué héroe fue conocido como Nadie por su enemigo?', 'divina', 'El más astuto de los héroes, utilizó este engaño para escapar con vida.', 'Odiseo se presentó como Nadie ante el cíclope Polifemo, para que, cuando pidiera ayuda, dijese que Nadie le estaba atacando y no la recibiera.', 1),
 -- 91
@@ -319,13 +319,13 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 94
 ('¿Qué titán enseñó la astronomía a los humanos?', 'divina', 'Padre de Prometeo y Epimeteo.', 'Jápeto transmitió conocimientos celestiales a los humanos.', 1),
 -- 95
-('¿Quién era la diosa de la magia?', 'divina', 'Asociada con los cruces de caminos, se dice que tenía 3 cabezas.', 'Hécate tenía poder sobre la tierra, mar y cielo, era una diosa anterior a los olímpicos.', 1),
+('¿Quién es la diosa de la magia?', 'divina', 'Asociada con los cruces de caminos, se dice que tiene 3 cabezas.', 'Hécate tiene poder sobre la tierra, mar y cielo, su origen es anterior a los olímpicos.', 1),
 -- 96
 ('¿Cómo se llama el hijo de Poseidón que fue cegado por Odiseo?', 'divina', 'Cíclope pastor de ovejas.', 'Polifemo fue engañado por la astucia de Odiseo y le ensartaron el ojo mientras dormía.', 1),
 -- 97
 ('¿Qué diosa transformó a Aracne en araña?', 'divina', 'Diosa de la sabiduría y el tejido.', 'Atenea castigó la arrogancia de la tejedora mortal, quien se proclamó superior a ella.', 1),
 -- 98
-('¿Quién era el dios de los pastores y la Naturaleza?', 'divina', 'Tenía cuernos y patas de cabra.', 'Pan, hijo de Hermes, era parecido a un sátiro pero no compartía su naturaleza salvaje y su libido.', 1),
+('¿Quién es el dios de los pastores y la Naturaleza?', 'divina', 'Tiene cuernos y patas de cabra.', 'Pan, hijo de Hermes, es parecido a un sátiro pero no comparte su naturaleza salvaje y su libido.', 1),
 -- 99
 ('¿Cómo se llamaba la esposa de Orfeo?', 'divina', 'Murió por la mordedura de una serpiente.', 'Eurídice fue perdida dos veces por Orfeo, quien no pudo cumplir con la condición de Hades para sacarla del Inframundo.', 1),
 -- 100
