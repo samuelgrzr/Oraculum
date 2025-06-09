@@ -94,4 +94,9 @@ export class AuthService {
     getToken(): string | null {
         return this.storageService.getItem('token');
     }
+
+    actualizarUsuarioActual(usuario: Usuario): void {
+        this.storageService.setItem('currentUser', JSON.stringify(usuario));
+        this.currentUserSubject.next(usuario);
+    }
 }

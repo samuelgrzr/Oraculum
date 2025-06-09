@@ -1,8 +1,10 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { EstadoJuego } from '../../../models/EstadoJuego';
 import { ConfiguracionJuego } from '../../../models/ConfiguracionJuego';
+import { AuthService } from '../../../services/auth.service';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-resultado-partida',
@@ -18,6 +20,9 @@ export class ResultadoPartidaComponent implements OnInit {
 
   mostrandoDetalles = false;
   private tiempoFinalCapturado: string = '';
+  
+  private authService = inject(AuthService);
+  private usuarioService = inject(UsuarioService);
 
   constructor(private router: Router) { }
 
@@ -26,6 +31,24 @@ export class ResultadoPartidaComponent implements OnInit {
     const minutos = Math.floor(tiempoMs / 60000);
     const segundos = Math.floor((tiempoMs % 60000) / 1000);
     this.tiempoFinalCapturado = `${minutos}:${segundos.toString().padStart(2, '0')}`;
+    
+    setTimeout(() => {
+      this.actualizarDatosUsuario();
+    }, 1000);
+  }
+
+  private actualizarDatosUsuario() {
+    const usuarioActual = this.authService.currentUserValue;
+    if (!usuarioActual) return;
+    
+    this.usuarioService.getUsuario(usuarioActual.id).subscribe({
+      next: (usuarioActualizado) => {
+        this.authService.actualizarUsuarioActual(usuarioActualizado);
+      },
+      error: (error) => {
+        console.error('Error al actualizar datos del usuario:', error);
+      }
+    });
   }
 
   get porcentajeAciertos(): number {
