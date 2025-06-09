@@ -11,16 +11,18 @@ import { RankingComponent } from './components/ranking/ranking.component';
 import { InicioPartidaComponent } from './components/juego/inicio-partida/inicio-partida.component';
 import { MotorJuegoComponent } from './components/juego/motor-juego/motor-juego.component';
 import { AudienciaComponent } from './components/audiencia/audiencia.component';
+import { authGuard } from './guards/auth.guard';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
     { path: "registro", component: RegistroComponent },
-    { path: "perfil", component: PerfilComponent },
-    { path: "gestion", component: GestionComponent },
-    { path: "gestion/usuarios", component: UsuarioComponent },
-    { path: "gestion/categorias", component: CategoriaComponent },
-    { path: "gestion/preguntas", component: PreguntaComponent },
-    { path: "gestion/respuestas", component: RespuestaComponent },
+    { path: "perfil", component: PerfilComponent, canActivate: [authGuard] },
+    { path: "gestion", component: GestionComponent, canActivate: [adminGuard] },
+    { path: "gestion/usuarios", component: UsuarioComponent, canActivate: [adminGuard] },
+    { path: "gestion/categorias", component: CategoriaComponent, canActivate: [adminGuard] },
+    { path: "gestion/preguntas", component: PreguntaComponent, canActivate: [adminGuard] },
+    { path: "gestion/respuestas", component: RespuestaComponent, canActivate: [adminGuard] },
     { path: "ranking", component: RankingComponent },
     { path: "jugar", component: InicioPartidaComponent },
     { path: "juego", component: MotorJuegoComponent },
