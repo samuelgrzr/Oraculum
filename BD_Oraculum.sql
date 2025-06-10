@@ -401,11 +401,11 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 106
 ('¿Cómo se llama el mayordomo de Batman?', 'heroica', 'Fiel servidor de la familia Wayne.', 'Alfred Pennyworth cuida de Bruce Wayne.', 2),
 -- 107
-('¿En qué ciudad opera Batman?', 'heroica', 'Ciudad oscura y corrupta.', 'Gotham City es el territorio de Batman.', 2),
+('¿En qué ciudad opera Batman?', 'heroica', 'Ciudad oscura y corrupta.', 'Gotham City, la ciudad sin Sol, es el territorio de Batman.', 2),
 -- 108
-('¿Cuál es el nombre real del Spider-Man principal?', 'heroica', 'Estudiante que fue mordido por una araña.', 'Peter Parker se convirtió en Spider-Man.', 2),
+('¿Cuál es el nombre real del Spiderman original?', 'heroica', 'Estudiante que fue mordido por una araña.', 'Peter Parker se convirtió en Spiderman.', 2),
 -- 109
-('¿Qué le dio poderes a Spider-Man?', 'heroica', 'Accidente en un laboratorio.', 'Una araña radioactiva mordió a Peter Parker.', 2),
+('¿Qué le dio poderes a Spiderman?', 'heroica', 'Accidente en un laboratorio.', 'Una araña radioactiva mordió a Peter Parker.', 2),
 -- 110
 ('¿Cuál es el nombre real de Wonder Woman?', 'heroica', 'Princesa amazona.', 'Diana Prince es la identidad de Wonder Woman.', 2),
 -- 111
@@ -417,9 +417,9 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 114
 ('¿Cuál es el poder de Flash?', 'heroica', 'Puede correr más rápido que la luz.', 'La súper velocidad es el poder de Flash.', 2),
 -- 115
-('¿Cuál es el nombre del Green Lantern principal?', 'heroica', 'Piloto de pruebas.', 'Hal Jordan es uno de los Green Lantern más famosos.', 2),
+('¿Cuál es el nombre del Linterna Verde principal?', 'heroica', 'Piloto de pruebas.', 'Hal Jordan es uno de los Linterna Verde más famosos.', 2),
 -- 116
-('¿Cuál es la fuente de poder de los Green Lantern?', 'heroica', 'Forma parte de una de las emociones que conforman el espectro luminoso en DC.', 'El anillo de poder, que debe cargarse en la batería central en Oa, utiliza la fuerza de voluntad de su usuario para funcionar.', 2),
+('¿Cuál es la fuente de poder de los Linternas Verdes?', 'heroica', 'Forma parte de una de las emociones que conforman el espectro luminoso en DC.', 'El anillo de poder, que debe cargarse en la batería central en Oa, utiliza la fuerza de voluntad de su usuario para funcionar.', 2),
 -- 117
 ('¿Cuál es el nombre real de Aquaman?', 'heroica', 'Rey de los océanos.', 'Arthur Curry es la identidad de Aquaman.', 2),
 -- 118
@@ -427,13 +427,13 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 119
 ('¿Cuál es el nombre del archienemigo de Batman?', 'heroica', 'Payaso criminal loco.', 'El Joker es el némesis principal de Batman.', 2),
 -- 120
-('¿Cómo se llama el archienemigo de Superman?', 'heroica', 'Genio criminal calvo.', 'Lex Luthor es el enemigo más conocido de Superman.', 2),
+('¿Cómo se llama el archienemigo de Superman?', 'heroica', 'Genio criminal calvo.', 'Lex Luthor es el enemigo más conocido de Superman, con un CI más alto que el de Batman, ha llegado a ser presidente de los Estados Unidos.', 2),
 -- 121
-('¿Cuál es el nombre real de Iron Man?', 'heroica', 'Genio millonario inventor.', 'Tony Stark es la identidad de Iron Man.', 2),
+('¿Cuál es el nombre real de Iron Man?', 'heroica', 'Genio millonario, inventor, filántropo y playboy.', 'Tony Stark es la identidad de Iron Man.', 2),
 -- 122
-('¿Qué alimenta el traje de Iron Man?', 'heroica', 'Reactor en su pecho.', 'El reactor arc mantiene vivo a Tony Stark.', 2),
+('¿Qué alimenta el traje de Iron Man?', 'heroica', 'Lo tiene implantado en su pecho, sustituyendo a su corazón.', 'El reactor arc mantiene vivo a Tony Stark.', 2),
 -- 123
-('¿Cuál es el nombre real del Captitán América?', 'heroica', 'Soldado de la Segunda Guerra Mundial.', 'Steve Rogers se convirtió en el Capitán América.', 2),
+('¿Cuál es el nombre real del Captitán América original?', 'heroica', 'Soldado de la Segunda Guerra Mundial.', 'Steve Rogers se convirtió en el Capitán América.', 2),
 -- 124
 ('¿Qué objeto característico usa el Capitán América?', 'heroica', 'Arma defensiva circular.', 'Su escudo de vibranium es indestructible.', 2),
 -- 125
@@ -445,35 +445,35 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 128
 ('¿Qué desencadena la transformación de Hulk?', 'heroica', 'Emoción intensa negativa.', 'La ira convierte a Banner en Hulk.', 2),
 -- 129
-('¿Cuál es el nombre real de Black Widow?', 'heroica', 'Espía rusa entrenada desde niña.', 'Natasha Romanoff es Black Widow.', 2),
+('¿Cuál es el nombre real de la Viuda Negra?', 'heroica', 'Espía rusa entrenada desde niña.', 'Natasha Romanoff es la Viuda Negra.', 2),
 -- 130
 ('¿Cuál es el nombre real de Hawkeye?', 'heroica', 'Arquero experto de S.H.I.E.L.D.', 'Clint Barton es la identidad de Hawkeye.', 2),
 -- 131
-('¿Cómo se llama el grupo principal de superhéroes de Marvel?', 'heroica', 'Los héroes más poderosos de la Tierra.', 'Los Vengadores protegen el mundo.', 2),
+('¿Cómo se llama el grupo principal de superhéroes de Marvel?', 'heroica', 'Los héroes más poderosos de la Tierra.', 'Los Vengadores protegen el mundo de las amenazas, y si no pueden, lo vengarán.', 2),
 -- 132
-('¿Cómo se llama el grupo principal de superhéroes de DC?', 'heroica', 'Liga de los héroes más importantes.', 'La Liga de la Justicia defiende la Tierra.', 2),
+('¿Cómo se llama el grupo principal de superhéroes de DC?', 'heroica', 'Son dioses entre humanos.', 'La Liga de la Justicia defiende la Tierra.', 2),
 -- 133
-('¿Cuál es el nombre real de Wolverine?', 'heroica', 'Mutante con garras de adamantium.', 'Logan es el nombre de Wolverine.', 2),
+('¿Cuál es el nombre real de Lobezno?', 'heroica', 'Mutante con garras de adamantium.', 'Logan es el nombre de Lobezno.', 2),
 -- 134
-('¿Cuál es el poder principal de Wolverine?', 'heroica', 'Puede curarse de cualquier herida.', 'El factor de curación regenera su cuerpo.', 2),
+('¿Cuál es el poder principal de Lobezno?', 'heroica', 'Puede curarse de cualquier herida.', 'El factor de curación regenera su cuerpo.', 2),
 -- 135
-('¿Cuál es el nombre real de Cyclops?', 'heroica', 'Líder de los X-Men.', 'Scott Summers es la identidad de Cyclops.', 2),
+('¿Cuál es el nombre real de Cíclope?', 'heroica', 'Líder de los X-Men.', 'Scott Summers es la identidad de Cíclope.', 2),
 -- 136
-('¿Cuál es el poder de Cyclops?', 'heroica', 'Rayos destructivos de sus ojos.', 'Los rayos ópticos son su habilidad mutante.', 2),
+('¿Cuál es el poder de Cíclope?', 'heroica', 'Rayos destructivos de sus ojos.', 'Los rayos ópticos son su habilidad mutante.', 2),
 -- 137
-('¿Cuál es el nombre real de Storm?', 'heroica', 'Mutante que controla el clima.', 'Ororo Munroe es la identidad de Storm.', 2),
+('¿A qué grupo pertenece Tormenta?', 'heroica', 'Mutante que controla el clima.', 'Ororo Munroe, Tormenta, pertenece y ha sido líder de los X-Men.', 2),
 -- 138
-('¿Cuál es el poder de Storm?', 'heroica', 'Domina los fenómenos meteorológicos.', 'Puede controlar el tiempo atmosférico.', 2),
+('¿Cuál es el poder de Tormenta?', 'heroica', 'Domina los fenómenos meteorológicos.', 'Puede controlar el tiempo atmosférico.', 2),
 -- 139
-('¿Quién es el líder de los X-Men?', 'heroica', 'Profesor telepático en silla de ruedas.', 'Charles Xavier fundó la escuela para mutantes.', 2),
+('¿Quién es el maestro de los X-Men?', 'heroica', 'Profesor telepático en silla de ruedas.', 'Charles Xavier fundó la escuela para mutantes.', 2),
 -- 140
-('¿Cuál es el poder del Profesor X?', 'heroica', 'Se dedica a encontrar mutantes ocultos por el mundo.', 'Charles Xavier es uno de los telépatas más poderosos de Marvel.', 2),
+('¿Cuál es el poder de Charles Xavier?', 'heroica', 'Se dedica a encontrar mutantes ocultos por el mundo.', 'Charles Xavier es uno de los telépatas más poderosos de Marvel.', 2),
 -- 141
-('¿Cuál es el archienemigo de los X-Men?', 'heroica', 'Mutante que controla el magnetismo.', 'Magneto es el némesis principal de los X-Men.', 2),
+('¿Cuál es el enemigo principal de los X-Men?', 'heroica', 'Mutante que controla el magnetismo.', 'Magneto es el némesis principal de los X-Men.', 2),
 -- 142
-('¿Cuál es el nombre real de Magneto?', 'heroica', 'Sobreviviente del Holocausto.', 'Erik Lehnsherr es la identidad de Magneto.', 2),
+('¿Cuál es el poder de Magneto?', 'heroica', 'Es más fuerte cuanta más chatarra tenga alrededor.', 'Magneto controla el magnetismo, pudiendo crear y manipular todo tipo de campos magnéticos y energías similares.', 2),
 -- 143
-('¿Cuál es el nombre real de Deadpool?', 'heroica', 'Mercenario con factor de curación.', 'Wade Wilson se convirtió en Deadpool.', 2),
+('¿Cuál es el nombre real de Deadpool?', 'heroica', 'Mercenario con factor de curación.', 'Wade Wilson se convirtió en Deadpool, el mercenario bocazas, al intentar curarse de cáncer en Arma X.', 2),
 -- 144
 ('¿Qué característica única tiene Deadpool?', 'heroica', 'Habla directamente con el lector.', 'Rompe la cuarta pared constantemente.', 2),
 -- 145
@@ -485,95 +485,95 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 148
 ('¿Qué motivó a Punisher a convertirse en vigilante?', 'heroica', 'Tragedia familiar causada por criminales.', 'La muerte de su familia lo transformó.', 2),
 -- 149
-('¿Cuál es el nombre real de Doctor Strange?', 'heroica', 'Cirujano que se convirtió en hechicero.', 'Stephen Strange es el Hechicero Supremo.', 2),
+('¿Cuál es el nombre real del Doctor Strange?', 'heroica', 'Cirujano que se convirtió en hechicero.', 'Stephen Strange es el Hechicero Supremo.', 2),
 -- 150
-('¿Cuál es la especialidad de Doctor Strange?', 'heroica', 'Artes místicas y dimensiones alternativas.', 'Domina la magia y protege la realidad.', 2);
+('¿Cuál es el poder del Doctor Strange?', 'heroica', 'Artes místicas y dimensiones alternativas.', 'Domina la magia y protege la realidad.', 2);
 
 -- Respuestas nivel medio
 INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
-('Clark Kent', TRUE, 101), ('Bruce Wayne', FALSE, 101), ('Peter Parker', FALSE, 101), ('Tony Stark', FALSE, 101),
-('Krypton', TRUE, 102), ('Marte', FALSE, 102), ('Venus', FALSE, 102), ('Saturno', FALSE, 102),
-('Kryptonita', TRUE, 103), ('Magia', FALSE, 103), ('Fuego', FALSE, 103), ('Agua', FALSE, 103),
-('Metrópolis', TRUE, 104), ('Gotham', FALSE, 104), ('Central City', FALSE, 104), ('Star City', FALSE, 104),
+('Clark Kent', TRUE, 101), ('Bruce Wayne', FALSE, 101), ('Conner Kent', FALSE, 101), ('Jon Kent', FALSE, 101),
+('Krypton', TRUE, 102), ('Marte', FALSE, 102), ('Korugar', FALSE, 102), ('Saturno', FALSE, 102),
+('Kryptonita', TRUE, 103), ('Acero', FALSE, 103), ('Fuego', FALSE, 103), ('Plasma', FALSE, 103),
+('Metrópolis', TRUE, 104), ('Gotham', FALSE, 104), ('Central City', FALSE, 104), ('Nueva York', FALSE, 104),
 ('Bruce Wayne', TRUE, 105), ('Clark Kent', FALSE, 105), ('Tony Stark', FALSE, 105), ('Steve Rogers', FALSE, 105),
 ('Alfred', TRUE, 106), ('Jarvis', FALSE, 106), ('Winston', FALSE, 106), ('Sebastian', FALSE, 106),
-('Gotham City', TRUE, 107), ('Metrópolis', FALSE, 107), ('Central City', FALSE, 107), ('Coast City', FALSE, 107),
+('Gotham', TRUE, 107), ('Metrópolis', FALSE, 107), ('Central City', FALSE, 107), ('Coast City', FALSE, 107),
 ('Peter Parker', TRUE, 108), ('Miles Morales', FALSE, 108), ('Ben Reilly', FALSE, 108), ('Miguel Ohara', FALSE, 108),
 ('Araña radioactiva', TRUE, 109), ('Experimento químico', FALSE, 109), ('Rayo', FALSE, 109), ('Mutación', FALSE, 109),
 ('Diana Prince', TRUE, 110), ('Diana Trevor', FALSE, 110), ('Diana Kane', FALSE, 110), ('Diana Queen', FALSE, 110),
-('Themyscira', TRUE, 111), ('Amazonas', FALSE, 111), ('Olimpo', FALSE, 111), ('Atlántida', FALSE, 111),
+('Themyscira', TRUE, 111), ('Amazonia', FALSE, 111), ('Olimpo', FALSE, 111), ('Atlantis', FALSE, 111),
 ('Lazo de la verdad', TRUE, 112), ('Espada', FALSE, 112), ('Escudo', FALSE, 112), ('Brazaletes', FALSE, 112),
 ('Barry Allen', TRUE, 113), ('Wally West', FALSE, 113), ('Jay Garrick', FALSE, 113), ('Bart Allen', FALSE, 113),
-('Súper velocidad', TRUE, 114), ('Fuerza', FALSE, 114), ('Vuelo', FALSE, 114), ('Invisibilidad', FALSE, 114),
-('Hal Jordan', TRUE, 115), ('John Stewart', FALSE, 115), ('Guy Gardner', FALSE, 115), ('Kyle Rayner', FALSE, 115),
+('Súper velocidad', TRUE, 114), ('Telequinesis táctil', FALSE, 114), ('Teletransporte', FALSE, 114), ('Invisibilidad', FALSE, 114),
+('Hal Jordan', TRUE, 115), ('Alan Scott', FALSE, 115), ('Guy Gardner', FALSE, 115), ('Kyle Rayner', FALSE, 115),
 ('Fuerza de voluntad', TRUE, 116), ('Linterna', FALSE, 116), ('Luz', FALSE, 116), ('Furia', FALSE, 116),
-('Arthur Curry', TRUE, 117), ('Orin', FALSE, 117), ('Kaldur', FALSE, 117), ('Garth', FALSE, 117),
-('Atlantis', TRUE, 118), ('Lemuria', FALSE, 118), ('Pacifica', FALSE, 118), ('Oceania', FALSE, 118),
-('Joker', TRUE, 119), ('Pingüino', FALSE, 119), ('Riddler', FALSE, 119), ('Two-Face', FALSE, 119),
+('Arthur Curry', TRUE, 117), ('Orin', FALSE, 117), ('Orm', FALSE, 117), ('Namor', FALSE, 117),
+('Atlantis', TRUE, 118), ('Rapture', FALSE, 118), ('Pacifica', FALSE, 118), ('Oceania', FALSE, 118),
+('Joker', TRUE, 119), ('Bane', FALSE, 119), ('Enigma', FALSE, 119), ('Dos Caras', FALSE, 119),
 ('Lex Luthor', TRUE, 120), ('Brainiac', FALSE, 120), ('Doomsday', FALSE, 120), ('Bizarro', FALSE, 120),
 ('Tony Stark', TRUE, 121), ('James Rhodes', FALSE, 121), ('Pepper Potts', FALSE, 121), ('Happy Hogan', FALSE, 121),
-('Reactor arc', TRUE, 122), ('Energía solar', FALSE, 122), ('Batería', FALSE, 122), ('Combustible', FALSE, 122),
+('Reactor', TRUE, 122), ('Energía solar', FALSE, 122), ('Batería', FALSE, 122), ('Combustible', FALSE, 122),
 ('Steve Rogers', TRUE, 123), ('Bucky Barnes', FALSE, 123), ('Sam Wilson', FALSE, 123), ('Johnny Walker', FALSE, 123),
 ('Escudo', TRUE, 124), ('Martillo', FALSE, 124), ('Espada', FALSE, 124), ('Hacha', FALSE, 124),
-('Thor Odinson', TRUE, 125), ('Loki Laufeyson', FALSE, 125), ('Balder', FALSE, 125), ('Heimdall', FALSE, 125),
-('Mjolnir', TRUE, 126), ('Stormbreaker', FALSE, 126), ('Gungnir', FALSE, 126), ('Gram', FALSE, 126),
-('Bruce Banner', TRUE, 127), ('Rick Jones', FALSE, 127), ('Betty Ross', FALSE, 127), ('Emil Blonsky', FALSE, 127),
+('Thor Odinson', TRUE, 125), ('Loki Laufeyson', FALSE, 125), ('Thor Bjornson', FALSE, 125), ('Thor Laufeyson', FALSE, 125),
+('Mjolnir', TRUE, 126), ('Tormentabreaker', FALSE, 126), ('Gungnir', FALSE, 126), ('Gram', FALSE, 126),
+('Bruce Banner', TRUE, 127), ('Rick Jones', FALSE, 127), ('Thaddeus Ross', FALSE, 127), ('Emil Blonsky', FALSE, 127),
 ('Ira', TRUE, 128), ('Miedo', FALSE, 128), ('Tristeza', FALSE, 128), ('Dolor', FALSE, 128),
 ('Natasha Romanoff', TRUE, 129), ('Yelena Belova', FALSE, 129), ('Melina Vostokoff', FALSE, 129), ('Dottie Underwood', FALSE, 129),
-('Clint Barton', TRUE, 130), ('Kate Bishop', FALSE, 130), ('Trick Shot', FALSE, 130), ('Crossfire', FALSE, 130),
+('Clint Barton', TRUE, 130), ('Oliver Queen', FALSE, 130), ('Floyd Lawton', FALSE, 130), ('Lester', FALSE, 130),
 ('Vengadores', TRUE, 131), ('Guardianes de la Galaxia', FALSE, 131), ('Cuatro Fantásticos', FALSE, 131), ('X-Men', FALSE, 131),
-('Liga de la Justicia', TRUE, 132), ('Sociedad de la Justicia', FALSE, 132), ('Titanes', FALSE, 132), ('Escuadrón Suicida', FALSE, 132),
-('Logan', TRUE, 133), ('James Howlett', FALSE, 133), ('Arma X', FALSE, 133), ('Patch', FALSE, 133),
+('Liga de la Justicia', TRUE, 132), ('Sociedad de la Justicia', FALSE, 132), ('Titanes', FALSE, 132), ('Sociedad de la Justicia', FALSE, 132),
+('James Howlett', TRUE, 133), ('Logan', FALSE, 133), ('Scott Summers', FALSE, 133), ('Lobo', FALSE, 133),
 ('Factor de curación', TRUE, 134), ('Garras', FALSE, 134), ('Fuerza', FALSE, 134), ('Sentidos', FALSE, 134),
 ('Scott Summers', TRUE, 135), ('Alex Summers', FALSE, 135), ('Gabriel Summers', FALSE, 135), ('Nathan Summers', FALSE, 135),
 ('Rayos ópticos', TRUE, 136), ('Telepatía', FALSE, 136), ('Telequinesis', FALSE, 136), ('Fuerza', FALSE, 136),
-('Ororo Munroe', TRUE, 137), ('Jean Grey', FALSE, 137), ('Rogue', FALSE, 137), ('Kitty Pryde', FALSE, 137),
-('Control del clima', TRUE, 138), ('Telepatía', FALSE, 138), ('Vuelo', FALSE, 138), ('Fuerza', FALSE, 138),
+('X-Men', TRUE, 137), ('Vengadores', FALSE, 137), ('Guardianes de la Galaxia', FALSE, 137), ('S.H.I.E.L.D', FALSE, 137),
+('Control del clima', TRUE, 138), ('Electroquinesis', FALSE, 138), ('Telequinesis', FALSE, 138), ('Teletransporte', FALSE, 138),
 ('Charles Xavier', TRUE, 139), ('Erik Lehnsherr', FALSE, 139), ('Logan', FALSE, 139), ('Scott Summers', FALSE, 139),
 ('Telepatía', TRUE, 140), ('Supervelocidad', FALSE, 140), ('Telequinesis', FALSE, 140), ('Metamorfosis', FALSE, 140),
 ('Magneto', TRUE, 141), ('Apocalipsis', FALSE, 141), ('Siniestro', FALSE, 141), ('Centinelas', FALSE, 141),
-('Erik Lehnsherr', TRUE, 142), ('Max Eisenhardt', FALSE, 142), ('Magnus', FALSE, 142), ('Erik Magnus', FALSE, 142),
-('Wade Wilson', TRUE, 143), ('Jack Wilson', FALSE, 143), ('Ryan Wilson', FALSE, 143), ('Wade Williams', FALSE, 143),
-('Rompe la cuarta pared', TRUE, 144), ('Inmortalidad', FALSE, 144), ('Teletransporte', FALSE, 144), ('Regeneración', FALSE, 144),
+('Control del magnetismo', TRUE, 142), ('Control del clima', FALSE, 142), ('Creación de armas', FALSE, 142), ('Control del metal', FALSE, 142),
+('Wade Wilson', TRUE, 143), ('Slade Wilson', FALSE, 143), ('Ryan Reynolds', FALSE, 143), ('Wade Williams', FALSE, 143),
+('Romper la cuarta pared', TRUE, 144), ('Inmortalidad', FALSE, 144), ('Teletransporte', FALSE, 144), ('Regeneración', FALSE, 144),
 ('Matt Murdock', TRUE, 145), ('Mike Murdock', FALSE, 145), ('Jack Murdock', FALSE, 145), ('Frank Murdock', FALSE, 145),
 ('Vista', TRUE, 146), ('Oído', FALSE, 146), ('Tacto', FALSE, 146), ('Olfato', FALSE, 146),
-('Frank Castle', TRUE, 147), ('Frank Castiglione', FALSE, 147), ('Frank Rook', FALSE, 147), ('Frank Costa', FALSE, 147),
+('Frank Castle', TRUE, 147), ('Frank Castiglione', FALSE, 147), ('Cletus Kasady', FALSE, 147), ('Frank Costa', FALSE, 147),
 ('Muerte de su familia', TRUE, 148), ('Traición militar', FALSE, 148), ('Experimento fallido', FALSE, 148), ('Accidente', FALSE, 148),
-('Stephen Strange', TRUE, 149), ('Victor Strange', FALSE, 149), ('Vincent Strange', FALSE, 149), ('Stewart Strange', FALSE, 149),
-('Magia', TRUE, 150), ('Medicina', FALSE, 150), ('Ciencia', FALSE, 150), ('Tecnología', FALSE, 150);
+('Stephen Strange', TRUE, 149), ('Kent Nelson', FALSE, 149), ('Vincent Strange', FALSE, 149), ('Stewart Strange', FALSE, 149),
+('Magia', TRUE, 150), ('Piroquinesis', FALSE, 150), ('Es un fantasma', FALSE, 150), ('Teletransporte', FALSE, 150);
 
 -- Preguntas nivel difícil
 INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) VALUES
 -- 151
-('¿En qué año fue creado Superman por Jerry Siegel y Joe Shuster?', 'divina', 'Década de los 30 del siglo XX.', 'Superman apareció por primera vez en Action Comics #1 en 1938.', 2),
+('¿En qué año fue creado Superman?', 'divina', 'Década de los 30 del siglo XX.', 'Superman apareció por primera vez en Action Comics #1 en 1938.', 2),
 -- 152
 ('¿Cuál es el nombre kryptoniano de Superman?', 'divina', 'Su nombre de nacimiento en Krypton.', 'Kal-El es su verdadero nombre kryptoniano.', 2),
 -- 153
 ('¿Cómo se llama el padre biológico de Superman?', 'divina', 'Científico de Krypton que lo envió a la Tierra.', 'Jor-El salvó a su hijo del destino de Krypton.', 2),
 -- 154
-('¿Cuál es el nombre de la base de Superman?', 'divina', 'Refugio en el Ártico hecho de cristales.', 'La Fortaleza de la Soledad es su santuario.', 2),
+('¿Cuál es el nombre de la base de Superman?', 'divina', 'Refugio en el Ártico hecho de cristal.', 'La Fortaleza de la Soledad es su santuario, repleto de tecnología kryptoniana.', 2),
 -- 155
 ('¿Qué significa la "S" en el pecho de Superman?', 'divina', 'No es una letra del alfabeto terrestre.', 'Es el símbolo kryptoniano de la esperanza.', 2),
 -- 156
-('¿Cuál es el nombre real del primer Robin?', 'divina', 'Acróbata huérfano del circo.', 'Dick Grayson fue el primer compañero de Batman.', 2),
+('¿Quién es el primer Robin?', 'divina', 'Acróbata huérfano del circo.', 'Richard Grayson fue el primer compañero de Batman.', 2),
 -- 157
 ('¿Cómo se llama la cárcel psiquiátrica de Gotham?', 'divina', 'Donde encierran a los villanos locos.', 'Arkham Asylum alberga a los criminales dementes.', 2),
 -- 158
-('¿Cuál es el nombre del comisionado de policía aliado de Batman?', 'divina', 'Padre de Batgirl en algunas versiones.', 'James Gordon es el aliado más leal de Batman.', 2),
+('¿Cuál es el nombre del comisario de policía aliado de Batman?', 'divina', 'Es el padre de Batgirl.', 'James Gordon es el aliado más leal de Batman dentro de la policía.', 2),
 -- 159
-('¿Qué empresa dirige Bruce Wayne?', 'divina', 'Corporación multimillonaria de Gotham.', 'Wayne Enterprises financia las actividades de Batman.', 2),
+('¿Cuál es el nombre real de Dos Caras?', 'divina', 'Fue un importante fiscal en Gotham.', 'Harvey Dent sufrió un accidente con ácido que le desfiguró medio rostro, creando una hiperfijación en él por la dualidad y convirtiéndolo en un criminal.', 2),
 -- 160
-('¿Cuál es el nombre del tío de Spider-Man?', 'divina', 'Su muerte motivó a Peter a ser héroe.', 'Ben Parker le enseñó que "un gran poder conlleva una gran responsabilidad".', 2),
+('¿Cuál es el nombre real del Pingüino?', 'divina', 'Asqueroso mafioso que traiciona a todos a su alrededor.', 'Oswald Cobblepot llevó una vida de acoso y desilusión que le hizo convertirse en criminal, en busca de poder y reconocimiento.', 2),
 -- 161
-('¿Cómo se llama la tía de Spider-Man?', 'divina', 'Cuidó de Peter tras la muerte de sus padres.', 'May Parker es la figura materna de Peter.', 2),
+('¿Quién es el tercer Robin?', 'divina', 'Averiguó por su cuenta la identidad de Batman y Robin.', 'Timothy Drake, el mejor detective entre los Robins, fue el tercero y llegó a liderar a los Titanes.', 2),
 -- 162
-('¿Cuál es el nombre del periódico donde trabaja Peter Parker?', 'divina', 'Diario sensacionalista de Nueva York.', 'El Daily Bugle publica fotos de Spider-Man.', 2),
+('¿Cuál es el nombre del periódico donde trabaja Peter Parker?', 'divina', 'Diario sensacionalista de Nueva York.', 'El Daily Bugle publica fotos de Spiderman.', 2),
 -- 163
-('¿Cómo se llama el jefe de Peter Parker en el periódico?', 'divina', 'Editor que odia a Spider-Man.', 'J. Jonah Jameson considera a Spider-Man una amenaza.', 2),
+('¿Cómo se llama el jefe de Peter Parker en el periódico?', 'divina', 'Editor que odia a Spiderman.', 'J. Jonah Jameson considera a Spiderman una amenaza e intenta demostrarlo cada vez que puede.', 2),
 -- 164
 ('¿Cuál es el nombre de la madre de Wonder Woman?', 'divina', 'Reina de las Amazonas.', 'Hipólita gobierna Themyscira y es madre de Diana.', 2),
 -- 165
-('¿Quién creó a Wonder Woman en los cómics?', 'divina', 'Psicólogo que inventó el detector de mentiras.', 'William Moulton Marston creó el personaje en 1941.', 2),
+('¿Cómo se llama el perro de Superman?', 'divina', 'Llegó con él en su nave tras destruirse su planeta.', 'Krypto, el súper perro, tiene los mismos poderes que Superman, pero en menor medida.', 2),
 -- 166
 ('¿Quién es el padre de Wonder Woman?', 'divina', 'Rey de los dioses griegos.', 'Zeus tuvo a Diana con Hipólita, reina de las Amazonas.', 2),
 -- 167
@@ -581,119 +581,119 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 168
 ('¿Cuál es el nombre de la dimensión de donde obtiene sus poderes Flash?', 'divina', 'Fuente extradimensional de energía.', 'La Speed Force es el origen de los poderes de todos los velocistas.', 2),
 -- 169
-('¿Quién fue el Flash original de los años 40?', 'divina', 'Miembro de la Sociedad de la Justicia.', 'Jay Garrick fue el primer Flash en los cómics.', 2),
+('¿Quién fue el Flash original de la Edad de Oro?', 'divina', 'Miembro de la Sociedad de la Justicia.', 'Jay Garrick fue el primer Flash en los cómics.', 2),
 -- 170
-('¿Cuál es el nombre del cuerpo de Green Lanterns?', 'divina', 'Organización intergaláctica de paz.', 'El Green Lantern Corps protege el universo.', 2),
+('¿Quién fue el Linterna Verde original de la Edad de Oro?', 'divina', 'Miembro de la Sociedad de la Justicia, usaba una linterna en lugar del Anillo de poder.', 'Alan Scott fue el primer Linterna Verde, usando magia en lugar del poder del espectro de las emociones.', 2),
 -- 171
-('¿En qué planeta está la sede de los Green Lantern Corps?', 'divina', 'Mundo artificial en el centro del universo.', 'Oa es el planeta hogar de los Guardianes.', 2),
+('¿En qué planeta está la sede del Cuerpo de Linternas Verdes?', 'divina', 'Planeta artificial en el centro del universo.', 'Oa es el planeta hogar de los Guardianes del Universo, creadores del Cuerpo de Linternas Verdes.', 2),
 -- 172
-('¿Cómo se llaman los creadores de los Green Lantern Corps?', 'divina', 'Seres azules inmortales.', 'Los Guardianes del Universo fundaron el cuerpo.', 2),
+('¿Cómo se llaman los creadores del Cuerpo de Linternas Verdes?', 'divina', 'Seres azules inmortales.', 'Los Guardianes del Universo fundaron el cuerpo.', 2),
 -- 173
-('¿Cuál es el nombre del tridente de Aquaman?', 'divina', 'Arma mágica de los reyes de Atlantis.', 'El Tridente de Neptuno le da poder sobre los mares.', 2),
+('¿Qué Robin se convierte en Red Hood?', 'divina', 'Es el segundo.', 'Jason Todd es asesinado por el Joker, pero revive en una Fosa de Lázaro y pierde su bondad, convirtiéndose en Red Hood para azotar a los criminales de Gotham.', 2),
 -- 174
-('¿Cómo se llama el medio hermano villano de Aquaman?', 'divina', 'Pretendiente al trono de Atlantis.', 'Ocean Master es uno de sus enemigos recurrentes.', 2),
+('¿Cuál de estos villanos de Aquaman es familiar suyo?', 'divina', 'Pretendiente al trono de Atlantis.', 'Ocean Master es uno de sus enemigos recurrentes.', 2),
 -- 175
 ('¿Cuál es el nombre real de Ocean Master?', 'divina', 'Hermano celoso del rey de Atlantis.', 'Orm Marius es la identidad de Ocean Master.', 2),
 -- 176
-('¿Cómo se llama la inteligencia artificial que Iron Man deja a Spider-Man?', 'divina', 'Asistente virtual del traje.', 'FRIDAY reemplazó a JARVIS en algunas versiones.', 2),
+('¿Cómo se llama la inteligencia artificial que Iron Man deja a Spiderman?', 'divina', 'Asistente virtual del traje.', 'FRIDAY reemplazó a JARVIS en algunas versiones.', 2),
 -- 177
 ('¿Cuál era el nombre de la IA anterior de Tony Stark?', 'divina', 'Mayordomo virtual basado en Alfred.', 'JARVIS fue la primera IA de Iron Man.', 2),
 -- 178
-('¿Cómo se llama la empresa de Tony Stark?', 'divina', 'Corporación de tecnología avanzada.', 'Stark Industries desarrolla tecnología militar.', 2),
+('¿Cómo se llama la prima de Superman?', 'divina', 'Llegó a la Tierra 13 años después que él.', 'Kara Zor-El fue enviada para proteger a su primo pequeño, pero su nave se extravió y llegó a la Tierra 13 años más tarde, encontrándose con un Kal-El ya adulto debido a la diferencia del transcurso del tiempo en el espacio.', 2),
 -- 179
-('¿Cuál es el nombre del suero que creó al Capitán América?', 'divina', 'Fórmula militar experimental.', 'El Suero del Súper Soldado transformó a Steve Rogers.', 2),
+('¿Cuál no es una debilidad de Superman?', 'divina', 'No puede dañarle, pero no es posible para él ver a través de este elemento.', 'Además de la kryptonita, la magia es una debilidad de Superman debido a que no se encuentra atada a las leyes del mundo y no existía en su planeta natal. Los sonidos fuertes y estridentes son otra de sus debilidades, ya que le aturden mucho más que al resto por su súper oído.', 2),
 -- 180
-('¿Quién creó el suero del súper soldado?', 'divina', 'Científico alemán refugiado.', 'Abraham Erskine desarrolló la fórmula secreta.', 2),
+('¿Cuál es una debilidad de los Green Lantern?', 'divina', 'Era el elemento principal del Cuerpo de Linternas enemigo.', 'En los primeros años, alguien decidió que el color amarillo sería una buena debilidad para un cuerpo de policías intergalácticos capaces de materializar lo que imaginen.', 2),
 -- 181
 ('¿Cuál es el nombre del reino de Thor?', 'divina', 'Uno de los nueve mundos nórdicos.', 'Asgard es el hogar de los dioses nórdicos.', 2),
 -- 182
-('¿Cómo se llama el padre de Thor?', 'divina', 'Rey de Asgard y padre de todos.', 'Odín es el Padre de Todo en la mitología nórdica.', 2),
+('¿Quién es Batman en el futuro?', 'divina', 'No es un Robin.', 'Terry McGinnis encuentra la Batcueva por accidente cuando Bruce ya es anciano, y este ve potencial en él.', 2),
 -- 183
-('¿Cuál es el nombre del hermano adoptivo de Thor?', 'divina', 'Dios de las mentiras y el engaño.', 'Loki es el hermano problemático de Thor.', 2),
+('¿Quién es Spiderman en 2099?', 'divina', 'Ya ha aparecido en las películas.', 'Miguel Ohara es un científico genetista que, intentando recrear las habilidades de Spiderman en otras personas, acaba recibiéndolas él mismo.', 2),
 -- 184
 ('¿Cómo se llama el puente que conecta los nueve mundos?', 'divina', 'Puente arcoíris de la mitología nórdica.', 'Bifrost conecta Asgard con otros reinos.', 2),
 -- 185
-('¿Cuál es el nombre del científico que se convirtió en Hulk?', 'divina', 'Trabajaba en la bomba gamma.', 'Bruce Banner se expuso accidentalmente a radiación gamma.', 2),
+('¿Quién es Spiderman en el universo Ultimate?', 'divina', 'También le pica una araña, pero no en un evento científico.', 'Miles Morales se convierte en Spiderman en un universo en el que Peter Parker ya ha fallecido.', 2),
 -- 186
 ('¿Cómo se llama la prima de Bruce Banner?', 'divina', 'Abogada que también se volvió verde.', 'Jennifer Walters se convirtió en She-Hulk.', 2),
 -- 187
-('¿Cuál es el nombre de la organización de espías de Marvel?', 'divina', 'Agencia internacional de seguridad.', 'S.H.I.E.L.D. protege el mundo de amenazas.', 2),
+('¿Cuál es el nombre de la organización de espías de Marvel?', 'divina', 'Agencia internacional de seguridad.', 'S.H.I.E.L.D. protege el mundo de amenazas, tanto internas como externas.', 2),
 -- 188
-('¿Quién es el director de S.H.I.E.L.D. más famoso?', 'divina', 'Veterano de guerra con parche en el ojo.', 'Nick Fury dirigió la organización durante décadas.', 2),
+('¿Quién es el principal director de S.H.I.E.L.D.?', 'divina', 'Veterano de guerra con parche en el ojo.', 'Nick Fury dirigió la organización durante décadas.', 2),
 -- 189
-('¿Cuál es el nombre real de la Viuda Negra original?', 'divina', 'Espía rusa entrenada en la Habitación Roja.', 'Natasha Romanoff es su identidad occidental.', 2),
+('¿Quién hizo que Superman asesinara con sus propias manos a su mujer embarazada?', 'divina', 'Normalmente opera en otra ciudad.', 'El Joker, harto de perder contra Batman, decidió jugar con Superman y le atacó con gas del miedo del Espantapájaros mezclado con kryptonita, lo que hizo que viera a Lois Lane como Doomsday, uno de sus mayores enemigos, y acabó con ella y su hijo nonato llevándola al espacio exterior.', 2),
 -- 190
-('¿Cómo se llama el programa que entrenó a Black Widow?', 'divina', 'Programa soviético de espías.', 'La Habitación Roja creó asesinas perfectas.', 2),
+('¿Cómo se llama el programa que entrenó a la Viuda Negra?', 'divina', 'Programa soviético de espías.', 'La Habitación Roja creó asesinas perfectas.', 2),
 -- 191
-('¿Cuál es el nombre del metal que cubre el esqueleto de Wolverine?', 'divina', 'Metal indestructible creado artificialmente.', 'El adamantium fue fusionado con sus huesos.', 2),
+('¿Cuál es el nombre del metal que cubre el esqueleto de Lobezno?', 'divina', 'Metal indestructible creado artificialmente.', 'El adamantium fue fusionado con sus huesos.', 2),
 -- 192
-('¿Cómo se llama el programa que experimentó con Wolverine?', 'divina', 'Proyecto militar canadiense secreto.', 'Arma X creó soldados mutantes mejorados.', 2),
+('¿Cómo se llama el programa que experimentó con Lobezno?', 'divina', 'Proyecto militar canadiense secreto.', 'Arma X creó soldados mutantes mejorados, con Lobezno, que ya tenía regeneración, sentidos mejorados y garras óseas, implantó adamantium en su esqueleto para volverlo más mortal, pero esto entorpecía su regeneración y aumentó muchísimo su peso, lo cual lo ralentizaba.', 2),
 -- 193
-('¿Cuál es el nombre de la escuela de los X-Men?', 'divina', 'Instituto para jóvenes superdotados.', 'La Escuela Xavier para Jóvenes Superdotados.', 2),
+('¿Quién se convierte en Carnage?', 'divina', 'Carnage es un simbionte hijo de Venom.', 'Cletus Kasady, un asesino irracional, se encontró con el simbionte y comenzó a sembrar el caos.', 2),
 -- 194
-('¿En qué estado está ubicada la mansión X?', 'divina', 'Estado del noreste de Estados Unidos.', 'Westchester, Nueva York alberga la escuela.', 2),
+('¿Cuál no es un poder del Detective Marciano?', 'divina', 'Sus habilidades son increíblemente útiles para la infiltración.', 'Debido a un trauma por la destrucción de su familia, el Detective Marciano teme al fuego más que a nada.', 2),
 -- 195
-('¿Cuál es el nombre real de Fénix, de los X-Men?', 'divina', 'Telepática que se convirtió en Fénix.', 'Jean Grey-Summers es su nombre completo, tras casarse con Scott Summers, Cyclops.', 2),
+('¿Cuál es el nombre real de Fénix, de los X-Men?', 'divina', 'Telépata que se convirtió en Fénix.', 'Jean Grey-Summers es su nombre completo, tras casarse con Scott Summers, Cíclope.', 2),
 -- 196
-('¿Cómo se llama la entidad cósmica que poseyó a Jean Grey?', 'divina', 'Fuerza primordial de vida y muerte.', 'La Fuerza Fénix es una entidad cósmica.', 2),
+('¿Cómo se llama la entidad cósmica que poseyó a Jean Grey?', 'divina', 'Fuerza primordial de llamas y resurrección.', 'La Fuerza Fénix es una entidad cósmica inmortal e imparable que dota de poderes inigualables a su huésped.', 2),
 -- 197
 ('¿Cuál es el nombre del metal del escudo de Capitán América?', 'divina', 'Metal ficticio más resistente que existe.', 'El vibranium absorbe vibraciones y energía.', 2),
 -- 198
 ('¿De qué país africano proviene el vibranium?', 'divina', 'Nación tecnológicamente avanzada.', 'Wakanda es la fuente principal de vibranium.', 2),
 -- 199
-('¿Cuál es el nombre del rey de Wakanda?', 'divina', 'Superhéroe protector de su nación.', 'TChalla es el Black Panther y rey.', 2),
+('¿Cuál es el nombre del anterior rey de Wakanda y Black Panther?', 'divina', 'Es el padre del actual Black Panther.', 'TChaka era un rey sabio y justo, que abogaba por abrir Wakanda al mundo entero. Su partida convirtió a TChalla en el rey, quien siguió con su voluntad y acabó convirtiendo el país en el Imperio Intergaláctico de Wakanda.', 2),
 -- 200
-('¿Cómo se llama la hermana genio de TChalla?', 'divina', 'Princesa e inventora de Wakanda.', 'Shuri es la hermana menor de Black Panther.', 2);
+('¿En qué serie de cómics Superman se vuelve un dictador?', 'divina', 'La verdad es que no es muy justo lo que pasa.', 'En Injustice, Superman asesina al Joker, cruzando la línea que juró no cruzar. Tras esto, se da cuenta de que asesinando a los villanos y controlando el planeta puede evitar que la gente sufra, pero acaba desatando una guerra contra los demás héroes.', 2);
 
 -- Respuestas nivel difícil
 INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
-('1938', TRUE, 151), ('1939', FALSE, 151), ('1940', FALSE, 151), ('1937', FALSE, 151),
+('1938', TRUE, 151), ('1939', FALSE, 151), ('1940', FALSE, 151), ('1928', FALSE, 151),
 ('Kal-El', TRUE, 152), ('Jor-El', FALSE, 152), ('Zor-El', FALSE, 152), ('Kara-El', FALSE, 152),
 ('Jor-El', TRUE, 153), ('Zor-El', FALSE, 153), ('Kal-El', FALSE, 153), ('Lor-El', FALSE, 153),
 ('Fortaleza de la Soledad', TRUE, 154), ('Cueva de Cristal', FALSE, 154), ('Santuario Ártico', FALSE, 154), ('Refugio Polar', FALSE, 154),
 ('Esperanza', TRUE, 155), ('Fuerza', FALSE, 155), ('Justicia', FALSE, 155), ('Superman', FALSE, 155),
 ('Dick Grayson', TRUE, 156), ('Jason Todd', FALSE, 156), ('Tim Drake', FALSE, 156), ('Damian Wayne', FALSE, 156),
-('Arkham Asylum', TRUE, 157), ('Blackgate', FALSE, 157), ('Belle Reve', FALSE, 157), ('Iron Heights', FALSE, 157),
-('James Gordon', TRUE, 158), ('Harvey Bullock', FALSE, 158), ('Sarah Essen', FALSE, 158), ('Renee Montoya', FALSE, 158),
-('Wayne Enterprises', TRUE, 159), ('Wayne Industries', FALSE, 159), ('Wayne Corp', FALSE, 159), ('Wayne Tech', FALSE, 159),
-('Ben Parker', TRUE, 160), ('Richard Parker', FALSE, 160), ('Martin Parker', FALSE, 160), ('Henry Parker', FALSE, 160),
-('May Parker', TRUE, 161), ('Anna Parker', FALSE, 161), ('Mary Parker', FALSE, 161), ('Helen Parker', FALSE, 161),
+('Arkham', TRUE, 157), ('Blackgate', FALSE, 157), ('Belle Reve', FALSE, 157), ('Iron Heights', FALSE, 157),
+('James Gordon', TRUE, 158), ('Harvey Bullock', FALSE, 158), ('Sarah Essen', FALSE, 158), ('Harvey Dent', FALSE, 158),
+('Harvey Dent', TRUE, 159), ('Pamela Isley', FALSE, 159), ('Waylon Jones', FALSE, 159), ('Terry McGinnis', FALSE, 159),
+('Oswald Cobblepot', TRUE, 160), ('Harvey Dent', FALSE, 160), ('Floyd Lawton', FALSE, 160), ('Slade Wilson', FALSE, 160),
+('Tim Drake', TRUE, 161), ('Jason Todd', FALSE, 161), ('Damian Wayne', FALSE, 161), ('Dick Grayson', FALSE, 161),
 ('Daily Bugle', TRUE, 162), ('Daily Globe', FALSE, 162), ('New York Times', FALSE, 162), ('Daily Planet', FALSE, 162),
 ('J. Jonah Jameson', TRUE, 163), ('Robbie Robertson', FALSE, 163), ('Ben Urich', FALSE, 163), ('Frederick Foswell', FALSE, 163),
 ('Hipólita', TRUE, 164), ('Antíope', FALSE, 164), ('Penthesilea', FALSE, 164), ('Artemisa', FALSE, 164),
-('William Moulton Marston', TRUE, 165), ('Bob Kane', FALSE, 165), ('Jerry Siegel', FALSE, 165), ('Stan Lee', FALSE, 165),
+('Krypto', TRUE, 165), ('Bolt', FALSE, 165), ('Ace', FALSE, 165), ('Rex', FALSE, 165),
 ('Zeus', TRUE, 166), ('Hermes', FALSE, 166), ('Ares', FALSE, 166), ('Apolo', FALSE, 166),
 ('Central City', TRUE, 167), ('Keystone City', FALSE, 167), ('Coast City', FALSE, 167), ('Star City', FALSE, 167),
 ('Speed Force', TRUE, 168), ('Time Force', FALSE, 168), ('Velocity Force', FALSE, 168), ('Kinetic Force', FALSE, 168),
 ('Jay Garrick', TRUE, 169), ('Barry Allen', FALSE, 169), ('Wally West', FALSE, 169), ('Bart Allen', FALSE, 169),
-('Green Lantern Corps', TRUE, 170), ('Lantern Brigade', FALSE, 170), ('Emerald Knights', FALSE, 170), ('Guardian Force', FALSE, 170),
+('Alan Scott', TRUE, 170), ('Guy Gardner', FALSE, 170), ('Abin Sur', FALSE, 170), ('Kyle Rayner', FALSE, 170),
 ('Oa', TRUE, 171), ('Mogo', FALSE, 171), ('Korugar', FALSE, 171), ('Rann', FALSE, 171),
-('Guardianes del Universo', TRUE, 172), ('Controladores', FALSE, 172), ('Zamarones', FALSE, 172), ('Manhunters', FALSE, 172),
-('Tridente de Neptuno', TRUE, 173), ('Tridente de Poseidón', FALSE, 173), ('Lanza Marina', FALSE, 173), ('Cetro Oceánico', FALSE, 173),
+('Guardianes del Universo', TRUE, 172), ('Controladores del Universo', FALSE, 172), ('Zamarones', FALSE, 172), ('Manhunters', FALSE, 172),
+('Jason Todd', TRUE, 173), ('Damian Wayne', FALSE, 173), ('Dick Grayson', FALSE, 173), ('Tim Drake', FALSE, 173),
 ('Ocean Master', TRUE, 174), ('Black Manta', FALSE, 174), ('King Shark', FALSE, 174), ('Killer Croc', FALSE, 174),
 ('Orm Marius', TRUE, 175), ('David Hyde', FALSE, 175), ('Stephen Shin', FALSE, 175), ('Nanaue', FALSE, 175),
 ('FRIDAY', TRUE, 176), ('JARVIS', FALSE, 176), ('KAREN', FALSE, 176), ('EDITH', FALSE, 176),
 ('JARVIS', TRUE, 177), ('FRIDAY', FALSE, 177), ('KAREN', FALSE, 177), ('EDITH', FALSE, 177),
-('Stark Industries', TRUE, 178), ('Stark Enterprises', FALSE, 178), ('Stark Corporation', FALSE, 178), ('Stark Technologies', FALSE, 178),
-('Suero del Súper Soldado', TRUE, 179), ('Fórmula Vita-Ray', FALSE, 179), ('Compuesto Erskine', FALSE, 179), ('Serum Alpha', FALSE, 179),
-('Abraham Erskine', TRUE, 180), ('Howard Stark', FALSE, 180), ('Hank Pym', FALSE, 180), ('Bruce Banner', FALSE, 180),
+('Kara Zor-El', TRUE, 178), ('Lara Zor-El', FALSE, 178), ('Clara Jor-El', FALSE, 178), ('Luna Jor-El', FALSE, 178),
+('Plomo', TRUE, 179), ('Kryptonita', FALSE, 179), ('Magia', FALSE, 179), ('Sonido', FALSE, 179),
+('Color amarillo', TRUE, 180), ('Telepatía', FALSE, 180), ('Temperaturas gélidas', FALSE, 180), ('Fuego', FALSE, 180),
 ('Asgard', TRUE, 181), ('Valhalla', FALSE, 181), ('Midgard', FALSE, 181), ('Jotunheim', FALSE, 181),
-('Odín', TRUE, 182), ('Balder', FALSE, 182), ('Heimdall', FALSE, 182), ('Tyr', FALSE, 182),
-('Loki', TRUE, 183), ('Balder', FALSE, 183), ('Heimdall', FALSE, 183), ('Hogun', FALSE, 183),
+('Terry McGinnis', TRUE, 182), ('Damian Wayne', FALSE, 182), ('Dick Grayson', FALSE, 182), ('William Pennyworth', FALSE, 182),
+('Miguel Ohara', TRUE, 183), ('May Parker', FALSE, 183), ('Miles Morales', FALSE, 183), ('Cynthia Moon', FALSE, 183),
 ('Bifrost', TRUE, 184), ('Yggdrasil', FALSE, 184), ('Gjallarhorn', FALSE, 184), ('Gungnir', FALSE, 184),
-('Bruce Banner', TRUE, 185), ('Robert Banner', FALSE, 185), ('David Banner', FALSE, 185), ('Brian Banner', FALSE, 185),
+('Miles Morales', TRUE, 185), ('Miguel Ohara', FALSE, 185), ('May Parker', FALSE, 185), ('Gwen Stacy', FALSE, 185),
 ('Jennifer Walters', TRUE, 186), ('Betty Ross', FALSE, 186), ('Rebecca Banner', FALSE, 186), ('Susan Banner', FALSE, 186),
 ('S.H.I.E.L.D.', TRUE, 187), ('H.A.M.M.E.R.', FALSE, 187), ('A.I.M.', FALSE, 187), ('HYDRA', FALSE, 187),
-('Nick Fury', TRUE, 188), ('Phil Coulson', FALSE, 188), ('Maria Hill', FALSE, 188), ('Dum Dum Dugan', FALSE, 188),
-('Natasha Romanoff', TRUE, 189), ('Yelena Belova', FALSE, 189), ('Melina Vostokoff', FALSE, 189), ('Dottie Underwood', FALSE, 189),
+('Nick Fury', TRUE, 188), ('Phil Coulson', FALSE, 188), ('Maria Hill', FALSE, 188), ('Tum tum Sahur', FALSE, 188),
+('Joker', TRUE, 189), ('Black Adam', FALSE, 189), ('General Zod', FALSE, 189), ('Lex Luthor', FALSE, 189),
 ('Habitación Roja', TRUE, 190), ('Programa Invierno', FALSE, 190), ('Proyecto Insight', FALSE, 190), ('Operación Paperclip', FALSE, 190),
 ('Adamantium', TRUE, 191), ('Vibranium', FALSE, 191), ('Unobtainium', FALSE, 191), ('Carbonadium', FALSE, 191),
-('Arma X', TRUE, 192), ('Arma Plus', FALSE, 192), ('Proyecto Rebirth', FALSE, 192), ('Experimento X', FALSE, 192),
-('Escuela Xavier', TRUE, 193), ('Instituto Mutante', FALSE, 193), ('Academia X', FALSE, 193), ('Escuela Gifted', FALSE, 193),
-('Nueva York', TRUE, 194), ('Massachusetts', FALSE, 194), ('Connecticut', FALSE, 194), ('Nueva Jersey', FALSE, 194),
-('Jean Grey', TRUE, 195), ('Jean Summers', FALSE, 195), ('Marvel Girl', FALSE, 195), ('Fénix', FALSE, 195),
-('Fuerza Fénix', TRUE, 196), ('Entidad Cósmica', FALSE, 196), ('Poder Fénix', FALSE, 196), ('Espíritu Fénix', FALSE, 196),
-('Vibranium', TRUE, 197), ('Adamantium', FALSE, 197), ('Unobtainium', FALSE, 197), ('Proto-Adamantium', FALSE, 197),
-('Wakanda', TRUE, 198), ('Genosha', FALSE, 198), ('Latveria', FALSE, 198), ('Atlantis', FALSE, 198),
-('TChalla', TRUE, 199), ('TChaka', FALSE, 199), ('MBaku', FALSE, 199), ('WKabi', FALSE, 199),
-('Shuri', TRUE, 200), ('Nakia', FALSE, 200), ('Okoye', FALSE, 200), ('Ramonda', FALSE, 200);
+('Arma X', TRUE, 192), ('Arma Gedón', FALSE, 192), ('Proyecto Rebirth', FALSE, 192), ('Experimento X', FALSE, 192),
+('Cletus Kasady', TRUE, 193), ('Patrick Mulligan', FALSE, 193), ('Donna Diego', FALSE, 193), ('Mac Gargan', FALSE, 193),
+('Piroquinesis', TRUE, 194), ('Metamorfosis', FALSE, 194), ('Telepatía', FALSE, 194), ('Intangibilidad', FALSE, 194),
+('Jean Grey', TRUE, 195), ('Jean Summers', FALSE, 195), ('Emma Frost', FALSE, 195), ('Anna Marie', FALSE, 195),
+('Fuerza Fénix', TRUE, 196), ('Fuerza Odín', FALSE, 196), ('Ecuación de la Anti-Vida', FALSE, 196), ('Espíritu del Fénix', FALSE, 196),
+('Vibranium', TRUE, 197), ('Adamantium', FALSE, 197), ('Décimo Metal', FALSE, 197), ('Proto-Adamantium', FALSE, 197),
+('Wakanda', TRUE, 198), ('Genosha', FALSE, 198), ('Krakoa', FALSE, 198), ('Lulusia', FALSE, 198),
+('TChaka', TRUE, 199), ('TChalla', FALSE, 199), ('MBaku', FALSE, 199), ('WKabi', FALSE, 199),
+('Injustice', TRUE, 200), ('Darkest Night', FALSE, 200), ('Dark Justice League', FALSE, 200), ('Superman Red Son', FALSE, 200);
