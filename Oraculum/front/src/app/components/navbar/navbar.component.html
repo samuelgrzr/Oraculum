@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between py-3">
             <!-- MENÚ DESPLEGABLE -->
             <div class="relative md:hidden">
-                <input type="checkbox" id="menu-toggle" class="hidden">
+                <input type="checkbox" id="menu-toggle" class="hidden" (change)="toggleMainMenu()">
                 <label for="menu-toggle" class="nav-link">
                     <i class="fas fa-landmark text-2xl"></i>
                 </label>
@@ -32,7 +32,7 @@
             <div class="relative">
                 <!-- LOGIN -->
                 <ng-container *ngIf="!isLoggedIn()">
-                    <input type="checkbox" id="login-toggle" class="hidden">
+                    <input type="checkbox" id="login-toggle" class="hidden" (change)="toggleLoginMenu()">
                     <label for="login-toggle" class="nav-link flex items-center">
                         <i class="fas fa-sign-in-alt mr-2"></i>
                         Iniciar Sesión
@@ -52,7 +52,7 @@
                     <div class="flex items-center">
                         <span class="username">{{ getCurrentUser()?.nombre }}</span>
                         <div class="relative">
-                            <input type="checkbox" id="user-menu-toggle" class="hidden">
+                            <input type="checkbox" id="user-menu-toggle" class="hidden" (change)="toggleUserMenu()">
                             <label for="user-menu-toggle" class="nav-link">
                                 <i class="fas fa-scroll"></i>
                             </label>

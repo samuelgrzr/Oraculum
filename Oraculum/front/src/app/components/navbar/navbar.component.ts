@@ -59,4 +59,33 @@ export class NavbarComponent {
   isAdmin(): boolean {
     return this.getCurrentUser()?.rol === 'admin';
   }
+
+  toggleMainMenu() {
+    const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement;
+    const loginToggle = document.getElementById('login-toggle') as HTMLInputElement;
+    const userMenuToggle = document.getElementById('user-menu-toggle') as HTMLInputElement;
+    
+    if (menuToggle && menuToggle.checked) {
+      if (loginToggle) loginToggle.checked = false;
+      if (userMenuToggle) userMenuToggle.checked = false;
+    }
+  }
+
+  toggleLoginMenu() {
+    const loginToggle = document.getElementById('login-toggle') as HTMLInputElement;
+    const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement;
+    
+    if (loginToggle && loginToggle.checked) {
+      if (menuToggle) menuToggle.checked = false;
+    }
+  }
+
+  toggleUserMenu() {
+    const userMenuToggle = document.getElementById('user-menu-toggle') as HTMLInputElement;
+    const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement;
+    
+    if (userMenuToggle && userMenuToggle.checked) {
+      if (menuToggle) menuToggle.checked = false;
+    }
+  }
 }
