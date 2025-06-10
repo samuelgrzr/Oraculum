@@ -311,7 +311,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 90
 ('¿Qué héroe fue conocido como Nadie por su enemigo?', 'divina', 'El más astuto de los héroes, utilizó este engaño para escapar con vida.', 'Odiseo se presentó como Nadie ante el cíclope Polifemo, para que, cuando pidiera ayuda, dijese que Nadie le estaba atacando y no la recibiera.', 1),
 -- 91
-('¿Cuál no es un trabajo de Heracles?', 'divina', 'Hércules tenía una gigantesca fuerza, pero no era muy inteligente.', 'Quien se adentró en el laberinto de Creta para vencer al Minotauro con ayuda de la princesa Ariadna fue Jasón.', 1),
+('¿Cuál no es un trabajo de Heracles?', 'divina', 'Hércules tenía una gigantesca fuerza, pero no era muy inteligente.', 'Quien se adentró en el laberinto de Creta para vencer al Minotauro con ayuda de la princesa Ariadna fue Teseo.', 1),
 -- 92
 ('¿Quién no es una Erinia?', 'divina', 'Fue princesa y había una ciudad con su nombre.', 'Megara, princesa de Tebas, fue la esposa de Heracles hasta que este la mató, engañado por Hera.', 1),
 -- 93
