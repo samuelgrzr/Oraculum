@@ -93,7 +93,7 @@ export class AudienciaComponent implements OnInit {
 
     agregarMensajeBienvenida() {
         const mensajeBienvenida: Mensaje = {
-            texto: '¡Saludos, noble mortal! Soy Apolo, dios de la sabiduría y señor de los oráculos. Has sido concedido con una audiencia sagrada por demostrar gran conocimiento al estar entre los mejores del Oráculo. En mi templo divino, puedes hacerme hasta 5 preguntas. ¿Qué sabiduría buscas de los dioses del Olimpo?',
+            texto: 'Puedes dirigirte a Apolo. Solo tienes 5 oportunidades, aprovéchalas bien.',
             esUsuario: false,
             timestamp: new Date()
         };
@@ -140,7 +140,7 @@ export class AudienciaComponent implements OnInit {
                     this.audienciaCompletada = true;
                     setTimeout(() => {
                         const mensajeDespedida: Mensaje = {
-                            texto: 'Has agotado tus preguntas en esta audiencia sagrada, noble mortal. Que la sabiduría divina te acompañe hasta que volvamos a encontrarnos en mi templo. Ve en paz, hijo de los hombres.',
+                            texto: 'Has agotado tus preguntas en esta audiencia sagrada, noble mortal. Si dentro de 5 horas mortales sigues estando entre los tres primeros, volveremos a encontrarnos en mi templo. Ve en paz, hijo de los hombres.',
                             esUsuario: false,
                             timestamp: new Date()
                         };
