@@ -1,4 +1,3 @@
-from zoneinfo import ZoneInfo
 from pydantic import BaseModel
 from typing import Optional, List
 from fastapi import APIRouter, HTTPException
@@ -68,7 +67,7 @@ def create_partida(db: db_dependency, partida: CrearPartida):
     try:
         db_partida = Partida(
             id_usuario = partida.id_usuario,
-            fecha = datetime.now(),
+            fecha = datetime.utcnow(),
             puntuacion = partida.puntuacion,
             modo_juego = partida.modo_juego,
             id_categoria = partida.id_categoria,

@@ -194,7 +194,11 @@ export class PerfilComponent implements OnInit {
   }
 
   formatearFecha(fecha: Date): string {
-    return new Date(fecha).toLocaleDateString('es-ES', {
+    fecha = new Date(fecha);
+    const offsetSpain = 2 * 60 * 60 * 1000;
+    const fechaLocal = new Date(fecha.getTime() + offsetSpain);
+
+    return fechaLocal.toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
