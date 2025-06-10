@@ -684,7 +684,7 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Miles Morales', TRUE, 185), ('Miguel Ohara', FALSE, 185), ('May Parker', FALSE, 185), ('Gwen Stacy', FALSE, 185),
 ('Jennifer Walters', TRUE, 186), ('Betty Ross', FALSE, 186), ('Rebecca Banner', FALSE, 186), ('Susan Banner', FALSE, 186),
 ('S.H.I.E.L.D.', TRUE, 187), ('H.A.M.M.E.R.', FALSE, 187), ('A.I.M.', FALSE, 187), ('HYDRA', FALSE, 187),
-('Nick Fury', TRUE, 188), ('Phil Coulson', FALSE, 188), ('Maria Hill', FALSE, 188), ('Tum tum Sahur', FALSE, 188),
+('Nick Fury', TRUE, 188), ('Phil Coulson', FALSE, 188), ('Maria Hill', FALSE, 188), ('Tum Tum Tum Sahur', FALSE, 188),
 ('Joker', TRUE, 189), ('Black Adam', FALSE, 189), ('General Zod', FALSE, 189), ('Lex Luthor', FALSE, 189),
 ('Habitación Roja', TRUE, 190), ('Programa Invierno', FALSE, 190), ('Proyecto Insight', FALSE, 190), ('Operación Paperclip', FALSE, 190),
 ('Adamantium', TRUE, 191), ('Vibranium', FALSE, 191), ('Unobtainium', FALSE, 191), ('Carbonadium', FALSE, 191),
