@@ -267,7 +267,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 68
 ('¿Quién es el padre de los Cíclopes?', 'divina', 'Personificación del cielo.', 'Urano engendró a los cíclopes con Gea, pero le parecieron horribles y los encerró en el Tártaro.', 1),
 -- 69
-('¿Cuál es el nombre del río del olvido en el Inframundo?', 'divina', 'Se encuentra rodeando los Campos Elíseos.', 'Los héroes o personas ejemplares que pueden comenzar de nuevo su vida en los Campos Elíseos, tienen la oportunidad de beber de este río para olvidar su vida anterior y no sufrir.', 1),
+('¿Cuál es el nombre del río del olvido en el Inframundo?', 'divina', 'Se encuentra rodeando los Campos Elíseos.', 'Los héroes o personas ejemplares que pueden comenzar de nuevo su vida en los Campos Elíseos, tienen la oportunidad de beber del río Leteo para olvidar su vida anterior y no sufrir.', 1),
 -- 70
 ('¿Qué diosa presidía los juramentos?', 'divina', 'Hija de Nix, la noche.', 'Estigia, el río del Inframundo, personificaba los juramentos sagrados e inquebrantables, incluso los de los dioses y titanes.', 1),
 -- 71
