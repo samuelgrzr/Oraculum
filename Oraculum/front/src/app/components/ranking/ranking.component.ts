@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth.service';
 import { StorageService } from '../../services/storage.service';
 
 interface RankingUsuario {
+  id: number;
   nombre: string;
   puntuacion: number;
 }

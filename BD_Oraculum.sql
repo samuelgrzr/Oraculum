@@ -453,7 +453,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 132
 ('¿Cómo se llama el grupo principal de superhéroes de DC?', 'heroica', 'Son dioses entre humanos.', 'La Liga de la Justicia defiende la Tierra.', 2),
 -- 133
-('¿Cuál es el nombre real de Lobezno?', 'heroica', 'Mutante con garras de adamantium.', 'Logan es el nombre de Lobezno.', 2),
+('¿Cuál es el nombre real de Lobezno?', 'divina', 'Mutante con garras de adamantium.', 'Ha cambiado varias veces de nombre a lo largo de su vida, y aunque ahora mismo se haga llamar Logan, su verdadero nombre, el que recibió al nacer, es James Howlett.', 2),
 -- 134
 ('¿Cuál es el poder principal de Lobezno?', 'heroica', 'Puede curarse de cualquier herida.', 'El factor de curación regenera su cuerpo.', 2),
 -- 135
@@ -516,7 +516,7 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Steve Rogers', TRUE, 123), ('Bucky Barnes', FALSE, 123), ('Sam Wilson', FALSE, 123), ('Johnny Walker', FALSE, 123),
 ('Escudo', TRUE, 124), ('Martillo', FALSE, 124), ('Espada', FALSE, 124), ('Hacha', FALSE, 124),
 ('Thor Odinson', TRUE, 125), ('Loki Laufeyson', FALSE, 125), ('Thor Bjornson', FALSE, 125), ('Thor Laufeyson', FALSE, 125),
-('Mjolnir', TRUE, 126), ('Tormentabreaker', FALSE, 126), ('Gungnir', FALSE, 126), ('Gram', FALSE, 126),
+('Mjolnir', TRUE, 126), ('Stormbreaker', FALSE, 126), ('Gungnir', FALSE, 126), ('Gram', FALSE, 126),
 ('Bruce Banner', TRUE, 127), ('Rick Jones', FALSE, 127), ('Thaddeus Ross', FALSE, 127), ('Emil Blonsky', FALSE, 127),
 ('Ira', TRUE, 128), ('Miedo', FALSE, 128), ('Tristeza', FALSE, 128), ('Dolor', FALSE, 128),
 ('Natasha Romanoff', TRUE, 129), ('Yelena Belova', FALSE, 129), ('Melina Vostokoff', FALSE, 129), ('Dottie Underwood', FALSE, 129),
@@ -559,7 +559,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 157
 ('¿Cómo se llama la cárcel psiquiátrica de Gotham?', 'divina', 'Donde encierran a los villanos locos.', 'Arkham Asylum alberga a los criminales dementes.', 2),
 -- 158
-('¿Cuál es el nombre del comisario de policía aliado de Batman?', 'divina', 'Es el padre de Batgirl.', 'James Gordon es el aliado más leal de Batman dentro de la policía.', 2),
+('¿Cuál es el nombre del comisario de policía aliado de Batman?', 'heroica', 'Es el padre de Batgirl.', 'James Gordon es el aliado más leal de Batman dentro de la policía.', 2),
 -- 159
 ('¿Cuál es el nombre real de Dos Caras?', 'divina', 'Fue un importante fiscal en Gotham.', 'Harvey Dent sufrió un accidente con ácido que le desfiguró medio rostro, creando una hiperfijación en él por la dualidad y convirtiéndolo en un criminal.', 2),
 -- 160
