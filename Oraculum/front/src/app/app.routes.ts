@@ -13,10 +13,11 @@ import { MotorJuegoComponent } from './components/juego/motor-juego/motor-juego.
 import { AudienciaComponent } from './components/audiencia/audiencia.component';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
+import { guestGuard } from './guards/guest.guard';
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
-    { path: "registro", component: RegistroComponent },
+    { path: "registro", component: RegistroComponent, canActivate: [guestGuard] },
     { path: "perfil", component: PerfilComponent, canActivate: [authGuard] },
     { path: "gestion", component: GestionComponent, canActivate: [adminGuard] },
     { path: "gestion/usuarios", component: UsuarioComponent, canActivate: [adminGuard] },
@@ -26,5 +27,5 @@ export const routes: Routes = [
     { path: "ranking", component: RankingComponent },
     { path: "jugar", component: InicioPartidaComponent },
     { path: "juego", component: MotorJuegoComponent },
-    { path: 'audiencia', component: AudienciaComponent }
+    { path: 'audiencia', component: AudienciaComponent, canActivate: [authGuard] }
 ];
