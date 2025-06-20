@@ -595,7 +595,7 @@ INSERT INTO pregunta (enunciado, dificultad, pista, explicacion, id_categoria) V
 -- 175
 ('¿Cuál es el nombre real de Ocean Master?', 'divina', 'Hermano celoso del rey de Atlantis.', 'Orm Marius es la identidad de Ocean Master.', 2),
 -- 176
-('¿Cómo se llama la inteligencia artificial que Iron Man deja a Spiderman?', 'divina', 'Asistente virtual del traje.', 'FRIDAY reemplazó a JARVIS en algunas versiones.', 2),
+('¿Cómo se llama la inteligencia artificial que Iron Man deja a Spiderman?', 'divina', 'Asistente virtual del traje.', 'FRIDAY reemplazó a JARVIS en algunas versiones, pero la IA que deja como legado a Peter dentro de unas gafas es EDITH.', 2),
 -- 177
 ('¿Cuál era el nombre de la IA anterior de Tony Stark?', 'divina', 'Mayordomo virtual basado en Alfred.', 'JARVIS fue la primera IA de Iron Man.', 2),
 -- 178
@@ -672,7 +672,7 @@ INSERT INTO respuesta (texto, es_correcta, id_pregunta) VALUES
 ('Jason Todd', TRUE, 173), ('Damian Wayne', FALSE, 173), ('Dick Grayson', FALSE, 173), ('Tim Drake', FALSE, 173),
 ('Ocean Master', TRUE, 174), ('Black Manta', FALSE, 174), ('King Shark', FALSE, 174), ('Killer Croc', FALSE, 174),
 ('Orm Marius', TRUE, 175), ('David Hyde', FALSE, 175), ('Stephen Shin', FALSE, 175), ('Nanaue', FALSE, 175),
-('FRIDAY', TRUE, 176), ('JARVIS', FALSE, 176), ('KAREN', FALSE, 176), ('EDITH', FALSE, 176),
+('EDITH', TRUE, 176), ('JARVIS', FALSE, 176), ('KAREN', FALSE, 176), ('FRIDAY', FALSE, 176),
 ('JARVIS', TRUE, 177), ('FRIDAY', FALSE, 177), ('KAREN', FALSE, 177), ('EDITH', FALSE, 177),
 ('Kara Zor-El', TRUE, 178), ('Lara Zor-El', FALSE, 178), ('Clara Jor-El', FALSE, 178), ('Luna Jor-El', FALSE, 178),
 ('Plomo', TRUE, 179), ('Kryptonita', FALSE, 179), ('Magia', FALSE, 179), ('Sonido', FALSE, 179),
